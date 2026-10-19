@@ -8,14 +8,14 @@ Safe QR is a native iOS app in Czech and English, plus safeqr.cz: scan a code, r
 
 <table>
   <tr>
-    <td><img src="docs/screenshots/danger-en.jpg" width="200" alt="Dangerous: 85 out of 100. A premium SMS code may start repeated charges."></td>
-    <td><img src="docs/screenshots/payment-cs.jpg" width="200" alt="Czech payment result showing 250 Kč, the account and bank, with an offline risk score."></td>
-    <td><img src="docs/screenshots/confirmation-en.jpg" width="200" alt="Danger confirmation: Go back is the prominent choice; Continue anyway is secondary."></td>
-    <td><img src="docs/screenshots/scan-en.jpg" width="200" alt="Scan screen in the Simulator, with photo import and sample codes."></td>
+    <td><img src="docs/screenshots/scanner-en.jpg" width="200" alt="Camera locked onto a QR sticker on a parking machine; the label under the code reads Dangerous."></td>
+    <td><img src="docs/screenshots/verdict-en.jpg" width="200" alt="Dangerous: the website asks for sensitive details. Risk meter at 85, deep check in 13 seconds, and where the link leads."></td>
+    <td><img src="docs/screenshots/sandbox-en.jpg" width="200" alt="Screenshot of the fake parking payment page, taken in an isolated browser in AWS Frankfurt, with the reasons below."></td>
+    <td><img src="docs/screenshots/sms-cs.jpg" width="200" alt="Czech premium SMS result: Dangerous, the message START in a text bubble and the price of up to 99 Kč per received message."></td>
   </tr>
 </table>
 
-Simulator screenshots with sample codes. The website uses the Workers address until safeqr.cz is connected.
+Simulator screenshots; the camera view uses a synthetic photo of a parking machine. The website uses the Workers address until safeqr.cz is connected.
 
 ## Why
 
