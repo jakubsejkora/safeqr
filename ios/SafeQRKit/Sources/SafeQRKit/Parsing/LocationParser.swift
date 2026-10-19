@@ -4,7 +4,8 @@ enum LocationParser {
     static func parse(_ raw: String) -> ParsedCode {
         let query = ParseSupport.query(raw)
         let content = ParseSupport.body(raw).split(separator: "?", maxSplits: 1, omittingEmptySubsequences: false)[0]
-        let coordinates = content.split(separator: ";", maxSplits: 1, omittingEmptySubsequences: false)[0].split(separator: ",")
+        let coordinates = content.split(separator: ";", maxSplits: 1, omittingEmptySubsequences: false)[0]
+            .split(separator: ",", omittingEmptySubsequences: false)
         guard (2...3).contains(coordinates.count), let latitude = Double(coordinates[0]), let longitude = Double(coordinates[1]),
               latitude.isFinite, longitude.isFinite, (-90...90).contains(latitude), (-180...180).contains(longitude) else {
             return ParsedCode(payload: .text(raw), issues: [.malformed])

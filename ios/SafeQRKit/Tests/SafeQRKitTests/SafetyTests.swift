@@ -112,6 +112,21 @@ struct SafetyTests {
         }
     }
 
+    @Test(arguments: [
+        "https://example.com/#access_token=private",
+        "https://example.com/#/callback?access_token=private",
+        "https://example.com/?next=https%3A%2F%2Fother.example%2F%3Fpassword%3Dprivate",
+        "https://example.com/#setup=otpauth%3A%2F%2Ftotp%2FExample%3Fsecret%3DJBSWY3DPEHPK3PXP",
+        "https://example.com/?next=https%3A%2F%2Fuser%3Aprivate%40other.example",
+        "https://example.com/?next=public&next=otpauth%3A%2F%2Ftotp%2FExample%3Fsecret%3DJBSWY3DPEHPK3PXP",
+        "https://example.com/?next=https%3A%2F%2Fdiscord.com%2Fra%2Fprivate"
+    ])
+    func fragmentsAndEmbeddedLinksKeepCredentialsOnDevice(_ raw: String) {
+        let result = inspector.inspect(raw)
+        #expect(result.containsSecrets)
+        #expect(!result.benefitsFromCloudCheck)
+    }
+
     @Test func oversizeInputDoesNotOfferAnActionOrClaimToHaveReadIt() {
         let result = inspector.inspect(String(repeating: "https://example.com ", count: 2_000))
         #expect(result.assessment.findings.map(\.id) == ["code.tooLarge"])

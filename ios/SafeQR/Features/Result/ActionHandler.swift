@@ -50,10 +50,19 @@ final class ActionHandler {
                 guard case .event(let item) = payload, let start = item.start else { throw HandoffError.invalid }
                 let store = EKEventStore()
                 let event = EKEvent(eventStore: store)
+                let zone = item.timeZoneIdentifier.flatMap { identifier in
+                    TimeZone.knownTimeZoneIdentifiers.first { $0.uppercased() == identifier.uppercased() }
+                        .flatMap(TimeZone.init(identifier:)) ?? TimeZone(identifier: identifier)
+                }
                 event.title = item.title ?? L10n.text("Scanned event")
+                event.isAllDay = item.isAllDay
+                event.timeZone = zone
                 event.startDate = start
-                event.endDate = max(item.end ?? start.addingTimeInterval(3600), start)
+                // iCalendar's all-day end is exclusive; EventKit includes the supplied end day.
+                event.endDate = item.isAllDay ? item.end?.addingTimeInterval(-1) ?? start : item.end ?? start
                 event.location = item.location
+                event.notes = item.description
+                event.url = item.url.flatMap(URL.init(string:))
                 presentation = .event(event, store)
             default:
                 guard let url = HandoffURLBuilder.url(for: action.kind) else { throw HandoffError.invalid }
@@ -63,6 +72,7 @@ final class ActionHandler {
             message = L10n.text("This action could not be completed. Nothing was sent or saved by Safe QR.")
         }
     }
+
 }
 
 enum HandoffError: Error { case invalid, noApp }

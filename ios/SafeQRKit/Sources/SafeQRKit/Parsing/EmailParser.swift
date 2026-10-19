@@ -15,9 +15,10 @@ enum EmailParser {
         } else {
             let query = ParseSupport.query(raw)
             recipient = ParseSupport.decoded(String(ParseSupport.body(raw).split(separator: "?", maxSplits: 1, omittingEmptySubsequences: false)[0]))
-            subject = query.fields["subject"]
-            body = query.fields["body"]
-            if query.duplicate || query.fields["cc"] != nil || query.fields["bcc"] != nil || query.fields["to"] != nil {
+            let headers = ParseSupport.fieldMap(query.fields.map { ($0.key.lowercased(), $0.value) })
+            subject = headers.fields["subject"]
+            body = headers.fields["body"]
+            if query.duplicate || headers.duplicate || headers.fields["cc"] != nil || headers.fields["bcc"] != nil || headers.fields["to"] != nil {
                 issues.insert(.ambiguous)
             }
         }

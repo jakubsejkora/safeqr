@@ -29,6 +29,30 @@ struct StructuredParserTests {
         #expect(parsed.issues.isEmpty)
     }
 
+    @Test func unsupportedCalendarDurationCannotBecomeADifferentEvent() {
+        let result = CodeInspector().inspect("BEGIN:VEVENT\nDTSTART:20261020T120000Z\nDURATION:PT2H\nEND:VEVENT")
+        #expect(result.assessment.findings.contains { $0.id == "code.unsupported" })
+        #expect(result.actions.allSatisfy { $0.confirmation == nil })
+    }
+
+    @Test(arguments: ["geo:,50,14", "geo:50,,14", "geo:50,14,"])
+    func missingCoordinatesDoNotShiftTheDestination(_ raw: String) {
+        let result = CodeInspector().inspect(raw)
+        #expect(result.assessment.findings.contains { $0.id == "code.malformed" })
+        #expect(result.actions.allSatisfy { $0.confirmation == nil })
+    }
+
+    @Test func emailHeadersAreCaseInsensitive() throws {
+        let parsed = EmailParser.parse("mailto:person@example.com?SUBJECT=Hello&BODY=Message")
+        guard case .email(_, let subject, let body) = parsed.payload else { throw TestError.wrongKind }
+        #expect(subject == "Hello")
+        #expect(body == "Message")
+        #expect(parsed.issues.isEmpty)
+        for query in ["BCC=other@example.com", "CC=other@example.com", "TO=other@example.com", "subject=One&SUBJECT=Two"] {
+            #expect(EmailParser.parse("mailto:person@example.com?" + query).issues.contains(.ambiguous))
+        }
+    }
+
     @Test func authenticatorExportCountsAccountsWithoutDisplayingSecrets() throws {
         let account: [UInt8] = [10, 3, 1, 2, 3, 18, 1, 65]
         let data = Data([10, UInt8(account.count)] + account + [10, UInt8(account.count)] + account + [16, 1, 24, 2])

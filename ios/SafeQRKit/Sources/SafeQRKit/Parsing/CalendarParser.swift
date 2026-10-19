@@ -28,14 +28,14 @@ enum CalendarParser {
             case "DTEND":
                 event.end = date(property)
                 if event.end == nil { issues.insert(.malformed) }
-            case "RRULE", "RDATE", "EXDATE", "ATTACH": issues.insert(.unsupported)
+            case "RRULE", "RDATE", "EXDATE", "ATTACH", "DURATION": issues.insert(.unsupported)
             default: break
             }
         }
         if properties.filter({ $0.name == "BEGIN" && $0.value.uppercased() == "VEVENT" }).count != 1
             || counts.contains(where: { ["SUMMARY", "DTSTART", "DTEND", "URL"].contains($0.key) && $0.value > 1 }) { issues.insert(.ambiguous) }
         if event.start == nil || !properties.contains(where: { $0.name == "END" && $0.value.uppercased() == "VEVENT" }) { issues.insert(.malformed) }
-        if let start = event.start, let end = event.end, end < start { issues.insert(.malformed) }
+        if let start = event.start, let end = event.end, end < start || (event.isAllDay && end == start) { issues.insert(.malformed) }
         return ParsedCode(payload: .event(event), issues: issues)
     }
 
@@ -57,7 +57,7 @@ enum CalendarParser {
                   let zone = TimeZone(identifier: known) else { return nil }
             formatter.timeZone = zone
         } else {
-            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+            formatter.timeZone = .current
         }
         formatter.dateFormat = value.count == 8 ? "yyyyMMdd" : value.hasSuffix("Z") ? "yyyyMMdd'T'HHmmss'Z'" : "yyyyMMdd'T'HHmmss"
         formatter.isLenient = false

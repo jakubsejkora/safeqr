@@ -46,9 +46,58 @@ struct AppLogicTests {
         #expect((object["device"] as? [String: Any])?["floor"] as? Int == 40)
         #expect((object["scene"] as? [String: Any])?["source"] as? String == "photo")
         #expect((object["scene"] as? [String: Any])?["image"] as? String == "AQID")
-        for raw in ["WIFI:T:WPA;S:Private;P:secret123;;", "otpauth://totp/me?secret=ABCD", "LPA:1$example.com$secret"] {
+        for raw in ["WIFI:T:WPA;S:Private;P:secret123;;", "otpauth://totp/me?secret=ABCD", "LPA:1$example.com$secret",
+                    "https://wa.me/420777123456?text=Private%20message", "https://t.me/example?text=Private%20message"] {
             #expect(CheckConsent(links: true, surroundings: true).request(for: CodeInspector().inspect(raw), scene: photo) == nil)
         }
+    }
+
+    @Test func calendarHandoffPreservesAllDayDatesAndFloatingTimes() async throws {
+        for (value, allDay) in [("20261025", true), ("20261025T120000", false)] {
+            let analysis = CodeInspector().inspect("BEGIN:VEVENT\nSUMMARY:Meeting\nDTSTART:\(value)\nDESCRIPTION:Bring notes\nEND:VEVENT")
+            let action = try #require(analysis.actions.first { $0.isHandoff })
+            let handler = ActionHandler()
+            await handler.perform(action, payload: analysis.content.payload)
+            guard case .event(let event, _) = handler.presentation else {
+                Issue.record("Expected a calendar editor")
+                continue
+            }
+            let calendar = Calendar(identifier: .gregorian)
+            let start = try #require(event.startDate)
+            let parts = calendar.dateComponents([.year, .month, .day, .hour], from: start)
+            #expect(parts == DateComponents(year: 2026, month: 10, day: 25, hour: allDay ? 0 : 12))
+            #expect(event.isAllDay == allDay)
+            #expect(event.notes == "Bring notes")
+            #expect(event.timeZone == nil)
+            let expectedEnd = allDay ? calendar.date(byAdding: .day, value: 1, to: start)?.addingTimeInterval(-1) : start
+            #expect(event.endDate == expectedEnd)
+        }
+    }
+
+    @Test func calendarHandoffPreservesAnExplicitTimeZone() async throws {
+        let analysis = CodeInspector().inspect("BEGIN:VEVENT\nDTSTART;TZID=Europe/Prague:20261020T120000\nDTEND;TZID=Europe/Prague:20261020T130000\nEND:VEVENT")
+        let handler = ActionHandler()
+        await handler.perform(try #require(analysis.actions.first { $0.isHandoff }), payload: analysis.content.payload)
+        guard case .event(let event, _) = handler.presentation else {
+            Issue.record("Expected a calendar editor")
+            return
+        }
+        #expect(event.startDate?.ISO8601Format() == "2026-10-20T10:00:00Z")
+        #expect(event.endDate?.ISO8601Format() == "2026-10-20T11:00:00Z")
+        #expect(event.timeZone?.identifier == "Europe/Prague")
+    }
+
+    @Test func allDayCalendarEndIsExclusive() async throws {
+        let analysis = CodeInspector().inspect("BEGIN:VEVENT\nDTSTART;VALUE=DATE:20261024\nDTEND;VALUE=DATE:20261026\nEND:VEVENT")
+        let handler = ActionHandler()
+        await handler.perform(try #require(analysis.actions.first { $0.isHandoff }), payload: analysis.content.payload)
+        guard case .event(let event, _) = handler.presentation else {
+            Issue.record("Expected a calendar editor")
+            return
+        }
+        let end = try #require(event.endDate)
+        let components = Calendar(identifier: .gregorian).dateComponents([.day, .hour, .minute, .second], from: end)
+        #expect(components == DateComponents(day: 25, hour: 23, minute: 59, second: 59))
     }
 
     @Test func failedCloudLeavesDeviceResultUsable() async throws {

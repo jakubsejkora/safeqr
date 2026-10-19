@@ -99,7 +99,7 @@ struct ScanView: View {
         .task(id: observingCamera) {
             guard observingCamera else { return }
             while !Task.isCancelled {
-                services.checks.observe(visibleCodes, sceneContainsSecrets: services.camera.sceneContainsSecrets,
+                services.checks.observe(visibleCodes, sceneContainsPrivateCodes: services.camera.sceneContainsPrivateCodes,
                                         using: services.checker, consent: services.preferences.consent)
                 do { try await Task.sleep(for: .milliseconds(200)) }
                 catch { return }
@@ -194,7 +194,7 @@ struct ScanView: View {
                     PhotosPicker(selection: $selectedPhoto, matching: .images) {
                         Label(L10n.text("Import photo"), systemImage: "photo")
                             .labelStyle(.iconOnly).frame(width: 56, height: 56)
-                    }.buttonStyle(.glass)
+                    }.buttonStyle(.glass).disabled(importing)
                     if services.camera.hasUltraWide || isFixture {
                         CameraZoomControl(ultraWide: Binding(get: { services.camera.showsUltraWide },
                                                             set: { services.camera.showsUltraWide = $0 }))
@@ -225,7 +225,7 @@ struct ScanView: View {
 
     private var cameraVisible: Bool { services.camera.state == .ready || isFixture }
     private var observingCamera: Bool {
-        isSelected && scenePhase == .active && result == nil && imported == nil && cameraVisible
+        isSelected && scenePhase == .active && result == nil && imported == nil && !importing && cameraVisible
     }
 
     private var isFixture: Bool {
@@ -245,7 +245,7 @@ struct ScanView: View {
 
     private func select(_ code: TrackedCode) {
         guard result == nil else { return }
-        let privateScene = services.camera.sceneContainsSecrets
+        let privateScene = services.camera.sceneContainsPrivateCodes
         services.camera.stop()
         if typeSize.isAccessibilitySize { detent = .large }
         result = services.checks.result(for: code.analysis, scene: privateScene ? nil : code.observation.scene,
@@ -259,7 +259,7 @@ struct ScanView: View {
             return
         }
         pendingImport = nil
-        let privateScene = ScenePrivacy.containsSecrets(pending.scan.codes)
+        let privateScene = ScenePrivacy.containsPrivateCodes(pending.scan.codes)
         var limitations: [String] = []
         if privateScene { limitations.append(L10n.text("The surroundings photo stayed on this iPhone because it contains a private code.")) }
         let limitation = L10n.format("This picture contains %lld codes. A sticker may be covering the original.", pending.scan.codes.count)

@@ -12,7 +12,7 @@ final class CameraModel {
     var showsUltraWide = false
     private(set) var torchEnabled = false
     private(set) var codes: [TrackedCode] = []
-    private(set) var sceneContainsSecrets = false
+    private(set) var sceneContainsPrivateCodes = false
     private(set) var thumbnail: UIImage?
     private var lastSeen: [UUID: Date] = [:]
     private(set) var capture: CameraCapture?
@@ -75,7 +75,7 @@ final class CameraModel {
         for code in updated { lastSeen[code.id] = Date() }
         // Brief occlusion should not make the frame or its verdict flicker.
         updated += remaining.filter { Date().timeIntervalSince(lastSeen[$0.id] ?? .distantPast) < 0.65 }
-        sceneContainsSecrets = updated.contains { $0.analysis.containsSecrets }
+        sceneContainsPrivateCodes = updated.contains { $0.analysis.requiresLocalCheck }
         codes = Array(updated.prefix(3))
         lastSeen = lastSeen.filter { id, _ in codes.contains { $0.id == id } }
     }

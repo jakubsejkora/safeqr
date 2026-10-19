@@ -57,12 +57,17 @@ enum EmbeddedPayloads {
                 + Array(request.parameters.values)
         case .text: return [raw]
         case .appLink(let url):
-            return ParseSupport.query(url.absoluteString).fields.filter { !["id", "package", "action"].contains($0.key) }.map(\.value)
-                + (url.scheme?.lowercased() == "intent" ? [url.fragment ?? ""] : [])
-        case .link(let url): return Array(ParseSupport.query(url.absoluteString).fields.values)
+            return urlFields(url, excluding: ["id", "package", "action"])
+        case .link(let url): return urlFields(url)
         case .location(_, _, let query): return [query].compactMap { $0 }
         case .phone, .login, .eSIM: return []
         }
+    }
+
+    private static func urlFields(_ url: URL, excluding keys: Set<String> = []) -> [String] {
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        let values = components?.queryItems?.filter { !keys.contains($0.name) }.compactMap(\.value) ?? []
+        return values + [components?.fragment].compactMap { $0 }
     }
 
     private static func matches(_ value: String, pattern: String) -> [String] {

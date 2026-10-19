@@ -85,9 +85,12 @@ struct PresentationLogicTests {
     @Test func anUnselectedPrivateCodeAlsoKeepsTheSceneOnDevice() {
         let bounds = CodeBounds(rect: CGRect(x: 0, y: 0, width: 0.2, height: 0.2))
         let link = ScannedCode(raw: "https://example.com", symbology: .qr, bounds: bounds)
-        let secret = ScannedCode(raw: "WIFI:T:WPA;S:Home;P:private-password;;", symbology: .qr, bounds: bounds)
-        #expect(!ScenePrivacy.containsSecrets([link]))
-        #expect(ScenePrivacy.containsSecrets([link, secret]))
+        #expect(!ScenePrivacy.containsPrivateCodes([link]))
+        for raw in ["WIFI:T:WPA;S:Home;P:private-password;;", "MECARD:N:Private;TEL:+420777123456;;",
+                    "SMSTO:+420777123456:Private message", "https://wa.me/420777123456?text=Private"] {
+            let privateCode = ScannedCode(raw: raw, symbology: .qr, bounds: bounds)
+            #expect(ScenePrivacy.containsPrivateCodes([link, privateCode]))
+        }
     }
 
     @Test func hiddenEmailRecipientIsVisibleAndAuthenticationSecretsStayHidden() {

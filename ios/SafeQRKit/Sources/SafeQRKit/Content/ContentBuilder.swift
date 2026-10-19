@@ -79,7 +79,7 @@ struct ContentBuilder {
         case .event(let event):
             add("name", event.title, emphasis: .primary)
             let zone = event.timeZoneIdentifier.flatMap { identifier in TimeZone.knownTimeZoneIdentifiers.first { $0.uppercased() == identifier } }
-                .flatMap(TimeZone.init(identifier:)) ?? TimeZone.gmt
+                .flatMap(TimeZone.init(identifier:)) ?? (event.timeZoneIdentifier == "UTC" ? .gmt : .current)
             add("start", event.start.map { localizer.date($0, allDay: event.isAllDay, timeZone: zone) })
             add("end", event.end.map { localizer.date($0, allDay: event.isAllDay, timeZone: zone) })
             add("timeZone", event.isAllDay ? nil : event.timeZoneIdentifier)

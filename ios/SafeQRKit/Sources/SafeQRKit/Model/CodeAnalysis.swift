@@ -36,7 +36,8 @@ public struct CodeAnalysis: Sendable, Identifiable {
         if Self.isSecret(content.payload) { return true }
         if assessment.findings.contains(where: { $0.id.hasPrefix("login.") || $0.id == "esim.activation" }) { return true }
         guard assessment.findings.contains(where: { $0.id == "content.combination" }) else { return false }
-        return EmbeddedPayloads.inspect(content.payload, raw: raw).codes.contains { Self.isSecret($0.payload) }
+        let embedded = EmbeddedPayloads.inspect(content.payload, raw: raw)
+        return embedded.links.contains(where: Self.hasCredentials) || embedded.codes.contains { Self.isSecret($0.payload) }
     }
 
     private static func isSecret(_ payload: Payload) -> Bool {
@@ -50,10 +51,14 @@ public struct CodeAnalysis: Sendable, Identifiable {
     }
 
     private static func hasCredentials(_ url: URL) -> Bool {
+        if LoginParser.parse(url.absoluteString) != nil { return true }
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         if components?.user != nil || components?.password != nil { return true }
         let keys: Set<String> = ["password", "passwd", "secret", "access_token", "id_token", "refresh_token", "api_key", "private_key"]
-        return ParseSupport.query(url.absoluteString).fields.keys.contains { keys.contains($0.lowercased()) }
+        let queries = [url.absoluteString] + (components?.fragment.map { ["?" + $0, $0] } ?? [])
+        return queries.contains { query in
+            ParseSupport.query(query).fields.keys.contains { keys.contains($0.lowercased()) }
+        }
     }
 }
 
