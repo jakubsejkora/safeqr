@@ -47,6 +47,20 @@ public struct PaymentRequest: Sendable, Hashable {
     public var specificSymbol: String?
     public var dueDate: DateComponents?
     public var isInstant: Bool?
+    public var alternateAccounts: [String] = []
+    public var domesticAccount: String?
+    public var bankName: String?
+    public var reference: String?
+    public var paymentID: String?
+    public var paymentURL: String?
+    public var notificationType: String?
+    public var notificationAddress: String?
+    public var retryDays: Int?
+    public var isSelfPayment: Bool?
+    public var payeeIdentifier: String?
+    public var checksum: ChecksumStatus = .notPresent
+    /// Decoded fields, including extensions the current engine does not interpret.
+    public var fields: [String: String] = [:]
 
     public init(format: Format) {
         self.format = format
@@ -64,6 +78,12 @@ public struct CryptoRequest: Sendable, Hashable {
     public var assetContract: String?
     public var label: String?
     public var message: String?
+    /// The unit of `amount`; token base units are never presented as whole tokens.
+    public var amountUnit: String?
+    public var chainID: String?
+    public var function: String?
+    public var checksum: ChecksumStatus = .notPresent
+    public var parameters: [String: String] = [:]
 
     public init(network: Network, address: String) {
         self.network = network
@@ -76,6 +96,7 @@ public struct WiFiNetwork: Sendable, Hashable {
     public var password: String?
     public var security: WiFiSecurity
     public var isHidden: Bool
+    public var authenticationType: String?
 
     public init(ssid: String, password: String?, security: WiFiSecurity, isHidden: Bool) {
         self.ssid = ssid
@@ -109,6 +130,10 @@ public struct CalendarEvent: Sendable, Hashable {
     public var end: Date?
     public var location: String?
     public var iCalendar: String
+    public var description: String?
+    public var url: String?
+    public var isAllDay: Bool = false
+    public var timeZoneIdentifier: String?
 
     public init(iCalendar: String) {
         self.iCalendar = iCalendar
@@ -141,13 +166,16 @@ public struct LoginCode: Sendable, Hashable {
     public var service: Service
     public var issuer: String?
     public var account: String?
+    /// Number of accounts in this export chunk, when its structure can be decoded.
+    public var accountCount: Int?
+    public var batchSize: Int?
 
     public init(service: Service) {
         self.service = service
     }
 }
 
-/// An eSIM activation code (`LPA:1$…`). Whoever installs it receives the phone number.
+/// An eSIM activation code (`LPA:1$…`) containing private installation details.
 public struct ESIMActivation: Sendable, Hashable {
     public var smdpAddress: String
     public var matchingID: String?
@@ -157,5 +185,32 @@ public struct ESIMActivation: Sendable, Hashable {
         self.smdpAddress = smdpAddress
         self.matchingID = matchingID
         self.requiresConfirmationCode = requiresConfirmationCode
+    }
+}
+
+/// Integrity of encoded data, not proof of the sender's identity.
+public enum ChecksumStatus: String, Sendable, Codable {
+    case notPresent, valid, invalid
+}
+
+extension Payload {
+    public var kind: CodeKind {
+        switch self {
+        case .link: .link
+        case .payment: .payment
+        case .crypto: .crypto
+        case .sms: .sms
+        case .phone: .phone
+        case .email: .email
+        case .wifi: .wifi
+        case .contact: .contact
+        case .event: .event
+        case .location: .location
+        case .messaging: .messaging
+        case .login: .login
+        case .eSIM: .eSIM
+        case .appLink: .appLink
+        case .text: .text
+        }
     }
 }

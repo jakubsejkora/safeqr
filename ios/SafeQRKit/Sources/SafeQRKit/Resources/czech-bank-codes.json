@@ -1,0 +1,255 @@
+{
+  "source": {
+    "publisher": "Česká národní banka",
+    "title": "Číselník kódů platebního styku v České republice (ČKPS)",
+    "url": "https://www.cnb.cz/cs/platebni-styk/ucty-kody-bank/",
+    "csvUrl": "https://www.cnb.cz/cs/platebni-styk/.galleries/ucty_kody_bank/download/kody_bank_CR.csv",
+    "pdfUrl": "https://www.cnb.cz/export/sites/cnb/cs/platebni-styk/.galleries/ucty_kody_bank/download/kody_bank_CR.pdf",
+    "version": 255,
+    "effectiveFrom": "2026-10-01",
+    "checkedAsOf": "2026-10-19",
+    "verified": true,
+    "entryCount": 47,
+    "note": "Full ČNB list, including non-bank payment providers and institutions in liquidation. Blank BIC cells are null: ČNB publishes only BIC codes supplied by providers. A code is not a guarantee that an institution offers new accounts or that a payment is safe. Codes and institution names are transcribed from official CSV and compared with PDF version 255. Current source URLs may later change.",
+    "extraction": "Transcribed from web-fetched official CSV; all 47 entries compared with official PDF text. Direct file download was unavailable. This is not a checksum of the original CSV bytes.",
+    "normalizedEntriesSha256": "1d07ddf5fc056fa0656f5e08df6fc922edc1e7f87964fd0bd0bb4a9dc2ef1992",
+    "normalizedHashFormat": "UTF-8 rows code|name|bic-or-empty joined with LF and final LF."
+  },
+  "banks": [
+    {
+      "code": "0100",
+      "name": "Komerční banka, a.s.",
+      "bic": "KOMBCZPP"
+    },
+    {
+      "code": "0300",
+      "name": "Československá obchodní banka, a. s.",
+      "bic": "CEKOCZPP"
+    },
+    {
+      "code": "0600",
+      "name": "MONETA Money Bank, a.s.",
+      "bic": "AGBACZPP"
+    },
+    {
+      "code": "0710",
+      "name": "ČESKÁ NÁRODNÍ BANKA",
+      "bic": "CNBACZPP"
+    },
+    {
+      "code": "0800",
+      "name": "Česká spořitelna, a.s.",
+      "bic": "GIBACZPX"
+    },
+    {
+      "code": "2010",
+      "name": "Fio banka, a.s.",
+      "bic": "FIOBCZPP"
+    },
+    {
+      "code": "2060",
+      "name": "Citfin, spořitelní družstvo",
+      "bic": "CITFCZPP"
+    },
+    {
+      "code": "2070",
+      "name": "TRINITY BANK a.s.",
+      "bic": "MPUBCZPP"
+    },
+    {
+      "code": "2100",
+      "name": "ČSOB Hypoteční banka, a.s.",
+      "bic": null
+    },
+    {
+      "code": "2200",
+      "name": "Peněžní dům, spořitelní družstvo",
+      "bic": null
+    },
+    {
+      "code": "2220",
+      "name": "Artesa, spořitelní družstvo",
+      "bic": "ARTTCZPP"
+    },
+    {
+      "code": "2250",
+      "name": "Banka CREDITAS a.s.",
+      "bic": "CTASCZ22"
+    },
+    {
+      "code": "2600",
+      "name": "Citibank Europe plc, organizační složka",
+      "bic": "CITICZPX"
+    },
+    {
+      "code": "2700",
+      "name": "UniCredit Bank Czech Republic and Slovakia, a.s.",
+      "bic": "BACXCZPP"
+    },
+    {
+      "code": "3030",
+      "name": "Air Bank a.s.",
+      "bic": "AIRACZPP"
+    },
+    {
+      "code": "3060",
+      "name": "PKO BP S.A., Czech Branch",
+      "bic": "BPKOCZPP"
+    },
+    {
+      "code": "3500",
+      "name": "ING Bank N.V.",
+      "bic": "INGBCZPP"
+    },
+    {
+      "code": "4300",
+      "name": "Národní rozvojová banka, a.s.",
+      "bic": "NROZCZPP"
+    },
+    {
+      "code": "5500",
+      "name": "Raiffeisenbank a.s.",
+      "bic": "RZBCCZPP"
+    },
+    {
+      "code": "5800",
+      "name": "J&T BANKA, a.s.",
+      "bic": "JTBPCZPP"
+    },
+    {
+      "code": "6000",
+      "name": "PPF banka a.s.",
+      "bic": "PMBPCZPP"
+    },
+    {
+      "code": "6200",
+      "name": "COMMERZBANK Aktiengesellschaft, pobočka Praha",
+      "bic": "COBACZPX"
+    },
+    {
+      "code": "6210",
+      "name": "mBank S.A., organizační složka",
+      "bic": "BREXCZPP"
+    },
+    {
+      "code": "6300",
+      "name": "BNP Paribas S.A., pobočka Česká republika",
+      "bic": "GEBACZPP"
+    },
+    {
+      "code": "6363",
+      "name": "Partners Banka, a.s.",
+      "bic": "PTBNCZPP"
+    },
+    {
+      "code": "6600",
+      "name": "Banking Circle S.A., Czech Republic",
+      "bic": null
+    },
+    {
+      "code": "6700",
+      "name": "Všeobecná úverová banka a.s., pobočka Praha",
+      "bic": "SUBACZPP"
+    },
+    {
+      "code": "6800",
+      "name": "Sberbank CZ, a.s. v likvidaci",
+      "bic": "VBOECZ2X"
+    },
+    {
+      "code": "7910",
+      "name": "Deutsche Bank Aktiengesellschaft Filiale Prag, organizační složka",
+      "bic": "DEUTCZPX"
+    },
+    {
+      "code": "7950",
+      "name": "Raiffeisen stavební spořitelna a.s.",
+      "bic": null
+    },
+    {
+      "code": "7960",
+      "name": "ČSOB Stavební spořitelna, a.s.",
+      "bic": null
+    },
+    {
+      "code": "7970",
+      "name": "MONETA Stavební Spořitelna, a.s.",
+      "bic": null
+    },
+    {
+      "code": "7990",
+      "name": "Modrá pyramida stavební spořitelna, a.s.",
+      "bic": null
+    },
+    {
+      "code": "8030",
+      "name": "Volksbank Raiffeisenbank Nordoberpfalz eG pobočka Cheb",
+      "bic": "GENOCZ21"
+    },
+    {
+      "code": "8040",
+      "name": "Oberbank AG pobočka Česká republika",
+      "bic": "OBKLCZ2X"
+    },
+    {
+      "code": "8060",
+      "name": "Stavební spořitelna České spořitelny, a.s.",
+      "bic": null
+    },
+    {
+      "code": "8090",
+      "name": "Česká exportní banka, a.s.",
+      "bic": "CZEECZPP"
+    },
+    {
+      "code": "8150",
+      "name": "HSBC Continental Europe, Czech Republic",
+      "bic": "MIDLCZPP"
+    },
+    {
+      "code": "8198",
+      "name": "FAS finance company s.r.o.",
+      "bic": "FFCSCZP1"
+    },
+    {
+      "code": "8220",
+      "name": "Payment execution s.r.o.",
+      "bic": "PAERCZP1"
+    },
+    {
+      "code": "8250",
+      "name": "Bank of China (CEE) Ltd. Prague Branch",
+      "bic": "BKCHCZPP"
+    },
+    {
+      "code": "8255",
+      "name": "Bank of Communications Co., Ltd., Prague Branch odštěpný závod",
+      "bic": "COMMCZPP"
+    },
+    {
+      "code": "8265",
+      "name": "Industrial and Commercial Bank of China Limited, Prague Branch, odštěpný závod",
+      "bic": "ICBKCZPP"
+    },
+    {
+      "code": "8500",
+      "name": "Multitude Bank p.l.c.",
+      "bic": null
+    },
+    {
+      "code": "8610",
+      "name": "Devizová burza a.s.",
+      "bic": null
+    },
+    {
+      "code": "8620",
+      "name": "Comgate a.s.",
+      "bic": null
+    },
+    {
+      "code": "8660",
+      "name": "PAYMONT, UAB",
+      "bic": null
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import Foundation
 
 /// A 0–100 risk score with the reasons behind it.
 public struct RiskAssessment: Sendable, Hashable {
-    /// 0 means no known risk, 100 means almost certainly harmful.
+    /// Rule-based risk, not a probability of fraud; 0 means no recognized warning.
     public let score: Int
     /// The lowest score any later evidence may lower this assessment to.
     /// Hard device rules set it so a remote verdict can raise risk freely but never hide a proven danger.
@@ -33,6 +33,10 @@ public enum RiskLevel: String, Sendable, Codable, CaseIterable {
         case ..<70: self = .caution
         default: self = .danger
         }
+    }
+
+    public func title(locale: Locale = .autoupdatingCurrent) -> String {
+        Localizer(locale: locale).text("verdict.\(rawValue)")
     }
 }
 

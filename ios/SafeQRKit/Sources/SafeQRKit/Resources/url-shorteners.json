@@ -1,0 +1,24 @@
+{
+  "checkedAsOf": "2026-10-19",
+  "domains": [
+    "bit.ly",
+    "tinyurl.com",
+    "t.co",
+    "t.ly",
+    "is.gd",
+    "v.gd",
+    "cutt.ly",
+    "rb.gy",
+    "shorturl.at",
+    "rebrand.ly",
+    "buff.ly",
+    "ow.ly",
+    "lnkd.in"
+  ],
+  "note": "A shortened URL hides its destination; membership alone is not evidence of fraud.",
+  "sources": [
+    "https://bitly.com/",
+    "https://tinyurl.com/",
+    "https://help.x.com/en/using-x/url-shortener"
+  ]
+}

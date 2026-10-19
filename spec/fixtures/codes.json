@@ -1,0 +1,1436 @@
+[
+  {
+    "id": "https",
+    "raw": "https://example.com/path",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "domain": "example.com"
+      }
+    }
+  },
+  {
+    "id": "bare-domain",
+    "raw": "example.com/path",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "address": "https://example.com/path"
+      }
+    }
+  },
+  {
+    "id": "http",
+    "raw": "http://example.com",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "caution",
+      "findings": [
+        "link.http"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "userinfo",
+    "raw": "https://csas.cz@example.com/pay",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "danger",
+      "findings": [
+        "link.userinfo"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "brand-subdomain",
+    "raw": "https://csas.cz.example.com",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "danger",
+      "findings": [
+        "link.impersonation"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "parking-lookalike",
+    "raw": "https://easypark-pay.example.com",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "danger",
+      "findings": [
+        "link.impersonation"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "official-parking",
+    "raw": "https://parking.praha.eu/cs/",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "short-link",
+    "raw": "https://bit.ly/example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "caution",
+      "findings": [
+        "link.shortener"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "numeric-host",
+    "raw": "https://192.0.2.1/",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "caution",
+      "findings": [
+        "link.ipHost"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "nondefault-port",
+    "raw": "https://example.com:8443",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "safe",
+      "findings": [
+        "link.port"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "redirect",
+    "raw": "https://example.com/?next=https%3A%2F%2Fexample.org",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "caution",
+      "findings": [
+        "link.redirect",
+        "content.combination"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "spd",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "account": "19-2000145399/0800",
+        "amount": "CZK 250",
+        "bank": "Česká spořitelna, a.s."
+      }
+    }
+  },
+  {
+    "id": "spd-czech",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example",
+    "locale": "cs_CZ",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "amount": "250 Kč",
+        "format": "Česká QR platba"
+      }
+    }
+  },
+  {
+    "id": "spd-escape",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example*MSG:Tea%2ACoffee",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "message": "Tea*Coffee"
+      }
+    }
+  },
+  {
+    "id": "spd-link",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example*X-URL:https%3A%2F%2Fexample.com/invoice",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "caution",
+      "findings": [
+        "content.combination",
+        "payment.link"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "spd-bad-iban",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145398*AM:250*CC:CZK*RN:Example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "danger",
+      "findings": [
+        "payment.invalidIBAN"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "spd-bad-crc",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example*CRC32:00000000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "danger",
+      "findings": [
+        "payment.checksum"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "spd-crc",
+    "raw": "SPD*1.0*CC:CZK*ACC:CZ5855000000001265098001*AM:100.00*CRC32:AAD80227",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [
+        "payment.missingRecipient"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "spd-instant",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example*PT:IP",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [
+        "payment.instant"
+      ],
+      "facts": {
+        "instant": "Yes"
+      }
+    }
+  },
+  {
+    "id": "spd-high",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:100000*CC:CZK*RN:Example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "caution",
+      "findings": [
+        "payment.highAmount"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "spd-foreign",
+    "raw": "SPD*1.0*ACC:DE89370400440532013000*AM:250*CC:CZK*RN:Example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "caution",
+      "findings": [
+        "payment.foreignAccount",
+        "payment.currencyCountry"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "spd-duplicate",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example*AM:100000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "danger",
+      "findings": [
+        "code.ambiguous"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "invoice",
+    "raw": "SID*1.0*ID:DEMO-1*DD:20261019*AM:250*CC:CZK*ACC:CZ6508000000192000145399*RN:Example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "format": "Czech QR invoice"
+      }
+    }
+  },
+  {
+    "id": "epc-v2",
+    "raw": "BCD\n002\n1\nSCT\n\nExample\nDE89370400440532013000\nEUR12.34\n\n\nCoffee",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "amount": "EUR 12.34",
+        "message": "Coffee"
+      }
+    }
+  },
+  {
+    "id": "epc-v1",
+    "raw": "BCD\n001\n1\nSCT\nCOBADEFFXXX\nExample\nDE89370400440532013000\nEUR12.34\n\n\nCoffee",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "epc-link",
+    "raw": "BCD\n002\n1\nSCT\n\nExample\nDE89370400440532013000\nEUR12.34\n\n\nhttps://example.com/invoice",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "caution",
+      "findings": [
+        "content.combination",
+        "payment.link"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "swiss",
+    "raw": "SPC\n0200\n1\nCH9300762011623852957\nS\nExample\nMain Street\n1\n8000\nZurich\nCH\n\n\n\n\n\n\n\n12.34\nCHF\n\n\n\n\n\n\n\nNON\n\nCoffee\nEPD",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "amount": "CHF 12.34",
+        "recipient": "Example"
+      }
+    }
+  },
+  {
+    "id": "emv",
+    "raw": "0002010216example-merchant5204599953032035406250.005802CZ5907Example6006Prague6304A1EC",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "amount": "CZK 250",
+        "recipient": "Example"
+      }
+    }
+  },
+  {
+    "id": "emv-bad-crc",
+    "raw": "0002010216example-merchant5204599953032035406250.005802CZ5907Example6006Prague63040000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "danger",
+      "findings": [
+        "payment.checksum"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "upi",
+    "raw": "upi://pay?pa=example%40upi&pn=Example&am=25&cu=INR",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "amount": "INR 25",
+        "account": "example@upi"
+      }
+    }
+  },
+  {
+    "id": "pay-by-square",
+    "raw": "00018000041061050O3GG28A1C60Q3GF208H44OK2KB1E60P38DHO78",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "caution",
+      "findings": [
+        "code.unsupported",
+        "payment.payBySquare"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "bitcoin",
+    "raw": "bitcoin:1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa?amount=0.001",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "caution",
+      "findings": [
+        "crypto.irreversible"
+      ],
+      "facts": {
+        "amount": "BTC 0.001"
+      }
+    }
+  },
+  {
+    "id": "ethereum",
+    "raw": "ethereum:0x0000000000000000000000000000000000000000@1?value=1e18",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "caution",
+      "findings": [
+        "crypto.irreversible"
+      ],
+      "facts": {
+        "amount": "ETH 1",
+        "chain": "1"
+      }
+    }
+  },
+  {
+    "id": "eth-bare",
+    "raw": "0x0000000000000000000000000000000000000000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "caution",
+      "findings": [
+        "crypto.irreversible"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "solana",
+    "raw": "solana:11111111111111111111111111111111?amount=1",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "caution",
+      "findings": [
+        "crypto.irreversible"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "solana-transaction",
+    "raw": "solana:https%3A%2F%2Fexample.com%2Ftransaction",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "danger",
+      "findings": [
+        "crypto.irreversible",
+        "crypto.contract",
+        "content.combination"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "tron-bare",
+    "raw": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "caution",
+      "findings": [
+        "crypto.irreversible"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "sms",
+    "raw": "sms:+420777000000?body=Hello",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "message": "Hello"
+      }
+    }
+  },
+  {
+    "id": "smsto",
+    "raw": "SMSTO:+420777000000:Hello: again",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "message": "Hello: again"
+      }
+    }
+  },
+  {
+    "id": "premium-sms",
+    "raw": "SMSTO:9030199:HELLO",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "caution",
+      "findings": [
+        "sms.premium"
+      ],
+      "facts": {
+        "price": "Up to CZK 99 for one sent message"
+      }
+    }
+  },
+  {
+    "id": "subscription",
+    "raw": "SMSTO:90301:START",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "danger",
+      "findings": [
+        "sms.premium",
+        "sms.subscription"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "premium-incoming",
+    "raw": "sms:90301099?body=START",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "danger",
+      "findings": [
+        "sms.premium",
+        "sms.subscription"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "ordinary-short-code",
+    "raw": "sms:99999?body=Hello",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "phone",
+    "raw": "tel:+420777000000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "phone",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "premium-call",
+    "raw": "tel:900991234",
+    "locale": "en_US",
+    "expected": {
+      "kind": "phone",
+      "level": "caution",
+      "findings": [
+        "phone.premium"
+      ],
+      "facts": {
+        "price": "CZK 99 per minute, as encoded in the number"
+      }
+    }
+  },
+  {
+    "id": "forwarding",
+    "raw": "tel:**21*+420777000000%23",
+    "locale": "en_US",
+    "expected": {
+      "kind": "phone",
+      "level": "danger",
+      "findings": [
+        "phone.forwarding"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "wangiri",
+    "raw": "tel:+247123456",
+    "locale": "en_US",
+    "expected": {
+      "kind": "phone",
+      "level": "caution",
+      "findings": [
+        "phone.wangiri"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "email",
+    "raw": "mailto:person@example.com?subject=Hello&body=Test",
+    "locale": "en_US",
+    "expected": {
+      "kind": "email",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "recipient": "person@example.com",
+        "subject": "Hello"
+      }
+    }
+  },
+  {
+    "id": "matmsg",
+    "raw": "MATMSG:TO:person@example.com;SUB:Hello;BODY:Test;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "email",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "message": "Test"
+      }
+    }
+  },
+  {
+    "id": "wifi",
+    "raw": "WIFI:T:WPA;S:Home;P:correct-horse;H:false;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "wifi",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "networkName": "Home"
+      }
+    }
+  },
+  {
+    "id": "wifi-escaped",
+    "raw": "WIFI:T:WPA;S:Cafe\\;Garden;P:p\\;ass\\\\word;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "wifi",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "networkName": "Cafe;Garden"
+      }
+    }
+  },
+  {
+    "id": "wifi-open",
+    "raw": "WIFI:T:nopass;S:Guest;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "wifi",
+      "level": "caution",
+      "findings": [
+        "wifi.open"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "wifi-wep",
+    "raw": "WIFI:T:WEP;S:Home;P:1234567890;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "wifi",
+      "level": "caution",
+      "findings": [
+        "wifi.wep"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "wifi-link",
+    "raw": "WIFI:T:WPA;S:https://example.com;P:password;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "wifi",
+      "level": "safe",
+      "findings": [
+        "content.combination"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "vcard",
+    "raw": "BEGIN:VCARD\nVERSION:3.0\nFN:Example Person\nTEL:+420777000000\nEND:VCARD",
+    "locale": "en_US",
+    "expected": {
+      "kind": "contact",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "name": "Example Person"
+      }
+    }
+  },
+  {
+    "id": "contact-authority",
+    "raw": "BEGIN:VCARD\nVERSION:4.0\nFN:Policie\nTEL;VALUE=uri:tel:+420777000000\nEND:VCARD",
+    "locale": "en_US",
+    "expected": {
+      "kind": "contact",
+      "level": "caution",
+      "findings": [
+        "contact.impersonation"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "mecard",
+    "raw": "MECARD:N:Person,Example;TEL:+420777000000;EMAIL:person@example.com;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "contact",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "name": "Example Person"
+      }
+    }
+  },
+  {
+    "id": "bizcard",
+    "raw": "BIZCARD:N:Example;X:Person;C:Example Company;B:+420777000000;E:person@example.com;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "contact",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "name": "Example Person"
+      }
+    }
+  },
+  {
+    "id": "event",
+    "raw": "BEGIN:VEVENT\nSUMMARY:Example\nDTSTART:20261020T100000Z\nDTEND:20261020T110000Z\nEND:VEVENT",
+    "locale": "en_US",
+    "expected": {
+      "kind": "event",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "name": "Example"
+      }
+    }
+  },
+  {
+    "id": "event-link",
+    "raw": "BEGIN:VEVENT\nSUMMARY:Example\nDTSTART:20261020T100000Z\nDESCRIPTION:https://example.com\nEND:VEVENT",
+    "locale": "en_US",
+    "expected": {
+      "kind": "event",
+      "level": "safe",
+      "findings": [
+        "content.combination"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "geo",
+    "raw": "geo:50.0755,14.4378?q=Prague",
+    "locale": "en_US",
+    "expected": {
+      "kind": "location",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "place": "Prague"
+      }
+    }
+  },
+  {
+    "id": "whatsapp",
+    "raw": "https://wa.me/420777000000?text=Hello",
+    "locale": "en_US",
+    "expected": {
+      "kind": "messaging",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "app": "WhatsApp",
+        "message": "Hello"
+      }
+    }
+  },
+  {
+    "id": "telegram-chat",
+    "raw": "tg://resolve?domain=example&text=Hello",
+    "locale": "en_US",
+    "expected": {
+      "kind": "messaging",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "recipient": "example"
+      }
+    }
+  },
+  {
+    "id": "signal",
+    "raw": "https://signal.me/#p/+420777000000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "messaging",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "app": "Signal"
+      }
+    }
+  },
+  {
+    "id": "viber",
+    "raw": "viber://chat?number=%2B420777000000&text=Hello",
+    "locale": "en_US",
+    "expected": {
+      "kind": "messaging",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "recipient": "+420777000000"
+      }
+    }
+  },
+  {
+    "id": "telegram-login",
+    "raw": "tg://login?token=harmless-example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.telegram"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "discord-login",
+    "raw": "https://discord.com/ra/harmless-example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.discord"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "steam-login",
+    "raw": "https://s.team/q/1/harmless-example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.steam"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "whatsapp-login",
+    "raw": "2@harmless-reference,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.whatsAppWeb"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "passkey",
+    "raw": "FIDO:/12345678901234567890",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.passkey"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "authenticator",
+    "raw": "otpauth://totp/Example:person?secret=JBSWY3DPEHPK3PXP&issuer=Example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.authenticatorSetup"
+      ],
+      "facts": {
+        "issuer": "Example"
+      }
+    }
+  },
+  {
+    "id": "authenticator-export",
+    "raw": "otpauth-migration://offline?data=CggKAwECAxIBQRABGAE=",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.authenticatorExport"
+      ],
+      "facts": {
+        "accountCount": "1"
+      }
+    }
+  },
+  {
+    "id": "esim",
+    "raw": "LPA:1$rsp.example.com$example-matching-id$$1",
+    "locale": "en_US",
+    "expected": {
+      "kind": "eSIM",
+      "level": "danger",
+      "findings": [
+        "esim.activation"
+      ],
+      "facts": {
+        "confirmationCode": "Required"
+      }
+    }
+  },
+  {
+    "id": "app-store",
+    "raw": "https://apps.apple.com/cz/app/example/id000000000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "play-store",
+    "raw": "https://play.google.com/store/apps/details?id=com.example.app",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "enterprise",
+    "raw": "itms-services://?action=download-manifest&url=https://example.com/manifest.plist",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "danger",
+      "findings": [
+        "app.enterprise",
+        "content.combination"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "profile",
+    "raw": "https://example.com/settings.mobileconfig",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "danger",
+      "findings": [
+        "app.profile"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "apk",
+    "raw": "https://example.com/app.apk",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "danger",
+      "findings": [
+        "app.download"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "custom-scheme",
+    "raw": "exampleapp://do-something",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "caution",
+      "findings": [
+        "app.customScheme"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "intent",
+    "raw": "intent://example/#Intent;scheme=exampleapp;end",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "caution",
+      "findings": [
+        "app.intent"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "javascript",
+    "raw": "javascript:alert(1)",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "danger",
+      "findings": [
+        "link.unsafeScheme"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "text",
+    "raw": "Hello, world.",
+    "locale": "en_US",
+    "expected": {
+      "kind": "text",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "text": "Hello, world."
+      }
+    }
+  },
+  {
+    "id": "text-link",
+    "raw": "Read https://example.com for details.",
+    "locale": "en_US",
+    "expected": {
+      "kind": "text",
+      "level": "safe",
+      "findings": [
+        "content.combination"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "text-premium",
+    "raw": "Send this: smsto:9030199:START",
+    "locale": "en_US",
+    "expected": {
+      "kind": "text",
+      "level": "danger",
+      "findings": [
+        "content.combination",
+        "sms.premium",
+        "sms.subscription"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "bolt11-documentation-example",
+    "raw": "lightning:lnbc2500u1pvjluezsp5zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zygspp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdq5xysxxatsyp3k7enxv4jsxqzpu9qrsgquk0rl77nj30yxdy8j9vdx85fkpmdla2087ne0xh8nhedh8w27kyke0lp53ut353s06fv3qfegext0eh0ymjpf39tuven09sam30g4vgpfna3rh",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "caution",
+      "findings": [
+        "crypto.irreversible"
+      ],
+      "facts": {
+        "amount": "BTC 0.0025"
+      }
+    }
+  },
+  {
+    "id": "mixed-script",
+    "raw": "https://csаs.cz.example.com",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "danger",
+      "findings": [
+        "link.punycode",
+        "link.mixedScripts",
+        "link.impersonation"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "unrelated-brand-substring",
+    "raw": "https://templates.example.com",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "bare-domain-port",
+    "raw": "example.com:8443/path",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "safe",
+      "findings": [
+        "link.port"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "text-bank-payment",
+    "raw": "Invoice details:\nSPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "text",
+      "level": "safe",
+      "findings": [
+        "content.combination"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "wifi-bank-name",
+    "raw": "WIFI:T:WPA;S:AirBank;P:example-password;;",
+    "locale": "en_US",
+    "expected": {
+      "kind": "wifi",
+      "level": "caution",
+      "findings": [
+        "wifi.impersonation"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "vcard-link",
+    "raw": "BEGIN:VCARD\nVERSION:3.0\nFN:Example\nURL:https://example.org\nEND:VCARD",
+    "locale": "en_US",
+    "expected": {
+      "kind": "contact",
+      "level": "caution",
+      "findings": [
+        "content.combination",
+        "contact.link"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "calendar-hidden-subscription",
+    "raw": "BEGIN:VEVENT\nSUMMARY:Example\nDTSTART:20261020T100000Z\nDESCRIPTION:SMSTO:9030199:START\nEND:VEVENT",
+    "locale": "en_US",
+    "expected": {
+      "kind": "event",
+      "level": "danger",
+      "findings": [
+        "content.combination",
+        "sms.premium",
+        "sms.subscription"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "whatsapp-scheme",
+    "raw": "whatsapp://send?phone=420777000000&text=Hello",
+    "locale": "en_US",
+    "expected": {
+      "kind": "messaging",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "whatsapp-api",
+    "raw": "https://api.whatsapp.com/send?phone=420777000000&text=Hello",
+    "locale": "en_US",
+    "expected": {
+      "kind": "messaging",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "telegram-web",
+    "raw": "https://t.me/example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "messaging",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "recipient": "example"
+      }
+    }
+  },
+  {
+    "id": "itms-apps",
+    "raw": "itms-apps://itunes.apple.com/app/id000000000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "market",
+    "raw": "market://details?id=com.example.app",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "safe",
+      "findings": [],
+      "facts": {}
+    }
+  },
+  {
+    "id": "ipa",
+    "raw": "https://example.com/app.ipa",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "danger",
+      "findings": [
+        "app.download"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "data-scheme",
+    "raw": "data:text/html,example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "danger",
+      "findings": [
+        "link.unsafeScheme"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "file-scheme",
+    "raw": "file:///private/example",
+    "locale": "en_US",
+    "expected": {
+      "kind": "appLink",
+      "level": "danger",
+      "findings": [
+        "link.unsafeScheme"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "email-unshown-recipient",
+    "raw": "mailto:person@example.com?bcc=other@example.org",
+    "locale": "en_US",
+    "expected": {
+      "kind": "email",
+      "level": "danger",
+      "findings": [
+        "code.ambiguous"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "premium-per-call",
+    "raw": "tel:905991234",
+    "locale": "en_US",
+    "expected": {
+      "kind": "phone",
+      "level": "caution",
+      "findings": [
+        "phone.premium"
+      ],
+      "facts": {
+        "price": "CZK 990 per call, as encoded in the number"
+      }
+    }
+  },
+  {
+    "id": "international-premium",
+    "raw": "tel:+449001234567",
+    "locale": "en_US",
+    "expected": {
+      "kind": "phone",
+      "level": "caution",
+      "findings": [
+        "phone.internationalPremium"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "sms-cancellation",
+    "raw": "sms:90301?body=STOP%20ALL",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "caution",
+      "findings": [
+        "sms.premium"
+      ],
+      "facts": {}
+    }
+  },
+  {
+    "id": "sms-question-mark",
+    "raw": "SMSTO:+420777000000:How are you?",
+    "locale": "en_US",
+    "expected": {
+      "kind": "sms",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "message": "How are you?"
+      }
+    }
+  },
+  {
+    "id": "litecoin",
+    "raw": "litecoin:LKDxGDJq5fF4FohAB8zJH24mDDNHDNtqsE?amount=1",
+    "locale": "en_US",
+    "expected": {
+      "kind": "crypto",
+      "level": "caution",
+      "findings": [
+        "crypto.irreversible"
+      ],
+      "facts": {
+        "amount": "LTC 1"
+      }
+    }
+  },
+  {
+    "id": "emv-unicode-characters",
+    "raw": "0002010216example-merchant520459995303203540425005802CZ5909Žluťoučký6006Prague6304089E",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "safe",
+      "findings": [],
+      "facts": {
+        "recipient": "Žluťoučký",
+        "amount": "CZK 2,500"
+      }
+    }
+  },
+  {
+    "id": "spoofed-contact-link",
+    "raw": "BEGIN:VCARD\nVERSION:3.0\nFN:Example\nURL:https://csas.cz.example.com\nEND:VCARD",
+    "locale": "en_US",
+    "expected": {
+      "kind": "contact",
+      "level": "danger",
+      "findings": [
+        "content.combination",
+        "contact.link",
+        "link.impersonation"
+      ],
+      "facts": {}
+    }
+  }
+]

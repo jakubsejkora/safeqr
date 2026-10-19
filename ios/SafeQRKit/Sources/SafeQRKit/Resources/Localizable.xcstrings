@@ -1,7 +1,6551 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-
+  "sourceLanguage": "en",
+  "strings": {
+    "action.authenticator": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open authenticator"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít ověřovací aplikaci"
+          }
+        }
+      }
+    },
+    "action.call": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue to Phone"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přejít do Telefonu"
+          }
+        }
+      }
+    },
+    "action.contact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add contact"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přidat kontakt"
+          }
+        }
+      }
+    },
+    "action.copy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopírovat"
+          }
+        }
+      }
+    },
+    "action.email": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepare email"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravit e-mail"
+          }
+        }
+      }
+    },
+    "action.event": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add event"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přidat událost"
+          }
+        }
+      }
+    },
+    "action.map": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Maps"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít Mapy"
+          }
+        }
+      }
+    },
+    "action.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open conversation"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít konverzaci"
+          }
+        }
+      }
+    },
+    "action.open": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open link"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít odkaz"
+          }
+        }
+      }
+    },
+    "action.payment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open payment app"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít platební aplikaci"
+          }
+        }
+      }
+    },
+    "action.share": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sdílet"
+          }
+        }
+      }
+    },
+    "action.sms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepare message"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravit SMS"
+          }
+        }
+      }
+    },
+    "action.wallet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open wallet"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít peněženku"
+          }
+        }
+      }
+    },
+    "action.wifi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect to Wi-Fi"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připojit k Wi-Fi"
+          }
+        }
+      }
+    },
+    "charge.call": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The number encodes a price of %@ for one connected call."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo udává cenu %@ za jeden spojený hovor."
+          }
+        }
+      }
+    },
+    "charge.incoming": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One paid incoming message from this service can cost up to %@; charges may repeat."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jedna placená příchozí zpráva z této služby může stát až %@ a poplatky se mohou opakovat."
+          }
+        }
+      }
+    },
+    "charge.minute": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The number encodes a price of %@ per minute, so the total grows with the length of the call."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo udává cenu %@ za minutu, takže celková cena roste s délkou hovoru."
+          }
+        }
+      }
+    },
+    "charge.sms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sending one message to this number can cost up to %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odeslání jedné zprávy na toto číslo může stát až %@."
+          }
+        }
+      }
+    },
+    "charge.unknown": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This paid service does not reveal a verified price in the number; sending a message may start paid replies."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "U této placené služby neznáme ověřenou cenu; odesláním zprávy můžete spustit placené odpovědi."
+          }
+        }
+      }
+    },
+    "checksum.invalid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Does not match — check the original"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nesouhlasí — ověřte originál"
+          }
+        }
+      }
+    },
+    "checksum.valid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matches the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Souhlasí s obsahem kódu"
+          }
+        }
+      }
+    },
+    "confirmation.authenticator": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import these private sign-in keys?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Načíst tyto soukromé přihlašovací klíče?"
+          }
+        }
+      }
+    },
+    "confirmation.call": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue with this phone number?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokračovat s tímto telefonním číslem?"
+          }
+        }
+      }
+    },
+    "confirmation.contact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save this contact?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uložit tento kontakt?"
+          }
+        }
+      }
+    },
+    "confirmation.email": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepare this email?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravit tento e-mail?"
+          }
+        }
+      }
+    },
+    "confirmation.event": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add this event?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přidat tuto událost?"
+          }
+        }
+      }
+    },
+    "confirmation.map": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show this place in Maps?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobrazit toto místo v Mapách?"
+          }
+        }
+      }
+    },
+    "confirmation.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open this conversation?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít tuto konverzaci?"
+          }
+        }
+      }
+    },
+    "confirmation.open": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open this link?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít tento odkaz?"
+          }
+        }
+      }
+    },
+    "confirmation.payment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue to a payment app?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokračovat do platební aplikace?"
+          }
+        }
+      }
+    },
+    "confirmation.sms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepare this text message?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravit tuto SMS zprávu?"
+          }
+        }
+      }
+    },
+    "confirmation.wallet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue to your wallet?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokračovat do peněženky?"
+          }
+        }
+      }
+    },
+    "confirmation.wifi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect to this network?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připojit se k této síti?"
+          }
+        }
+      }
+    },
+    "consequence.appLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hands this link to another app, which decides what happens next."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Předá tento odkaz jiné aplikaci, která určí další postup."
+          }
+        }
+      }
+    },
+    "consequence.contact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offers to save %@ in Contacts, which may later make calls from this number look familiar."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nabídne uložení kontaktu %@, takže budoucí hovor z tohoto čísla může působit důvěryhodně."
+          }
+        }
+      }
+    },
+    "consequence.crypto": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens a wallet with a payment request; an approved cryptocurrency payment usually cannot be reversed."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevře peněženku s požadavkem na platbu; potvrzenou platbu kryptoměnou obvykle nelze vrátit."
+          }
+        }
+      }
+    },
+    "consequence.download": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads an application file; installing it may give the app access to your data."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stáhne soubor aplikace; její instalací jí můžete zpřístupnit svá data."
+          }
+        }
+      }
+    },
+    "consequence.eSIM": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installing this code can activate a mobile plan on a phone; keep it private and check the provider first."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instalací tohoto kódu můžete v telefonu aktivovat mobilní tarif; kód nikomu neposílejte a nejdřív ověřte poskytovatele."
+          }
+        }
+      }
+    },
+    "consequence.email": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepares an email to %@; it is sent only after you tap Send in your email app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připraví e-mail pro %@; odešle se až po klepnutí na Odeslat v poštovní aplikaci."
+          }
+        }
+      }
+    },
+    "consequence.enterprise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starts installation of an app distributed outside the App Store."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zahájí instalaci aplikace šířené mimo App Store."
+          }
+        }
+      }
+    },
+    "consequence.event": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offers to add %@ to your calendar, including its notes and links."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nabídne přidání události %@ do kalendáře včetně poznámek a odkazů."
+          }
+        }
+      }
+    },
+    "consequence.invoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copies invoice details for use in an accounting or banking app; an invoice is not proof that you owe money."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Údaje z faktury můžete zkopírovat do účetní nebo bankovní aplikace; faktura sama nedokazuje, že máte něco platit."
+          }
+        }
+      }
+    },
+    "consequence.link": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens %@ in a browser, where the website can see your visit."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevře %@ v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+          }
+        }
+      }
+    },
+    "consequence.location": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens the place in Maps; this does not by itself share your current location."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevře místo v Mapách; tím se samotným neodešle vaše současná poloha."
+          }
+        }
+      }
+    },
+    "consequence.login.authenticatorExport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imports private keys for accounts into an authenticator app; sharing this code shares those keys."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahraje soukromé klíče k účtům do ověřovací aplikace; sdílením tohoto kódu sdílíte i tyto klíče."
+          }
+        }
+      }
+    },
+    "consequence.login.authenticatorSetup": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imports a private key into an authenticator app; anyone with a copy can create the same sign-in codes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahraje soukromý klíč do ověřovací aplikace; každý, kdo má jeho kopii, může vytvářet stejné přihlašovací kódy."
+          }
+        }
+      }
+    },
+    "consequence.login.discord": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in Discord can sign another device into your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu v Discordu můžete přihlásit jiné zařízení ke svému účtu."
+          }
+        }
+      }
+    },
+    "consequence.login.other": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code may let another device use your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu můžete umožnit jinému zařízení používat váš účet."
+          }
+        }
+      }
+    },
+    "consequence.login.passkey": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving the sign-in can give the nearby requesting device access to your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením přihlášení můžete dát blízkému zařízení, které o ně žádá, přístup ke svému účtu."
+          }
+        }
+      }
+    },
+    "consequence.login.steam": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in Steam can sign another device into your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu ve Steamu můžete přihlásit jiné zařízení ke svému účtu."
+          }
+        }
+      }
+    },
+    "consequence.login.telegram": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in Telegram can give another device access to your account and cloud chats."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu v Telegramu můžete dát jinému zařízení přístup k účtu a uloženým chatům."
+          }
+        }
+      }
+    },
+    "consequence.login.whatsAppWeb": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in WhatsApp can give another device access to your messages."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu ve WhatsAppu můžete dát jinému zařízení přístup ke svým zprávám."
+          }
+        }
+      }
+    },
+    "consequence.messaging": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens %@ with a conversation or prepared message; check the recipient before sending."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevře aplikaci %@ s konverzací nebo připravenou zprávou; před odesláním zkontrolujte příjemce."
+          }
+        }
+      }
+    },
+    "consequence.payBySquare": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The original code can be copied for checking in your bank's app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Původní kód můžete zkopírovat a ověřit v aplikaci své banky."
+          }
+        }
+      }
+    },
+    "consequence.payment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepares a payment of %@ to %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připraví platbu ve výši %@ na účet %@."
+          }
+        }
+      }
+    },
+    "consequence.paymentConfirm": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing is paid until you confirm the payment in your banking app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nic se nezaplatí, dokud platbu nepotvrdíte v bankovní aplikaci."
+          }
+        }
+      }
+    },
+    "consequence.phone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hands %@ to the Phone app, which may start a charged call after its confirmation."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Předá číslo %@ aplikaci Telefon, která po potvrzení může zahájit placený hovor."
+          }
+        }
+      }
+    },
+    "consequence.profile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads a settings profile that may change your network or give an organization control over parts of your phone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stáhne profil nastavení, který může změnit síť nebo dát organizaci správu nad částí telefonu."
+          }
+        }
+      }
+    },
+    "consequence.serviceCode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code %@ can change phone services or show private phone settings."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód %@ může změnit telefonní služby nebo zobrazit soukromá nastavení telefonu."
+          }
+        }
+      }
+    },
+    "consequence.sms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepares a message to %@; it is sent only after you tap Send in your messaging app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připraví zprávu na %@; odešle se až po klepnutí na Odeslat v aplikaci pro zprávy."
+          }
+        }
+      }
+    },
+    "consequence.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can copy or share the text; nothing opens automatically."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text můžete zkopírovat nebo sdílet; nic se samo neotevře."
+          }
+        }
+      }
+    },
+    "consequence.unsafeScheme": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This address can run content or access local files, so Safe QR does not offer to open it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato adresa může spouštět obsah nebo přistupovat k souborům v zařízení, proto ji Safe QR nenabízí k otevření."
+          }
+        }
+      }
+    },
+    "consequence.wifi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks your phone to join %@; its operator may see which services you connect to."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Požádá telefon o připojení k síti %@; její provozovatel může vidět, k jakým službám se připojujete."
+          }
+        }
+      }
+    },
+    "fact.account": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account or address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Účet nebo adresa"
+          }
+        }
+      }
+    },
+    "fact.accountCount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accounts in this code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Účtů v tomto kódu"
+          }
+        }
+      }
+    },
+    "fact.address": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Celá adresa"
+          }
+        }
+      }
+    },
+    "fact.alternate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alternative account"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Náhradní účet"
+          }
+        }
+      }
+    },
+    "fact.amount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částka"
+          }
+        }
+      }
+    },
+    "fact.app": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikace"
+          }
+        }
+      }
+    },
+    "fact.asset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa tokenu"
+          }
+        }
+      }
+    },
+    "fact.bank": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bank"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banka"
+          }
+        }
+      }
+    },
+    "fact.batchSize": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codes in this export"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kódů v tomto exportu"
+          }
+        }
+      }
+    },
+    "fact.bic": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bank identifier"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mezinárodní kód banky"
+          }
+        }
+      }
+    },
+    "fact.chain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo sítě"
+          }
+        }
+      }
+    },
+    "fact.checksum": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrola dat"
+          }
+        }
+      }
+    },
+    "fact.confirmationCode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extra confirmation code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Další potvrzovací kód"
+          }
+        }
+      }
+    },
+    "fact.constantSymbol": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Constant symbol"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konstantní symbol"
+          }
+        }
+      }
+    },
+    "fact.coordinates": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coordinates"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Souřadnice"
+          }
+        }
+      }
+    },
+    "fact.domain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website name"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Název webu"
+          }
+        }
+      }
+    },
+    "fact.dueDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due date"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum splatnosti"
+          }
+        }
+      }
+    },
+    "fact.email": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-mailová adresa"
+          }
+        }
+      }
+    },
+    "fact.end": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ends"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konec"
+          }
+        }
+      }
+    },
+    "fact.format": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code type"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Druh kódu"
+          }
+        }
+      }
+    },
+    "fact.hiddenNetwork": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden network"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skrytá síť"
+          }
+        }
+      }
+    },
+    "fact.instant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instant payment requested"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Požadavek na okamžitou platbu"
+          }
+        }
+      }
+    },
+    "fact.issuer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Provider"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poskytovatel"
+          }
+        }
+      }
+    },
+    "fact.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpráva"
+          }
+        }
+      }
+    },
+    "fact.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Název"
+          }
+        }
+      }
+    },
+    "fact.network": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency network"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Síť kryptoměny"
+          }
+        }
+      }
+    },
+    "fact.networkName": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network name"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Název sítě"
+          }
+        }
+      }
+    },
+    "fact.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poznámka"
+          }
+        }
+      }
+    },
+    "fact.notification": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment notification to"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oznámení o platbě pro"
+          }
+        }
+      }
+    },
+    "fact.operation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Requested operation"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Požadovaná operace"
+          }
+        }
+      }
+    },
+    "fact.organization": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Organization"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Organizace"
+          }
+        }
+      }
+    },
+    "fact.original": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Původní kód"
+          }
+        }
+      }
+    },
+    "fact.password": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heslo"
+          }
+        }
+      }
+    },
+    "fact.paymentID": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment or invoice number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo platby nebo faktury"
+          }
+        }
+      }
+    },
+    "fact.paymentURL": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link inside the payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz uvnitř platby"
+          }
+        }
+      }
+    },
+    "fact.phone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phone number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonní číslo"
+          }
+        }
+      }
+    },
+    "fact.place": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Place"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Místo"
+          }
+        }
+      }
+    },
+    "fact.price": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Possible charge"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Možná cena"
+          }
+        }
+      }
+    },
+    "fact.provider": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mobile plan provider address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa poskytovatele tarifu"
+          }
+        }
+      }
+    },
+    "fact.recipient": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipient"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příjemce"
+          }
+        }
+      }
+    },
+    "fact.reference": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reference"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reference platby"
+          }
+        }
+      }
+    },
+    "fact.retryDays": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Days to retry a failed payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Počet dnů pro opakování neúspěšné platby"
+          }
+        }
+      }
+    },
+    "fact.secret": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Private code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soukromý kód"
+          }
+        }
+      }
+    },
+    "fact.security": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network protection"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ochrana sítě"
+          }
+        }
+      }
+    },
+    "fact.selfPayment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marked as payment to self"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označeno jako platba sobě"
+          }
+        }
+      }
+    },
+    "fact.service": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Service"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Služba"
+          }
+        }
+      }
+    },
+    "fact.specificSymbol": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Specific symbol"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Specifický symbol"
+          }
+        }
+      }
+    },
+    "fact.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starts"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Začátek"
+          }
+        }
+      }
+    },
+    "fact.subject": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subject"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Předmět"
+          }
+        }
+      }
+    },
+    "fact.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        }
+      }
+    },
+    "fact.timeZone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time zone"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Časové pásmo"
+          }
+        }
+      }
+    },
+    "fact.variableSymbol": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment reference (VS)"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Variabilní symbol"
+          }
+        }
+      }
+    },
+    "finding.app.customScheme.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We do not know which app will handle this link or what it will do with it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nevíme, která aplikace tento odkaz převezme ani co s ním udělá."
+          }
+        }
+      }
+    },
+    "finding.app.customScheme.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another app decides what happens"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Další postup určí jiná aplikace"
+          }
+        }
+      }
+    },
+    "finding.app.download.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This link downloads an app file whose origin and permissions have not been checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz stahuje soubor aplikace, jejíž původ ani oprávnění nebyly ověřeny."
+          }
+        }
+      }
+    },
+    "finding.app.download.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An app from outside the store"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikace mimo oficiální obchod"
+          }
+        }
+      }
+    },
+    "finding.app.enterprise.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An enterprise installation can put an unreviewed app on your phone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Firemní instalace může do telefonu přidat aplikaci, kterou App Store neprověřil."
+          }
+        }
+      }
+    },
+    "finding.app.enterprise.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An app outside the App Store"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikace mimo App Store"
+          }
+        }
+      }
+    },
+    "finding.app.intent.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This link can select an app and pass it instructions or a different fallback address."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz může vybrat aplikaci a předat jí pokyny nebo jinou náhradní adresu."
+          }
+        }
+      }
+    },
+    "finding.app.intent.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code tells another app what to do"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód dává pokyny jiné aplikaci"
+          }
+        }
+      }
+    },
+    "finding.app.profile.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A settings profile can change your network or let an organization manage parts of your phone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil nastavení může změnit síť nebo umožnit organizaci spravovat část telefonu."
+          }
+        }
+      }
+    },
+    "finding.app.profile.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This can change phone settings"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Může změnit nastavení telefonu"
+          }
+        }
+      }
+    },
+    "finding.code.ambiguous.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code repeats important fields, so another app may read it differently."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód opakuje důležité údaje, takže jej jiná aplikace může přečíst jinak."
+          }
+        }
+      }
+    },
+    "finding.code.ambiguous.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conflicting instructions"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozporné pokyny"
+          }
+        }
+      }
+    },
+    "finding.code.malformed.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code is incomplete or contains invalid details, so its action is not offered."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód je neúplný nebo obsahuje neplatné údaje, proto jeho akci nenabízíme."
+          }
+        }
+      }
+    },
+    "finding.code.malformed.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some details are invalid"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Některé údaje jsou neplatné"
+          }
+        }
+      }
+    },
+    "finding.code.tooLarge.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code exceeds the inspection limit, so its contents have not been checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód přesahuje velikostní limit kontroly, proto jeho obsah nebyl prověřen."
+          }
+        }
+      }
+    },
+    "finding.code.tooLarge.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code is too large to check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód je příliš velký"
+          }
+        }
+      }
+    },
+    "finding.code.unsupported.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code uses a feature or version that this device cannot fully check."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód používá funkci nebo verzi, kterou telefon nedokáže plně zkontrolovat."
+          }
+        }
+      }
+    },
+    "finding.code.unsupported.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot read every detail"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme přečíst všechny údaje"
+          }
+        }
+      }
+    },
+    "finding.contact.impersonation.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving this bank or authority name with an unverified number can make a later scam call look genuine."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uložením názvu banky nebo úřadu k neověřenému číslu může pozdější podvodný hovor působit pravě."
+          }
+        }
+      }
+    },
+    "finding.contact.impersonation.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This contact claims to be an authority"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontakt se vydává za důvěryhodnou instituci"
+          }
+        }
+      }
+    },
+    "finding.contact.link.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The saved contact includes a website whose owner has not been checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukládaný kontakt obsahuje webovou adresu, jejíž vlastník nebyl ověřen."
+          }
+        }
+      }
+    },
+    "finding.contact.link.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A website is inside this contact"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontakt obsahuje odkaz"
+          }
+        }
+      }
+    },
+    "finding.content.combination.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There is another link or instruction inside this code, so check both before acting."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uvnitř kódu je další odkaz nebo pokyn, proto před pokračováním zkontrolujte obojí."
+          }
+        }
+      }
+    },
+    "finding.content.combination.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One code contains more than one thing"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeden kód obsahuje víc věcí"
+          }
+        }
+      }
+    },
+    "finding.content.hiddenCharacters.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code contains invisible direction controls that can change how an address or account looks."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód obsahuje neviditelné znaky měnící směr textu, které mohou zkreslit adresu nebo účet."
+          }
+        }
+      }
+    },
+    "finding.content.hiddenCharacters.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden characters can disguise text"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skryté znaky mohou mást"
+          }
+        }
+      }
+    },
+    "finding.crypto.checksum.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The address or invoice failed its data check and should not be used for payment."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa nebo faktura neprošla kontrolou dat a neměla by se použít k platbě."
+          }
+        }
+      }
+    },
+    "finding.crypto.checksum.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The wallet address or invoice is invalid"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa peněženky nebo faktura je neplatná"
+          }
+        }
+      }
+    },
+    "finding.crypto.contract.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code can request a transaction or contract operation whose full effect is not known offline."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód může požadovat transakci nebo operaci smlouvy, jejíž celý dopad bez sítě neznáme."
+          }
+        }
+      }
+    },
+    "finding.crypto.contract.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This can request more than a transfer"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Může žádat víc než převod"
+          }
+        }
+      }
+    },
+    "finding.crypto.irreversible.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A cryptocurrency payment usually cannot be reversed if the recipient is wrong or dishonest."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platbu kryptoměnou obvykle nelze vrátit, pokud je příjemce chybný nebo nepoctivý."
+          }
+        }
+      }
+    },
+    "finding.crypto.irreversible.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approved payments are hard to recover"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzené platby se těžko vracejí"
+          }
+        }
+      }
+    },
+    "finding.esim.activation.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Someone who gets this code may install the mobile plan on another phone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kdo tento kód získá, může mobilní tarif nahrát do jiného telefonu."
+          }
+        }
+      }
+    },
+    "finding.esim.activation.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep this activation code private"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktivační kód nikomu neposílejte"
+          }
+        }
+      }
+    },
+    "finding.link.encoded.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Many characters are encoded, which can hide extra instructions or another address."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mnoho znaků je zakódovaných, což může skrývat další pokyny nebo jinou adresu."
+          }
+        }
+      }
+    },
+    "finding.link.encoded.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Part of the address is disguised"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Část adresy je zakódovaná"
+          }
+        }
+      }
+    },
+    "finding.link.http.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This address uses an unencrypted connection, so others on the network may read or change it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato adresa používá nešifrované připojení, takže jiní lidé v síti mohou obsah číst nebo měnit."
+          }
+        }
+      }
+    },
+    "finding.link.http.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connection is not protected"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připojení není chráněné"
+          }
+        }
+      }
+    },
+    "finding.link.impersonation.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The address resembles %@ but is outside its listed official domains, such as %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa připomíná službu %@, ale nepatří mezi její známé oficiální domény, například %@."
+          }
+        }
+      }
+    },
+    "finding.link.impersonation.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This name imitates a known service"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Název napodobuje známou službu"
+          }
+        }
+      }
+    },
+    "finding.link.ipHost.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This address uses a server number, which makes the destination harder to recognize."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa používá číslo serveru, takže cíl hůře poznáte."
+          }
+        }
+      }
+    },
+    "finding.link.ipHost.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A number instead of a website name"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo místo názvu webu"
+          }
+        }
+      }
+    },
+    "finding.link.long.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The address is unusually long, making its destination and extra instructions harder to check."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa je neobvykle dlouhá, takže se její cíl a další pokyny hůře kontrolují."
+          }
+        }
+      }
+    },
+    "finding.link.long.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A very long address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Velmi dlouhá adresa"
+          }
+        }
+      }
+    },
+    "finding.link.mixedScripts.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The website name mixes alphabets, which can disguise a different address."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Název webu míchá různé abecedy, což může skrývat jinou adresu."
+          }
+        }
+      }
+    },
+    "finding.link.mixedScripts.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letters from different alphabets"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Písmena z různých abeced"
+          }
+        }
+      }
+    },
+    "finding.link.port.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This link uses connection port %@, which is unusual for a public website."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz používá port %@, což je u veřejného webu neobvyklé."
+          }
+        }
+      }
+    },
+    "finding.link.port.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unusual connection number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neobvyklé číslo připojení"
+          }
+        }
+      }
+    },
+    "finding.link.punycode.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The name contains international characters that can make different websites look alike."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Název obsahuje mezinárodní znaky, kvůli kterým mohou různé weby vypadat stejně."
+          }
+        }
+      }
+    },
+    "finding.link.punycode.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website name uses encoded letters"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Název webu používá zakódovaná písmena"
+          }
+        }
+      }
+    },
+    "finding.link.redirect.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A parameter points to %@, so the site may send you there instead."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeden z údajů v odkazu míří na %@, takže vás tam web může přesměrovat."
+          }
+        }
+      }
+    },
+    "finding.link.redirect.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another address is inside the link"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz obsahuje další adresu"
+          }
+        }
+      }
+    },
+    "finding.link.shortener.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This shortened link hides the final website until it is opened or checked in the cloud."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento zkrácený odkaz skrývá konečný web, dokud se neotevře nebo neprověří v cloudu."
+          }
+        }
+      }
+    },
+    "finding.link.shortener.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The destination is hidden"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cíl odkazu je skrytý"
+          }
+        }
+      }
+    },
+    "finding.link.unsafeScheme.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is an instruction to run content or access local files, not an ordinary website address."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jde o pokyn ke spuštění obsahu nebo přístupu k souborům v zařízení, ne o běžnou webovou adresu."
+          }
+        }
+      }
+    },
+    "finding.link.unsafeScheme.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This can run content or access files"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Může spustit obsah nebo otevřít soubory"
+          }
+        }
+      }
+    },
+    "finding.link.unusualTLD.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This address has an ending that deserves extra attention, but it does not prove fraud."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato koncovka adresy si zaslouží zvýšenou pozornost, sama ale nedokazuje podvod."
+          }
+        }
+      }
+    },
+    "finding.link.unusualTLD.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unusual website ending"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neobvyklá koncovka webu"
+          }
+        }
+      }
+    },
+    "finding.link.userinfo.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The text before @ is not the website name; this link goes to %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text před znakem @ není název webu; tento odkaz vede na %@."
+          }
+        }
+      }
+    },
+    "finding.link.userinfo.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The address hides its real destination"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa skrývá skutečný cíl"
+          }
+        }
+      }
+    },
+    "finding.login.authenticatorExport.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imports private keys for accounts into an authenticator app; sharing this code shares those keys."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahraje soukromé klíče k účtům do ověřovací aplikace; sdílením tohoto kódu sdílíte i tyto klíče."
+          }
+        }
+      }
+    },
+    "finding.login.authenticatorExport.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Private keys for several accounts may be exposed"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mohou se prozradit klíče k více účtům"
+          }
+        }
+      }
+    },
+    "finding.login.authenticatorSetup.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imports a private key into an authenticator app; anyone with a copy can create the same sign-in codes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahraje soukromý klíč do ověřovací aplikace; každý, kdo má jeho kopii, může vytvářet stejné přihlašovací kódy."
+          }
+        }
+      }
+    },
+    "finding.login.authenticatorSetup.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains a sign-in secret"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód obsahuje přihlašovací tajemství"
+          }
+        }
+      }
+    },
+    "finding.login.discord.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in Discord can sign another device into your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu v Discordu můžete přihlásit jiné zařízení ke svému účtu."
+          }
+        }
+      }
+    },
+    "finding.login.discord.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another device could access Discord"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jiné zařízení může získat přístup k Discordu"
+          }
+        }
+      }
+    },
+    "finding.login.other.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code may let another device use your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu můžete umožnit jinému zařízení používat váš účet."
+          }
+        }
+      }
+    },
+    "finding.login.other.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This may grant account access"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Může umožnit přístup k účtu"
+          }
+        }
+      }
+    },
+    "finding.login.passkey.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving the sign-in can give the nearby requesting device access to your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením přihlášení můžete dát blízkému zařízení, které o ně žádá, přístup ke svému účtu."
+          }
+        }
+      }
+    },
+    "finding.login.passkey.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This approves a sign-in elsewhere"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzuje přihlášení na jiném zařízení"
+          }
+        }
+      }
+    },
+    "finding.login.steam.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in Steam can sign another device into your account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu ve Steamu můžete přihlásit jiné zařízení ke svému účtu."
+          }
+        }
+      }
+    },
+    "finding.login.steam.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another device could access Steam"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jiné zařízení může získat přístup ke Steamu"
+          }
+        }
+      }
+    },
+    "finding.login.telegram.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in Telegram can give another device access to your account and cloud chats."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu v Telegramu můžete dát jinému zařízení přístup k účtu a uloženým chatům."
+          }
+        }
+      }
+    },
+    "finding.login.telegram.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another device could access Telegram"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jiné zařízení může získat přístup k Telegramu"
+          }
+        }
+      }
+    },
+    "finding.login.whatsAppWeb.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approving this code in WhatsApp can give another device access to your messages."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrzením tohoto kódu ve WhatsAppu můžete dát jinému zařízení přístup ke svým zprávám."
+          }
+        }
+      }
+    },
+    "finding.login.whatsAppWeb.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another device could read your WhatsApp"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jiné zařízení může číst váš WhatsApp"
+          }
+        }
+      }
+    },
+    "finding.payment.alternateAccounts.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code includes alternative accounts, so check which one your banking app selects."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód obsahuje náhradní účty, proto zkontrolujte, který vybere bankovní aplikace."
+          }
+        }
+      }
+    },
+    "finding.payment.alternateAccounts.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More than one account"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Více než jeden účet"
+          }
+        }
+      }
+    },
+    "finding.payment.checksum.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The checksum does not match the payment data, so the code may be damaged or changed."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolní součet nesouhlasí s platebními údaji, takže kód může být poškozený nebo změněný."
+          }
+        }
+      }
+    },
+    "finding.payment.checksum.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment data check failed"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrola platebních dat selhala"
+          }
+        }
+      }
+    },
+    "finding.payment.currencyCountry.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The currency is unusual for this account country and could involve conversion or fees."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Měna je pro tuto zemi účtu neobvyklá a může vyžadovat směnu nebo poplatky."
+          }
+        }
+      }
+    },
+    "finding.payment.currencyCountry.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency and account country differ"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Měna se liší od země účtu"
+          }
+        }
+      }
+    },
+    "finding.payment.foreignAccount.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Czech payment code names an account outside Czechia; check that this is intended."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Český platební kód uvádí účet mimo Česko; ověřte, že je to záměr."
+          }
+        }
+      }
+    },
+    "finding.payment.foreignAccount.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The money goes to a foreign account"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peníze míří na zahraniční účet"
+          }
+        }
+      }
+    },
+    "finding.payment.highAmount.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The requested amount is large, so compare it with the original bill before confirming."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Požadovaná částka je vysoká, proto ji před potvrzením porovnejte s původním dokladem."
+          }
+        }
+      }
+    },
+    "finding.payment.highAmount.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A large payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vysoká platba"
+          }
+        }
+      }
+    },
+    "finding.payment.instant.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code asks the bank to send the money immediately if it can."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód žádá banku, aby peníze odeslala okamžitě, pokud to umí."
+          }
+        }
+      }
+    },
+    "finding.payment.instant.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An instant payment is requested"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Požadavek na okamžitou platbu"
+          }
+        }
+      }
+    },
+    "finding.payment.invalidAmount.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amount is zero or negative and is not a normal payment request."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částka je nulová nebo záporná a nejde o běžný požadavek na platbu."
+          }
+        }
+      }
+    },
+    "finding.payment.invalidAmount.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid payment amount"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neplatná částka platby"
+          }
+        }
+      }
+    },
+    "finding.payment.invalidIBAN.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An account number has an invalid format or checksum and should not be used for payment."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo účtu má neplatný formát nebo kontrolní součet a nemělo by se použít k platbě."
+          }
+        }
+      }
+    },
+    "finding.payment.invalidIBAN.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid account number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neplatné číslo účtu"
+          }
+        }
+      }
+    },
+    "finding.payment.link.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The payment contains a website address that may lead somewhere unrelated to the bank transfer."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba obsahuje webovou adresu, která může vést jinam než k bankovnímu převodu."
+          }
+        }
+      }
+    },
+    "finding.payment.link.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There is a link inside the payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uvnitř platby je odkaz"
+          }
+        }
+      }
+    },
+    "finding.payment.missingRecipient.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code does not say who should receive the money."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód neuvádí, kdo má peníze dostat."
+          }
+        }
+      }
+    },
+    "finding.payment.missingRecipient.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipient name is missing"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chybí jméno příjemce"
+          }
+        }
+      }
+    },
+    "finding.payment.noAmount.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You will need to check and enter the amount yourself in your banking app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částku musíte sami ověřit a zadat v bankovní aplikaci."
+          }
+        }
+      }
+    },
+    "finding.payment.noAmount.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount is not specified"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částka není uvedena"
+          }
+        }
+      }
+    },
+    "finding.payment.noCurrency.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code does not say which currency to use, so check it in your banking app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód neuvádí měnu, proto ji zkontrolujte v bankovní aplikaci."
+          }
+        }
+      }
+    },
+    "finding.payment.noCurrency.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency is not specified"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Měna není uvedena"
+          }
+        }
+      }
+    },
+    "finding.payment.notification.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code asks the bank to notify a phone number or email address about the payment."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód žádá banku, aby o platbě informovala telefonní číslo nebo e-mailovou adresu."
+          }
+        }
+      }
+    },
+    "finding.payment.notification.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment may send a notification"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba může odeslat oznámení"
+          }
+        }
+      }
+    },
+    "finding.payment.oddRecipient.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The recipient name looks incomplete or unusual, so verify it independently."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jméno příjemce vypadá neúplně nebo neobvykle, proto jej ověřte jinou cestou."
+          }
+        }
+      }
+    },
+    "finding.payment.oddRecipient.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unusual recipient name"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neobvyklé jméno příjemce"
+          }
+        }
+      }
+    },
+    "finding.payment.payBySquare.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The header resembles PAY by square, but we cannot check the compressed account and amount."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hlavička připomíná PAY by square, ale zabalené číslo účtu a částku neumíme ověřit."
+          }
+        }
+      }
+    },
+    "finding.payment.payBySquare.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment details are not decoded"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platební údaje nejsou přečtené"
+          }
+        }
+      }
+    },
+    "finding.payment.retry.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code asks the bank to retry a failed payment for up to %@ days."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód žádá banku, aby neúspěšnou platbu zkoušela znovu až po dobu %@ dnů."
+          }
+        }
+      }
+    },
+    "finding.payment.retry.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A failed payment may be tried again"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neúspěšná platba se může opakovat"
+          }
+        }
+      }
+    },
+    "finding.payment.unknownBank.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Czech bank code is not in the bundled ČNB list, so the provider needs checking."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód české banky není v přiloženém seznamu ČNB, proto je potřeba poskytovatele ověřit."
+          }
+        }
+      }
+    },
+    "finding.payment.unknownBank.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bank code is not in our list"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód banky není v našem seznamu"
+          }
+        }
+      }
+    },
+    "finding.phone.forwarding.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This service code can forward your calls to another number, including calls used to verify your identity."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód může přesměrovat vaše hovory na jiné číslo včetně hovorů pro ověření totožnosti."
+          }
+        }
+      }
+    },
+    "finding.phone.forwarding.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This can redirect your calls"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Může přesměrovat vaše hovory"
+          }
+        }
+      }
+    },
+    "finding.phone.international.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calling or messaging this number may have an international charge."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hovor nebo zpráva na toto číslo mohou mít cenu zahraničního spojení."
+          }
+        }
+      }
+    },
+    "finding.phone.international.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A foreign phone number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zahraniční telefonní číslo"
+          }
+        }
+      }
+    },
+    "finding.phone.premium.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This number belongs to a service with extra call charges."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toto číslo patří službě se zvýšenou cenou hovoru."
+          }
+        }
+      }
+    },
+    "finding.phone.premium.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This call can cost extra"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento hovor může stát víc"
+          }
+        }
+      }
+    },
+    "finding.phone.serviceCharge.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This information service may charge more than an ordinary call and its price is not encoded in the number."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato informační služba může stát víc než běžný hovor a cenu z čísla nepoznáme."
+          }
+        }
+      }
+    },
+    "finding.phone.serviceCharge.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A service number may cost extra"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Servisní číslo může stát víc"
+          }
+        }
+      }
+    },
+    "finding.phone.serviceCode.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a phone service command rather than an ordinary number and may change sensitive settings."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jde o příkaz telefonní službě místo běžného čísla a může změnit citlivá nastavení."
+          }
+        }
+      }
+    },
+    "finding.phone.serviceCode.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This changes or checks phone services"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mění nebo kontroluje telefonní služby"
+          }
+        }
+      }
+    },
+    "finding.phone.wangiri.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This country prefix has appeared in missed-call scams, but the prefix alone does not prove fraud or a premium price."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato předvolba se objevila u podvodných prozvonění, sama ale nedokazuje podvod ani zvýšenou cenu."
+          }
+        }
+      }
+    },
+    "finding.phone.wangiri.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check this foreign number first"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nejdřív ověřte zahraniční číslo"
+          }
+        }
+      }
+    },
+    "finding.sms.donation.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sending this message may charge a donation to your phone bill."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odesláním této zprávy se vám může naúčtovat dar do telefonního vyúčtování."
+          }
+        }
+      }
+    },
+    "finding.sms.donation.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This message requests a donation"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato zpráva žádá o dar"
+          }
+        }
+      }
+    },
+    "finding.sms.multipleRecipients.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The message is addressed to several recipients and each message may be charged."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpráva je určena více příjemcům a každá zpráva může být zpoplatněna."
+          }
+        }
+      }
+    },
+    "finding.sms.multipleRecipients.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More than one recipient"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Více příjemců"
+          }
+        }
+      }
+    },
+    "finding.sms.premium.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This number belongs to a paid messaging service."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toto číslo patří placené službě SMS."
+          }
+        }
+      }
+    },
+    "finding.sms.premium.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This message can cost extra"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato zpráva může stát víc"
+          }
+        }
+      }
+    },
+    "finding.sms.subscription.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The prepared text includes words used to activate subscriptions or recurring services."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravený text obsahuje slova používaná k aktivaci předplatného nebo opakovaných služeb."
+          }
+        }
+      }
+    },
+    "finding.sms.subscription.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This may start repeated charges"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Může spustit opakované poplatky"
+          }
+        }
+      }
+    },
+    "finding.wifi.impersonation.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anyone can give a network the name of a bank, airport or public service."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kdokoli může síť pojmenovat podle banky, letiště nebo veřejné služby."
+          }
+        }
+      }
+    },
+    "finding.wifi.impersonation.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A familiar name does not prove ownership"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Známý název nedokazuje vlastníka"
+          }
+        }
+      }
+    },
+    "finding.wifi.open.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anyone nearby may join this network, and unprotected traffic can be read or changed."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "K síti se může připojit kdokoli v okolí a nechráněný přenos může číst nebo měnit."
+          }
+        }
+      }
+    },
+    "finding.wifi.open.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The network has no password protection"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Síť není chráněná heslem"
+          }
+        }
+      }
+    },
+    "finding.wifi.wep.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This old Wi-Fi protection is easy to break and should not be trusted with private information."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tuto starou ochranu Wi-Fi lze snadno prolomit, proto jí nesvěřujte soukromé údaje."
+          }
+        }
+      }
+    },
+    "finding.wifi.wep.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The network uses weak protection"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Síť používá slabou ochranu"
+          }
+        }
+      }
+    },
+    "format.czechInvoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czech QR invoice"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Česká QR faktura"
+          }
+        }
+      }
+    },
+    "format.czechSPD": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czech QR payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Česká QR platba"
+          }
+        }
+      }
+    },
+    "format.emvMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merchant payment (EMV)"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba obchodníkovi (EMV)"
+          }
+        }
+      }
+    },
+    "format.payBySquare": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slovak PAY by square"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slovenská platba PAY by square"
+          }
+        }
+      }
+    },
+    "format.sepaEPC": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SEPA bank payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bankovní platba SEPA"
+          }
+        }
+      }
+    },
+    "format.swissQRBill": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swiss QR bill"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Švýcarská QR faktura"
+          }
+        }
+      }
+    },
+    "format.upi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UPI payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba UPI"
+          }
+        }
+      }
+    },
+    "limitation.account": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot tell who owns this account or whether you owe this payment."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit."
+          }
+        }
+      }
+    },
+    "limitation.app": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot verify the app's behavior, permissions or who will handle this link."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme."
+          }
+        }
+      }
+    },
+    "limitation.bankHandoff": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
+          }
+        }
+      }
+    },
+    "limitation.checksum": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A matching checksum only checks the data, not the honesty of its sender."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Správný kontrolní součet ověřuje jen data, ne poctivost odesílatele."
+          }
+        }
+      }
+    },
+    "limitation.cryptoNetwork": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The correct network, available balance and final fees have not been checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Správná síť, dostupný zůstatek ani konečné poplatky nebyly ověřeny."
+          }
+        }
+      }
+    },
+    "limitation.cryptoOwner": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot tell who controls this wallet."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme zjistit, kdo tuto peněženku ovládá."
+          }
+        }
+      }
+    },
+    "limitation.device": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is an offline check, not a guarantee of safety."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti."
+          }
+        }
+      }
+    },
+    "limitation.eSIM": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot verify the plan owner, charges or whether the activation code is still valid."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme ověřit vlastníka tarifu, poplatky ani to, zda aktivační kód ještě platí."
+          }
+        }
+      }
+    },
+    "limitation.emv": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The merchant's payment network may add fees or require details this device cannot verify."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platební síť obchodníka může přidat poplatky nebo vyžadovat údaje, které telefon neumí ověřit."
+          }
+        }
+      }
+    },
+    "limitation.event": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot verify the organizer or the event's truthfulness."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme ověřit pořadatele ani pravdivost události."
+          }
+        }
+      }
+    },
+    "limitation.export": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The account count covers this code only; an export may be split across several codes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Počet účtů platí jen pro tento kód; export může být rozdělen do několika kódů."
+          }
+        }
+      }
+    },
+    "limitation.identity": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Names and contact details in a code can be invented."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jména a kontaktní údaje v kódu mohou být smyšlené."
+          }
+        }
+      }
+    },
+    "limitation.incomplete": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some details could not be read reliably; compare them with the original before continuing."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem."
+          }
+        }
+      }
+    },
+    "limitation.invoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An invoice may contain accounting details without a payment account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faktura může obsahovat účetní údaje bez čísla účtu pro platbu."
+          }
+        }
+      }
+    },
+    "limitation.lightning": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The invoice checksum is checked, but its signature, expiry and current payment status are not verified."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolujeme součet dat faktury, ale neověřujeme její podpis, platnost ani stav platby."
+          }
+        }
+      }
+    },
+    "limitation.location": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A location in a code does not prove what is really at that place."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poloha v kódu nedokazuje, co na daném místě skutečně je."
+          }
+        }
+      }
+    },
+    "limitation.login": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot verify which device requested this sign-in or whether the code is still valid."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme ověřit, které zařízení o přihlášení požádalo ani zda kód ještě platí."
+          }
+        }
+      }
+    },
+    "limitation.numberOwner": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot tell who uses this phone number."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme zjistit, kdo toto telefonní číslo používá."
+          }
+        }
+      }
+    },
+    "limitation.page": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Without a cloud check we only see the address, not the page or its redirects."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          }
+        }
+      }
+    },
+    "limitation.payBySquare": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PAY by square is detected by its header; its compressed payment details cannot be decoded by this version."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PAY by square poznáme podle hlavičky; tato verze zatím neumí rozbalit jeho platební údaje."
+          }
+        }
+      }
+    },
+    "limitation.tariff": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your operator's actual price and any existing subscription have not been checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skutečná cena u vašeho operátora ani případné běžící předplatné nebyly ověřeny."
+          }
+        }
+      }
+    },
+    "limitation.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text can contain misleading instructions or formats we do not recognize."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text může obsahovat klamavé pokyny nebo formáty, které neznáme."
+          }
+        }
+      }
+    },
+    "limitation.timeZone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code does not specify a time zone; check the event time before saving it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód neuvádí časové pásmo; před uložením zkontrolujte čas události."
+          }
+        }
+      }
+    },
+    "limitation.token": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The token's identity and number of decimal places have not been checked on the network."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Totožnost tokenu ani počet jeho desetinných míst nebyly ověřeny v síti."
+          }
+        }
+      }
+    },
+    "limitation.wifi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We cannot verify who runs this network or how it handles your connection."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neumíme ověřit, kdo síť provozuje ani jak zachází s vaším připojením."
+          }
+        }
+      }
+    },
+    "messaging.other": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messaging app"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikace pro zprávy"
+          }
+        }
+      }
+    },
+    "messaging.signal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signal"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signal"
+          }
+        }
+      }
+    },
+    "messaging.telegram": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telegram"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telegram"
+          }
+        }
+      }
+    },
+    "messaging.viber": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viber"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viber"
+          }
+        }
+      }
+    },
+    "messaging.whatsApp": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatsApp"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatsApp"
+          }
+        }
+      }
+    },
+    "network.bitcoin": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitcoin"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitcoin"
+          }
+        }
+      }
+    },
+    "network.ethereum": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ethereum"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ethereum"
+          }
+        }
+      }
+    },
+    "network.lightning": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitcoin Lightning"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitcoin Lightning"
+          }
+        }
+      }
+    },
+    "network.litecoin": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Litecoin"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Litecoin"
+          }
+        }
+      }
+    },
+    "network.other": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other cryptocurrency"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jiná kryptoměna"
+          }
+        }
+      }
+    },
+    "network.solana": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solana"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solana"
+          }
+        }
+      }
+    },
+    "network.tron": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tron"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tron"
+          }
+        }
+      }
+    },
+    "price.call": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ per call, as encoded in the number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ za hovor podle číslic v čísle"
+          }
+        }
+      }
+    },
+    "price.incoming": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up to %@ for one received message"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Až %@ za jednu přijatou zprávu"
+          }
+        }
+      }
+    },
+    "price.minute": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ per minute, as encoded in the number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ za minutu podle číslic v čísle"
+          }
+        }
+      }
+    },
+    "price.sms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up to %@ for one sent message"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Až %@ za jednu odeslanou zprávu"
+          }
+        }
+      }
+    },
+    "service.authenticatorExport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Authenticator export"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export z ověřovací aplikace"
+          }
+        }
+      }
+    },
+    "service.authenticatorSetup": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Authenticator setup"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nastavení ověřovací aplikace"
+          }
+        }
+      }
+    },
+    "service.discord": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discord"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discord"
+          }
+        }
+      }
+    },
+    "service.other": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account sign-in"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přihlášení k účtu"
+          }
+        }
+      }
+    },
+    "service.passkey": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passkey sign-in"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přihlášení přístupovým klíčem"
+          }
+        }
+      }
+    },
+    "service.steam": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Steam"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Steam"
+          }
+        }
+      }
+    },
+    "service.telegram": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telegram"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telegram"
+          }
+        }
+      }
+    },
+    "service.whatsAppWeb": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatsApp Web"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatsApp Web"
+          }
+        }
+      }
+    },
+    "summary.appLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code asks your phone to open an app or an installation page."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód chce otevřít aplikaci nebo stránku pro její instalaci."
+          }
+        }
+      }
+    },
+    "summary.contact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains a contact to save."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje kontakt k uložení."
+          }
+        }
+      }
+    },
+    "summary.crypto": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code requests a cryptocurrency payment."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód žádá o platbu kryptoměnou."
+          }
+        }
+      }
+    },
+    "summary.eSIM": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This private code can install a mobile plan on a phone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento soukromý kód umožňuje nahrát mobilní tarif do telefonu."
+          }
+        }
+      }
+    },
+    "summary.email": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code prepares an email for you to send."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód připraví e-mail k odeslání."
+          }
+        }
+      }
+    },
+    "summary.event": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains an event to add to your calendar."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje událost k přidání do kalendáře."
+          }
+        }
+      }
+    },
+    "summary.invoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains details from an invoice."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje údaje z faktury."
+          }
+        }
+      }
+    },
+    "summary.link": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code leads to %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód vede na %@."
+          }
+        }
+      }
+    },
+    "summary.location": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code points to a place on a map."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód ukazuje místo na mapě."
+          }
+        }
+      }
+    },
+    "summary.login.authenticatorExport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains private sign-in keys for one or more accounts."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje soukromé přihlašovací klíče k jednomu nebo více účtům."
+          }
+        }
+      }
+    },
+    "summary.login.authenticatorSetup": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains a secret used to create sign-in codes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje tajný klíč pro vytváření přihlašovacích kódů."
+          }
+        }
+      }
+    },
+    "summary.login.discord": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code can sign another device into your Discord account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód může přihlásit další zařízení k vašemu Discordu."
+          }
+        }
+      }
+    },
+    "summary.login.other": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code may grant access to an account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód může umožnit přístup k účtu."
+          }
+        }
+      }
+    },
+    "summary.login.passkey": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code starts a sign-in on another device."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód zahájí přihlášení na jiném zařízení."
+          }
+        }
+      }
+    },
+    "summary.login.steam": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code can sign another device into your Steam account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód může přihlásit další zařízení k vašemu Steamu."
+          }
+        }
+      }
+    },
+    "summary.login.telegram": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code can sign another device into your Telegram account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód může přihlásit další zařízení k vašemu Telegramu."
+          }
+        }
+      }
+    },
+    "summary.login.whatsAppWeb": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code can link another device to your WhatsApp account."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód může propojit další zařízení s vaším WhatsAppem."
+          }
+        }
+      }
+    },
+    "summary.messaging": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code opens a conversation in a messaging app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód otevře konverzaci v aplikaci pro zprávy."
+          }
+        }
+      }
+    },
+    "summary.payBySquare": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This looks like a Slovak payment code that we cannot fully read."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vypadá to na slovenský platební kód, který zatím neumíme celý přečíst."
+          }
+        }
+      }
+    },
+    "summary.payment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains details for a payment."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje údaje k platbě."
+          }
+        }
+      }
+    },
+    "summary.phone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains a number to call."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje číslo, na které můžete zavolat."
+          }
+        }
+      }
+    },
+    "summary.sms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code prepares a text message for you to send."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód připraví SMS zprávu k odeslání."
+          }
+        }
+      }
+    },
+    "summary.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains text."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje text."
+          }
+        }
+      }
+    },
+    "summary.wifi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code offers to connect your phone to a Wi-Fi network."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód nabízí připojení telefonu k síti Wi-Fi."
+          }
+        }
+      }
+    },
+    "title.appLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open an app"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevření aplikace"
+          }
+        }
+      }
+    },
+    "title.contact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontakt"
+          }
+        }
+      }
+    },
+    "title.crypto": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cryptocurrency payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba kryptoměnou"
+          }
+        }
+      }
+    },
+    "title.eSIM": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mobile plan activation"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktivace mobilního tarifu"
+          }
+        }
+      }
+    },
+    "title.email": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-mail"
+          }
+        }
+      }
+    },
+    "title.event": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendar event"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Událost v kalendáři"
+          }
+        }
+      }
+    },
+    "title.invoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invoice"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faktura"
+          }
+        }
+      }
+    },
+    "title.link": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Webová stránka"
+          }
+        }
+      }
+    },
+    "title.location": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Place on a map"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Místo na mapě"
+          }
+        }
+      }
+    },
+    "title.login": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přihlašovací kód"
+          }
+        }
+      }
+    },
+    "title.messaging": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chat message"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpráva v chatu"
+          }
+        }
+      }
+    },
+    "title.payment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bank payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba"
+          }
+        }
+      }
+    },
+    "title.phone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phone call"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonní hovor"
+          }
+        }
+      }
+    },
+    "title.sms": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text message"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SMS zpráva"
+          }
+        }
+      }
+    },
+    "title.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        }
+      }
+    },
+    "title.wifi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi network"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Síť Wi-Fi"
+          }
+        }
+      }
+    },
+    "unit.baseUnits": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "token base units"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nejmenších jednotek tokenu"
+          }
+        }
+      }
+    },
+    "unit.token": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tokens"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tokenů"
+          }
+        }
+      }
+    },
+    "value.accountUnknown": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "an unspecified account"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bez uvedeného čísla"
+          }
+        }
+      }
+    },
+    "value.amountUnknown": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "an unspecified amount"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "neuvedené částky"
+          }
+        }
+      }
+    },
+    "value.currencyUnknown": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown currency"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neznámá měna"
+          }
+        }
+      }
+    },
+    "value.hidden": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden — private information"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skryto — soukromý údaj"
+          }
+        }
+      }
+    },
+    "value.no": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne"
+          }
+        }
+      }
+    },
+    "value.notSpecified": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not specified in the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V kódu není uvedeno"
+          }
+        }
+      }
+    },
+    "value.required": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Required"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je potřeba"
+          }
+        }
+      }
+    },
+    "value.unnamedContact": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "this contact"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tento kontakt"
+          }
+        }
+      }
+    },
+    "value.unnamedEvent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "this event"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tuto událost"
+          }
+        }
+      }
+    },
+    "value.yes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yes"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ano"
+          }
+        }
+      }
+    },
+    "verdict.caution": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Be careful"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buďte opatrní"
+          }
+        }
+      }
+    },
+    "verdict.danger": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dangerous"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nebezpečné"
+          }
+        }
+      }
+    },
+    "verdict.safe": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looks safe"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vypadá bezpečně"
+          }
+        }
+      }
+    },
+    "wifi.open": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No password protection"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bez ochrany heslem"
+          }
+        }
+      }
+    },
+    "wifi.wep": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Old, weak protection (WEP)"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zastaralá, slabá ochrana (WEP)"
+          }
+        }
+      }
+    },
+    "wifi.wpa": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password protection (WPA)"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ochrana heslem (WPA)"
+          }
+        }
+      }
+    },
+    "amount.czk": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CZK %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Kč"
+          }
+        }
+      }
+    },
+    "finding.phone.internationalPremium.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A foreign paid-service number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zahraniční číslo placené služby"
+          }
+        }
+      }
+    },
+    "finding.phone.internationalPremium.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This foreign service-number range can have extra charges; the actual tariff has not been checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato zahraniční číselná řada může mít zvýšenou cenu; skutečný tarif nebyl ověřen."
+          }
+        }
+      }
+    },
+    "limitation.tooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the code size was checked; its contents were not inspected."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Byla zkontrolována jen velikost kódu; jeho obsah nebyl prověřen."
+          }
+        }
+      }
+    },
+    "summary.tooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code is too large for this offline check."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód je pro kontrolu v telefonu příliš velký."
+          }
+        }
+      }
+    },
+    "finding.content.tooMany.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many hidden items to check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příliš mnoho skrytých položek"
+          }
+        }
+      }
+    },
+    "finding.content.tooMany.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code contains more links or instructions than this check can inspect safely."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód obsahuje víc odkazů nebo pokynů, než dokážeme bezpečně prověřit."
+          }
+        }
+      }
+    },
+    "limitation.nestedLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the first 32 distinct embedded items were checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bylo prověřeno jen prvních 32 různých vložených položek."
+          }
+        }
+      }
+    },
+    "fact.embeddedLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link inside the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz uvnitř kódu"
+          }
+        }
+      }
+    },
+    "fact.embeddedContent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Also inside the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Také uvnitř kódu"
+          }
+        }
+      }
+    },
+    "charge.unknownCall": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a paid-service number, but its actual call price could not be determined."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jde o číslo placené služby, ale skutečnou cenu hovoru se nepodařilo zjistit."
+          }
+        }
+      }
+    },
+    "limitation.ethereum": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We have not fully verified the Ethereum address."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tuto adresu Etherea jsme úplně neověřili."
+          }
+        }
+      }
+    },
+    "store.appStore": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        }
+      }
+    },
+    "store.googlePlay": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Play"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Play"
+          }
+        }
+      }
+    },
+    "summary.profile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code offers to install settings that can change how your phone works."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód nabízí instalaci nastavení, které může změnit fungování telefonu."
+          }
+        }
+      }
+    },
+    "summary.enterprise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code offers to install an app outside the App Store."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód nabízí instalaci aplikace mimo App Store."
+          }
+        }
+      }
+    },
+    "summary.download": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code leads to an app installation file."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód vede na instalační soubor aplikace."
+          }
+        }
+      }
+    },
+    "summary.store": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code opens an app page in %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód otevře stránku aplikace v obchodě %@."
+          }
+        }
+      }
+    },
+    "consequence.store": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens the app page in %@; check the publisher and price before installing."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevře stránku aplikace v obchodě %@; před instalací zkontrolujte vydavatele a cenu."
+          }
+        }
+      }
+    },
+    "finding.payment.retry.one": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code asks the bank to retry a failed payment for up to %@ day."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód žádá banku, aby neúspěšnou platbu zkoušela znovu až po dobu %@ dne."
+          }
+        }
+      }
+    }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

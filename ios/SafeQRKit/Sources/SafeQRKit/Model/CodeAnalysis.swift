@@ -27,7 +27,33 @@ public struct CodeAnalysis: Sendable, Identifiable {
 
     /// Whether the cloud can add evidence the device cannot gather on its own.
     public var benefitsFromCloudCheck: Bool {
-        content.kind != .text || assessment.score > 0
+        !containsSecrets && !assessment.findings.contains { ["code.tooLarge", "content.tooMany"].contains($0.id) }
+            && (content.kind != .text || assessment.score > 0)
+    }
+
+    /// Known authentication or installation secrets, including those embedded in another payload.
+    public var containsSecrets: Bool {
+        if Self.isSecret(content.payload) { return true }
+        if assessment.findings.contains(where: { $0.id.hasPrefix("login.") || $0.id == "esim.activation" }) { return true }
+        guard assessment.findings.contains(where: { $0.id == "content.combination" }) else { return false }
+        return EmbeddedPayloads.inspect(content.payload, raw: raw).codes.contains { Self.isSecret($0.payload) }
+    }
+
+    private static func isSecret(_ payload: Payload) -> Bool {
+        switch payload {
+        case .login, .eSIM: true
+        case .wifi(let network): network.password != nil
+        case .link(let url), .appLink(let url): hasCredentials(url)
+        case .messaging(let link): hasCredentials(link.url)
+        default: false
+        }
+    }
+
+    private static func hasCredentials(_ url: URL) -> Bool {
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        if components?.user != nil || components?.password != nil { return true }
+        let keys: Set<String> = ["password", "passwd", "secret", "access_token", "id_token", "refresh_token", "api_key", "private_key"]
+        return ParseSupport.query(url.absoluteString).fields.keys.contains { keys.contains($0.lowercased()) }
     }
 }
 

@@ -1,0 +1,203 @@
+{
+  "checkedAsOf": "2026-10-19",
+  "note": "Comparison targets, never a trust allowlist. MPLA is a historical brand; Prague lists current payment providers on its official page.",
+  "brands": [
+    {
+      "name": "Česká spořitelna",
+      "domains": [
+        "csas.cz"
+      ],
+      "aliases": [
+        "csas",
+        "sporitelna",
+        "george"
+      ],
+      "source": "https://www.csas.cz/"
+    },
+    {
+      "name": "ČSOB",
+      "domains": [
+        "csob.cz"
+      ],
+      "aliases": [
+        "csob"
+      ],
+      "source": "https://www.csob.cz/cs/lide/ucty/internetove-a-mobilni-bankovnictvi/internetove-bankovnictvi"
+    },
+    {
+      "name": "Komerční banka",
+      "domains": [
+        "kb.cz"
+      ],
+      "aliases": [
+        "komercnibanka",
+        "mojebanka"
+      ],
+      "source": "https://www.kb.cz/cs/nase-aplikace/mojebanka"
+    },
+    {
+      "name": "Air Bank",
+      "domains": [
+        "airbank.cz"
+      ],
+      "aliases": [
+        "airbank"
+      ],
+      "source": "https://www.airbank.cz/"
+    },
+    {
+      "name": "MONETA",
+      "domains": [
+        "moneta.cz"
+      ],
+      "aliases": [
+        "moneta"
+      ],
+      "source": "https://www.moneta.cz/"
+    },
+    {
+      "name": "Raiffeisenbank",
+      "domains": [
+        "rb.cz"
+      ],
+      "aliases": [
+        "raiffeisen",
+        "raiffeisenbank"
+      ],
+      "source": "https://www.rb.cz/"
+    },
+    {
+      "name": "Fio banka",
+      "domains": [
+        "fio.cz"
+      ],
+      "aliases": [
+        "fiobanka"
+      ],
+      "source": "https://www.fio.cz/"
+    },
+    {
+      "name": "mBank",
+      "domains": [
+        "mbank.cz"
+      ],
+      "aliases": [
+        "mbank"
+      ],
+      "source": "https://www.mbank.cz/osobni/"
+    },
+    {
+      "name": "Česká národní banka",
+      "domains": [
+        "cnb.cz"
+      ],
+      "aliases": [
+        "cnb"
+      ],
+      "source": "https://www.cnb.cz/"
+    },
+    {
+      "name": "Státní správa",
+      "domains": [
+        "gov.cz"
+      ],
+      "aliases": [
+        "portalobcana",
+        "portalgov"
+      ],
+      "source": "https://portal.gov.cz/"
+    },
+    {
+      "name": "Finanční správa",
+      "domains": [
+        "financnisprava.gov.cz",
+        "mojedane.cz",
+        "mfcr.cz"
+      ],
+      "aliases": [
+        "financnisprava",
+        "mojedane"
+      ],
+      "source": "https://financnisprava.gov.cz/cs/financni-sprava/novinky/novinky-2023/upozorneni-na-mozne-phishingove-utoky"
+    },
+    {
+      "name": "Česká pošta",
+      "domains": [
+        "ceskaposta.cz",
+        "cpost.cz"
+      ],
+      "aliases": [
+        "ceskaposta"
+      ],
+      "source": "https://www.ceskaposta.cz/"
+    },
+    {
+      "name": "Zásilkovna",
+      "domains": [
+        "zasilkovna.cz",
+        "packeta.com"
+      ],
+      "aliases": [
+        "zasilkovna",
+        "packeta"
+      ],
+      "source": "https://www.zasilkovna.cz/"
+    },
+    {
+      "name": "PPL",
+      "domains": [
+        "ppl.cz"
+      ],
+      "aliases": [
+        "ppl"
+      ],
+      "source": "https://www.ppl.cz/"
+    },
+    {
+      "name": "DPD",
+      "domains": [
+        "dpd.com",
+        "dpd.cz"
+      ],
+      "aliases": [
+        "dpd"
+      ],
+      "source": "https://www.dpd.com/cz/cs/"
+    },
+    {
+      "name": "EasyPark",
+      "domains": [
+        "easypark.com",
+        "easypark.cz"
+      ],
+      "aliases": [
+        "easypark"
+      ],
+      "source": "https://www.easypark.com/cs-cz"
+    },
+    {
+      "name": "Parkování v Praze",
+      "domains": [
+        "parking.praha.eu",
+        "platba.parking.praha.eu",
+        "portal.zpspraha.cz"
+      ],
+      "aliases": [
+        "zpspraha",
+        "parkingpraha",
+        "parkovanipraha"
+      ],
+      "source": "https://parking.praha.eu/cs/platba-za-parkovani/"
+    },
+    {
+      "name": "MPLA",
+      "domains": [
+        "mpla.io"
+      ],
+      "aliases": [
+        "mpla"
+      ],
+      "source": "https://cdn.parking.praha.eu/parking-praha/2023/03/Platebni-aplikace-MPLA-navod.pdf"
+    }
+  ]
+}

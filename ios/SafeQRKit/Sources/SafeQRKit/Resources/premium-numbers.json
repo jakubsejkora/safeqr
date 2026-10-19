@@ -1,0 +1,486 @@
+{
+  "asOf": "2026-10-19",
+  "sourceNote": {
+    "numberingPlan": "https://e-sbirka.gov.cz/sb/2007/117",
+    "numberingPlanAuthorityPage": "https://ctu.gov.cz/vyhlasky",
+    "numberingPlanPrimaryTextFetched": false,
+    "numberingPlanTextMirror": "https://www.zakonyprolidi.cz/cs/2007-117",
+    "numberingPlanTextMirrorVersion": "2024-01-01",
+    "note": "Official e-Sbirka URL yielded no readable text. Classification and pricing were corroborated against CTU explanatory material and the APMS code. Source dates are not a guarantee that every individual number works.",
+    "verificationMethod": "Official public sources plus the disclosed consolidated-decree mirror. No live paid calls or SMS tests.",
+    "maxPriceCzkMeaning": "Verified maximum price for the stated unit and scope. Null means no independently verified cap. For voice, encodingMaximumCzk is only the arithmetic ceiling of the price encoded in the number.",
+    "audiotexCode": {
+      "source": "https://platmobilem.cz/wp-content/uploads/apms-kodex-atx-v-4-5.pdf",
+      "version": "4.5",
+      "effectiveFrom": "2022-01-01",
+      "verified": true
+    }
+  },
+  "domesticPremiumRanges": [
+    {
+      "prefix": "900",
+      "description": "Commercial, professional, advertising and competition voice services",
+      "maxPriceCzk": null,
+      "unit": "minute",
+      "source": "https://ctu.gov.cz/sites/default/files/obsah/soubory-ke-stazeni/barevne_linky_2022_finale_web.pdf",
+      "verified": false,
+      "nationalNumberLength": 9,
+      "vatIncluded": true,
+      "priceFormula": "AB",
+      "priceDigitsOneBased": [
+        4,
+        5
+      ],
+      "maxPriceBasis": "A separate universal price cap was not verified. Use encodingMaximumCzk only as the ceiling of the cited price formula.",
+      "notes": "Exact tariff requires all digits. Per-minute values do not cap the total call bill.",
+      "numberingPlan": "https://e-sbirka.gov.cz/sb/2007/117",
+      "additionalSources": [
+        "https://platmobilem.cz/wp-content/uploads/apms-kodex-atx-v-4-5.pdf"
+      ],
+      "classificationVerified": true,
+      "priceFormulaVerified": true,
+      "priceCapVerified": false,
+      "encodingMaximumCzk": 99,
+      "encodingMaximumVerified": true,
+      "encodingMaximumBasis": "Arithmetic inference from two decimal price digits AB (00–99); multiply by ten only for 905. This is not an independently verified universal legal cap.",
+      "verificationScope": "Classification and encoding are supported by the cited sources. The overall verified flag is false because maxPriceCzk is unverified.",
+      "sourcePublicationDate": "2022"
+    },
+    {
+      "prefix": "905",
+      "description": "Voice service charged once per connected call",
+      "maxPriceCzk": null,
+      "unit": "call",
+      "source": "https://ctu.gov.cz/cs/download/ochrana_spotrebitele/ochrana_spotrebitele_informace-ucastnici_cislo-9.pdf",
+      "verified": false,
+      "nationalNumberLength": 9,
+      "vatIncluded": true,
+      "priceFormula": "10 * AB",
+      "priceDigitsOneBased": [
+        4,
+        5
+      ],
+      "maxPriceBasis": "A separate universal price cap was not verified. Use encodingMaximumCzk only as the ceiling of the cited price formula.",
+      "notes": "APMS says 905 is not supported by every operator. This does not confirm an individual number is allocated or reachable.",
+      "numberingPlan": "https://e-sbirka.gov.cz/sb/2007/117",
+      "additionalSources": [
+        "https://platmobilem.cz/wp-content/uploads/apms-kodex-atx-v-4-5.pdf"
+      ],
+      "classificationVerified": true,
+      "priceFormulaVerified": true,
+      "priceCapVerified": false,
+      "encodingMaximumCzk": 990,
+      "encodingMaximumVerified": true,
+      "encodingMaximumBasis": "Arithmetic inference from two decimal price digits AB (00–99); multiply by ten only for 905. This is not an independently verified universal legal cap.",
+      "verificationScope": "Classification and encoding are supported by the cited sources. The overall verified flag is false because maxPriceCzk is unverified.",
+      "sourcePublicationDate": null
+    },
+    {
+      "prefix": "906",
+      "description": "Commercial, professional, advertising and competition voice services",
+      "maxPriceCzk": null,
+      "unit": "minute",
+      "source": "https://ctu.gov.cz/sites/default/files/obsah/soubory-ke-stazeni/barevne_linky_2022_finale_web.pdf",
+      "verified": false,
+      "nationalNumberLength": 9,
+      "vatIncluded": true,
+      "priceFormula": "AB",
+      "priceDigitsOneBased": [
+        4,
+        5
+      ],
+      "maxPriceBasis": "A separate universal price cap was not verified. Use encodingMaximumCzk only as the ceiling of the cited price formula.",
+      "notes": "Exact tariff requires all digits. Per-minute values do not cap the total call bill.",
+      "numberingPlan": "https://e-sbirka.gov.cz/sb/2007/117",
+      "additionalSources": [
+        "https://platmobilem.cz/wp-content/uploads/apms-kodex-atx-v-4-5.pdf"
+      ],
+      "classificationVerified": true,
+      "priceFormulaVerified": true,
+      "priceCapVerified": false,
+      "encodingMaximumCzk": 99,
+      "encodingMaximumVerified": true,
+      "encodingMaximumBasis": "Arithmetic inference from two decimal price digits AB (00–99); multiply by ten only for 905. This is not an independently verified universal legal cap.",
+      "verificationScope": "Classification and encoding are supported by the cited sources. The overall verified flag is false because maxPriceCzk is unverified.",
+      "sourcePublicationDate": "2022"
+    },
+    {
+      "prefix": "908",
+      "description": "Voice service charged once per connected call",
+      "maxPriceCzk": null,
+      "unit": "call",
+      "source": "https://ctu.gov.cz/sites/default/files/obsah/soubory-ke-stazeni/barevne_linky_2022_finale_web.pdf",
+      "verified": false,
+      "nationalNumberLength": 9,
+      "vatIncluded": true,
+      "priceFormula": "AB",
+      "priceDigitsOneBased": [
+        4,
+        5
+      ],
+      "maxPriceBasis": "A separate universal price cap was not verified. Use encodingMaximumCzk only as the ceiling of the cited price formula.",
+      "notes": "The encoded amount is charged per connected call. An individual number still requires allocation and tariff verification.",
+      "numberingPlan": "https://e-sbirka.gov.cz/sb/2007/117",
+      "additionalSources": [
+        "https://platmobilem.cz/wp-content/uploads/apms-kodex-atx-v-4-5.pdf"
+      ],
+      "classificationVerified": true,
+      "priceFormulaVerified": true,
+      "priceCapVerified": false,
+      "encodingMaximumCzk": 99,
+      "encodingMaximumVerified": true,
+      "encodingMaximumBasis": "Arithmetic inference from two decimal price digits AB (00–99); multiply by ten only for 905. This is not an independently verified universal legal cap.",
+      "verificationScope": "Classification and encoding are supported by the cited sources. The overall verified flag is false because maxPriceCzk is unverified.",
+      "sourcePublicationDate": "2022"
+    },
+    {
+      "prefix": "909",
+      "description": "Adult entertainment voice services",
+      "maxPriceCzk": null,
+      "unit": "minute",
+      "source": "https://ctu.gov.cz/sites/default/files/obsah/soubory-ke-stazeni/barevne_linky_2022_finale_web.pdf",
+      "verified": false,
+      "nationalNumberLength": 9,
+      "vatIncluded": true,
+      "priceFormula": "AB",
+      "priceDigitsOneBased": [
+        4,
+        5
+      ],
+      "maxPriceBasis": "A separate universal price cap was not verified. Use encodingMaximumCzk only as the ceiling of the cited price formula.",
+      "notes": "Exact tariff requires all digits. Per-minute values do not cap the total call bill.",
+      "numberingPlan": "https://e-sbirka.gov.cz/sb/2007/117",
+      "additionalSources": [
+        "https://platmobilem.cz/wp-content/uploads/apms-kodex-atx-v-4-5.pdf"
+      ],
+      "classificationVerified": true,
+      "priceFormulaVerified": true,
+      "priceCapVerified": false,
+      "encodingMaximumCzk": 99,
+      "encodingMaximumVerified": true,
+      "encodingMaximumBasis": "Arithmetic inference from two decimal price digits AB (00–99); multiply by ten only for 905. This is not an independently verified universal legal cap.",
+      "verificationScope": "Classification and encoding are supported by the cited sources. The overall verified flag is false because maxPriceCzk is unverified.",
+      "sourcePublicationDate": "2022"
+    },
+    {
+      "prefix": "976",
+      "description": "Metered access to public data networks and the Internet",
+      "maxPriceCzk": null,
+      "unit": "minute",
+      "source": "https://ctu.gov.cz/sites/default/files/obsah/soubory-ke-stazeni/barevne_linky_2022_finale_web.pdf",
+      "verified": false,
+      "nationalNumberLength": 9,
+      "vatIncluded": true,
+      "priceFormula": "AB",
+      "priceDigitsOneBased": [
+        4,
+        5
+      ],
+      "maxPriceBasis": "A separate universal price cap was not verified. Use encodingMaximumCzk only as the ceiling of the cited price formula.",
+      "notes": "Exact tariff requires all digits. Per-minute values do not cap the total call bill.",
+      "numberingPlan": "https://e-sbirka.gov.cz/sb/2007/117",
+      "additionalSources": [],
+      "classificationVerified": true,
+      "priceFormulaVerified": true,
+      "priceCapVerified": false,
+      "encodingMaximumCzk": 99,
+      "encodingMaximumVerified": true,
+      "encodingMaximumBasis": "Arithmetic inference from two decimal price digits AB (00–99); multiply by ten only for 905. This is not an independently verified universal legal cap.",
+      "verificationScope": "Classification and encoding are supported by the cited sources. The overall verified flag is false because maxPriceCzk is unverified.",
+      "sourcePublicationDate": "2022"
+    }
+  ],
+  "premiumSms": {
+    "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+    "codeVersion": "5.6",
+    "effectiveFrom": "2026-07-01",
+    "verified": true,
+    "vatIncluded": true,
+    "formats": [
+      {
+        "length": 5,
+        "pattern": "90zxy",
+        "role": "Activation, cancellation or help code; it can initiate paid incoming messages.",
+        "maxPriceCzk": null,
+        "unit": "outgoing_sms",
+        "priceNote": "The five-digit code does not encode the service price. The outgoing message tariff depends on the operator.",
+        "verified": false,
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf"
+      },
+      {
+        "length": 7,
+        "pattern": "90zxyAB",
+        "role": "MO: outgoing Premium SMS",
+        "priceDigitsOneBased": [
+          6,
+          7
+        ],
+        "maxPriceCzk": 99,
+        "unit": "sms",
+        "priceFormula": "AB",
+        "priceBasis": "APMS code section 3.3, maximum supported MO price level",
+        "verified": true,
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf"
+      },
+      {
+        "length": 8,
+        "pattern": "90zxyABC",
+        "role": "MT: paid incoming Premium SMS; one-off or subscription",
+        "priceDigitsOneBased": [
+          6,
+          7,
+          8
+        ],
+        "maxPriceCzk": 600,
+        "unit": "sms",
+        "priceFormula": "ABC",
+        "priceBasis": "APMS code section 3.3, maximum supported MT price level",
+        "verified": true,
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf"
+      }
+    ],
+    "ranges": [
+      {
+        "prefix": "900",
+        "description": "Voting",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "901",
+        "description": "Digital content: books, magazines, music or video",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "902",
+        "description": "Transport tickets, admission and parking",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "903",
+        "description": "Applications, games and social-network credit",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "904",
+        "description": "Digital content: images, ringtones and horoscopes",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "905",
+        "description": "Reserved",
+        "status": "unused",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "906",
+        "description": "High-volume voting",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "907",
+        "description": "Paid access to virtual or media space",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "908",
+        "description": "Reserved",
+        "status": "unused",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      },
+      {
+        "prefix": "909",
+        "description": "Adult content",
+        "status": "used",
+        "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+        "verified": true
+      }
+    ],
+    "cancellation": {
+      "number": "Original five-digit service code",
+      "allServicesOnCode": [
+        "STOP",
+        "STOP ALL"
+      ],
+      "oneService": "STOP SLUZBA",
+      "confirmationRequired": true,
+      "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf",
+      "verified": true,
+      "scope": "APMS Premium SMS services on the original five-digit service code. Follow the provider instructions; not a universal command for app-store or other carrier-billed subscriptions."
+    },
+    "universalMaximumPriceCzk": null,
+    "universalMaximumVerified": false,
+    "limitation": "Do not label every 9xxxx SMS premium. Match service type, full length and the listed ranges. Do not show a five-digit code as free. Billing category and individual transaction limits are different.",
+    "operatorLimitDiscrepancy": {
+      "operator": "O2",
+      "publishedTransactionLimitCzk": 999,
+      "source": "https://www.o2.cz/podpora/financni-sluzby/platba-pres-o2-vyuctovani",
+      "verified": true,
+      "note": "O2 states 999 CZK for an SMS/DMS transaction. APMS v5.6 states a 600 CZK supported MT price level. These are not the same limit; do not turn 600 into a universal safety guarantee."
+    },
+    "minimumSupportedPriceCzk": {
+      "MO": 1,
+      "MT": 1
+    },
+    "priceLimitScope": "APMS v5.6 section 3.3 supported Premium SMS price levels, including VAT; not an all-purpose legal limit for every carrier payment."
+  },
+  "donorSms": {
+    "number": "87777",
+    "amountsCzk": [
+      30,
+      60,
+      90,
+      190,
+      290,
+      490
+    ],
+    "maxPriceCzk": 490,
+    "unit": "donation",
+    "oneOffTemplate": "DMS HESLOPROJEKTU AMOUNT",
+    "recurringTemplate": "DMS TRV HESLOPROJEKTU AMOUNT",
+    "recurringPeriod": "month",
+    "recipientAmountsCzk": [
+      29,
+      59,
+      89,
+      189,
+      289,
+      489
+    ],
+    "cancelProjectTemplate": "STOP HESLOPROJEKTU",
+    "cancelAllTemplate": "STOP ALL",
+    "cancelNumber": "87777",
+    "cancellationFree": true,
+    "source": "https://www.darcovskasms.cz/darcovska-sms/jednorazova-dms.html",
+    "recurringSource": "https://www.darcovskasms.cz/darcovska-sms/trvala-dms.html",
+    "verified": true,
+    "note": "This is the DMS project price menu, not a legal cap for all SMS. Check the project keyword in the official donor-project directory and operator support."
+  },
+  "irsfPrefixes": [
+    {
+      "prefix": "+225",
+      "country": "Côte d’Ivoire",
+      "note": "Historical Vodafone wangiri example (2021-08-12). Country prefix alone is not evidence of fraud or a premium rate. No current IRSF frequency ranking was verified.",
+      "source": "https://www.vodafone.cz/pece/muj-ucet-cislo/bezpecnost/aktualni-hrozby/",
+      "countryCodeSource": "https://www.itu.int/oth/t0202",
+      "verified": true,
+      "sourcePublicationDate": "2021-08-12",
+      "currentFrequencyVerified": false,
+      "irsfAttributionVerified": false,
+      "verificationScope": "Historical wangiri example and country-code mapping only."
+    },
+    {
+      "prefix": "+247",
+      "country": "Ascension",
+      "note": "Historical Vodafone wangiri example (2021-08-12). Country prefix alone is not evidence of fraud or a premium rate. No current IRSF frequency ranking was verified.",
+      "source": "https://www.vodafone.cz/pece/muj-ucet-cislo/bezpecnost/aktualni-hrozby/",
+      "countryCodeSource": "https://www.itu.int/oth/t0202",
+      "verified": true,
+      "sourcePublicationDate": "2021-08-12",
+      "currentFrequencyVerified": false,
+      "irsfAttributionVerified": false,
+      "verificationScope": "Historical wangiri example and country-code mapping only."
+    },
+    {
+      "prefix": "+251",
+      "country": "Ethiopia",
+      "note": "Historical Vodafone wangiri example (2021-08-12). Country prefix alone is not evidence of fraud or a premium rate. No current IRSF frequency ranking was verified.",
+      "source": "https://www.vodafone.cz/pece/muj-ucet-cislo/bezpecnost/aktualni-hrozby/",
+      "countryCodeSource": "https://www.itu.int/oth/t0202",
+      "verified": true,
+      "sourcePublicationDate": "2021-08-12",
+      "currentFrequencyVerified": false,
+      "irsfAttributionVerified": false,
+      "verificationScope": "Historical wangiri example and country-code mapping only."
+    },
+    {
+      "prefix": "+265",
+      "country": "Malawi",
+      "note": "Historical Vodafone wangiri example (2021-08-12). Country prefix alone is not evidence of fraud or a premium rate. No current IRSF frequency ranking was verified.",
+      "source": "https://www.vodafone.cz/pece/muj-ucet-cislo/bezpecnost/aktualni-hrozby/",
+      "countryCodeSource": "https://www.itu.int/oth/t0202",
+      "verified": true,
+      "sourcePublicationDate": "2021-08-12",
+      "currentFrequencyVerified": false,
+      "irsfAttributionVerified": false,
+      "verificationScope": "Historical wangiri example and country-code mapping only."
+    }
+  ],
+  "irsfLimitations": {
+    "currentFrequencyRankingVerified": false,
+    "irsfSpecificAttributionVerified": false,
+    "note": "The irsfPrefixes field contains documented wangiri examples, not a blacklist or proof of IRSF. Vodafone also lists +948; it is excluded because this is not a verified country calling code.",
+    "source": "https://www.vodafone.cz/pece/muj-ucet-cislo/bezpecnost/aktualni-hrozby/"
+  },
+  "matchingNotes": [
+    {
+      "note": "Domestic voice prefixes apply to nine-digit national numbers. Normalize an explicit +420 or 00420 prefix before checking; keep international numbers separate.",
+      "source": "https://www.zakonyprolidi.cz/cs/2007-117"
+    },
+    {
+      "note": "Treat SMS short codes separately from nine-digit voice numbers. A 907 short code and a 907 voice prefix do not mean the same thing.",
+      "source": "https://platmobilem.cz/wp-content/uploads/2026/07/Kodex-Premium-SMS-sluzby-5.6-CZ_ucinny-od-1.-7.-2026.pdf"
+    },
+    {
+      "note": "901–904 and 907 voice ranges are reserved in the numbering plan; do not apply a blanket 90x voice-price formula.",
+      "source": "https://www.zakonyprolidi.cz/cs/2007-117"
+    },
+    {
+      "note": "1180–1188 directory enquiries and 12/14 information lines can have extra charges without an encoded universal maximum. Do not label them free.",
+      "source": "https://ctu.gov.cz/sites/default/files/obsah/soubory-ke-stazeni/barevne_linky_2022_finale_web.pdf"
+    },
+    {
+      "note": "A country prefix, premium range, donor number or bank code alone must never produce a safe-or-fraud verdict. This is an application design rule based on the limited scope of the cited data.",
+      "source": "https://www.vodafone.cz/pece/muj-ucet-cislo/bezpecnost/aktualni-hrozby/"
+    }
+  ],
+  "unverified": [
+    {
+      "item": "Universal legal price cap for each domestic voice range",
+      "verified": false,
+      "source": "https://e-sbirka.gov.cz/sb/2007/117",
+      "note": "The official consolidated legal body could not be retrieved. Separate formula ceilings are retained."
+    },
+    {
+      "item": "Universal price cap for 1180–1188 directory enquiries and 12/14 information services",
+      "verified": false,
+      "maxPriceCzk": null,
+      "source": "https://ctu.gov.cz/sites/default/files/obsah/soubory-ke-stazeni/barevne_linky_2022_finale_web.pdf"
+    },
+    {
+      "item": "Current global IRSF-prefix prevalence or ranking",
+      "verified": false,
+      "source": "https://www.vodafone.cz/pece/muj-ucet-cislo/bezpecnost/aktualni-hrozby/",
+      "note": "Only dated wangiri examples were established."
+    }
+  ],
+  "internationalPremiumRanges": [
+    {
+      "pattern": "^\\+44(?:9[0-9]{9}|8[47][0-9]{8})$",
+      "source": "https://www.ofcom.org.uk/phones-and-broadband/phone-numbers/phone-numbers-and-call-costs",
+      "checkedAsOf": "2026-10-19",
+      "note": "Premium or service-charge ranges; international reachability and actual tariff are not verified."
+    },
+    {
+      "pattern": "^\\+1900[0-9]{7}$",
+      "source": "https://www.ftc.gov/business-guidance/resources/complying-900-number-rule",
+      "checkedAsOf": "2026-10-19",
+      "note": "North American 900 pay-per-call classification; no inference about a particular number or current price."
+    }
+  ]
+}

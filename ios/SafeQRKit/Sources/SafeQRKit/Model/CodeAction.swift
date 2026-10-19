@@ -18,8 +18,10 @@ public struct CodeAction: Sendable, Hashable, Identifiable {
     public let kind: Kind
     public let title: String
     public let isPrimary: Bool
-    /// Shown before the hand-off. `nil` only for actions that stay inside Safe QR, like copying.
+    /// Required for hand-offs; copying and sharing do not need a separate confirmation.
     public let confirmation: Confirmation?
+
+    public var isRisky: Bool { confirmation?.isRisky ?? false }
 
     public init(id: String, kind: Kind, title: String, isPrimary: Bool = false, confirmation: Confirmation?) {
         self.id = id
