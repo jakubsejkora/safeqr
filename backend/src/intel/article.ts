@@ -1,5 +1,6 @@
 import { load } from "cheerio";
 import { safeFetch, type WebFetch } from "../shared/network.js";
+import { publicationDate } from "./publication.js";
 import { canonicalSource } from "./sources.js";
 
 export interface Article {
@@ -61,25 +62,55 @@ export function robotsAllows(text: string, path: string): boolean {
   return rules[0]?.allow ?? true;
 }
 
-export async function fetchArticle(
-  input: string,
-  fetchPage: WebFetch = safeFetch,
-): Promise<Article | undefined> {
-  let current = canonicalSource(input);
-  const signal = AbortSignal.timeout(6000);
-  for (let hop = 0; current && hop < 3; hop++) {
-    const url = new URL(current);
-    const robots = await fetchPage(`${url.origin}/robots.txt`, {
+export class ArticleRejected extends Error {
+  constructor(
+    readonly reason:
+      | "unapproved_source"
+      | "robots_denied"
+      | "not_html"
+      | "redirect_limit",
+  ) {
+    super(reason);
+  }
+}
+
+async function robotsAllowed(
+  url: URL,
+  fetchPage: WebFetch,
+  signal: AbortSignal,
+): Promise<boolean> {
+  let robotsUrl = new URL("/robots.txt", url);
+  for (let hop = 0; hop < 3; hop++) {
+    const response = await fetchPage(robotsUrl.href, {
       signal,
       maxBytes: 64_000,
     });
+    if (response.status === 404) return true;
+    if (response.status === 200)
+      return robotsAllows(response.body.toString("utf8"), url.pathname);
     if (
-      robots.status !== 404 &&
-      (robots.status !== 200 ||
-        !robotsAllows(robots.body.toString("utf8"), url.pathname))
+      ![301, 302, 303, 307, 308].includes(response.status) ||
+      !response.headers.location
     )
-      return undefined;
-    const response = await fetchPage(current, { signal });
+      return false;
+    const next = new URL(response.headers.location, robotsUrl);
+    if (next.origin !== url.origin) return false;
+    robotsUrl = next;
+  }
+  return false;
+}
+
+export async function fetchArticle(
+  input: string,
+  fetchPage: WebFetch = safeFetch,
+): Promise<Article> {
+  let current = canonicalSource(input);
+  const signal = AbortSignal.timeout(12_000);
+  for (let hop = 0; current && hop < 3; hop++) {
+    const url = new URL(current);
+    if (!(await robotsAllowed(url, fetchPage, signal)))
+      throw new ArticleRejected("robots_denied");
+    const response = await fetchPage(current, { signal, maxBytes: 1_000_000 });
     if (
       [301, 302, 303, 307, 308].includes(response.status) &&
       response.headers.location
@@ -93,23 +124,23 @@ export async function fetchArticle(
       response.status !== 200 ||
       !response.headers["content-type"]?.includes("html")
     )
-      return undefined;
+      throw new ArticleRejected("not_html");
     const $ = load(response.body.toString("utf8"));
-    const date =
-      $("meta[property='article:published_time']").attr("content") ??
-      $("time[datetime]").first().attr("datetime");
+    const publishedAt = publicationDate($, "");
     $(
       "script,style,nav,footer,header,form,aside,.comments,[itemprop=author]",
     ).remove();
-    const area = $("main,article,[role=main]").first();
+    $("p,div,br,h1,h2,h3,li").append("\n");
+    const area = $("main,article,[role=main],#content.documentDetail").first();
+    const text = (area.length ? area : $("body"))
+      .text()
+      .replace(/[^\S\n]+/g, " ")
+      .slice(0, 16_000);
     return {
       sourceUrl: current,
-      text: (area.length ? area : $("body"))
-        .text()
-        .replace(/\s+/g, " ")
-        .slice(0, 16_000),
-      publishedAt: date?.match(/^\d{4}-\d{2}-\d{2}/)?.[0],
+      text,
+      publishedAt: publishedAt ?? publicationDate($, text),
     };
   }
-  return undefined;
+  throw new ArticleRejected(current ? "redirect_limit" : "unapproved_source");
 }

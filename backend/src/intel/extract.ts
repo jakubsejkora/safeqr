@@ -3,7 +3,7 @@ import { MODELS } from "../shared/config.js";
 import type { Model } from "../shared/model.js";
 import { redactArticle } from "../shared/privacy.js";
 import type { Article } from "./article.js";
-import { EXTRACT_PROMPT } from "./prompt.v1.js";
+import { EXTRACT_PROMPT } from "./prompt.v2.js";
 import {
   caseId,
   type IntelCase,
@@ -16,9 +16,18 @@ import { officialHost } from "./sources.js";
 const extractionSchema = z.object({
   isQuishing: z.boolean(),
   privacySafe: z.boolean(),
-  titleCs: z.string().max(100),
+  titleCs: z.string().max(100).describe("Title in Czech (cs), never Slovak"),
   titleEn: z.string().max(100),
-  case: researchCaseSchema.omit({ id: true }).nullable(),
+  case: researchCaseSchema
+    .omit({ id: true })
+    .extend({
+      payloadType: researchCaseSchema.shape.payloadType
+        .nullable()
+        .describe(
+          "Use unknown or null when the QR contents are not stated; never guess from the scam type",
+        ),
+    })
+    .nullable(),
 });
 interface FraudCandidate {
   token: string;
@@ -81,20 +90,35 @@ export function prepareArticle(article: Article): {
   );
   // Narrow the model input to relevant statements instead of forwarding a whole public article.
   const sentences = text.match(/[^.!?\n]+(?:[.!?]|$)/g) ?? [];
-  const relevant = sentences.filter((sentence) =>
-    /\bqr\b|quishing|FRAUD_INDICATOR|podvod|phish|falešn|fraud|scam|sticker|nálepk/i.test(
-      sentence,
-    ),
+  const relevant = sentences.filter((_, index) =>
+    sentences
+      .slice(Math.max(0, index - 2), index + 3)
+      .some((neighbor) => /\bqr\b|quishing/i.test(neighbor)),
   );
   return { text: redactArticle(relevant.join(" ").slice(0, 8000)), candidates };
 }
 
+export type RejectionReason =
+  | "no_qr_evidence"
+  | "missing_publication_date"
+  | "unrelated_to_qr_fraud"
+  | "privacy_rejected"
+  | "insufficient_evidence"
+  | "low_confidence"
+  | "simulation";
+export type ExtractionResult =
+  | { accepted: true; item: IntelCase }
+  | { accepted: false; reason: RejectionReason };
+
 export async function extractCase(
   article: Article,
   model: Model,
-): Promise<IntelCase | undefined> {
+): Promise<ExtractionResult> {
   const prepared = prepareArticle(article);
-  if (!/\bqr\b|quishing/i.test(prepared.text)) return undefined;
+  if (!/\bqr\b|quishing/i.test(prepared.text))
+    return { accepted: false, reason: "no_qr_evidence" };
+  if (!article.publishedAt)
+    return { accepted: false, reason: "missing_publication_date" };
   const output = await model.ask({
     model: MODELS.haiku,
     system: EXTRACT_PROMPT,
@@ -110,13 +134,11 @@ export async function extractCase(
       })),
     },
   });
-  if (
-    !output.isQuishing ||
-    !output.privacySafe ||
-    !output.case ||
-    !article.publishedAt
-  )
-    return undefined;
+  if (!output.isQuishing)
+    return { accepted: false, reason: "unrelated_to_qr_fraud" };
+  if (!output.privacySafe)
+    return { accepted: false, reason: "privacy_rejected" };
+  if (!output.case) return { accepted: false, reason: "insufficient_evidence" };
   const indicators = output.case.indicators.flatMap((indicator) => {
     const candidate = prepared.candidates.find(
       (item) => item.token === indicator.value && item.type === indicator.type,
@@ -138,6 +160,7 @@ export async function extractCase(
       : null;
   const record = validateCase({
     ...output.case,
+    payloadType: output.case.payloadType ?? "unknown",
     id: caseId(article.sourceUrl),
     sourceUrl: article.sourceUrl,
     sourcePublishedDate: article.publishedAt,
@@ -149,13 +172,18 @@ export async function extractCase(
     evidenceNote: redactArticle(output.case.evidenceNote),
     lure: redactArticle(output.case.lure),
   });
-  if (record.confidence === "low" || record.recordKind === "simulation")
-    return undefined;
+  if (record.confidence === "low")
+    return { accepted: false, reason: "low_confidence" };
+  if (record.recordKind === "simulation")
+    return { accepted: false, reason: "simulation" };
   return {
-    record,
-    title: {
-      cs: redactArticle(output.titleCs),
-      en: redactArticle(output.titleEn),
+    accepted: true,
+    item: {
+      record,
+      title: {
+        cs: redactArticle(output.titleCs),
+        en: redactArticle(output.titleEn),
+      },
     },
   };
 }

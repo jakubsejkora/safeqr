@@ -83,6 +83,12 @@ describe("intel evidence and privacy", () => {
       redact("https://name:password@example.com/path?token=secret#secret"),
     ).toBe("https://example.com/path");
     expect(redact("Published 2026-10-19.")).toContain("2026-10-19");
+    expect(redactArticle("Oběť potvrdila QR kód.")).toBe(
+      "Oběť potvrdila QR kód.",
+    );
+    expect(redactArticle("Pan Jan Novák potvrdil QR kód.")).not.toContain(
+      "Jan Novák",
+    );
   });
   it("only preserves indicators explicitly labeled fraudulent and never an official help domain", () => {
     const prepared = prepareArticle({
@@ -133,6 +139,8 @@ describe("Apify limits and actor contracts", () => {
     const fetcher: typeof fetch = vi.fn(async (input, init) => {
       const url = String(input);
       calls.push({ url, method: init?.method ?? "GET", body: init?.body });
+      if (url.includes("usage/monthly"))
+        return Response.json({ data: { dailyServiceUsages: [] } });
       if (init?.method === "DELETE") return new Response(null, { status: 204 });
       if (url.includes("/items?"))
         return Response.json([
@@ -152,8 +160,13 @@ describe("Apify limits and actor contracts", () => {
     if (!job) throw new Error();
     const apify = new Apify("test-secret", fetcher);
     expect(await apify.run(job)).toHaveLength(1);
-    expect(calls[0]?.url).toContain("maxTotalChargeUsd=0.2");
+    expect(calls.find((call) => call.method === "POST")?.url).toContain(
+      "maxTotalChargeUsd=0.2",
+    );
     expect(calls.every((call) => !call.url.includes("test-secret"))).toBe(true);
+    expect(calls.find((call) => call.method === "POST")?.url).toContain(
+      "forcePermissionLevel=LIMITED_PERMISSIONS",
+    );
     expect(calls.filter((call) => call.method === "DELETE")).toHaveLength(4);
     await expect(apify.run({ ...job, capUsd: 0.7 })).rejects.toThrow("budget");
   });

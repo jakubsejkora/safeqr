@@ -36,7 +36,7 @@ export function redactArticle(text: string): string {
   return redact(text)
     .replace(/@[\p{L}\p{N}_]+/gu, "[handle]")
     .replace(
-      /\b(?:paní|pan|slečna|poškozený|poškozená|oběť|Mr|Mrs|Ms)\s+[\p{L} -]{2,60}/giu,
+      /\b(?:[Pp]aní|[Pp]an|[Ss]lečna|[Pp]oškozený|[Pp]oškozená|[Oo]běť|Mr|Mrs|Ms)\s+\p{Lu}\p{Ll}+(?:[ -]\p{Lu}\p{Ll}+){0,3}/gu,
       "[person]",
     )
     .replace(/\b[\p{Lu}][\p{Ll}]+(?:\s+[\p{Lu}][\p{Ll}]+){1,3}\b/gu, "[name]")

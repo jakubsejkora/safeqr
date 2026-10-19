@@ -17,14 +17,20 @@ const finished = (run: Run) =>
 /** Runs a bounded public-source job and deletes temporary Apify storage. */
 export class Apify {
   private reserved = 0;
+  private budgetChecked = false;
   constructor(
     private readonly token: string,
     private readonly request = fetch,
+    private readonly budgetUsd = 0.76,
   ) {}
 
   async run(job: ActorJob): Promise<unknown[]> {
-    if (job.capUsd <= 0 || this.reserved + job.capUsd > 0.8)
+    if (job.capUsd <= 0 || this.reserved + job.capUsd > this.budgetUsd)
       throw new Error("Daily collector budget exhausted");
+    if (!this.budgetChecked) {
+      await this.checkDailyBudget();
+      this.budgetChecked = true;
+    }
     this.reserved += job.capUsd;
     const query = new URLSearchParams({
       build: job.build,
@@ -32,6 +38,7 @@ export class Apify {
       memory: String(job.memory),
       maxTotalChargeUsd: String(job.capUsd),
       restartOnError: "false",
+      forcePermissionLevel: "LIMITED_PERMISSIONS",
       waitForFinish: "0",
     });
     let run = runSchema.parse(
@@ -79,6 +86,31 @@ export class Apify {
       }
       await this.purge(run);
     }
+  }
+
+  private async checkDailyBudget(): Promise<void> {
+    const usageSchema = z.object({
+      data: z.object({
+        dailyServiceUsages: z.array(
+          z.object({
+            date: z.string(),
+            totalUsageCreditsUsd: z.number().nonnegative(),
+          }),
+        ),
+      }),
+    });
+    const usage = usageSchema.parse(await this.api("users/me/usage/monthly"));
+    const days = pragueBillingDays(new Date());
+    const spent = usage.data.dailyServiceUsages
+      .filter((entry) => days.includes(entry.date.slice(0, 10)))
+      .reduce((sum, entry) => sum + entry.totalUsageCreditsUsd, 0);
+    logger.info("Public-source daily budget", {
+      observedUsd: spent,
+      reservedUsd: this.budgetUsd,
+    });
+    // Billing is daily UTC and can lag. Include every overlapping day and leave a margin.
+    if (spent + this.budgetUsd > 0.98)
+      throw new Error("Daily collector budget exhausted");
   }
 
   private async purge(run: Run): Promise<void> {
@@ -145,4 +177,16 @@ export class Apify {
     }
     return parsed;
   }
+}
+
+export function pragueBillingDays(now: Date): string[] {
+  const localDay = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Prague",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+  const previous = new Date(`${localDay}T00:00:00Z`);
+  previous.setUTCDate(previous.getUTCDate() - 1);
+  return [previous.toISOString().slice(0, 10), localDay];
 }

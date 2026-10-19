@@ -16,7 +16,7 @@ if (process.argv.includes("--dry-run")) {
 } else {
   try {
     const token =
-      process.env.APIFY_TOKEN ??
+      process.env.APIFY_TOKEN ||
       (
         await new SecretsManagerClient({ region: REGION, maxAttempts: 1 }).send(
           new GetSecretValueCommand({

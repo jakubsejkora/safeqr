@@ -4,6 +4,7 @@ import https from "node:https";
 import { isIP } from "node:net";
 import ipaddr from "ipaddr.js";
 import { LIMITS } from "./config.js";
+import { webTlsContext } from "./tls.js";
 
 export class UnsafeUrl extends Error {}
 export type Resolver = (
@@ -125,25 +126,28 @@ export const safeFetch: WebFetch = async (input, options = {}) => {
   const signal = options.signal ?? AbortSignal.timeout(4000);
   signal.throwIfAborted();
   return new Promise((resolveResponse, reject) => {
-    const request = (url.protocol === "https:" ? https : http).request(
-      {
-        hostname: address,
-        family,
-        servername: isIP(url.hostname.replace(/^\[|\]$/g, ""))
-          ? undefined
-          : url.hostname,
-        port: url.port || (url.protocol === "https:" ? 443 : 80),
-        method: "GET",
-        path: `${url.pathname}${url.search}`,
-        agent: false,
-        signal,
-        headers: {
-          Host: url.host,
-          "User-Agent": "SafeQR/1.0",
-          Accept: "*/*",
-          "Accept-Encoding": "identity",
-        },
+    const requestOptions = {
+      hostname: address,
+      secureContext: webTlsContext,
+      rejectUnauthorized: true,
+      family,
+      servername: isIP(url.hostname.replace(/^\[|\]$/g, ""))
+        ? undefined
+        : url.hostname,
+      port: url.port || (url.protocol === "https:" ? "443" : "80"),
+      method: "GET",
+      path: `${url.pathname}${url.search}`,
+      agent: false as const,
+      signal,
+      headers: {
+        Host: url.host,
+        "User-Agent": "SafeQR/1.0",
+        Accept: "*/*",
+        "Accept-Encoding": "identity",
       },
+    };
+    const request = (url.protocol === "https:" ? https : http).request(
+      requestOptions,
       (response) => {
         const chunks: Buffer[] = [];
         let size = 0;

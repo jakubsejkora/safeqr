@@ -1,33 +1,40 @@
 [
   {
     "id": "policie_cz",
-    "url": "https://policie.gov.cz/zpravodajstvi",
-    "allowedHosts": ["policie.gov.cz"],
-    "pathPrefixes": ["/"]
+    "url": "https://policie.gov.cz/",
+    "allowedHosts": ["policie.gov.cz", "archiv.policie.gov.cz"],
+    "pathPrefixes": ["/"],
+    "articleUrls": [
+      "https://archiv.policie.gov.cz/clanek/legenda-o-vyplaceni-zisku-z-investic.aspx"
+    ]
   },
   {
     "id": "nukib",
     "url": "https://nukib.gov.cz/cs/infoservis/aktuality/",
     "allowedHosts": ["nukib.gov.cz"],
-    "pathPrefixes": ["/cs/infoservis/"]
+    "pathPrefixes": ["/cs/infoservis/"],
+    "articleUrls": []
   },
   {
     "id": "csirt_cz",
     "url": "https://csirt.cz/cs/o-nas/novinky/",
     "allowedHosts": ["csirt.cz", "www.csirt.cz"],
-    "pathPrefixes": ["/cs/o-nas/novinky/"]
+    "pathPrefixes": ["/cs/o-nas/novinky/"],
+    "articleUrls": []
   },
   {
     "id": "air_bank",
     "url": "https://www.airbank.cz/novinky/",
     "allowedHosts": ["www.airbank.cz"],
-    "pathPrefixes": ["/novinky/"]
+    "pathPrefixes": ["/novinky/"],
+    "articleUrls": []
   },
   {
     "id": "fio",
     "url": "https://www.fio.cz/spolecnost-fio/media/aktuality",
     "allowedHosts": ["www.fio.cz"],
-    "pathPrefixes": ["/spolecnost-fio/media/aktuality/"]
+    "pathPrefixes": ["/spolecnost-fio/media/aktuality/"],
+    "articleUrls": []
   },
   {
     "id": "financni_sprava",
@@ -35,18 +42,44 @@
     "allowedHosts": ["financnisprava.gov.cz"],
     "pathPrefixes": [
       "/cs/financni-sprava/media-a-verejnost/tiskove-zpravy-gfr/"
-    ]
+    ],
+    "articleUrls": []
   },
   {
     "id": "ceska_posta",
     "url": "https://www.ceskaposta.cz/cs/o-spolecnosti/bezpecnostni-informace/bezpecnostni-upozorneni",
     "allowedHosts": ["www.ceskaposta.cz"],
-    "pathPrefixes": ["/cs/o-spolecnosti/bezpecnostni-informace/"]
+    "pathPrefixes": ["/cs/o-spolecnosti/bezpecnostni-informace/"],
+    "articleUrls": []
   },
   {
     "id": "apms",
     "url": "https://apms.cz/aktuality/",
     "allowedHosts": ["apms.cz"],
-    "pathPrefixes": ["/"]
+    "pathPrefixes": ["/"],
+    "articleUrls": []
+  },
+  {
+    "id": "spp_sk",
+    "url": "https://www.spp.sk/clanky/",
+    "allowedHosts": ["www.spp.sk"],
+    "pathPrefixes": ["/clanky/"],
+    "articleUrls": [
+      "https://www.spp.sk/clanky/spp-varuje-zakaznikov-pred-podvodnymi-sms-a-e-mailami-o-nedoplatkoch-za-energie/"
+    ]
+  },
+  {
+    "id": "police_saxony",
+    "url": "https://www.medienservice.sachsen.de/medien/news",
+    "allowedHosts": ["www.medienservice.sachsen.de"],
+    "pathPrefixes": ["/medien/news/"],
+    "articleUrls": ["https://www.medienservice.sachsen.de/medien/news/1100457"]
+  },
+  {
+    "id": "bratislava_police",
+    "url": "https://msp.bratislava.sk/",
+    "allowedHosts": ["msp.bratislava.sk"],
+    "pathPrefixes": ["/"],
+    "articleUrls": []
   }
 ]

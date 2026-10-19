@@ -8,8 +8,8 @@ import { BedrockModel, type Model } from "../shared/model.js";
 import { count, logger, measured } from "../shared/observability.js";
 import { claimOnce, QuotaExceeded } from "../shared/storage.js";
 import { Apify } from "./apify.js";
-import { type Article, fetchArticle } from "./article.js";
-import { extractCase } from "./extract.js";
+import { type Article, ArticleRejected, fetchArticle } from "./article.js";
+import { extractCase, type RejectionReason } from "./extract.js";
 import { caseId } from "./schema.js";
 import { type ActorJob, actorJobs, canonicalSource } from "./sources.js";
 import { DynamoIntelStore, type IntelStore } from "./store.js";
@@ -20,12 +20,27 @@ interface CollectorDependencies {
   model: Model;
   claim(): Promise<void>;
   article?: typeof fetchArticle;
+  jobs?: ActorJob[];
+}
+type DecisionReason =
+  | RejectionReason
+  | ArticleRejected["reason"]
+  | "accepted"
+  | "duplicate"
+  | "model_budget"
+  | "fetch_failed"
+  | "extraction_failed";
+interface Decision {
+  sourceUrl: string;
+  reason: DecisionReason;
 }
 export interface CollectionResult {
   candidates: number;
   stored: number;
   failed: number;
   skipped: boolean;
+  decisions: Decision[];
+  actors: { actor: string; items: number; status: "completed" | "failed" }[];
 }
 
 function candidates(
@@ -86,6 +101,8 @@ export async function collect(
     stored: 0,
     failed: 0,
     skipped: false,
+    decisions: [],
+    actors: [],
   };
   try {
     await deps.claim();
@@ -95,72 +112,123 @@ export async function collect(
   }
   let attempts = 0;
   const seen = new Set<string>();
-  for (const job of actorJobs()) {
+  const decision = (sourceUrl: string, reason: DecisionReason) => {
+    result.decisions.push({ sourceUrl, reason });
+    logger.info("Public-source decision", {
+      sourceId: caseId(sourceUrl),
+      reason,
+    });
+  };
+  const processArticle = async (article: Article) => {
+    result.candidates++;
+    if (await deps.intel.has(caseId(article.sourceUrl))) {
+      decision(article.sourceUrl, "duplicate");
+      return;
+    }
+    if (!/\bqr\b|quishing/i.test(article.text)) {
+      decision(article.sourceUrl, "no_qr_evidence");
+      return;
+    }
+    if (!article.publishedAt) {
+      decision(article.sourceUrl, "missing_publication_date");
+      return;
+    }
+    if (attempts >= 8) {
+      decision(article.sourceUrl, "model_budget");
+      return;
+    }
+    attempts++;
+    try {
+      const extraction = await extractCase(article, deps.model);
+      if (extraction.accepted) {
+        await deps.intel.put(extraction.item);
+        result.stored++;
+        decision(article.sourceUrl, "accepted");
+      } else decision(article.sourceUrl, extraction.reason);
+    } catch (error) {
+      result.failed++;
+      decision(article.sourceUrl, "extraction_failed");
+      logger.warn("Public-source extraction failed", {
+        errorType: error instanceof Error ? error.name : "Error",
+        validation:
+          error instanceof z.ZodError
+            ? error.issues.map((issue) => ({
+                code: issue.code,
+                path: issue.path,
+              }))
+            : undefined,
+      });
+    }
+  };
+  for (const job of deps.jobs ?? actorJobs()) {
     let discovered: ReturnType<typeof candidates>;
     try {
-      discovered = candidates(
-        await deps.apify.run(job),
-        job.actor.includes("facebook"),
-      );
+      const items = await deps.apify.run(job);
+      discovered = candidates(items, job.actor.includes("facebook"));
+      result.actors.push({
+        actor: job.actor,
+        items: items.length,
+        status: "completed",
+      });
     } catch {
       result.failed++;
+      result.actors.push({ actor: job.actor, items: 0, status: "failed" });
       logger.warn("Collection operation failed", {
         stage: "actor",
         actor: job.actor,
       });
       continue;
     }
-    const articles: Article[] = [...discovered.posts];
     for (const url of discovered.urls.slice(0, 12)) {
-      if (seen.has(url) || (await deps.intel.has(caseId(url)))) continue;
+      if (seen.has(url) || (await deps.intel.has(caseId(url)))) {
+        decision(url, "duplicate");
+        continue;
+      }
       seen.add(url);
       try {
-        const article = await (deps.article ?? fetchArticle)(url);
-        if (article) articles.push(article);
-      } catch {
-        result.failed++;
-        logger.warn("Collection operation failed", {
-          stage: "article",
-          actor: job.actor,
-        });
-      }
-    }
-    for (const article of articles) {
-      result.candidates++;
-      if (attempts >= 8 || (await deps.intel.has(caseId(article.sourceUrl))))
-        continue;
-      if (!/\bqr\b|quishing/i.test(article.text)) continue;
-      attempts++;
-      try {
-        const item = await extractCase(article, deps.model);
-        if (item) {
-          await deps.intel.put(item);
-          result.stored++;
+        await processArticle(await (deps.article ?? fetchArticle)(url));
+      } catch (error) {
+        if (error instanceof ArticleRejected) decision(url, error.reason);
+        else {
+          result.failed++;
+          decision(url, "fetch_failed");
         }
-      } catch {
-        result.failed++;
-        logger.warn("Collection operation failed", {
-          stage: "extraction",
-          actor: job.actor,
-        });
       }
     }
+    for (const post of discovered.posts) await processArticle(post);
   }
   return result;
 }
 
-export function claimCollection(): Promise<void> {
+export function claimCollection(actor?: string): Promise<void> {
   const day = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Prague",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
   }).format(new Date());
-  return claimOnce(env("CHECKS_TABLE"), `collector#${day}`);
+  return claimOnce(
+    env("CHECKS_TABLE"),
+    `collector#${day}${actor ? `#${actor}` : ""}`,
+  );
 }
 
-export const handler = () =>
+const invocationSchema = z
+  .object({
+    actor: z
+      .enum([
+        "apify/cheerio-scraper",
+        "apify/google-search-scraper",
+        "apify/facebook-posts-scraper",
+      ])
+      .optional(),
+  })
+  .strict();
+
+export const handler = (event: unknown = {}) =>
   measured("collector", async () => {
+    const { actor } = invocationSchema.parse(event);
+    const jobs = actorJobs().filter((job) => !actor || job.actor === actor);
     const secrets = new SecretsManagerClient({
       region: REGION,
       maxAttempts: 1,
@@ -171,10 +239,15 @@ export const handler = () =>
     const token = secret.SecretString;
     if (!token) throw new Error("Collector credentials unavailable");
     const result = await collect({
-      apify: new Apify(token),
+      apify: new Apify(
+        token,
+        fetch,
+        jobs.reduce((sum, job) => sum + job.capUsd, 0),
+      ),
       intel: new DynamoIntelStore(env("INTEL_TABLE")),
       model: new BedrockModel(8),
-      claim: claimCollection,
+      claim: () => claimCollection(actor),
+      jobs,
     });
     count(result.failed ? "CollectionPartial" : "CollectionCompleted");
     return result;

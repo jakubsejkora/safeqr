@@ -30,7 +30,7 @@ const pageFunction = String.raw`async function pageFunction(context) {
   const source = customData.sources.find(s => s.allowedHosts.includes(url.hostname));
   if (!source || url.protocol !== 'https:') return null;
   $('script, style, nav, footer, header, form, aside, [role="navigation"]').remove();
-  const area = $('main, article, [role="main"]').first();
+  const area = $('main, article, [role="main"], #content.documentDetail').first();
   const root = area.length ? area : $('body');
   if (request.userData.seed) {
     const links = new Set();
@@ -39,7 +39,7 @@ const pageFunction = String.raw`async function pageFunction(context) {
         const u = new URL($(el).attr('href'), url.href);
         if (u.protocol !== 'https:' || !source.allowedHosts.includes(u.hostname)) return;
         if (!source.pathPrefixes.some(p => u.pathname.startsWith(p))) return;
-        if (!/qr|quishing|podvod|phish|fale[sš]/i.test($(el).text() + u.pathname)) return;
+        if (!/\bqr\b|quishing|qr[-_ ]?k[oó]|qr[-_ ]?code/i.test($(el).text() + u.pathname)) return;
         if (/\.(pdf|zip|jpg|png|docx?)$/i.test(u.pathname)) return;
         u.search = ''; u.hash = '';
         links.add(u.href);
@@ -59,20 +59,28 @@ export function actorJobs(): ActorJob[] {
       capUsd: 0.2,
       memory: 1024,
       input: {
-        startUrls: sources.map((source) => ({
-          url: source.url,
-          userData: { seed: true },
-        })),
+        startUrls: [
+          ...sources.flatMap((source) =>
+            source.articleUrls.map((url) => ({
+              url,
+              userData: { seed: false },
+            })),
+          ),
+          ...sources.map((source) => ({
+            url: source.url,
+            userData: { seed: true },
+          })),
+        ],
         respectRobotsTxtFile: true,
         linkSelector: "",
         pageFunction,
-        proxyConfiguration: { useApifyProxy: false },
+        proxyConfiguration: { useApifyProxy: true },
         maxPagesPerCrawl: 24,
         maxResultsPerCrawl: 24,
         maxCrawlingDepth: 1,
-        maxConcurrency: 1,
+        maxConcurrency: 2,
         maxRequestRetries: 0,
-        pageLoadTimeoutSecs: 12,
+        pageLoadTimeoutSecs: 8,
         pageFunctionTimeoutSecs: 5,
         debugLog: false,
         customData: { sources },
@@ -85,7 +93,7 @@ export function actorJobs(): ActorJob[] {
       memory: 1024,
       input: {
         queries:
-          '"QR kód" podvod site:policie.gov.cz\n"falešné QR" site:financnisprava.gov.cz\nquishing Czech parking scam\nQR phishing official warning',
+          '"QR" podvod (site:policie.gov.cz OR site:archiv.policie.gov.cz OR site:financnisprava.gov.cz)\n"QR" podvod (site:msp.bratislava.sk OR site:spp.sk)\n"QR" Betrug site:medienservice.sachsen.de',
         maxPagesPerQuery: 1,
         countryCode: "cz",
         languageCode: "cs",
