@@ -53,7 +53,7 @@ struct Localizer: Sendable {
         return isCzech && currency == "CZK" ? text("amount.czk", number) : "\(currency) \(number)"
     }
 
-    func date(_ value: Date, allDay: Bool = false, timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) -> String {
+    func date(_ value: Date, allDay: Bool = false, timeZone: TimeZone = TimeZone.gmt) -> String {
         let formatter = DateFormatter()
         formatter.locale = locale
         formatter.timeZone = timeZone
@@ -64,7 +64,7 @@ struct Localizer: Sendable {
 
     func dueDate(_ parts: DateComponents) -> String? {
         var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        calendar.timeZone = TimeZone.gmt
         return calendar.date(from: parts).map { date($0, allDay: true) }
     }
 }

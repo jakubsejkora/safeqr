@@ -26,6 +26,13 @@ struct AboutView: View {
                 NavigationLink(L10n.text("Open-source notices")) {
                     List {
                         Text(L10n.text("Safe QR uses Apple system frameworks and the local SafeQRKit package. No third-party libraries are bundled in the app target."))
+                        Text(L10n.text("Domain highlighting uses the Public Suffix List, distributed under the Mozilla Public License 2.0."))
+                        if let url = URL(string: "https://publicsuffix.org/list/") {
+                            ConfirmedActionButton(action: sourceAction(title: "Public Suffix List", url: url))
+                        }
+                        if let url = URL(string: "https://mozilla.org/MPL/2.0/") {
+                            ConfirmedActionButton(action: sourceAction(title: "Mozilla Public License 2.0", url: url))
+                        }
                         if let repositoryURL {
                             ConfirmedActionButton(action: sourceAction(title: L10n.text("Source code and licences"), url: repositoryURL))
                         }

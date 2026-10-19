@@ -5,7 +5,7 @@ import SafeQRKit
 
 enum CaptureEvent: Sendable {
     case ready(hasUltraWide: Bool, hasTorch: Bool)
-    case detected(ScannedCode, ScenePhoto?)
+    case frame([CameraObservation], thumbnail: Data?)
     case torchChanged(Bool)
     case unavailable
 }
@@ -26,7 +26,6 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
     private var lastUltraTime: CMTime = .zero
     private var lastScanTime: CMTime = .zero
     private var configured = false
-    private var frozen = false
 
     init(onEvent: @escaping @MainActor @Sendable (CaptureEvent) -> Void) {
         self.onEvent = onEvent
@@ -46,7 +45,6 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
         queue.async { [self] in
             do {
                 if !configured { try configure() }
-                frozen = false
                 if !session.isRunning { session.startRunning() }
             } catch {
                 emit(.unavailable)
@@ -139,7 +137,7 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer,
                        from connection: AVCaptureConnection) {
-        guard !frozen, let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let time = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
         if output === ultraOutput {
             latestUltra = buffer
@@ -151,22 +149,29 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
         let request = BarcodeRequest.make()
         // A failed frame is retried on the next capture.
         try? VNImageRequestHandler(cvPixelBuffer: buffer).perform([request])
-        guard let observation = request.results?.first(where: { $0.payloadStringValue != nil }),
-              let raw = observation.payloadStringValue else { return }
-        frozen = true
-        let code = ScannedCode(raw: raw, symbology: PhotoScanner.symbology(observation.symbology),
-                               bounds: PhotoScanner.bounds(observation.boundingBox))
         let useUltra = latestUltra != nil && abs(CMTimeGetSeconds(time - lastUltraTime)) < 0.8
         let sceneBuffer = useUltra ? (latestUltra ?? buffer) : buffer
-        let image = CIImage(cvPixelBuffer: sceneBuffer)
-        let scale = min(1, 1600 / max(image.extent.width, image.extent.height))
+        let sceneImage = CIImage(cvPixelBuffer: sceneBuffer)
+        let observations = (request.results ?? []).filter { $0.payloadStringValue != nil }
+        let jpeg = observations.isEmpty ? nil : encode(sceneImage, longestSide: 1600)
+        let codes = observations.compactMap { observation -> CameraObservation? in
+            guard let raw = observation.payloadStringValue else { return nil }
+            let code = ScannedCode(raw: raw, symbology: PhotoScanner.symbology(observation.symbology),
+                                   bounds: PhotoScanner.bounds(observation.boundingBox))
+            let ultraBounds = useUltra ? mappedBounds(code.bounds) : nil
+            let scene = jpeg.map { ScenePhoto(jpeg: $0, source: useUltra ? .ultraWideCamera : .camera,
+                                              bounds: useUltra ? ultraBounds : code.bounds) }
+            return CameraObservation(code: code, scene: scene,
+                                     frameSize: CGSize(width: CVPixelBufferGetWidth(buffer), height: CVPixelBufferGetHeight(buffer)),
+                                     ultraBounds: ultraBounds, ultraSize: sceneImage.extent.size)
+        }
+        emit(.frame(codes, thumbnail: useUltra ? encode(sceneImage, longestSide: 320) : nil))
+    }
+
+    private func encode(_ image: CIImage, longestSide: CGFloat) -> Data? {
+        let scale = min(1, longestSide / max(image.extent.width, image.extent.height))
         let scaled = image.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-        let jpeg = context.createCGImage(scaled, from: scaled.extent).flatMap(PhotoScanner.jpeg)
-        let bounds = useUltra ? mappedBounds(code.bounds) : code.bounds
-        let scene = jpeg.map { ScenePhoto(jpeg: $0, source: useUltra ? .ultraWideCamera : .camera, bounds: bounds) }
-        emit(.detected(code, scene))
-        session.stopRunning()
-        latestUltra = nil
+        return context.createCGImage(scaled, from: scaled.extent).flatMap(PhotoScanner.jpeg)
     }
 
     private func mappedBounds(_ bounds: CodeBounds) -> CodeBounds? {

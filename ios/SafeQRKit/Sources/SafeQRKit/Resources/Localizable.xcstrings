@@ -2251,13 +2251,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The code repeats important fields, so another app may read it differently."
+            "value": "The code contains unclear instructions. Another app may read them differently."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kód opakuje důležité údaje, takže jej jiná aplikace může přečíst jinak."
+            "value": "Kód obsahuje nejednoznačné pokyny. Jiná aplikace je může přečíst jinak."
           }
         }
       }
@@ -3209,7 +3209,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kód obsahuje přihlašovací tajemství"
+            "value": "Kód obsahuje tajný přihlašovací klíč"
           }
         }
       }
@@ -6661,6 +6661,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ochrana heslem (WPA)"
+          }
+        }
+      }
+    },
+    "fact.hiddenRecipient": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden recipient in the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skrytý příjemce v kódu"
           }
         }
       }

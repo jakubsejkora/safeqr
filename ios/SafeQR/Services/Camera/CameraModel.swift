@@ -1,6 +1,7 @@
 import AVFoundation
 import Observation
 import SwiftUI
+import SafeQRKit
 
 @MainActor @Observable
 final class CameraModel {
@@ -10,7 +11,10 @@ final class CameraModel {
     private(set) var hasTorch = false
     var showsUltraWide = false
     private(set) var torchEnabled = false
-    var onDetection: ((ScannedCode, ScenePhoto?) -> Void)?
+    private(set) var codes: [TrackedCode] = []
+    private(set) var sceneContainsSecrets = false
+    private(set) var thumbnail: UIImage?
+    private var lastSeen: [UUID: Date] = [:]
     private(set) var capture: CameraCapture?
 
     func start(requestPermission: Bool = false) async {
@@ -34,9 +38,9 @@ final class CameraModel {
                     hasUltraWide = ultra
                     hasTorch = torch
                     state = .ready
-                case .detected(let code, let scene):
-                    UINotificationFeedbackGenerator().notificationOccurred(.success)
-                    onDetection?(code, scene)
+                case .frame(let observations, let jpeg):
+                    update(observations)
+                    if let jpeg { thumbnail = UIImage(data: jpeg) }
                 case .unavailable:
                     state = .unavailable
                 case .torchChanged(let enabled):
@@ -46,6 +50,37 @@ final class CameraModel {
         }
         capture?.start()
         #endif
+    }
+
+    private func update(_ observations: [CameraObservation]) {
+        var remaining = codes
+        var updated: [TrackedCode] = []
+        for observation in observations {
+            let match = remaining.enumerated().filter { $0.element.observation.code.raw == observation.code.raw }
+                .min { distance($0.element.bounds, observation.code.bounds) < distance($1.element.bounds, observation.code.bounds) }
+            if let match {
+                var tracked = remaining.remove(at: match.offset)
+                tracked.bounds = PreviewGeometry.smooth(observation.code.bounds, from: tracked.bounds)
+                if let next = observation.ultraBounds, let previous = tracked.ultraBounds {
+                    tracked.ultraBounds = PreviewGeometry.smooth(next, from: previous)
+                } else { tracked.ultraBounds = observation.ultraBounds }
+                tracked.observation = observation
+                updated.append(tracked)
+            } else {
+                if updated.count < 3 { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
+                updated.append(TrackedCode(observation: observation))
+            }
+        }
+        for code in updated { lastSeen[code.id] = Date() }
+        // Brief occlusion should not make the frame or its verdict flicker.
+        updated += remaining.filter { Date().timeIntervalSince(lastSeen[$0.id] ?? .distantPast) < 0.65 }
+        sceneContainsSecrets = updated.contains { $0.analysis.containsSecrets }
+        codes = Array(updated.prefix(3))
+        lastSeen = lastSeen.filter { id, _ in codes.contains { $0.id == id } }
+    }
+
+    private func distance(_ lhs: CodeBounds, _ rhs: CodeBounds) -> Double {
+        hypot(lhs.x - rhs.x, lhs.y - rhs.y)
     }
 
     func stop() {

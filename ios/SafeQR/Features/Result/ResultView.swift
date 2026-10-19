@@ -5,151 +5,150 @@ struct ResultView: View {
     @Environment(AppServices.self) private var services
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.dynamicTypeSize) private var typeSize
     @Bindable var model: ResultModel
+    var compact = false
+    @Environment(\.dynamicTypeSize) private var typeSize
     @State private var selectedAction: CodeAction?
+    @State private var confirmedAction: CodeAction?
     @State private var handler = ActionHandler()
+    @State private var allReasons = false
+    @State private var initialFeedback = false
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    verdictHeader
-                    SectionCard(title: L10n.text("What's inside"), symbol: model.analysis.content.kind.symbol) {
-                        Text(model.analysis.content.title).font(.title3.weight(.semibold))
-                        ForEach(model.analysis.content.facts) { fact in
-                            FactRow(fact: fact)
+            ScrollViewReader { scroll in
+                ScrollView {
+                    VStack(alignment: .leading, spacing: compact ? 14 : 26) {
+                        ResultHeader(model: model, compact: compact)
+                        if model.checking || !model.steps.isEmpty {
+                            CloudProgressView(steps: model.steps, checking: model.checking, elapsedSeconds: model.elapsedSeconds,
+                                              completed: model.verdict != nil)
                         }
-                    }
-                    if model.checking || !model.steps.isEmpty {
-                        CloudProgressView(steps: model.steps, checking: model.checking)
-                    }
-                    SectionCard(title: L10n.text("Why"), symbol: "text.bubble") {
-                        if model.assessment.findings.isEmpty {
-                            Text(L10n.text("No warning signs were found in the code itself. This does not prove it is safe."))
+                        PayloadView(content: model.analysis.content, compact: compact)
+                        if let link = model.verdict?.link {
+                            LinkJourneyView(link: link, original: model.analysis.raw).id("journey")
                         }
-                        ForEach(model.assessment.findings) { finding in
-                            VStack(alignment: .leading, spacing: 6) {
-                                Label(finding.title, systemImage: finding.severity == .info ? "info.circle" : "exclamationmark.triangle")
-                                    .font(.body.weight(.semibold))
-                                Text(finding.detail).foregroundStyle(.secondary)
+                        reasons
+                        DetailSection(title: L10n.text("If you continue")) {
+                            if model.assessment.consequences.isEmpty {
+                                Text(L10n.text("Nothing happens until you choose an action and confirm it."))
                             }
-                            .accessibilityElement(children: .combine)
+                            ForEach(Array(model.assessment.consequences.enumerated()), id: \.offset) { _, item in
+                                Text(item).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
+                        if let verdict = model.verdict { CloudEvidenceView(verdict: verdict, photo: model.scene) }
+                        DetailSection(title: L10n.text("What we couldn't check")) {
+                            ForEach(Array(model.limitations.enumerated()), id: \.offset) { _, item in
+                                Text(item).font(.footnote).foregroundStyle(.secondary)
+                            }
+                            Text(L10n.text("A low score is not a guarantee. Check who you are paying or sharing information with."))
+                                .font(.footnote).foregroundStyle(.secondary)
+                            if let models = model.verdict?.models, !models.isEmpty {
+                                Text(L10n.format("AI-assisted check: %@", models.joined(separator: ", ")))
+                                    .font(.caption2).foregroundStyle(.secondary).textSelection(.enabled)
+                            }
                         }
                     }
-                    SectionCard(title: L10n.text("If you continue"), symbol: "arrow.up.forward.app") {
-                        if model.assessment.consequences.isEmpty {
-                            Text(L10n.text("Nothing happens until you choose an action and confirm it."))
-                        }
-                        ForEach(Array(model.assessment.consequences.enumerated()), id: \.offset) { _, item in
-                            Label(item, systemImage: "arrow.right").fixedSize(horizontal: false, vertical: true)
-                        }
-                    }
-                    if let verdict = model.verdict { CloudEvidenceView(verdict: verdict) }
-                    SectionCard(title: L10n.text("What we couldn't check"), symbol: "eye.slash") {
-                        ForEach(Array(model.limitations.enumerated()), id: \.offset) { _, item in Text(item) }
-                        Text(L10n.text("A low score is not a guarantee. Check who you are paying or sharing information with."))
-                            .foregroundStyle(.secondary)
-                    }
-                    actions
-                    Text(L10n.text("You stay in control."))
-                        .font(.footnote).foregroundStyle(.secondary).padding(.bottom, 16)
+                    .padding(.horizontal, 24).padding(.top, 8).padding(.bottom, 24)
+                    .frame(maxWidth: 680).frame(maxWidth: .infinity)
                 }
-                .padding(20)
-                .frame(maxWidth: 680)
-                .frame(maxWidth: .infinity)
+                #if DEBUG
+                .onChange(of: model.verdict != nil) { _, ready in
+                    guard ready else { return }
+                    for section in ["journey", "sandbox", "scene"] where ProcessInfo.processInfo.arguments.contains("--" + section) {
+                        scroll.scrollTo(section, anchor: .top)
+                    }
+                }
+                #endif
             }
-            .background(AppStyle.canvas)
-            .navigationTitle(L10n.text("Your result"))
+            .background(Color(uiColor: .systemBackground))
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                ResultActionBar(actions: model.analysis.actions, level: model.assessment.level,
+                                compact: compact || typeSize.isAccessibilitySize, goBack: { dismiss() }, perform: perform)
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                if compact || typeSize.isAccessibilitySize {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Menu {
+                            ForEach(model.analysis.actions.filter { !$0.isHandoff }) { action in
+                                Button(action.title) { perform(action) }
+                            }
+                        } label: { Label(L10n.text("Copy or share"), systemImage: "ellipsis") }
+                    }
+                }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(L10n.text("Done")) { dismiss() }.accessibilityIdentifier("result-done")
+                    Button(L10n.text("Done"), systemImage: "xmark") { dismiss() }
+                        .labelStyle(.iconOnly).accessibilityIdentifier("result-done")
                 }
             }
         }
-        .animation(reduceMotion ? nil : .easeInOut(duration: 0.35), value: model.assessment.score)
-        .sheet(item: $selectedAction) { action in
-            ConfirmationSheet(action: action, level: model.assessment.level) {
-                Task { await handler.perform(action, payload: model.analysis.content.payload) }
+        .fontDesign(.rounded)
+        .onAppear { initialFeedback = true }
+        .sensoryFeedback(model.assessment.level.feedback, trigger: initialFeedback)
+        .animation(reduceMotion ? nil : .spring(duration: 0.55), value: model.assessment.score)
+        .sensoryFeedback(trigger: model.checking) { old, new in
+            guard old && !new && model.verdict != nil else { return nil }
+            return model.assessment.level.feedback
+        }
+        .sheet(item: $selectedAction, onDismiss: finishConfirmation) { action in
+            ConfirmationSheet(action: action, level: model.assessment.level, reason: model.assessment.findings.first?.title) {
+                confirmedAction = action
             }
         }
         .sheet(item: $handler.presentation) { ActionPresentationView(presentation: $0) }
         .alert(L10n.text("Safe QR"), isPresented: Binding(get: { handler.message != nil }, set: { if !$0 { handler.message = nil } })) {
             Button(L10n.text("OK"), role: .cancel) { handler.message = nil }
         } message: { Text(handler.message ?? "") }
+        #if DEBUG
+        .task {
+            if DebugLaunch.screen != nil, ProcessInfo.processInfo.arguments.contains("--confirmation") {
+                try? await Task.sleep(for: .milliseconds(500))
+                selectedAction = model.analysis.actions.first(where: \.isHandoff)
+            }
+        }
+        #endif
         .task(id: services.preferences.consent) {
             await model.run(using: services.checker, consent: services.preferences.consent)
             services.history?.record(model.analysis, assessment: model.assessment, enabled: services.preferences.historyEnabled)
         }
     }
 
-    private var verdictHeader: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            let layout = typeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 16)) : AnyLayout(HStackLayout(alignment: .center, spacing: 16))
-            layout {
-                VStack(alignment: .leading, spacing: 8) {
-                    Label(model.assessment.level.title, systemImage: model.assessment.level.symbol)
-                        .font(.title.bold())
-                        .foregroundStyle(model.assessment.level.color)
-                        .accessibilityAddTraits(.isHeader)
-                    Text(model.verdict == nil ? L10n.text("Checked on this iPhone") : L10n.text("Device + deep check"))
-                        .font(.subheadline.weight(.medium)).foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                ScoreRing(assessment: model.assessment)
+    private var reasons: some View {
+        DetailSection(title: L10n.text("Why")) {
+            if model.assessment.findings.isEmpty {
+                Text(L10n.text("No warning signs were found in the code itself. This does not prove it is safe."))
+                    .foregroundStyle(.secondary)
             }
-            Text(model.headline)
-                .font(.title3)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding(22)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(model.assessment.level.color.opacity(0.09), in: RoundedRectangle(cornerRadius: 28))
-        .accessibilityIdentifier("verdict-header")
-    }
-
-    private var actions: some View {
-        VStack(spacing: 12) {
-            ForEach(model.analysis.actions) { action in
-                if action.isPrimary {
-                    actionButton(action).buttonStyle(.glassProminent)
-                        .foregroundStyle(AppStyle.onAccent)
-                        .tint(action.isHandoff && model.assessment.level != .safe ? model.assessment.level.color : AppStyle.accent)
-                } else {
-                    actionButton(action).buttonStyle(.glass)
-                }
+            ForEach(allReasons ? model.assessment.findings : Array(model.assessment.findings.prefix(3))) { finding in
+                HStack(alignment: .top, spacing: 12) {
+                    Image(systemName: finding.severity == .danger ? "exclamationmark.octagon.fill" : finding.severity == .warning ? "exclamationmark.triangle.fill" : "info.circle")
+                        .foregroundStyle(finding.severity == .danger ? RiskLevel.danger.color : finding.severity == .warning ? RiskLevel.caution.color : .secondary)
+                        .frame(width: 20).accessibilityHidden(true)
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(finding.title).fontWeight(.semibold)
+                        Text(finding.detail).foregroundStyle(.secondary)
+                    }
+                }.accessibilityElement(children: .combine)
+            }
+            if !allReasons, model.assessment.findings.count > 3 {
+                Button(L10n.format("More reasons (%lld)", model.assessment.findings.count - 3)) { allReasons = true }
+                    .frame(minHeight: 44)
             }
         }
-        .padding(.top, 8)
     }
 
-    private func actionButton(_ action: CodeAction) -> some View {
-        Button(role: action.isHandoff && (model.assessment.level != .safe || action.requiredConfirmation.isRisky) ? .destructive : nil) {
-            if action.isHandoff { selectedAction = action }
-            else { Task { await handler.perform(action, payload: model.analysis.content.payload) } }
-        } label: {
-            Text(action.title).font(.headline).frame(maxWidth: .infinity, minHeight: 36)
-        }
+    private func finishConfirmation() {
+        guard let action = confirmedAction else { return }
+        confirmedAction = nil
+        // Contact and calendar editors need the confirmation's presentation to finish first.
+        Task { await handler.perform(action, payload: model.analysis.content.payload) }
+    }
+
+    private func perform(_ action: CodeAction) {
+        if action.isHandoff { selectedAction = action }
+        else { Task { await handler.perform(action, payload: model.analysis.content.payload) } }
     }
 }
 
-private struct ScoreRing: View {
-    let assessment: RiskAssessment
-    @ScaledMetric(relativeTo: .title) private var diameter = 86
-    var body: some View {
-        ZStack {
-            Circle().stroke(assessment.level.color.opacity(0.14), lineWidth: 6)
-            Circle().trim(from: 0, to: max(0.02, Double(assessment.score) / 100))
-                .stroke(assessment.level.color, style: StrokeStyle(lineWidth: 6, lineCap: .round))
-                .rotationEffect(.degrees(-90))
-            VStack(spacing: 0) {
-                Text(assessment.score.formatted()).font(.system(.title, design: .rounded, weight: .bold)).monospacedDigit()
-                Text("/ 100").font(.caption).foregroundStyle(.secondary)
-            }
-        }
-        .frame(width: diameter, height: diameter)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(L10n.format("Risk score: %lld out of 100", assessment.score))
-    }
-}

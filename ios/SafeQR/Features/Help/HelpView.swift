@@ -8,19 +8,9 @@ struct HelpView: View {
     var body: some View {
         NavigationStack(path: $path) {
             List {
-                Section {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Image(systemName: "lifepreserver").font(.system(size: 36)).foregroundStyle(AppStyle.accent).accessibilityHidden(true)
-                        Text(L10n.text("A moment to check.\nSomeone to help.")).font(.title2.bold())
-                        Text(L10n.text("Simple steps to stay safe, and clear help if something has gone wrong."))
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.vertical, 12)
-                }
                 if services.guides.loadFailed {
                     Text(L10n.text("The guides could not be loaded. If money is at risk, call your bank using the number on your card."))
                 }
-                guideSection("basics", title: L10n.text("Start here"))
                 Section(L10n.text("Need help now?")) {
                     NavigationLink { BankHotlinesView() } label: {
                         Label(L10n.text("Call your bank"), systemImage: "phone.arrow.up.right")
@@ -28,10 +18,16 @@ struct HelpView: View {
                     NavigationLink { GuideListView(category: "recovery", title: L10n.text("Scam recovery")) } label: {
                         Label(L10n.text("Something has gone wrong"), systemImage: "lifepreserver")
                     }
+                    if let card = services.guides.guides.first(where: { $0.id == "recovery-2" }) {
+                        NavigationLink(value: card) { Text(L10n.text("Block a card")) }
+                    }
+                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Czech Police"), number: "158"))
+                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Emergency services"), number: "112"))
                     if let report = services.guides.guides.first(where: { $0.id == "report" }) {
                         NavigationLink(value: report) { Label(report.title.value, systemImage: report.symbol) }
                     }
                 }
+                guideSection("basics", title: L10n.text("Start here"))
                 Section(L10n.text("Prevent unwanted charges")) {
                     NavigationLink { GuideListView(category: "operator", title: L10n.text("Operator protection")) } label: {
                         Label(L10n.text("Operator protection"), systemImage: "iphone.slash")
@@ -42,6 +38,7 @@ struct HelpView: View {
                         .font(.footnote).foregroundStyle(.secondary)
                 }
             }
+            .listStyle(.insetGrouped)
             .navigationTitle(L10n.text("Help"))
             .navigationDestination(for: SafetyGuide.self) { GuideDetailView(guide: $0) }
             .task {
@@ -84,17 +81,14 @@ struct GuideDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                Image(systemName: guide.symbol).font(.system(size: 42, weight: .medium))
-                    .foregroundStyle(AppStyle.accent).accessibilityHidden(true)
                 Text(guide.title.value).font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
                 ForEach(Array(guide.blocks.enumerated()), id: \.offset) { index, block in
                     HStack(alignment: .top, spacing: 16) {
                         if block.numbered {
                             let number = guide.blocks.prefix(index + 1).filter(\.numbered).count
-                            Text(number.formatted()).font(.headline).foregroundStyle(AppStyle.accent)
-                                .frame(minWidth: 28, minHeight: 28)
-                                .background(AppStyle.accent.opacity(0.1), in: Circle())
-                                .accessibilityHidden(true)
+                            Text(number.formatted()).font(.system(.largeTitle, design: .rounded, weight: .semibold)).monospacedDigit()
+                                .foregroundStyle(.secondary).frame(minWidth: 36, alignment: .leading)
+                                .accessibilityLabel(L10n.format("Step %lld", number))
                         }
                         Text((try? AttributedString(markdown: block.text.value)) ?? AttributedString(block.text.value))
                             .font(.body).lineSpacing(4).fixedSize(horizontal: false, vertical: true)
@@ -111,7 +105,7 @@ struct GuideDetailView: View {
                         .foregroundStyle(AppStyle.onAccent).controlSize(.large)
                 }
                 if !guide.sources.isEmpty {
-                    SectionCard(title: L10n.text("Official sources"), symbol: "checkmark.seal") {
+                    DetailSection(title: L10n.text("Official sources")) {
                         Text(L10n.text("Reviewed on 19 October 2026")).font(.footnote).foregroundStyle(.secondary)
                         ForEach(guide.sources) { source in
                             ConfirmedActionButton(action: sourceAction(title: source.title.value, url: source.url))
@@ -154,8 +148,9 @@ struct BankHotlinesView: View {
 }
 
 func phoneAction(name: String, number: String) -> CodeAction {
-    CodeAction(id: number, kind: .call(phoneNumber: number), title: L10n.format("Call %@", number),
+    CodeAction(id: number, kind: .call(phoneNumber: number), title: L10n.format("Call %@ · %@", name, number),
                confirmation: Confirmation(title: L10n.format("Call %@?", name),
-                                          message: L10n.format("Your iPhone will call %@. Your operator’s usual call charges may apply.", number),
+                                          message: L10n.format(["158", "112"].contains(number) ? "Your iPhone will call %@."
+                                                               : "Your iPhone will call %@. Your operator’s usual call charges may apply.", number),
                                           confirmTitle: L10n.text("Call"), isRisky: false))
 }

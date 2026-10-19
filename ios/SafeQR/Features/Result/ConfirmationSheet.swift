@@ -3,71 +3,80 @@ import SafeQRKit
 
 struct ConfirmationSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.dynamicTypeSize) private var typeSize
     let action: CodeAction
     let level: RiskLevel
+    var reason: String? = nil
     let onConfirm: () -> Void
-    @State private var secondDecision = false
+    @State private var height: CGFloat = 480
 
     private var risky: Bool { level != .safe || action.requiredConfirmation.isRisky }
-    private var warningColor: Color { level == .caution ? RiskLevel.caution.color : RiskLevel.danger.color }
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    Image(systemName: secondDecision ? "hand.raised.fill" : "arrow.up.forward.app")
-                        .font(.system(size: 42, weight: .medium))
-                        .foregroundStyle(risky ? warningColor : AppStyle.accent)
-                        .accessibilityHidden(true)
-                    Text(secondDecision ? L10n.text("This code may harm you") : action.requiredConfirmation.title)
-                        .font(.largeTitle.bold())
-                        .accessibilityAddTraits(.isHeader)
-                    Text(secondDecision ? L10n.text("We recommend going back. Continue only if you understand the risk and trust the destination.") : action.requiredConfirmation.message)
-                        .font(.title3)
-                    if risky {
-                        Button(role: .cancel) { dismiss() } label: {
-                            Text(L10n.text("Go back"))
-                                .frame(maxWidth: .infinity, minHeight: 36)
-                        }
-                        .buttonStyle(.glassProminent)
-                        .foregroundStyle(AppStyle.onAccent)
-                        .tint(AppStyle.accent)
-                        .accessibilityIdentifier("confirm-go-back")
-                        continueButton
-                            .buttonStyle(.glass)
-                            .tint(warningColor)
-                    } else {
-                        continueButton
-                            .buttonStyle(.glassProminent)
-                            .foregroundStyle(AppStyle.onAccent)
-                            .tint(AppStyle.accent)
-                        Button(L10n.text("Go back"), role: .cancel) { dismiss() }
-                            .frame(maxWidth: .infinity, minHeight: 44)
-                            .buttonStyle(.glass)
-                    }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                if level == .danger {
+                    Image(systemName: "exclamationmark.octagon.fill").font(.system(size: 38))
+                        .foregroundStyle(RiskLevel.danger.color).accessibilityHidden(true)
                 }
-                .padding(24)
+                Text(level == .danger ? L10n.text("Really continue?") : action.requiredConfirmation.title)
+                    .font(.system(.title, design: .rounded, weight: .bold)).accessibilityAddTraits(.isHeader)
+                destination
+                Text(action.requiredConfirmation.message).fixedSize(horizontal: false, vertical: true)
+                if let reason, level == .danger {
+                    Text(reason).font(.subheadline.weight(.medium)).foregroundStyle(RiskLevel.danger.color)
+                }
+                if !typeSize.isAccessibilitySize { decisionButtons }
             }
-            .navigationTitle(L10n.text("Your decision"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L10n.text("Cancel")) { dismiss() } } }
+            .padding(24).padding(.top, 10)
+            .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { height = $0 + 12 }
         }
-        .presentationDetents([.large])
+        .safeAreaInset(edge: .bottom) {
+            if typeSize.isAccessibilitySize {
+                VStack(spacing: 12) { decisionButtons }.padding(20).background(.bar)
+            }
+        }
+        .scrollBounceBehavior(.basedOnSize)
+        .presentationDetents([.height(height), .large])
+        .presentationDragIndicator(.visible)
     }
 
-    private var continueButton: some View {
-        Button(role: risky ? .destructive : nil) {
-            if level == .danger && !secondDecision {
-                secondDecision = true
+    @ViewBuilder private var decisionButtons: some View {
+        if risky {
+            backButton
+            if level == .danger {
+                HoldToContinueButton { dismiss(); onConfirm() }
             } else {
-                dismiss()
-                onConfirm()
+                Button(L10n.text("Continue anyway"), role: .destructive) { dismiss(); onConfirm() }
+                    .frame(maxWidth: .infinity, minHeight: 48)
+                    .accessibilityIdentifier("confirm-action")
             }
-        } label: {
-            Text(risky ? L10n.text("Continue anyway") : action.requiredConfirmation.confirmTitle)
-                .frame(maxWidth: .infinity, minHeight: 36)
+        } else {
+            Button { dismiss(); onConfirm() } label: {
+                Text(action.requiredConfirmation.confirmTitle).frame(maxWidth: .infinity, minHeight: 36)
+            }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+                .accessibilityIdentifier("confirm-action")
+            Button(L10n.text("Go back"), role: .cancel) { dismiss() }.frame(maxWidth: .infinity, minHeight: 44)
         }
-        .accessibilityIdentifier(secondDecision ? "confirm-danger" : "confirm-action")
+    }
+
+    private var backButton: some View {
+        Button(role: .cancel) { dismiss() } label: {
+            Text(L10n.text("Go back")).fontWeight(.semibold).frame(maxWidth: .infinity, minHeight: 36)
+        }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+            .accessibilityIdentifier("confirm-go-back")
+    }
+
+    @ViewBuilder private var destination: some View {
+        switch action.kind {
+        case .open(let url): AddressCapsule(url: url)
+        case .call(let number), .sendSMS(let number, _):
+            Text(number).font(.system(.title3, design: .rounded, weight: .semibold)).monospacedDigit()
+                .padding(14).frame(maxWidth: .infinity, alignment: .leading).background(.quaternary, in: Capsule())
+        case .composeEmail(let recipient, _, _): Text(recipient).fontWeight(.semibold)
+        case .joinWiFi(let ssid, _, _): Label(ssid, systemImage: "wifi").font(.headline)
+        default: EmptyView()
+        }
     }
 }
 

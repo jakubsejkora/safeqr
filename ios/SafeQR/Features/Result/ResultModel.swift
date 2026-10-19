@@ -12,6 +12,7 @@ final class ResultModel: Identifiable {
     private(set) var steps: [CheckStep] = []
     private(set) var verdict: CloudVerdict?
     private(set) var checking = false
+    private(set) var elapsedSeconds = 0
     private(set) var cloudLimitation: String?
     private var started = false
 
@@ -24,6 +25,10 @@ final class ResultModel: Identifiable {
 
     var headline: String {
         guard let verdict, verdict.score >= analysis.assessment.floor else { return analysis.content.summary }
+        let plain = verdict.headline.trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines))
+        if plain.localizedCaseInsensitiveCompare(assessment.level.title) == .orderedSame {
+            return verdict.findings.first?.title ?? analysis.content.summary
+        }
         return verdict.headline
     }
 
@@ -42,7 +47,11 @@ final class ResultModel: Identifiable {
             return
         }
         checking = true
-        defer { checking = false }
+        let startedAt = ContinuousClock.now
+        defer {
+            elapsedSeconds = Int(startedAt.duration(to: .now).components.seconds)
+            checking = false
+        }
         do {
             let result = try await client.check(request) { [weak self] steps in self?.steps = steps }
             try Task.checkCancellation()

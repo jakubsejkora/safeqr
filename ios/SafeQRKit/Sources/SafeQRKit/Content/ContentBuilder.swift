@@ -61,6 +61,9 @@ struct ContentBuilder {
             add("recipient", recipient, emphasis: .primary)
             add("subject", subject)
             add("message", body)
+            let hiddenRecipients = ParseSupport.query(raw).fields.sorted(by: { $0.key < $1.key })
+                .filter { $0.key.lowercased() == "bcc" }.map(\.value)
+            if !hiddenRecipients.isEmpty { add("hiddenRecipient", hiddenRecipients.joined(separator: ", "), emphasis: .warning) }
         case .wifi(let network):
             add("networkName", network.ssid, emphasis: .primary)
             add("security", localizer.text("wifi.\(network.security.rawValue)"))
@@ -76,7 +79,7 @@ struct ContentBuilder {
         case .event(let event):
             add("name", event.title, emphasis: .primary)
             let zone = event.timeZoneIdentifier.flatMap { identifier in TimeZone.knownTimeZoneIdentifiers.first { $0.uppercased() == identifier } }
-                .flatMap(TimeZone.init(identifier:)) ?? TimeZone(secondsFromGMT: 0)!
+                .flatMap(TimeZone.init(identifier:)) ?? TimeZone.gmt
             add("start", event.start.map { localizer.date($0, allDay: event.isAllDay, timeZone: zone) })
             add("end", event.end.map { localizer.date($0, allDay: event.isAllDay, timeZone: zone) })
             add("timeZone", event.isAllDay ? nil : event.timeZoneIdentifier)

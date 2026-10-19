@@ -12,7 +12,11 @@ final class AppServices {
     init(defaults: UserDefaults = .standard, cloud: (any CloudChecking)? = nil, inMemoryHistory: Bool = false) {
         preferences = AppPreferences(defaults: defaults)
         #if DEBUG
-        if let screen = DebugLaunch.screen { preferences.finishedOnboarding = screen != "onboarding" }
+        if let screen = DebugLaunch.screen {
+            preferences.finishedOnboarding = screen != "onboarding"
+            preferences.deepChecksEnabled = screen == "training" && ProcessInfo.processInfo.arguments.contains("--live-check")
+            preferences.sceneChecksEnabled = preferences.deepChecksEnabled && ProcessInfo.processInfo.arguments.contains("--live-scene")
+        }
         #endif
         history = try? HistoryStore(inMemory: inMemoryHistory)
         guides = GuideLibrary()

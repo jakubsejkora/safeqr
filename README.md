@@ -79,7 +79,7 @@ pnpm lint
 pnpm synth
 ```
 
-Deployment requires an AWS SSO profile, Bedrock access and an Apify token. Copy [`.env.example`](backend/.env.example) to `.env`, configure it, authenticate with `aws sso login --profile safeqr`, then follow the [deployment steps](backend/README.md). Live AWS/Apify integration remains unverified. Set the deployed endpoint in [the iOS configuration](ios/Configurations/API.xcconfig) and [the website configuration](web/wrangler.jsonc).
+Deployment requires an AWS SSO profile, Bedrock access and an Apify token. Copy [`.env.example`](backend/.env.example) to `.env`, configure it, authenticate with `aws sso login --profile safeqr`, then follow the [deployment steps](backend/README.md). The live deployment traces the training scam flow and returns a verdict in about 10–15 seconds. Set the deployed endpoint in [the iOS configuration](ios/Configurations/API.xcconfig) and [the website configuration](web/wrangler.jsonc).
 
 **Website — from `web/`.**
 

@@ -17,7 +17,6 @@ enum AppStyle {
     static let accent = Color("AccentColor")
     static let onAccent = Color(uiColor: .systemBackground)
     static let canvas = Color(uiColor: .systemGroupedBackground)
-    static let card = Color(uiColor: .secondarySystemGroupedBackground)
 }
 
 extension RiskLevel {
@@ -34,6 +33,14 @@ extension RiskLevel {
         case .safe: "checkmark.shield.fill"
         case .caution: "exclamationmark.shield.fill"
         case .danger: "xmark.shield.fill"
+        }
+    }
+
+    var feedback: SensoryFeedback {
+        switch self {
+        case .safe: .success
+        case .caution: .warning
+        case .danger: .error
         }
     }
 
@@ -63,24 +70,6 @@ extension CodeKind {
         case .eSIM: "simcard"
         case .text: "text.alignleft"
         }
-    }
-}
-
-struct SectionCard<Content: View>: View {
-    let title: String
-    let symbol: String
-    @ViewBuilder var content: Content
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Label(title, systemImage: symbol)
-                .font(.headline)
-                .accessibilityAddTraits(.isHeader)
-            content
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(20)
-        .background(AppStyle.card, in: RoundedRectangle(cornerRadius: 24))
     }
 }
 

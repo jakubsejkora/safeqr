@@ -11,7 +11,7 @@ struct SettingsView: View {
                     Toggle(L10n.text("Deep checks for links"), isOn: $preferences.deepChecksEnabled)
                     Toggle(L10n.text("Check the surroundings photo"), isOn: $preferences.sceneChecksEnabled)
                         .disabled(!preferences.deepChecksEnabled)
-                } header: { Text(L10n.text("A closer look")) } footer: {
+                } header: { Text(L10n.text("Deep checks")) } footer: {
                     Text(L10n.text("Links are checked on Safe QR servers in the EU. Photo checks also send the code’s contents, including payment details. Photos are never stored. Wi-Fi passwords, login codes and personal records stay on this iPhone."))
                 }
                 Section {
