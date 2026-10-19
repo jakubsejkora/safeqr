@@ -17,7 +17,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -73,7 +73,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
@@ -144,7 +144,7 @@
         "level": "danger",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 75,
         "summary": "Tento kód vede na xn--pple-43d.test.",
@@ -214,7 +214,7 @@
         "level": "danger",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 70,
         "summary": "Tento kód vede na example.com.",
@@ -276,7 +276,7 @@
         "level": "caution",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 30,
         "summary": "Tento kód vede na example.com.",
@@ -559,7 +559,7 @@
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
           "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
           "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 60,
         "summary": "Tento kód obsahuje údaje k platbě.",
@@ -835,7 +835,7 @@
             "title": "Neumíme přečíst všechny údaje"
           },
           {
-            "detail": "Hlavička připomíná PAY by square, ale zabalené číslo účtu a částku neumíme ověřit.",
+            "detail": "Hlavička připomíná PAY by square, ale zakódované číslo účtu a částku neumíme ověřit.",
             "id": "payment.payBySquare",
             "severity": "warning",
             "title": "Platební údaje nejsou přečtené"
@@ -1344,7 +1344,7 @@
         ],
         "findings": [
           {
-            "detail": "Uložením názvu banky nebo úřadu k neověřenému číslu může pozdější podvodný hovor působit pravě.",
+            "detail": "Uložením názvu banky nebo úřadu k neověřenému číslu může pozdější podvodný hovor působit důvěryhodně.",
             "id": "contact.impersonation",
             "severity": "warning",
             "title": "Kontakt se vydává za důvěryhodnou instituci"
@@ -1715,7 +1715,7 @@
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
           "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 100,
         "summary": "Tento kód nabízí instalaci aplikace mimo App Store.",
@@ -1857,7 +1857,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -1877,7 +1877,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -1941,7 +1941,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -1969,7 +1969,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
@@ -2063,7 +2063,7 @@
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
           "Text může obsahovat klamavé pokyny nebo formáty, které neznáme.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 60,
         "summary": "Tento kód obsahuje text.",
@@ -2133,7 +2133,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -2161,7 +2161,7 @@
         "level": "safe",
         "limitations": [
           "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",

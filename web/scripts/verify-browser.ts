@@ -4,7 +4,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "@playwright/test";
+import { seedCases } from "../src/data/cases.ts";
 import { DEMO_ORIGIN } from "../src/data/gallery.ts";
+import { parseCases } from "../worker/cases.ts";
 
 const origin = process.env.SITE_URL ?? "https://safeqr-web.jakub-f9d.workers.dev";
 const screenDir = process.env.SCREEN_DIR ?? join(tmpdir(), "safeqr-web-screens");
@@ -70,7 +72,10 @@ try {
       await context.close();
     }
   }
-  const context = await browser.newContext({ viewport: { width: 320, height: 800 } });
+  const context = await browser.newContext({
+    viewport: { width: 320, height: 800 },
+    timezoneId: "America/Los_Angeles",
+  });
   const page = await context.newPage();
   for (const path of [
     "/",
@@ -99,6 +104,27 @@ try {
       .analyze();
     results.push({ path, violations: audit.violations });
   }
+  await page.goto(`${origin}/navody/`);
+  for (const link of await page.locator('.bank-card a[href^="tel:"]').all()) {
+    const number = (await link.innerText()).replaceAll(" ", "");
+    assert.equal(await link.getAttribute("href"), `tel:${number}`);
+  }
+  await page.route("**/api/cases?locale=en", (route) =>
+    route.fulfill({ json: { cases: seedCases("en"), source: "live" } }),
+  );
+  await page.goto(`${origin}/en/`, { waitUntil: "networkidle" });
+  assert.match(await page.locator("[data-feed-status]").innerText(), /Latest cases/);
+  for (const time of await page.locator("[data-case-list] time").all()) {
+    const date = await time.getAttribute("datetime");
+    assert.ok(date);
+    assert.equal(
+      await time.innerText(),
+      new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeZone: "UTC" }).format(
+        new Date(date),
+      ),
+    );
+  }
+  await page.unroute("**/api/cases?locale=en");
   await page.goto(`${origin}/kit/`);
   await page.setViewportSize({ width: 794, height: 1123 });
   await page.emulateMedia({ media: "print", colorScheme: "light" });
@@ -107,7 +133,10 @@ try {
   const feed = await request.get(`${origin}/api/cases?locale=cs`);
   assert.equal(feed.status(), 200);
   assert.equal(feed.headers()["cache-control"], "public, max-age=600");
-  assert.equal((await feed.json()).source, "seed");
+  const feedData = await feed.json();
+  assert.ok(["live", "seed"].includes(feedData.source));
+  assert.ok(parseCases(feedData));
+  if (feedData.source === "seed") assert.equal(feedData.reviewedAt, "2026-10-19");
   assert.equal((await request.get(`${origin}/api/cases?locale=xx`)).status(), 400);
   assert.equal((await request.post(`${origin}/api/cases`)).status(), 405);
   assert.equal((await request.get(`${origin}/missing-page`)).status(), 404);
@@ -150,7 +179,7 @@ try {
     `Accessibility violations: ${JSON.stringify(violations.map((v) => (v as { id: string }).id))}`,
   );
   console.log(
-    "Browser checks passed: light/dark, mobile/desktop/320px, accessibility, filters, no-JS, headers, feed fallback, print layout, and the complete no-submit demo flow.",
+    "Browser checks passed: light/dark, mobile/desktop/320px, accessibility, filters, no-JS, headers, live feed, dates, bank links, print layout, and the complete no-submit demo flow.",
   );
 } finally {
   await browser.close();

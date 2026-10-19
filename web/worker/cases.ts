@@ -24,7 +24,8 @@ export function parseCases(value: unknown): Case[] | null {
       sourceUrl.length > 2000 ||
       typeof publishedAt !== "string" ||
       !/^\d{4}-\d{2}-\d{2}$/.test(publishedAt) ||
-      !Number.isFinite(Date.parse(publishedAt))
+      !Number.isFinite(Date.parse(publishedAt)) ||
+      new Date(publishedAt).toISOString().slice(0, 10) !== publishedAt
     )
       return null;
     try {

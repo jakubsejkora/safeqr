@@ -6,9 +6,10 @@ info:
   description: |
     Clients decode and assess codes on device first. A deep check adds evidence the device cannot gather:
     an isolated cloud browser follows the link, a vision model reads the surroundings of the code,
-    and known quishing cases are matched. All processing runs in AWS eu-central-1.
+    and known quishing cases are matched. Servers and storage run in AWS eu-central-1.
+    Bedrock inference profiles may route model processing to other AWS regions within the EU.
 servers:
-  - url: https://api.safeqr.cz
+  - url: https://xj5yhhdhb1.execute-api.eu-central-1.amazonaws.com
 paths:
   /v1/checks:
     post:
@@ -28,6 +29,7 @@ paths:
         "400": { $ref: "#/components/responses/Problem" }
         "413": { $ref: "#/components/responses/Problem" }
         "429": { $ref: "#/components/responses/Problem" }
+        "503": { $ref: "#/components/responses/Problem" }
   /v1/checks/{checkId}:
     get:
       operationId: getCheck
@@ -39,11 +41,12 @@ paths:
           schema: { type: string, pattern: "^chk_[A-Za-z0-9]{20,}$" }
       responses:
         "200":
-          description: Current state. Checks expire 24 hours after creation.
+          description: Current state. Checks become inaccessible 24 hours after creation; physical deletion is asynchronous and may happen later. Keep check IDs private; anyone with an ID can read its result until expiry.
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Check" }
         "404": { $ref: "#/components/responses/Problem" }
+        "503": { $ref: "#/components/responses/Problem" }
   /v1/cases:
     get:
       operationId: listCases
@@ -67,6 +70,8 @@ paths:
                   cases:
                     type: array
                     items: { $ref: "#/components/schemas/Case" }
+        "400": { $ref: "#/components/responses/Problem" }
+        "503": { $ref: "#/components/responses/Problem" }
 components:
   responses:
     Problem:
@@ -118,7 +123,7 @@ components:
               items: { type: string }
         scene:
           type: object
-          description: A photo of where the code was found. Analysed in memory and never stored.
+          description: A photo of where the code was found. Temporarily stored in private encrypted S3 for asynchronous analysis, then deleted. A one-day lifecycle rule provides backup cleanup; physical deletion may happen later.
           required: [image, source]
           properties:
             image:
@@ -134,10 +139,10 @@ components:
               type: object
               required: [x, y, width, height]
               properties:
-                x: { type: number }
-                y: { type: number }
-                width: { type: number }
-                height: { type: number }
+                x: { type: number, minimum: 0, maximum: 1 }
+                y: { type: number, minimum: 0, maximum: 1 }
+                width: { type: number, minimum: 0, maximum: 1 }
+                height: { type: number, minimum: 0, maximum: 1 }
     CheckAccepted:
       type: object
       required: [id, status, pollAfterMs]
@@ -230,7 +235,7 @@ components:
         screenshotUrl:
           type: string
           format: uri
-          description: Short-lived link to a screenshot taken in the sandbox.
+          description: Private screenshot link valid for 15 minutes, refreshed when the check is polled. Anyone with the link can view it. Screenshots use encrypted S3 with a one-day lifecycle rule; physical deletion may happen later.
         domainAgeDays: { type: integer }
         asksFor:
           type: array

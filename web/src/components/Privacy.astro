@@ -29,8 +29,8 @@ const t = (cs: string, en: string) => text(locale, cs, en);
     <div class="notice-box">
       <p>
         {t(
-          "Safe QR je hackathonový prototyp. Toto je popis jeho zpracování dat a pravidel návrhu k 19. 10. 2026. Nejde o certifikaci bezpečnosti ani prohlášení o splnění všech právních povinností.",
-          "Safe QR is a hackathon prototype. This describes its data handling and design rules as of 19 Oct 2026. It is not a security certification or a claim that every legal obligation has been fulfilled.",
+          "Safe QR je hackathonový prototyp. Toto je popis jeho zpracování dat a pravidel návrhu k 20. 10. 2026. Nejde o certifikaci bezpečnosti ani prohlášení o splnění všech právních povinností.",
+          "Safe QR is a hackathon prototype. This describes its data handling and design rules as of 20 Oct 2026. It is not a security certification or a claim that every legal obligation has been fulfilled.",
         )}
       </p>
     </div>
@@ -55,19 +55,31 @@ const t = (cs: string, en: string) => text(locale, cs, en);
         <dt>{t("Kde", "Where")}</dt>
         <dd>
           {t(
-            "AWS, oblast eu-central-1, Frankfurt, Evropská unie. Týká se hloubkových kontrol a modelů Amazon Bedrock.",
-            "AWS eu-central-1, Frankfurt, European Union. This applies to deep checks and Amazon Bedrock models.",
+            "Servery a úložiště jsou v AWS ve Frankfurtu (eu-central-1). Modely Amazon Bedrock mohou požadavky zpracovat i v dalších oblastech AWS v Evropské unii.",
+            "Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock models may process requests in other AWS regions within the European Union.",
           )}
         </dd>
         <dt>{t("Fotografie", "Photos")}</dt>
         <dd>
           {t(
-            "Zpracují se v paměti a nikdy se neukládají.",
-            "Processed in memory and never stored.",
+            "Před kontrolou se dočasně uloží do soukromého šifrovaného úložiště. Po vyhodnocení je mažeme. Při selhání mazání slouží jako záloha automatický úklid po jednom dni; skutečné smazání může nastat později.",
+            "Temporarily kept in private encrypted storage before the check. We delete them after analysis. If deletion fails, a one-day automatic cleanup rule is the backup; physical deletion can happen later.",
           )}
         </dd>
         <dt>{t("Výsledky kontrol", "Check results")}</dt>
-        <dd>{t("Kontroly se mažou po 24 hodinách.", "Checks are deleted after 24 hours.")}</dd>
+        <dd>
+          {t(
+            "Výsledky přestanou být dostupné po 24 hodinách. Automatické smazání uložených dat může trvat déle. Původní obsah kódu ze záznamu odstraníme při dokončení kontroly nebo zaznamenaném selhání.",
+            "Results become unavailable after 24 hours. Automatic deletion of stored data can take longer. The original code contents are removed from the record when the check completes or is marked as failed.",
+          )}
+        </dd>
+        <dt>{t("Snímky cílových stránek", "Destination screenshots")}</dt>
+        <dd>
+          {t(
+            "Ukládají se soukromě a zašifrované. Odkaz na snímek platí 15 minut. Pro snímky platí automatický úklid po jednom dni; skutečné smazání může nastat později. Odkazy na výsledky a snímky nesdílejte: kdo je má, může je zobrazit.",
+            "Stored privately with encryption. A screenshot link lasts 15 minutes. Screenshots have a one-day automatic cleanup rule; physical deletion can happen later. Keep result and screenshot links private: anyone with them can view them.",
+          )}
+        </dd>
         <dt>{t("Záznamy provozu", "Application logs")}</dt>
         <dd>
           {t(

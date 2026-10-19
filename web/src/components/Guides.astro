@@ -89,13 +89,14 @@ const t = (cs: string, en: string) => text(locale, cs, en);
         {banks.map((bank) => (
           <article class="bank-card">
             <h3>{bank.bank}</h3>
-            <a class="bank-phone" href={`tel:${bank.phoneAbroad.replaceAll(" ", "")}`}>
+            <a class="bank-phone" href={`tel:${bank.phone.replaceAll(" ", "")}`}>
               {bank.phone}
             </a>
             <p>{bankNotes[bank.bank]?.[locale]}</p>
             {bank.phoneAbroad !== bank.phone && (
               <p>
-                {t("Ze zahraničí:", "From abroad:")} {bank.phoneAbroad}
+                {t("Ze zahraničí:", "From abroad:")}{" "}
+                <a href={`tel:${bank.phoneAbroad.replaceAll(" ", "")}`}>{bank.phoneAbroad}</a>
               </p>
             )}
             <a class="source" href={bank.url}>

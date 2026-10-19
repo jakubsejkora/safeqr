@@ -23,6 +23,7 @@ if (feed) {
         time.dateTime = item.publishedAt;
         time.textContent = new Intl.DateTimeFormat(locale === "cs" ? "cs-CZ" : "en-GB", {
           dateStyle: "medium",
+          timeZone: "UTC",
         }).format(new Date(item.publishedAt));
         meta.append(time);
         const heading = document.createElement("h3");

@@ -25,6 +25,7 @@ const { locale } = Astro.props;
               day: "numeric",
               month: "short",
               year: "numeric",
+              timeZone: "UTC",
             }).format(new Date(item.publishedAt))}
           </time>
           <span>↗</span>
