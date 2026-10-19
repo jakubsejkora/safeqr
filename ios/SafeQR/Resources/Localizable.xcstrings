@@ -1,0 +1,3084 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "%lld of 3": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld of 3"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld ze 3"
+          }
+        }
+      }
+    },
+    "A closer look": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A closer look"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola"
+          }
+        }
+      }
+    },
+    "A closer look. Your choice.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A closer look. Your choice."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobnější kontrola. Je to na vás."
+          }
+        }
+      }
+    },
+    "A little check.\nMore peace of mind.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A little check.\nMore peace of mind."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Malá kontrola.\nVětší klid."
+          }
+        }
+      }
+    },
+    "A low score is not a guarantee. Check who you are paying or sharing information with.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A low score is not a guarantee. Check who you are paying or sharing information with."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nízké skóre není zárukou bezpečí. Ověřte si, komu platíte nebo komu předáváte údaje."
+          }
+        }
+      }
+    },
+    "A moment to check.\nSomeone to help.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A moment to check.\nSomeone to help."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chvilka na kontrolu.\nPomoc po ruce."
+          }
+        }
+      }
+    },
+    "A picture of the website opened by the isolated browser": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A picture of the website opened by the isolated browser"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snímek webu otevřeného v odděleném prohlížeči"
+          }
+        }
+      }
+    },
+    "AI and the limits of a check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI and the limits of a check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umělá inteligence a meze kontroly"
+          }
+        }
+      }
+    },
+    "AI cannot lower the score below a danger proven by the on-device rules. You always make the final decision before anything opens or is handed to another app.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI cannot lower the score below a danger proven by the on-device rules. You always make the final decision before anything opens or is handed to another app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umělá inteligence nesmí snížit skóre pod hranici rizika prokázaného pravidly v iPhonu. O otevření odkazu nebo předání jiné aplikaci vždy rozhodujete vy."
+          }
+        }
+      }
+    },
+    "AI combines website, surroundings and known-scam evidence. It can miss a scam or wrongly flag an honest code. The result explains its reasons and what could not be checked.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI combines website, surroundings and known-scam evidence. It can miss a scam or wrongly flag an honest code. The result explains its reasons and what could not be checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umělá inteligence spojuje zjištění z webu, okolí kódu a známých podvodů. Může podvod přehlédnout nebo neprávem označit poctivý kód. U výsledku najdete důvody i to, co se nepodařilo ověřit."
+          }
+        }
+      }
+    },
+    "AI used in this check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI used in this check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Použitá umělá inteligence"
+          }
+        }
+      }
+    },
+    "About Safe QR": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About Safe QR"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Safe QR"
+          }
+        }
+      }
+    },
+    "Allow camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Povolit fotoaparát"
+          }
+        }
+      }
+    },
+    "Allow the camera to read codes. Safe QR can use a wider view to spot a sticker or something out of place. You can also choose a photo.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow the camera to read codes. Safe QR can use a wider view to spot a sticker or something out of place. You can also choose a photo."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Povolte fotoaparát pro čtení kódů. Širší záběr pomůže odhalit přelepený kód nebo něco neobvyklého. Můžete také vybrat fotku."
+          }
+        }
+      }
+    },
+    "Another app or a system screen will open. Review all details before you approve anything there.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another app or a system screen will open. Review all details before you approve anything there."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevře se jiná aplikace nebo systémová obrazovka. Než v ní něco potvrdíte, zkontrolujte všechny údaje."
+          }
+        }
+      }
+    },
+    "App language": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App language"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jazyk aplikace"
+          }
+        }
+      }
+    },
+    "Around the code": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Around the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okolí kódu"
+          }
+        }
+      }
+    },
+    "Back": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpět"
+          }
+        }
+      }
+    },
+    "Be careful": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Be careful"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buďte opatrní"
+          }
+        }
+      }
+    },
+    "Built at The FinTechers Hackathon 2026 in Prague.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Built at The FinTechers Hackathon 2026 in Prague."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vytvořeno na The FinTechers Hackathon 2026 v Praze."
+          }
+        }
+      }
+    },
+    "Call": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat"
+          }
+        }
+      }
+    },
+    "Call %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat %@"
+          }
+        }
+      }
+    },
+    "Call %@?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call %@?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat: %@?"
+          }
+        }
+      }
+    },
+    "Call your bank": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call your bank"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat bance"
+          }
+        }
+      }
+    },
+    "Camera access is off. Allow it in Settings, or choose a picture to check.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera access is off. Allow it in Settings, or choose a picture to check."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přístup k fotoaparátu je vypnutý. Povolte ho v Nastavení nebo vyberte fotku ke kontrole."
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zrušit"
+          }
+        }
+      }
+    },
+    "Check only on this iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check only on this iPhone"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolovat jen v tomto iPhonu"
+          }
+        }
+      }
+    },
+    "Check the surroundings photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the surroundings photo"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolovat fotku okolí"
+          }
+        }
+      }
+    },
+    "Checked on this iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checked on this iPhone"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zkontrolováno v tomto iPhonu"
+          }
+        }
+      }
+    },
+    "Checking known scams": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking known scams"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hledáme známé podvody"
+          }
+        }
+      }
+    },
+    "Checking the surroundings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking the surroundings"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolujeme okolí"
+          }
+        }
+      }
+    },
+    "Checking the website": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking the website"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolujeme web"
+          }
+        }
+      }
+    },
+    "Choose a code to check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a code to check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyberte kód ke kontrole"
+          }
+        }
+      }
+    },
+    "Clear all": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear all"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smazat vše"
+          }
+        }
+      }
+    },
+    "Connected for this session. You can leave the network in Settings.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected for this session. You can leave the network in Settings."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připojeno pro tuto relaci. Od sítě se můžete odpojit v Nastavení."
+          }
+        }
+      }
+    },
+    "Continue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokračovat"
+          }
+        }
+      }
+    },
+    "Continue outside Safe QR?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue outside Safe QR?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokračovat mimo Safe QR?"
+          }
+        }
+      }
+    },
+    "Copied. The copy expires in two minutes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied. The copy expires in two minutes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zkopírováno. Kopie se za dvě minuty smaže ze schránky."
+          }
+        }
+      }
+    },
+    "Couldn't read this picture": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't read this picture"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotku se nepodařilo přečíst"
+          }
+        }
+      }
+    },
+    "Czech Police": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czech Police"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Policie ČR"
+          }
+        }
+      }
+    },
+    "Dangerous": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dangerous"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nebezpečné"
+          }
+        }
+      }
+    },
+    "Deep check steps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep check steps"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Průběh podrobné kontroly"
+          }
+        }
+      }
+    },
+    "Deep checks are off. Websites and surroundings were not checked online.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep checks are off. Websites and surroundings were not checked online."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola je vypnutá. Weby ani okolí se online neověřovaly."
+          }
+        }
+      }
+    },
+    "Deep checks for links": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep checks for links"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola odkazů"
+          }
+        }
+      }
+    },
+    "Deep checks run on Safe QR servers in AWS Frankfurt, in the EU. Photos are analysed in memory and never stored. Check records expire after 24 hours.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep checks run on Safe QR servers in AWS Frankfurt, in the EU. Photos are analysed in memory and never stored. Check records expire after 24 hours."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobné kontroly probíhají na serverech Safe QR v AWS ve Frankfurtu, v EU. Fotky se zpracují v paměti a nikdy se neukládají. Záznamy kontrol vyprší po 24 hodinách."
+          }
+        }
+      }
+    },
+    "Deep checks send the link and a photo of its surroundings to Safe QR servers in the EU. A photo check may also send payment details from the code. Photos are never stored. Results use AI and can be wrong.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep checks send the link and a photo of its surroundings to Safe QR servers in the EU. A photo check may also send payment details from the code. Photos are never stored. Results use AI and can be wrong."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola odešle odkaz a fotku okolí na servery Safe QR v EU. Při kontrole fotky může odeslat i platební údaje z kódu. Fotky se nikdy neukládají. Výsledky využívají umělou inteligenci a mohou být chybné."
+          }
+        }
+      }
+    },
+    "Delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smazat"
+          }
+        }
+      }
+    },
+    "Delete all saved scans?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all saved scans?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smazat všechny uložené kontroly?"
+          }
+        }
+      }
+    },
+    "Delete all scans": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all scans"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smazat všechny kontroly"
+          }
+        }
+      }
+    },
+    "Demo deep checks": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo deep checks"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukázková podrobná kontrola"
+          }
+        }
+      }
+    },
+    "Demo evidence is not a real safety check.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo evidence is not a real safety check."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukázkové výsledky nejsou skutečnou bezpečnostní kontrolou."
+          }
+        }
+      }
+    },
+    "Developer demo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Developer demo"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukázka pro vývojáře"
+          }
+        }
+      }
+    },
+    "Device + deep check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device + deep check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone + podrobná kontrola"
+          }
+        }
+      }
+    },
+    "Done": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hotovo"
+          }
+        }
+      }
+    },
+    "Every code is read and checked on your iPhone first. Camera images are held in memory and are not saved to your photo library.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every code is read and checked on your iPhone first. Camera images are held in memory and are not saved to your photo library."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Každý kód se nejprve přečte a zkontroluje v iPhonu. Snímky z fotoaparátu zůstávají v paměti a neukládají se do fotek."
+          }
+        }
+      }
+    },
+    "Final destination": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Final destination"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konečná adresa"
+          }
+        }
+      }
+    },
+    "Find your bank’s number": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find your bank’s number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Najít číslo své banky"
+          }
+        }
+      }
+    },
+    "Following redirects": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Following redirects"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sledujeme přesměrování"
+          }
+        }
+      }
+    },
+    "Get started": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get started"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Začít"
+          }
+        }
+      }
+    },
+    "Go back": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go back"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vrátit se"
+          }
+        }
+      }
+    },
+    "Help": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Help"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomoc"
+          }
+        }
+      }
+    },
+    "History": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historie"
+          }
+        }
+      }
+    },
+    "History could not be updated. Please try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History could not be updated. Please try again."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historii se nepodařilo upravit. Zkuste to znovu."
+          }
+        }
+      }
+    },
+    "History is off by default. If enabled, only the code type, time and score are saved locally. History is excluded from backups. Delete individual entries or clear them all in Settings.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History is off by default. If enabled, only the code type, time and score are saved locally. History is excluded from backups. Delete individual entries or clear them all in Settings."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historie je ve výchozím stavu vypnutá. Po zapnutí se v iPhonu ukládá jen typ kódu, čas a skóre. Historie není součástí záloh. V Nastavení můžete smazat jednotlivé záznamy nebo celou historii."
+          }
+        }
+      }
+    },
+    "History is unavailable on this device. Scanning still works.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History is unavailable on this device. Scanning still works."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historie není na tomto zařízení dostupná. Čtení kódů funguje dál."
+          }
+        }
+      }
+    },
+    "I understand the risk. Continue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I understand the risk. Continue"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozumím riziku. Pokračovat"
+          }
+        }
+      }
+    },
+    "If money is at risk, call now. Card blocking may not block access to your account. Choose the line for what happened.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If money is at risk, call now. Card blocking may not block access to your account. Choose the line for what happened."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokud jsou ohrožené peníze, volejte hned. Blokace karty nemusí zablokovat přístup k účtu. Vyberte linku podle toho, co se stalo."
+          }
+        }
+      }
+    },
+    "If you continue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you continue"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Co se stane dál"
+          }
+        }
+      }
+    },
+    "Import photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import photo"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vybrat fotku"
+          }
+        }
+      }
+    },
+    "In progress": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In progress"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Probíhá"
+          }
+        }
+      }
+    },
+    "Know before you go.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Know before you go."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nejdřív vědět. Pak jednat."
+          }
+        }
+      }
+    },
+    "Know what a QR code does before you act on it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Know what a QR code does before you act on it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zjistěte, co QR kód udělá, než podle něj jednáte."
+          }
+        }
+      }
+    },
+    "Let’s give the camera a hand": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Let’s give the camera a hand"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Povolte přístup k fotoaparátu"
+          }
+        }
+      }
+    },
+    "Link": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz"
+          }
+        }
+      }
+    },
+    "Links are checked on Safe QR servers in the EU. Photo checks also send the code’s contents, including payment details. Photos are never stored. Wi-Fi passwords, login codes and personal records stay on this iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Links are checked on Safe QR servers in the EU. Photo checks also send the code’s contents, including payment details. Photos are never stored. Wi-Fi passwords, login codes and personal records stay on this iPhone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkazy se kontrolují na serverech Safe QR v EU. Kontrola fotky odesílá i obsah kódu včetně platebních údajů. Fotky se nikdy neukládají. Hesla k Wi-Fi, přihlašovací kódy a osobní záznamy zůstávají v iPhonu."
+          }
+        }
+      }
+    },
+    "Loading website preview…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading website preview…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Načítá se náhled webu…"
+          }
+        }
+      }
+    },
+    "Looks safe": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looks safe"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vypadá bezpečně"
+          }
+        }
+      }
+    },
+    "More than one code": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More than one code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Na fotce je více kódů"
+          }
+        }
+      }
+    },
+    "Need help now?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Need help now?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potřebujete pomoc hned?"
+          }
+        }
+      }
+    },
+    "No code found. Choose a clearer picture with the whole code visible.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No code found. Choose a clearer picture with the whole code visible."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód se nenašel. Vyberte ostřejší fotku, na které je vidět celý kód."
+          }
+        }
+      }
+    },
+    "No saved scans": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No saved scans"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zatím žádné uložené kontroly"
+          }
+        }
+      }
+    },
+    "No warning signs were found in the code itself. This does not prove it is safe.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No warning signs were found in the code itself. This does not prove it is safe."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V samotném kódu se nenašly varovné signály. To ale ještě nedokazuje, že je bezpečný."
+          }
+        }
+      }
+    },
+    "Nothing happens until you choose an action and confirm it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing happens until you choose an action and confirm it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nic se nestane, dokud si nevyberete akci a nepotvrdíte ji."
+          }
+        }
+      }
+    },
+    "Nothing opens without your say-so.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing opens without your say-so."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bez vašeho souhlasu se nic neotevře."
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Off by default. Saves the code type, date and score on this iPhone. No raw codes, photos or passwords. Turning this off keeps existing entries until you delete them.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off by default. Saves the code type, date and score on this iPhone. No raw codes, photos or passwords. Turning this off keeps existing entries until you delete them."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ve výchozím stavu vypnuto. Ukládá typ kódu, datum a skóre pouze v iPhonu. Neukládá obsah kódů, fotky ani hesla. Po vypnutí záznamy zůstanou, dokud je nesmažete."
+          }
+        }
+      }
+    },
+    "Official contact page": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Official contact page"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oficiální kontakty"
+          }
+        }
+      }
+    },
+    "Official sources": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Official sources"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oficiální zdroje"
+          }
+        }
+      }
+    },
+    "On your iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On your iPhone"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ve vašem iPhonu"
+          }
+        }
+      }
+    },
+    "Only on this iPhone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only on this iPhone"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jen v tomto iPhonu"
+          }
+        }
+      }
+    },
+    "Open Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Settings"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít Nastavení"
+          }
+        }
+      }
+    },
+    "Open this source?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open this source?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít zdroj?"
+          }
+        }
+      }
+    },
+    "Open website": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open website"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít web"
+          }
+        }
+      }
+    },
+    "Open-source notices": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open-source notices"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřený zdrojový kód"
+          }
+        }
+      }
+    },
+    "Operator protection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operator protection"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ochrana u operátora"
+          }
+        }
+      }
+    },
+    "Optional. You can change this in Settings.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional. You can change this in Settings."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je to dobrovolné. Volbu můžete změnit v Nastavení."
+          }
+        }
+      }
+    },
+    "Page %lld of 3": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Page %lld of 3"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stránka %lld ze 3"
+          }
+        }
+      }
+    },
+    "Payment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba"
+          }
+        }
+      }
+    },
+    "Place the code inside the frame": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Place the code inside the frame"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umístěte kód do rámečku"
+          }
+        }
+      }
+    },
+    "Point the camera at a code. We’ll explain it before you decide what to do.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point the camera at a code. We’ll explain it before you decide what to do."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namiřte fotoaparát na kód. Vysvětlíme ho, než se rozhodnete, co dál."
+          }
+        }
+      }
+    },
+    "Point. Check. Decide.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point. Check. Decide."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namířit. Zkontrolovat. Rozhodnout."
+          }
+        }
+      }
+    },
+    "Preparing the result": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing the result"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravujeme výsledek"
+          }
+        }
+      }
+    },
+    "Prevent unwanted charges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prevent unwanted charges"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Předejděte nechtěným platbám"
+          }
+        }
+      }
+    },
+    "Privacy & AI": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy & AI"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soukromí a umělá inteligence"
+          }
+        }
+      }
+    },
+    "Read the source": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read the source"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přečíst zdroj"
+          }
+        }
+      }
+    },
+    "Reading the picture…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading the picture…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čte se fotka…"
+          }
+        }
+      }
+    },
+    "Reviewed on 19 October 2026": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reviewed on 19 October 2026"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdroje zkontrolovány 19. října 2026"
+          }
+        }
+      }
+    },
+    "Risk score: %lld out of 100": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Risk score: %lld out of 100"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skóre rizika: %lld ze 100"
+          }
+        }
+      }
+    },
+    "Safe QR": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR"
+          }
+        }
+      }
+    },
+    "Safe QR uses Apple system frameworks and the local SafeQRKit package. No third-party libraries are bundled in the app target.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR uses Apple system frameworks and the local SafeQRKit package. No third-party libraries are bundled in the app target."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR používá systémové knihovny Apple a vlastní balíček SafeQRKit. Aplikace neobsahuje knihovny třetích stran."
+          }
+        }
+      }
+    },
+    "Sample codes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample codes"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukázkové kódy"
+          }
+        }
+      }
+    },
+    "Save scan history": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save scan history"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukládat historii kontrol"
+          }
+        }
+      }
+    },
+    "Saved results describe the time of the scan. They are not a fresh safety check.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved results describe the time of the scan. They are not a fresh safety check."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uložené výsledky popisují stav při načtení kódu. Nejde o novou bezpečnostní kontrolu."
+          }
+        }
+      }
+    },
+    "Scam recovery": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scam recovery"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomoc po podvodu"
+          }
+        }
+      }
+    },
+    "Scan": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skenovat"
+          }
+        }
+      }
+    },
+    "Scan history": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan history"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historie kontrol"
+          }
+        }
+      }
+    },
+    "Scanned event": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanned event"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Událost z kódu"
+          }
+        }
+      }
+    },
+    "See what a code contains, what looks risky and what will happen next. Nothing opens or sends without your decision.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See what a code contains, what looks risky and what will happen next. Nothing opens or sends without your decision."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zjistěte, co kód obsahuje, co vypadá podezřele a co se stane dál. Bez vašeho rozhodnutí se nic neotevře ani neodešle."
+          }
+        }
+      }
+    },
+    "Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nastavení"
+          }
+        }
+      }
+    },
+    "Show the main camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show the main camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobrazit hlavní fotoaparát"
+          }
+        }
+      }
+    },
+    "Show the surroundings camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show the surroundings camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobrazit fotoaparát pro okolí"
+          }
+        }
+      }
+    },
+    "Similar reported scams": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Similar reported scams"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podobné nahlášené podvody"
+          }
+        }
+      }
+    },
+    "Simple steps to stay safe, and clear help if something has gone wrong.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simple steps to stay safe, and clear help if something has gone wrong."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jednoduché rady pro větší bezpečí a srozumitelná pomoc, když se něco pokazí."
+          }
+        }
+      }
+    },
+    "Skipped": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vynecháno"
+          }
+        }
+      }
+    },
+    "Something has gone wrong": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something has gone wrong"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Něco se pokazilo"
+          }
+        }
+      }
+    },
+    "Source code and licences": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source code and licences"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdrojový kód a licence"
+          }
+        }
+      }
+    },
+    "Sources reviewed on 19 October 2026. Phone numbers were checked against official websites, not test-called.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sources reviewed on 19 October 2026. Phone numbers were checked against official websites, not test-called."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdroje zkontrolovány 19. října 2026. Čísla jsme porovnali s oficiálními weby, zkušebně jsme na ně nevolali."
+          }
+        }
+      }
+    },
+    "Start here": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start here"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Začněte tady"
+          }
+        }
+      }
+    },
+    "Starting the deep check…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting the deep check…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spouští se podrobná kontrola…"
+          }
+        }
+      }
+    },
+    "Step %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Step %lld"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Krok %lld"
+          }
+        }
+      }
+    },
+    "Step by step": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Step by step"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Krok za krokem"
+          }
+        }
+      }
+    },
+    "Taking a closer look": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taking a closer look"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Probíhá podrobná kontrola"
+          }
+        }
+      }
+    },
+    "The Simulator has no camera. Import a picture or try a sample code below.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Simulator has no camera. Import a picture or try a sample code below."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simulátor nemá fotoaparát. Vyberte fotku nebo zkuste ukázkový kód níže."
+          }
+        }
+      }
+    },
+    "The camera is unavailable. You can still import a photo.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The camera is unavailable. You can still import a photo."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoaparát není dostupný. Můžete ale vybrat fotku."
+          }
+        }
+      }
+    },
+    "The deep check is unavailable. Only the checks on this iPhone are shown. Try again later.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The deep check is unavailable. Only the checks on this iPhone are shown. Try again later."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola není dostupná. Zobrazuje se jen kontrola v iPhonu. Zkuste to později."
+          }
+        }
+      }
+    },
+    "The deep check was stopped. The result from this iPhone is still available.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The deep check was stopped. The result from this iPhone is still available."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola se zastavila. Výsledek z iPhonu je stále dostupný."
+          }
+        }
+      }
+    },
+    "The guides could not be loaded. If money is at risk, call your bank using the number on your card.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The guides could not be loaded. If money is at risk, call your bank using the number on your card."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Návody se nepodařilo načíst. Pokud jsou ohrožené peníze, zavolejte bance na číslo uvedené na kartě."
+          }
+        }
+      }
+    },
+    "The imported picture": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The imported picture"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vybraná fotka"
+          }
+        }
+      }
+    },
+    "The isolated browser visits the website on the server. It does not sign in, pay or use your iPhone’s cookies. Safe QR does not log raw codes or photos in the app.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The isolated browser visits the website on the server. It does not sign in, pay or use your iPhone’s cookies. Safe QR does not log raw codes or photos in the app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oddělený prohlížeč otevře web na serveru. Nepřihlašuje se, neplatí a nepoužívá cookies z vašeho iPhonu. Safe QR nezapisuje obsah kódů ani fotky do provozních záznamů aplikace."
+          }
+        }
+      }
+    },
+    "The photo may include people or private details nearby. Turn off photo checks if you do not want to send it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The photo may include people or private details nearby. Turn off photo checks if you do not want to send it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Na fotce mohou být lidé nebo soukromé údaje v okolí. Pokud ji nechcete odesílat, vypněte kontrolu fotek."
+          }
+        }
+      }
+    },
+    "The website preview could not be loaded.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The website preview could not be loaded."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Náhled webu se nepodařilo načíst."
+          }
+        }
+      }
+    },
+    "This action could not be completed. Nothing was sent or saved by Safe QR.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This action could not be completed. Nothing was sent or saved by Safe QR."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akci se nepodařilo dokončit. Safe QR nic neodeslalo ani neuložilo."
+          }
+        }
+      }
+    },
+    "This code may harm you": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code may harm you"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód vám může uškodit"
+          }
+        }
+      }
+    },
+    "This code was checked only on this iPhone. No code or photo was sent.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code was checked only on this iPhone. No code or photo was sent."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód se zkontroloval pouze v iPhonu. Kód ani fotka se nikam neodeslaly."
+          }
+        }
+      }
+    },
+    "This is a demonstration. No website was visited.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a demonstration. No website was visited."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toto je ukázka. Žádný web se neotevřel."
+          }
+        }
+      }
+    },
+    "This picture contains %lld codes. A sticker may be covering the original.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This picture contains %lld codes. A sticker may be covering the original."
+          }
+        },
+        "cs": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Na fotce je %lld kód. Původní kód může být přelepený."
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Na fotce jsou %lld kódy. Původní kód může být přelepený."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Na fotce je %lld kódů. Původní kód může být přelepený."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "This picture could not be read. Try a different photo.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This picture could not be read. Try a different photo."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotku se nepodařilo přečíst. Zkuste jinou."
+          }
+        }
+      }
+    },
+    "This removes the history from this iPhone. You cannot undo it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This removes the history from this iPhone. You cannot undo it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historie se z tohoto iPhonu smaže. Tuto akci nelze vrátit."
+          }
+        }
+      }
+    },
+    "Try a sample code": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try a sample code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zkuste ukázkový kód"
+          }
+        }
+      }
+    },
+    "Turn light off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn light off"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vypnout svítilnu"
+          }
+        }
+      }
+    },
+    "Turn light on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn light on"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapnout svítilnu"
+          }
+        }
+      }
+    },
+    "Turn off deep checks or photo checks at any time. Offline checks keep working. Turning a setting off stops future uploads; it cannot recall information already sent.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn off deep checks or photo checks at any time. Offline checks keep working. Turning a setting off stops future uploads; it cannot recall information already sent."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobnou kontrolu i kontrolu fotek můžete kdykoli vypnout. Kontroly bez internetu fungují dál. Vypnutí zastaví další odesílání, už odeslané údaje ale nevrátí."
+          }
+        }
+      }
+    },
+    "Turn on deep checks": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on deep checks"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapnout podrobnou kontrolu"
+          }
+        }
+      }
+    },
+    "Turn on scan history in Settings to keep a private record on this iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on scan history in Settings to keep a private record on this iPhone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapněte historii kontrol v Nastavení. Záznamy zůstanou jen v tomto iPhonu."
+          }
+        }
+      }
+    },
+    "Unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unavailable"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nedostupné"
+          }
+        }
+      }
+    },
+    "Use photos for now": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use photos for now"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zatím používat fotky"
+          }
+        }
+      }
+    },
+    "Uses clearly labelled sample evidence. No server is contacted. Deep-check consent still applies. Resets when the app closes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uses clearly labelled sample evidence. No server is contacted. Deep-check consent still applies. Resets when the app closes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Používá označené ukázkové výsledky. Se serverem se nespojuje. Souhlas s podrobnou kontrolou je i tak potřeba. Po zavření aplikace se vypne."
+          }
+        }
+      }
+    },
+    "Version %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verze %@"
+          }
+        }
+      }
+    },
+    "Waiting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čeká"
+          }
+        }
+      }
+    },
+    "We recommend going back. Continue only if you understand the risk and trust the destination.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We recommend going back. Continue only if you understand the risk and trust the destination."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doporučujeme vrátit se. Pokračujte jen tehdy, pokud riziku rozumíte a příjemci důvěřujete."
+          }
+        }
+      }
+    },
+    "Website preview. This page was opened away from your iPhone.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website preview. This page was opened away from your iPhone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Náhled webu. Stránka se otevřela mimo váš iPhone."
+          }
+        }
+      }
+    },
+    "What a deep check sends": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What a deep check sends"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Co se odesílá při podrobné kontrole"
+          }
+        }
+      }
+    },
+    "What we couldn't check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What we couldn't check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Co jsme nemohli ověřit"
+          }
+        }
+      }
+    },
+    "What's inside": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What's inside"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Co kód obsahuje"
+          }
+        }
+      }
+    },
+    "Where it goes and for how long": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where it goes and for how long"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kam údaje putují a na jak dlouho"
+          }
+        }
+      }
+    },
+    "Where the link leads": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where the link leads"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kam odkaz vede"
+          }
+        }
+      }
+    },
+    "Why": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Why"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proč"
+          }
+        }
+      }
+    },
+    "Wi-Fi": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi"
+          }
+        }
+      }
+    },
+    "Wi-Fi passwords, login and eSIM codes, contacts, events, phone numbers, messages and email details stay on this iPhone. The app sends no location from GPS.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wi-Fi passwords, login and eSIM codes, contacts, events, phone numbers, messages and email details stay on this iPhone. The app sends no location from GPS."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesla k Wi-Fi, přihlašovací a eSIM kódy, kontakty, události, telefonní čísla, zprávy a e-mailové údaje zůstávají v iPhonu. Aplikace neodesílá polohu z GPS."
+          }
+        }
+      }
+    },
+    "Wide view · scanning with the main camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wide view · scanning with the main camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Široký záběr · kód čte hlavní fotoaparát"
+          }
+        }
+      }
+    },
+    "With your permission, Safe QR sends the decoded link, language, device score and warning identifiers. If photo checks are on, it also sends a photo and the code’s position in it. For a payment code, this can include the recipient and amount.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With your permission, Safe QR sends the decoded link, language, device score and warning identifiers. If photo checks are on, it also sends a photo and the code’s position in it. For a payment code, this can include the recipient and amount."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S vaším souhlasem Safe QR odešle přečtený odkaz, jazyk, skóre z iPhonu a označení varování. Při zapnuté kontrole fotek odešle i fotku a polohu kódu v ní. U platebního kódu může jít i o příjemce a částku."
+          }
+        }
+      }
+    },
+    "You stay in control.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You stay in control."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozhodujete vy."
+          }
+        }
+      }
+    },
+    "Your bank": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your bank"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaše banka"
+          }
+        }
+      }
+    },
+    "Your browser will open %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your browser will open %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V prohlížeči se otevře %@."
+          }
+        }
+      }
+    },
+    "Your choices": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your choices"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaše volby"
+          }
+        }
+      }
+    },
+    "Your decision": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your decision"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaše rozhodnutí"
+          }
+        }
+      }
+    },
+    "Your iPhone will call %@. Your operator’s usual call charges may apply.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your iPhone will call %@. Your operator’s usual call charges may apply."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone zavolá na %@. Hovor se účtuje podle vašeho tarifu."
+          }
+        }
+      }
+    },
+    "Your preferences": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your preferences"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaše nastavení"
+          }
+        }
+      }
+    },
+    "Your result": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your result"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Výsledek kontroly"
+          }
+        }
+      }
+    },
+    "Premium SMS": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Premium SMS"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Premium SMS"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,1013 @@
+[
+  {
+    "id": "how",
+    "category": "basics",
+    "symbol": "qrcode.viewfinder",
+    "title": {
+      "en": "How Safe QR works",
+      "cs": "Jak Safe QR funguje"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Point the camera at a code, or choose a photo. Safe QR reads the code on your iPhone, even without the internet.",
+          "cs": "Namiřte fotoaparát na kód nebo vyberte fotku. Safe QR kód přečte přímo v iPhonu, i bez internetu."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Read the result. The number from 0 to 100 describes risk: a higher number means more warning signs. Read the reasons too.",
+          "cs": "Přečtěte si výsledek. Číslo od 0 do 100 vyjadřuje riziko: čím vyšší, tím více varovných signálů. Podívejte se i na důvody."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Optional deep checks inspect the website and surroundings on servers in the EU. AI can make mistakes. A low score does not guarantee safety.",
+          "cs": "Volitelná podrobná kontrola prověří web a okolí kódu na serverech v EU. Umělá inteligence se může mýlit. Nízké skóre není zárukou bezpečí."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "You decide what happens next. Opening a link, calling, sending or adding anything needs your confirmation.",
+          "cs": "O dalším kroku rozhodujete vy. Otevření odkazu, volání, odeslání nebo přidání údajů vyžaduje vaše potvrzení."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": []
+  },
+  {
+    "id": "tips",
+    "category": "basics",
+    "symbol": "eye",
+    "title": {
+      "en": "Spot a fake code",
+      "cs": "Jak poznat falešný kód"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Look for a sticker over another code, uneven edges or a code that does not fit its surroundings.",
+          "cs": "Všímejte si přelepených kódů, nerovných okrajů a kódů, které na dané místo nepatří."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Check the web address. A familiar logo does not prove that a website belongs to the organisation.",
+          "cs": "Zkontrolujte adresu webu. Známé logo ještě neznamená, že web dané organizaci patří."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Before paying, check the recipient and amount in your banking app. If unsure, ask the operator using a contact you already trust.",
+          "cs": "Před zaplacením zkontrolujte příjemce a částku v bankovní aplikaci. Při pochybnostech kontaktujte provozovatele způsobem, který znáte."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Do not approve an unfamiliar login or install an app because a code asks you to. Take your time.",
+          "cs": "Nepotvrzujte cizí přihlášení a neinstalujte aplikaci jen proto, že vás k tomu kód vybízí. Nespěchejte."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": []
+  },
+  {
+    "id": "recovery-1",
+    "category": "recovery",
+    "symbol": "banknote",
+    "title": {
+      "en": "I paid by bank transfer or QR Platba",
+      "cs": "Poslal/a jsem převod nebo QR Platbu"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Call your bank immediately. Say that you suspect fraud. Ask whether the payment can still be stopped or recovered.",
+          "cs": "Ihned volejte banku. Řekněte, že jde o podezření na podvod. Požádejte o prověření, zda lze platbu ještě zastavit nebo získat zpět."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Save the payment confirmation, recipient account, amount and date. Recovery may not be possible.",
+          "cs": "Uložte potvrzení platby. Připravte účet příjemce, částku a datum. Vrácení peněz nemusí být možné."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Report the fraud to police. Keep messages, links and payment evidence.",
+          "cs": "Podvod oznamte policii. Předejte zprávy, odkazy a potvrzení platby."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "Czech Police",
+          "cs": "Policie ČR"
+        },
+        "url": "https://policie.gov.cz/kyberkriminalita/pomoc-v-nouzi-4"
+      },
+      {
+        "title": {
+          "en": "Air Bank",
+          "cs": "Air Bank"
+        },
+        "url": "https://www.airbank.cz/novinky/poslali-jste-penize-podvodnikovi/"
+      }
+    ]
+  },
+  {
+    "id": "recovery-2",
+    "category": "recovery",
+    "symbol": "creditcard",
+    "title": {
+      "en": "I entered card details",
+      "cs": "Zadal/a jsem údaje z karty"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Immediately block the card in your official banking app or through your bank's phone service.",
+          "cs": "Kartu ihned zablokujte v oficiální bankovní aplikaci nebo přes bankovní linku."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Check recent transactions. Report unfamiliar payments and prepare evidence for a dispute.",
+          "cs": "Zkontrolujte poslední platby. Neznámé platby nahlaste bance. Připravte si podklady pro reklamaci."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Report the fraud to police.",
+          "cs": "Podvod oznamte policii."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "Air Bank",
+          "cs": "Air Bank"
+        },
+        "url": "https://www.airbank.cz/bezpecnost/co-delat-pri-podvodu/"
+      },
+      {
+        "title": {
+          "en": "Air Bank",
+          "cs": "Air Bank"
+        },
+        "url": "https://www.airbank.cz/novinky/co-delat-po-zneuziti-karty/"
+      }
+    ]
+  },
+  {
+    "id": "recovery-3",
+    "category": "recovery",
+    "symbol": "key",
+    "title": {
+      "en": "I entered banking credentials or approved something",
+      "cs": "Zadal/a jsem přihlášení do banky nebo něco potvrdil/a"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Call your bank immediately. Explain exactly what you entered and approved. Ask it to block compromised payment instruments and access.",
+          "cs": "Ihned volejte banku. Řekněte, co jste zadali a potvrdili. Požádejte o blokaci zneužitých platebních prostředků a přístupů."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Mention any possible registration of another phone. Scams can add a banking app on the attacker's device.",
+          "cs": "Upozorněte banku i na možné přidání cizího telefonu. Podvod může zahrnovat registraci další bankovní aplikace."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Change passwords from a safe device. Review payments and security settings with your bank.",
+          "cs": "Změňte hesla z bezpečného zařízení. S bankou projděte platby a bezpečnostní nastavení."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "Czech National Bank",
+          "cs": "Česká národní banka"
+        },
+        "url": "https://www.cnb.cz/cs/dohled-financni-trh/ochrana-spotrebitele/online-podvody-chrante-sve-penize"
+      },
+      {
+        "title": {
+          "en": "MONETA",
+          "cs": "MONETA"
+        },
+        "url": "https://www.moneta.cz/bezpecnost/moje-bezpecnost"
+      },
+      {
+        "title": {
+          "en": "mBank",
+          "cs": "mBank"
+        },
+        "url": "https://www.mbank.cz/o-nas/bezpecnost/klient/phishing/"
+      },
+      {
+        "title": {
+          "en": "Air Bank",
+          "cs": "Air Bank"
+        },
+        "url": "https://www.airbank.cz/bezpecnost/co-delat-pri-podvodu/"
+      }
+    ]
+  },
+  {
+    "id": "recovery-4",
+    "category": "recovery",
+    "symbol": "desktopcomputer",
+    "title": {
+      "en": "I installed an app or allowed remote access",
+      "cs": "Nainstaloval/a jsem aplikaci nebo povolil/a vzdálený přístup"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Disconnect the affected phone or computer from the internet. Turn off Wi-Fi and mobile data.",
+          "cs": "Odpojte napadený telefon nebo počítač od internetu. Vypněte Wi-Fi i mobilní data."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Use another safe device to contact your bank and change important passwords. Start with banking and email.",
+          "cs": "Z jiného bezpečného zařízení kontaktujte banku a změňte důležitá hesla. Začněte bankou a e-mailem."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Before deleting or resetting anything, ask police whether the device is needed as evidence. Then arrange removal of the malicious app, or system recovery if its safety remains uncertain.",
+          "cs": "Před smazáním nebo továrním nastavením se domluvte s policií, zda zařízení potřebuje jako důkaz. Potom zajistěte odstranění škodlivé aplikace; při nejistotě obnovu systému."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "NÚKIB",
+          "cs": "NÚKIB"
+        },
+        "url": "https://portal.nukib.gov.cz/verejnost-obcan/mam-napadene-zarizeni"
+      },
+      {
+        "title": {
+          "en": "mBank",
+          "cs": "mBank"
+        },
+        "url": "https://www.mbank.cz/o-nas/bezpecnost/klient/phishing/"
+      }
+    ]
+  },
+  {
+    "id": "recovery-5",
+    "category": "recovery",
+    "symbol": "message",
+    "title": {
+      "en": "I sent a Premium SMS or started a subscription",
+      "cs": "Odeslal/a jsem Premium SMS nebo vzniklo předplatné"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Keep the SMS messages and check your bill. Identify the service provider through your operator or the Plat mobilem directory.",
+          "cs": "Uložte SMS a zkontrolujte vyúčtování. Zjistěte poskytovatele služby u operátora nebo v databázi Plat mobilem."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Follow that service's cancellation instructions. O2 commonly describes `STOP ALL` sent to the service's first five digits. T-Mobile describes `STOP` sent to the original five-digit code. These instructions do not cover every mobile payment.",
+          "cs": "Zrušte předplatné podle pokynů konkrétní služby. O2 uvádí obvykle `STOP ALL` na prvních pět číslic služby. T-Mobile uvádí `STOP` na původní pětimístné číslo. Není to univerzální návod pro všechny mobilní platby."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Ask your operator to block further payments. T-Mobile advises cancelling the subscription before blocking SMS payments. O2 cannot cancel a third party's subscription for you.",
+          "cs": "Požádejte operátora o blokaci dalších plateb. T-Mobile doporučuje předplatné ukončit před blokací SMS plateb. O2 za vás předplatné třetí strany nezruší."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Complain about the purchased content to its provider. Complain about billing or SMS transmission to the operator. ČTÚ handles the telecommunications part, not every content dispute.",
+          "cs": "Obsah služby reklamujte u poskytovatele. Vyúčtování nebo přenos SMS reklamujte u operátora. ČTÚ řeší telekomunikační část, ne každý spor o zakoupený obsah."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "ČTÚ",
+          "cs": "ČTÚ"
+        },
+        "url": "https://ctu.gov.cz/mam-problem-se-sluzbami-3-stran"
+      },
+      {
+        "title": {
+          "en": "O2",
+          "cs": "O2"
+        },
+        "url": "https://www.o2.cz/podpora/financni-sluzby/platba-pres-sms"
+      },
+      {
+        "title": {
+          "en": "T-Mobile",
+          "cs": "T-Mobile"
+        },
+        "url": "https://www.t-mobile.cz/platebni-a-premium-sms"
+      }
+    ]
+  },
+  {
+    "id": "recovery-6",
+    "category": "recovery",
+    "symbol": "wifi",
+    "title": {
+      "en": "I joined an unknown Wi-Fi network",
+      "cs": "Připojil/a jsem se k neznámé Wi-Fi"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Disconnect. On iPhone, use **Settings → Wi-Fi → Edit → ⓘ beside the network → Forget This Network**. This prevents automatic reconnection.",
+          "cs": "Odpojte se. Na iPhonu otevřete **Nastavení → Wi-Fi → Upravit → ⓘ u sítě → Ignorovat tuto síť**. Tím zabráníte automatickému návratu do této sítě."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Do not enter banking details on an unknown network. Continue on a trusted device and connection.",
+          "cs": "Na neznámé síti nezadávejte bankovní údaje. Pro další práci použijte důvěryhodné zařízení a připojení."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "If you entered details on a suspicious page, use checklist 2 or 3. If you installed an app, use checklist 4. Choose the recovery steps for what actually happened.",
+          "cs": "Pokud jste zadali údaje na podezřelé stránce, použijte checklist 2 nebo 3. Pokud jste nainstalovali aplikaci, použijte checklist 4. Jde o rozdělení postupu podle toho, co se skutečně stalo."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "Apple",
+          "cs": "Apple"
+        },
+        "url": "https://support.apple.com/cs-cz/102480"
+      },
+      {
+        "title": {
+          "en": "MONETA",
+          "cs": "MONETA"
+        },
+        "url": "https://www.moneta.cz/caste-dotazy/odpoved/co-je-to-phishing"
+      },
+      {
+        "title": {
+          "en": "Czech National Bank",
+          "cs": "Česká národní banka"
+        },
+        "url": "https://www.cnb.cz/cs/dohled-financni-trh/ochrana-spotrebitele/online-podvody-chrante-sve-penize"
+      },
+      {
+        "title": {
+          "en": "NÚKIB",
+          "cs": "NÚKIB"
+        },
+        "url": "https://portal.nukib.gov.cz/verejnost-obcan/mam-napadene-zarizeni"
+      }
+    ]
+  },
+  {
+    "id": "recovery-7",
+    "category": "recovery",
+    "symbol": "person.badge.key",
+    "title": {
+      "en": "I scanned a login QR code",
+      "cs": "Naskenoval/a jsem přihlašovací QR kód"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "If the app still asks you to approve an unfamiliar login, choose **Cancel**. Discord explicitly requires approval after scanning.",
+          "cs": "Pokud aplikace ještě žádá potvrzení cizího přihlášení, zvolte **Zrušit**. Discord výslovně upozorňuje, že samotné naskenování musí následovat schválení."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "If a device was connected, disconnect it in that service:",
+          "cs": "Pokud se zařízení připojilo, odpojte je v příslušné aplikaci:"
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "**WhatsApp:** open **Linked devices**, choose the unfamiliar device and select **Log out**.",
+          "cs": "**WhatsApp:** otevřete **Propojená zařízení / Linked devices**, vyberte neznámé zařízení a **Odhlásit / Log out**."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "**Telegram:** **Settings → Devices**, or **Privacy & Security → Active Sessions**. End the unfamiliar session. Enable **Two-Step Verification**.",
+          "cs": "**Telegram:** **Settings → Devices** nebo **Privacy & Security → Active Sessions**. Ukončete cizí relaci. Zapněte **Two-Step Verification**."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "**Discord:** change your password. Discord says this logs out all devices. Also review **Authorized Apps** and enable multi-factor authentication.",
+          "cs": "**Discord:** změňte heslo. Podle Discordu tím odhlásíte všechna zařízení. Zkontrolujte také **Authorized Apps** a zapněte vícefaktorové ověření."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "**Bank identity:** immediately call your own bank to block the login credentials. Review which services received your identity data.",
+          "cs": "**Bankovní identita:** ihned volejte vlastní banku a požádejte o zablokování přihlašovacích údajů. V bankovnictví zkontrolujte, kterým službám byly předány údaje."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "If scam messages may have been sent in your name, warn your contacts through a different channel.",
+          "cs": "Pokud vaším jménem mohly odejít podvodné zprávy, upozorněte blízké jinou cestou."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "Discord",
+          "cs": "Discord"
+        },
+        "url": "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ"
+      },
+      {
+        "title": {
+          "en": "WhatsApp",
+          "cs": "WhatsApp"
+        },
+        "url": "https://faq.whatsapp.com/834124628020911/"
+      },
+      {
+        "title": {
+          "en": "device review",
+          "cs": "Kontrola zařízení"
+        },
+        "url": "https://faq.whatsapp.com/1428782138011916/"
+      },
+      {
+        "title": {
+          "en": "Telegram",
+          "cs": "Telegram"
+        },
+        "url": "https://telegram.org/faq#q-my-phone-was-stolen-what-do-i-do"
+      },
+      {
+        "title": {
+          "en": "compromised accounts",
+          "cs": "Napadené účty"
+        },
+        "url": "https://support.discord.com/hc/en-us/articles/24160905919511-My-Discord-Account-was-Hacked-or-Compromised"
+      },
+      {
+        "title": {
+          "en": "Bank iD",
+          "cs": "Bank iD"
+        },
+        "url": "https://bankid.cz/lide/caste-dotazy/"
+      },
+      {
+        "title": {
+          "en": "Czech Police",
+          "cs": "Policie ČR"
+        },
+        "url": "https://policie.gov.cz/kyberkriminalita/co-delat-vpripade-ze-se-setkate-spodezrelou-aktivitou-vonline-prostoru"
+      }
+    ]
+  },
+  {
+    "id": "recovery-8",
+    "category": "recovery",
+    "symbol": "simcard",
+    "title": {
+      "en": "I shared an eSIM QR code or suspect a SIM swap",
+      "cs": "Předal/a jsem eSIM QR nebo mám podezření na výměnu SIM"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Do not forward the QR image again. O2 advises protecting it and blocking the eSIM if misuse is suspected.",
+          "cs": "QR dál neposílejte. O2 doporučuje QR obrázek chránit a při podezření na zneužití eSIM zablokovat."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "Contact your operator immediately from another phone or in person. Ask it to investigate and block the suspect SIM/eSIM. In Vodafone's app, use **Účet → SIM & eSIM → number → Zablokovat**. In Moje O2, select the tariff and **Informace o službě → Blokovat SIM/eSIM**.",
+          "cs": "Ihned kontaktujte operátora z jiného telefonu nebo osobně. Požádejte o prověření a blokaci podezřelé SIM/eSIM. Ve Vodafone je blokace v aplikaci **Účet → SIM & eSIM → číslo → Zablokovat**. V Moje O2 vyberte tarif a **Informace o službě → Blokovat SIM/eSIM**."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "If banking access is at risk, call your bank too. SIM swapping can form part of an attempt to bypass other accounts' security.",
+          "cs": "Pokud je ohrožen přístup do banky, volejte také banku. SIM swap může být součástí pokusu obejít ověřování jiných účtů."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Change affected account passwords from a safe device. Arrange a replacement SIM with the operator. For Telegram, end unfamiliar sessions and enable two-step verification.",
+          "cs": "Z bezpečného zařízení změňte hesla ohrožených účtů. S operátorem řešte náhradní SIM. Pokud používáte Telegram, ukončete cizí relace a zapněte dvoufázové ověření."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "O2",
+          "cs": "O2"
+        },
+        "url": "https://www.o2.cz/osobni/-a249179?field=data"
+      },
+      {
+        "title": {
+          "en": "Vodafone",
+          "cs": "Vodafone"
+        },
+        "url": "https://www.vodafone.cz/pece/ztraceny-ci-odcizeny-telefon-sim/zablokovani-telefonu-ci-sim/odcizeny-telefon/"
+      },
+      {
+        "title": {
+          "en": "O2",
+          "cs": "O2"
+        },
+        "url": "https://www.o2.cz/podpora/volani-z-mobilu/co-delat-kdyz-prijdete-o-telefon"
+      },
+      {
+        "title": {
+          "en": "Vodafone: how the scam works",
+          "cs": "Vodafone: jak podvod funguje"
+        },
+        "url": "https://www.vodafone.co.uk/newscentre/features/how-to-protect-yourself-from-sim-swap-fraud/"
+      },
+      {
+        "title": {
+          "en": "Czech Police",
+          "cs": "Policie ČR"
+        },
+        "url": "https://policie.gov.cz/kyberkriminalita/co-delat-vpripade-ze-se-setkate-spodezrelou-aktivitou-vonline-prostoru"
+      },
+      {
+        "title": {
+          "en": "mBank",
+          "cs": "mBank"
+        },
+        "url": "https://www.mbank.cz/o-nas/bezpecnost/klient/phishing/"
+      },
+      {
+        "title": {
+          "en": "Telegram",
+          "cs": "Telegram"
+        },
+        "url": "https://telegram.org/faq#q-my-phone-was-stolen-what-do-i-do"
+      }
+    ]
+  },
+  {
+    "id": "operator-start",
+    "category": "operator",
+    "symbol": "shield.lefthalf.filled",
+    "title": {
+      "en": "Block charges, cancel subscriptions",
+      "cs": "Zablokujte platby a zrušte předplatné"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Ask your operator: “Please block Premium SMS, carrier billing including Apple and Google, and premium-rate calls. Help me find recurring charges.”",
+          "cs": "Řekněte operátorovi: „Chci zablokovat Premium SMS, platby mobilem včetně Apple a Google a drahé hovory audiotex. Pomozte mi najít opakované platby.“"
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "Cancel the subscription separately. Blocking payments does not cancel it. Charges can resume if you unblock payments.",
+          "cs": "Předplatné zrušte zvlášť. Blokace plateb ho neruší. Po odblokování se účtování může obnovit."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "On iPhone: Settings → your name → Subscriptions → choose the service → Cancel Subscription.",
+          "cs": "Na iPhonu: Nastavení → vaše jméno → Předplatná → vyberte službu → Zrušit předplatné."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "T-Mobile",
+          "cs": "T-Mobile"
+        },
+        "url": "https://www.t-mobile.cz/platebni-a-premium-sms"
+      },
+      {
+        "title": {
+          "en": "O2",
+          "cs": "O2"
+        },
+        "url": "https://www.o2.cz/podpora/financni-sluzby/platba-pres-o2-vyuctovani"
+      },
+      {
+        "title": {
+          "en": "T-Mobile · m-platba",
+          "cs": "T-Mobile · m-platba"
+        },
+        "url": "https://www.t-mobile.cz/m-platba/"
+      }
+    ]
+  },
+  {
+    "id": "o2",
+    "category": "operator",
+    "symbol": "iphone",
+    "title": {
+      "en": "O2",
+      "cs": "O2"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "On the Moje O2 website: choose your tariff → Nastavení → Platba přes SMS → Nastavit → Konfigurovat službu → Zakázáno vše.",
+          "cs": "Na webu Moje O2: vyberte tarif → Nastavení → Platba přes SMS → Nastavit → Konfigurovat službu → Zakázáno vše."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Repeat for Platba přes internet. This includes Apple, Google and Microsoft purchases.",
+          "cs": "Stejně vypněte Platbu přes internet. Patří sem i nákupy u Apple, Googlu a Microsoftu."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Under Platba voláním → Nastavit → Konfigurovat službu, choose Aktivní + Zakázáno vše. Inactive does not block premium calls.",
+          "cs": "U Platby voláním → Nastavit → Konfigurovat službu zvolte Aktivní + Zakázáno vše. Neaktivní služba drahé hovory neblokuje."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Check Služby třetích stran on your bill. Cancel with the provider. For SMS, O2 commonly says STOP ALL to the first five digits of the service number. O2 cannot cancel third-party subscriptions for you.",
+          "cs": "Ve vyúčtování zkontrolujte Služby třetích stran. Předplatné zrušte u poskytovatele. U SMS O2 obvykle uvádí STOP ALL na prvních pět číslic služby. O2 za vás cizí předplatné nezruší."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Help: 800 02 02 02; from abroad +420 720 720 720. Ordinary hours: 08:00–19:00.",
+          "cs": "Pomoc: 800 02 02 02; ze zahraničí +420 720 720 720. Běžná linka: 08:00–19:00."
+        },
+        "numbered": false
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "O2 · SMS",
+          "cs": "O2 · SMS"
+        },
+        "url": "https://www.o2.cz/podpora/financni-sluzby/platba-pres-sms"
+      },
+      {
+        "title": {
+          "en": "O2 · internet",
+          "cs": "O2 · internet"
+        },
+        "url": "https://www.o2.cz/podpora/financni-sluzby/platba-pres-internet"
+      },
+      {
+        "title": {
+          "en": "O2 · audiotex",
+          "cs": "O2 · audiotex"
+        },
+        "url": "https://www.o2.cz/podpora/financni-sluzby/platba-volanim"
+      },
+      {
+        "title": {
+          "en": "O2 · contacts",
+          "cs": "O2 · kontakty"
+        },
+        "url": "https://www.o2.cz/osobni/kontakty"
+      }
+    ]
+  },
+  {
+    "id": "tmobile",
+    "category": "operator",
+    "symbol": "iphone",
+    "title": {
+      "en": "T-Mobile",
+      "cs": "T-Mobile"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "On the Můj T-Mobile website: Služby → Platební služby. Block Premium SMS, m-platba and audiotex separately.",
+          "cs": "Na webu Můj T-Mobile: Služby → Platební služby. Zablokujte zvlášť Premium SMS, m-platbu a audiotex."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "In the app: Nastavení → your number → Zpoplatněné služby nad rámec tarifu → Nastavení m-platby. This includes app-store billing.",
+          "cs": "V aplikaci: Nastavení → vaše číslo → Zpoplatněné služby nad rámec tarifu → Nastavení m-platby. Patří sem i platby v obchodech s aplikacemi."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "On the website, see Služby → Platební služby → Seznam aktivních předplatných. Cancel with the provider before blocking SMS payments. Follow the original message, or send STOP to the original five-digit service code.",
+          "cs": "Na webu otevřete Služby → Platební služby → Seznam aktivních předplatných. Předplatné zrušte u poskytovatele před blokací SMS plateb. Postupujte podle původní zprávy, případně pošlete STOP na původní pětimístné číslo služby."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Help: 800 73 73 73; abroad +420 603 603 603. Ordinary hours: weekdays 08:00–21:00. Urgent SIM or service issues are handled outside those hours too.",
+          "cs": "Pomoc: 800 73 73 73; ze zahraničí +420 603 603 603. Běžná linka: pracovní dny 08:00–21:00. Urgentní potíže se SIM nebo službou řeší i mimo tuto dobu."
+        },
+        "numbered": false
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "T-Mobile · m-platba",
+          "cs": "T-Mobile · m-platba"
+        },
+        "url": "https://www.t-mobile.cz/m-platba"
+      },
+      {
+        "title": {
+          "en": "T-Mobile · SMS",
+          "cs": "T-Mobile · SMS"
+        },
+        "url": "https://www.t-mobile.cz/platebni-a-premium-sms"
+      },
+      {
+        "title": {
+          "en": "T-Mobile · contacts",
+          "cs": "T-Mobile · kontakty"
+        },
+        "url": "https://www.t-mobile.cz/kontakty-t-mobile"
+      }
+    ]
+  },
+  {
+    "id": "vodafone",
+    "category": "operator",
+    "symbol": "iphone",
+    "title": {
+      "en": "Vodafone",
+      "cs": "Vodafone"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "On the Můj Vodafone website: Služby → Blokování. Block Premium SMS, m-platby and Audiotex separately. In Můj Vodafone+: Služby → your number → Přehled → Více → Blokování.",
+          "cs": "Na webu Můj Vodafone: Služby → Blokování. Zablokujte zvlášť Premium SMS, m-platby a Audiotex. V Můj Vodafone+: Služby → vaše číslo → Přehled → Více → Blokování."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Blocking Premium SMS also affects SMS tickets and DMS donations. m-platba includes Apple and Google purchases.",
+          "cs": "Blokace Premium SMS ovlivní i SMS jízdenky a DMS. m-platba zahrnuje nákupy u Apple a Googlu."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "Check Platby třetím stranám on your bill and the m-platba portal. Cancel SMS subscriptions using the message instructions, or STOP to the first five digits of the service number.",
+          "cs": "Zkontrolujte Platby třetím stranám ve vyúčtování a portál m-platby. SMS předplatné zrušte podle zprávy, případně pošlete STOP na prvních pět číslic služby."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Help: *77 from Vodafone; 800 77 00 77 from another network; abroad +420 776 977 100.",
+          "cs": "Pomoc: *77 z Vodafonu; 800 77 00 77 z jiné sítě; ze zahraničí +420 776 977 100."
+        },
+        "numbered": false
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "Vodafone · blocking",
+          "cs": "Vodafone · blokování"
+        },
+        "url": "https://www.vodafone.cz/pece/tarify-sluzby/sms-a-mms-zpravy/blokovani-plateb-tretich-stran/"
+      },
+      {
+        "title": {
+          "en": "Vodafone · m-platba",
+          "cs": "Vodafone · m-platba"
+        },
+        "url": "https://www.vodafone.cz/mplatba/"
+      },
+      {
+        "title": {
+          "en": "Vodafone · SMS",
+          "cs": "Vodafone · SMS"
+        },
+        "url": "https://www.vodafone.cz/pece/vyuctovani-platby-kredit/platby-mobilem/premium-sms-platby-tretim-stranam/"
+      },
+      {
+        "title": {
+          "en": "Vodafone · contacts",
+          "cs": "Vodafone · kontakty"
+        },
+        "url": "https://www.vodafone.cz/pece/muj-vodafone/muj-vodafone-77/kontakt-operatora/"
+      }
+    ]
+  },
+  {
+    "id": "virtual",
+    "category": "operator",
+    "symbol": "simcard",
+    "title": {
+      "en": "Virtual operators",
+      "cs": "Virtuální operátoři"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "Contact your own brand. Do not assume the host network’s instructions apply. Ask about each payment type separately.",
+          "cs": "Kontaktujte přímo svou značku. Postup sítě, kterou používá, nemusí platit. Ptejte se na každý druh plateb zvlášť."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "MOBIL.CZ: request Premium SMS blocking on 3333 or +420 738 333 333. SMS tickets can be blocked separately.",
+          "cs": "MOBIL.CZ: o blokaci Premium SMS požádejte na 3333 nebo +420 738 333 333. SMS jízdenky lze blokovat samostatně."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Tesco Mobile: support, the app or website can deactivate payment commands, including audiotex and SMS payments. The tariff effective 8 December 2025 lists 841 11 22 55 at CZK 5/min including VAT.",
+          "cs": "Tesco Mobile: podporou, aplikací nebo webem lze vypnout platební příkazy včetně audiotexu a SMS plateb. Ceník od 8. 12. 2025 uvádí linku 841 11 22 55 za 5 Kč/min včetně DPH."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "SAZKAmobil: request Premium SMS blocking. Support: *11 / 800 77 11 11; abroad +420 313 03 03 11.",
+          "cs": "SAZKAmobil: požádejte o blokaci Premium SMS. Podpora: *11 / 800 77 11 11; ze zahraničí +420 313 03 03 11."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Kaktus: contact support on the official website.",
+          "cs": "Kaktus: obraťte se na podporu na oficiálním webu."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "MOBIL.CZ",
+          "cs": "MOBIL.CZ"
+        },
+        "url": "https://www.mobil.cz/podpora/?cat=nastaveni"
+      },
+      {
+        "title": {
+          "en": "Tesco Mobile · price list",
+          "cs": "Tesco Mobile · ceník"
+        },
+        "url": "https://tescomobile.cz/wp-content/uploads/2026/01/30593_TMCZ_Cenik_od-8-12-25_V4_oprava.pdf"
+      },
+      {
+        "title": {
+          "en": "SAZKAmobil",
+          "cs": "SAZKAmobil"
+        },
+        "url": "https://www.sazkamobil.cz/podpora/kontakt"
+      },
+      {
+        "title": {
+          "en": "SAZKAmobil · price list",
+          "cs": "SAZKAmobil · ceník"
+        },
+        "url": "https://cdn.sazkamobil.cz/sazkamobil/image/upload/v1730407233/sazkamobil/ke-stazeni/ceniky/20241201_SAZKAmobil_Cenik.pdf"
+      },
+      {
+        "title": {
+          "en": "Kaktus",
+          "cs": "Kaktus"
+        },
+        "url": "https://www.mujkaktus.cz/"
+      }
+    ]
+  },
+  {
+    "id": "report",
+    "category": "report",
+    "symbol": "building.2",
+    "title": {
+      "en": "Report a scam",
+      "cs": "Nahlášení podvodu"
+    },
+    "blocks": [
+      {
+        "text": {
+          "en": "If money is at risk, call your bank first. Do not wait for an email reply. End suspicious calls and approve nothing else.",
+          "cs": "Pokud jsou ohrožené peníze, nejdřív volejte banku. Nečekejte na odpověď na e-mail. Ukončete podezřelé hovory a nic dalšího nepotvrzujte."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "Report the crime to the Czech Police. Keep messages, links, payment confirmations and pictures. Call 158 for immediate danger; otherwise contact a local police station.",
+          "cs": "Podvod oznamte Policii ČR. Uschovejte zprávy, odkazy, potvrzení plateb a fotky. Při bezprostředním ohrožení volejte 158, jinak kontaktujte policejní služebnu."
+        },
+        "numbered": true
+      },
+      {
+        "text": {
+          "en": "You can also report a cyber incident to CSIRT.CZ through its public form. Financial scams belong with your bank and police.",
+          "cs": "Kybernetický incident můžete nahlásit také CSIRT.CZ přes veřejný formulář. Podvod s penězi řešte s bankou a policií."
+        },
+        "numbered": true
+      }
+    ],
+    "sources": [
+      {
+        "title": {
+          "en": "Policie ČR",
+          "cs": "Policie ČR"
+        },
+        "url": "https://policie.gov.cz/kyberkriminalita/pomoc-v-nouzi-4"
+      },
+      {
+        "title": {
+          "en": "Policie ČR · contacts",
+          "cs": "Policie ČR · kontakty"
+        },
+        "url": "https://policie.gov.cz/kontakty"
+      },
+      {
+        "title": {
+          "en": "CSIRT.CZ",
+          "cs": "CSIRT.CZ"
+        },
+        "url": "https://www.csirt.cz/cs/hlaseni-incidentu/"
+      }
+    ]
+  }
+]

@@ -1,0 +1,198 @@
+[
+  {
+    "id": "0",
+    "bank": "Česká spořitelna",
+    "phone": "+420 277 207 207",
+    "scope": {
+      "en": "General line with card and Bankovní IDentita blocking.",
+      "cs": "Blokace karty a Bankovní IDentity."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.csas.cz/cs/osobni-finance/kontakty-podpora"
+  },
+  {
+    "id": "1",
+    "bank": "ČSOB",
+    "phone": "+420 495 800 111",
+    "scope": {
+      "en": "Security line: fraud, compromised account, suspicious calls, lost or misused cards.",
+      "cs": "Bezpečnostní linka: podvod, ohrožený účet, podezřelé hovory, ztracená nebo zneužitá karta."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.csob.cz/v-obraze/blog/clanky/hlaseni-internetovych-podvodu"
+  },
+  {
+    "id": "2",
+    "bank": "Komerční banka",
+    "phone": "+420 955 512 230",
+    "scope": {
+      "en": "Card blocking and card support.",
+      "cs": "Blokace karty a pomoc s kartou."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.kb.cz/cs/podpora/bezpecnost/co-delat-pri-podvodu-na-internetu"
+  },
+  {
+    "id": "2-extra",
+    "bank": "Komerční banka",
+    "phone": "+420 955 551 505",
+    "scope": {
+      "en": "General client line, also shown on the fraud-recovery page",
+      "cs": "Obecná klientská linka uvedená i v návodu při podvodu."
+    },
+    "hours": {
+      "en": "Mon–Fri 07:00–22:00; Sat–Sun 08:00–22:00",
+      "cs": "Po–pá 07:00–22:00, so–ne 08:00–22:00."
+    },
+    "source": "https://www.kb.cz/cs/podpora/bezpecnost/co-delat-pri-podvodu-na-internetu"
+  },
+  {
+    "id": "3",
+    "bank": "MONETA Money Bank",
+    "phone": "+420 224 442 424",
+    "scope": {
+      "en": "Block all payment channels and cards. A virtual assistant can handle blocking.",
+      "cs": "Blokace všech platebních kanálů a karet. Blokaci může provést virtuální asistent. Obecné konzultace mají běžnou provozní dobu."
+    },
+    "hours": {
+      "en": "24/7 for blocking",
+      "cs": "Blokace nonstop"
+    },
+    "source": "https://www.moneta.cz/bezpecnost"
+  },
+  {
+    "id": "4",
+    "bank": "Air Bank",
+    "phone": "+420 547 134 134",
+    "scope": {
+      "en": "Urgent card or account blocking.",
+      "cs": "Naléhavá blokace karty nebo účtu. Pomoci může asistentka Aneta. Linka neřeší běžné dotazy."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.airbank.cz/kontakty/"
+  },
+  {
+    "id": "5",
+    "bank": "Fio banka",
+    "phone": "+420 224 346 777",
+    "scope": {
+      "en": "Lost or stolen payment cards.",
+      "cs": "Ztracená nebo odcizená platební karta. Pro zneužitý účet použijte samostatnou linku níže."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.fio.cz/kontakty"
+  },
+  {
+    "id": "5-extra",
+    "bank": "Fio banka",
+    "phone": "+420 224 346 392",
+    "scope": {
+      "en": "Account misuse and technical issues",
+      "cs": "Zneužitý účet a technické potíže."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.fio.cz/kontakty"
+  },
+  {
+    "id": "6",
+    "bank": "Raiffeisenbank",
+    "phone": "+420 412 446 402",
+    "scope": {
+      "en": "Card blocking and blocking account access after fraud.",
+      "cs": "Blokace karty a přístupu k účtu po podvodu."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.rb.cz/bezpecne-bankovnictvi/phishing"
+  },
+  {
+    "id": "7",
+    "bank": "UniCredit Bank",
+    "phone": "+420 221 210 031",
+    "scope": {
+      "en": "Card blocking and suspected fraud.",
+      "cs": "Blokace karty a podezření na podvod."
+    },
+    "hours": {
+      "en": "24/7 for card blocking and money at risk; other enquiries daily 07:00–22:00",
+      "cs": "Blokace karty a ohrožené peníze nonstop. Ostatní dotazy denně 07:00–22:00."
+    },
+    "source": "https://www.unicreditbank.cz/cs/obcane/kontakty.html"
+  },
+  {
+    "id": "8",
+    "bank": "mBank",
+    "phone": "+420 222 111 999",
+    "scope": {
+      "en": "Security blocking by voice automation outside staffed hours; account-fraud help during staffed hours.",
+      "cs": "Mimo dobu obsluhy automatická bezpečnostní blokace. Pomoc s podvodem na účtu v době obsluhy."
+    },
+    "hours": {
+      "en": "Live staff: Mon–Fri 08:00–20:00; weekends and public holidays 08:00–18:00. Voice-automated security blocking is available outside these hours.",
+      "cs": "Obsluha: po–pá 08:00–20:00, víkendy a svátky 08:00–18:00. Mimo tuto dobu hlasový automat pro bezpečnostní blokace."
+    },
+    "source": "https://www.mbank.cz/o-nas/kontakt/"
+  },
+  {
+    "id": "9",
+    "bank": "Partners Banka",
+    "phone": "+420 225 636 225",
+    "scope": {
+      "en": "Card blocking. The FAQ also says the bank can help block the app at any time after a lost phone.",
+      "cs": "Blokace karty. Při ztrátě telefonu může banka kdykoli pomoci i s blokací aplikace."
+    },
+    "hours": {
+      "en": "24/7 for card blocking; general support Mon–Fri 08:00–20:00, excluding public holidays",
+      "cs": "Blokace karty nonstop. Běžná podpora po–pá 08:00–20:00 kromě svátků."
+    },
+    "source": "https://www.partnersbanka.cz/caste-dotazy"
+  },
+  {
+    "id": "10",
+    "bank": "Banka CREDITAS",
+    "phone": "+420 583 037 088",
+    "scope": {
+      "en": "Card blocking and reporting suspected fraud.",
+      "cs": "Blokace karty a hlášení podezření na podvod."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.creditas.cz/kontakty-firmy"
+  },
+  {
+    "id": "11",
+    "bank": "Max banka",
+    "phone": "+420 583 037 060",
+    "scope": {
+      "en": "Former Max product line: card/internet-banking blocking and fraud reports.",
+      "cs": "Bývalé produkty Max: blokace karty, internetového bankovnictví a hlášení podvodu. Max se 1. 10. 2024 sloučila s CREDITAS."
+    },
+    "hours": {
+      "en": "24/7",
+      "cs": "Nonstop"
+    },
+    "source": "https://www.maxbanka.eu/kontakt"
+  }
+]
