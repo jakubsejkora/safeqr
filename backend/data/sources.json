@@ -1,0 +1,52 @@
+[
+  {
+    "id": "policie_cz",
+    "url": "https://policie.gov.cz/zpravodajstvi",
+    "allowedHosts": ["policie.gov.cz"],
+    "pathPrefixes": ["/"]
+  },
+  {
+    "id": "nukib",
+    "url": "https://nukib.gov.cz/cs/infoservis/aktuality/",
+    "allowedHosts": ["nukib.gov.cz"],
+    "pathPrefixes": ["/cs/infoservis/"]
+  },
+  {
+    "id": "csirt_cz",
+    "url": "https://csirt.cz/cs/o-nas/novinky/",
+    "allowedHosts": ["csirt.cz", "www.csirt.cz"],
+    "pathPrefixes": ["/cs/o-nas/novinky/"]
+  },
+  {
+    "id": "air_bank",
+    "url": "https://www.airbank.cz/novinky/",
+    "allowedHosts": ["www.airbank.cz"],
+    "pathPrefixes": ["/novinky/"]
+  },
+  {
+    "id": "fio",
+    "url": "https://www.fio.cz/spolecnost-fio/media/aktuality",
+    "allowedHosts": ["www.fio.cz"],
+    "pathPrefixes": ["/spolecnost-fio/media/aktuality/"]
+  },
+  {
+    "id": "financni_sprava",
+    "url": "https://financnisprava.gov.cz/cs/financni-sprava/media-a-verejnost/tiskove-zpravy-gfr",
+    "allowedHosts": ["financnisprava.gov.cz"],
+    "pathPrefixes": [
+      "/cs/financni-sprava/media-a-verejnost/tiskove-zpravy-gfr/"
+    ]
+  },
+  {
+    "id": "ceska_posta",
+    "url": "https://www.ceskaposta.cz/cs/o-spolecnosti/bezpecnostni-informace/bezpecnostni-upozorneni",
+    "allowedHosts": ["www.ceskaposta.cz"],
+    "pathPrefixes": ["/cs/o-spolecnosti/bezpecnostni-informace/"]
+  },
+  {
+    "id": "apms",
+    "url": "https://apms.cz/aktuality/",
+    "allowedHosts": ["apms.cz"],
+    "pathPrefixes": ["/"]
+  }
+]

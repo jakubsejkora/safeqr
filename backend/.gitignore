@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+cdk.out/
+cdk.context.json
+node_modules/
+coverage/
+dist/
+.cache/
+deployment.json

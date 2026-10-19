@@ -1,0 +1,57 @@
+{
+  "name": "@safeqr/backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=26 <27"
+  },
+  "scripts": {
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "synth": "cdk synth",
+    "deploy": "tsx --env-file-if-exists=.env scripts/deploy.ts",
+    "seed": "tsx --env-file-if-exists=.env scripts/seed.ts",
+    "collect": "tsx --env-file-if-exists=.env scripts/collect.ts",
+    "smoke": "tsx --env-file-if-exists=.env scripts/smoke.ts"
+  },
+  "dependencies": {
+    "@aws-crypto/sha256-js": "5.2.0",
+    "@aws-lambda-powertools/logger": "2.36.0",
+    "@aws-lambda-powertools/metrics": "2.36.0",
+    "@aws-lambda-powertools/tracer": "2.36.0",
+    "@aws-sdk/client-bedrock-agentcore": "3.1152.0",
+    "@aws-sdk/client-bedrock-runtime": "3.1152.0",
+    "@aws-sdk/client-dynamodb": "3.1152.0",
+    "@aws-sdk/client-lambda": "3.1152.0",
+    "@aws-sdk/client-s3": "3.1152.0",
+    "@aws-sdk/client-secrets-manager": "3.1152.0",
+    "@aws-sdk/lib-dynamodb": "3.1152.0",
+    "@aws-sdk/s3-request-presigner": "3.1152.0",
+    "@smithy/protocol-http": "5.6.2",
+    "@smithy/signature-v4": "5.7.4",
+    "aws-cdk-lib": "2.273.0",
+    "cheerio": "1.2.0",
+    "constructs": "10.8.1",
+    "ipaddr.js": "2.5.0",
+    "playwright-core": "1.64.1",
+    "tldts": "7.4.18",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/aws-lambda": "8.10.164",
+    "@types/node": "26.6.5",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "aws-cdk": "2.1145.0",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "yaml": "2.9.1"
+  }
+}

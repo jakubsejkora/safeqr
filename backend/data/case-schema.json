@@ -1,0 +1,305 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://safeqr.cz/schemas/quishing-case-v1.json",
+  "title": "Safe QR privacy-safe quishing case",
+  "description": "Proposed schema, not a claim that the $id is deployed. Store only public, source-supported facts and fraud infrastructure. Never store names, handles, profile URLs, photos, raw posts, QR images, victim account numbers or other personal data about posters/victims, including inside summaries, evidence, URLs or hashes. Schema validation cannot detect personal data inside strings; semantic redaction and a publication gate are mandatory. Do not publish cases or indicators solely because they validate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "recordKind",
+    "scamType",
+    "lure",
+    "channel",
+    "payloadType",
+    "indicators",
+    "location",
+    "firstSeen",
+    "firstSeenSourceUrl",
+    "sourceUrl",
+    "sourcePublishedDate",
+    "summaryCs",
+    "summaryEn",
+    "confidence",
+    "evidenceNote"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^sqr_[a-f0-9]{64}$",
+      "description": "Set by pipeline, not LLM: sqr_ + SHA-256 of canonical sourceUrl + newline + stable within-source case key assigned by pipeline. Store/upsert same source-case ID on later scans. Cross-source campaign merging requires corroborated shared infrastructure/context; identical lure alone is insufficient. Never hash poster/victim identifiers."
+    },
+    "recordKind": {
+      "type": "string",
+      "enum": [
+        "observed_case",
+        "reported_case",
+        "general_warning",
+        "simulation"
+      ],
+      "description": "A hypothetical warning or demonstration must not be presented as a real victim incident."
+    },
+    "scamType": {
+      "type": "string",
+      "enum": [
+        "credential_phishing",
+        "payment_redirection",
+        "premium_sms",
+        "account_linking",
+        "malware_delivery",
+        "fraudulent_subscription",
+        "other",
+        "unknown"
+      ]
+    },
+    "lure": {
+      "type": "string",
+      "maxLength": 240,
+      "description": "Neutral privacy-safe description, e.g. payment for parking. No names, unique victim details, or unsupported attribution."
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "physical_sticker",
+        "newspaper_ad",
+        "postal_letter",
+        "email_body",
+        "email_attachment",
+        "sms_mms",
+        "messaging_app",
+        "social_post",
+        "website",
+        "other",
+        "unknown"
+      ],
+      "description": "Where the QR appeared; SMS-link phishing with no evidenced QR is not automatically a quishing case. Explain physical placement, e.g. parking meter/EV charger/table, in lure."
+    },
+    "payloadType": {
+      "type": "string",
+      "enum": [
+        "url",
+        "spd_payment",
+        "sms",
+        "tel",
+        "wifi",
+        "contact",
+        "crypto",
+        "login_code",
+        "other",
+        "unknown"
+      ],
+      "description": "Actual decoded or explicitly source-described QR payload, not a guess from the lure. A payment lure may encode a URL rather than SPD."
+    },
+    "indicators": {
+      "type": "array",
+      "maxItems": 40,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/indicator"
+      },
+      "description": "May be empty. Extract only values the cited source explicitly associates with fraudulent use. Ordinary bank/city/operator domains or helpdesk phone numbers mentioned as legitimate advice are not malicious indicators. Broad bank-code and account patterns must never be used alone for blocking."
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["countryCode", "region", "city"],
+      "properties": {
+        "countryCode": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2 if sourced, otherwise null."
+        },
+        "region": {
+          "type": ["string", "null"],
+          "maxLength": 100
+        },
+        "city": {
+          "type": ["string", "null"],
+          "maxLength": 100
+        }
+      },
+      "description": "Geography of reported campaign/placement only. No street address, GPS, home/workplace or individual victim location; use null if unknown."
+    },
+    "firstSeen": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Earliest explicitly evidenced occurrence date at known day precision. Not article publication or ingestion date. Null if only publication date, month or year is known; preserve qualified timing in evidenceNote."
+    },
+    "firstSeenSourceUrl": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://",
+          "maxLength": 2048,
+          "description": "Canonical public incident article or official warning URL. Never a victim/poster profile URL; remove tracking and personal identifiers. Do not replace evidence with a homepage."
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Incident source supporting firstSeen; null when firstSeen is null."
+    },
+    "sourceUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "maxLength": 2048,
+      "description": "Canonical public incident article or official warning URL. Never a victim/poster profile URL; remove tracking and personal identifiers. Do not replace evidence with a homepage."
+    },
+    "sourcePublishedDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Publication date of main source if explicitly available; never substitute occurrence date or crawl date."
+    },
+    "summaryCs": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 400,
+      "description": "Short neutral Czech summary. State uncertainty and distinguish a warning/simulation from a real incident. No poster/victim personal data."
+    },
+    "summaryEn": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 400,
+      "description": "Equivalent short neutral English summary with the same uncertainty and privacy restrictions."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "Evidence strength, not an LLM probability: high=explicit primary-source confirmation/observation; medium=credible sourced report; low=unverified or ambiguous. Repetition of one report is not corroboration."
+    },
+    "evidenceNote": {
+      "type": "string",
+      "maxLength": 400,
+      "description": "Privacy-safe paraphrase explaining evidence, uncertainty, approximate timing and missing facts. No copied personal data or unsourced accusations."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "firstSeen": {
+            "type": "null"
+          }
+        },
+        "required": ["firstSeen"]
+      },
+      "then": {
+        "properties": {
+          "firstSeenSourceUrl": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "firstSeenSourceUrl": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https?://",
+            "maxLength": 2048,
+            "description": "Canonical public incident article or official warning URL. Never a victim/poster profile URL; remove tracking and personal identifiers. Do not replace evidence with a homepage."
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "recordKind": {
+            "enum": ["general_warning", "simulation"]
+          }
+        },
+        "required": ["recordKind"]
+      },
+      "then": {
+        "properties": {
+          "indicators": {
+            "maxItems": 0
+          },
+          "firstSeen": {
+            "type": "null"
+          },
+          "firstSeenSourceUrl": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "indicator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "value", "sourceUrl", "evidence", "confidence"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "domain",
+            "url_pattern",
+            "iban",
+            "iban_pattern",
+            "bank_account",
+            "bank_account_pattern",
+            "bank_code",
+            "phone",
+            "short_code",
+            "crypto_address"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "description": "Source-supported fraud infrastructure only, normalized without adding missing digits/characters. Domain=lowercase ASCII/Punycode; IBAN=uppercase no spaces. Patterns use literal * placeholders (not executable regex). Strip victim names, emails, tokens and query identifiers. Never include ordinary legitimate infrastructure as malicious."
+        },
+        "network": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "For crypto_address only: source-supported chain/network; omit if unknown."
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://",
+          "maxLength": 2048,
+          "description": "Canonical public incident article or official warning URL. Never a victim/poster profile URL; remove tracking and personal identifiers. Do not replace evidence with a homepage."
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "description": "Privacy-safe paraphrase of source statement associating this exact value/pattern with fraud; appearance somewhere on page is insufficient. Do not invent a quote."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "Evidence strength, not an LLM probability: high=explicit primary-source confirmation/observation; medium=credible sourced report; low=unverified or ambiguous. Repetition of one report is not corroboration."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "crypto_address"
+              }
+            },
+            "required": ["type"]
+          },
+          "else": {
+            "not": {
+              "required": ["network"]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

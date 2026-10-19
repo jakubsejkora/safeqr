@@ -1,0 +1,147 @@
+[
+  {
+    "record": {
+      "schemaVersion": "1.0",
+      "id": "sqr_0c1d10d39da9c3ea414b121c405165f124bb087630a9479c330b632f542ad778",
+      "recordKind": "reported_case",
+      "scamType": "payment_redirection",
+      "lure": "Fake QR stickers on parking machines",
+      "channel": "physical_sticker",
+      "payloadType": "url",
+      "indicators": [],
+      "location": {
+        "countryCode": "CZ",
+        "region": null,
+        "city": "Praha"
+      },
+      "firstSeen": null,
+      "firstSeenSourceUrl": null,
+      "sourceUrl": "https://praha10.cz/varovani-pred-falesnymi-qr-kody-na-parkovacich-automatech/",
+      "sourcePublishedDate": "2024-11-26",
+      "summaryCs": "Praha varovala před falešnými nálepkami na parkovacích automatech. Kódy vedly na napodobené platební weby. Technici nalezené nálepky odstraňovali.",
+      "summaryEn": "Prague warned about fake stickers on parking machines. The codes led to imitation payment websites. Technicians removed the stickers they found.",
+      "confidence": "high",
+      "evidenceNote": "Publication date is sourced; exact occurrence day and malicious infrastructure were not established."
+    },
+    "title": {
+      "cs": "Falešné QR nálepky na parkovacích automatech",
+      "en": "Fake QR stickers on parking machines"
+    }
+  },
+  {
+    "record": {
+      "schemaVersion": "1.0",
+      "id": "sqr_610ec3735f4a3b16ed1595f298c2ff1e8a21ecd45c2db2ff3e27a660dc5c3f7e",
+      "recordKind": "reported_case",
+      "scamType": "payment_redirection",
+      "lure": "Fraudulent stickers on parking terminals",
+      "channel": "physical_sticker",
+      "payloadType": "url",
+      "indicators": [],
+      "location": {
+        "countryCode": "SK",
+        "region": null,
+        "city": "Bratislava"
+      },
+      "firstSeen": null,
+      "firstSeenSourceUrl": null,
+      "sourceUrl": "https://msp.bratislava.sk/novinka/107621/boli-sme-sucastou-bratislavskych-mestskych-dni-a-riesili-falosne-nalepky-zasahy-hliadok-284-452025",
+      "sourcePublishedDate": "2025-05-06",
+      "summaryCs": "Bratislavská městská policie popsala falešné QR přelepky na parkovacích terminálech. Vedly na podvodné stránky. Po odstranění se mohly objevit znovu.",
+      "summaryEn": "Bratislava municipal police reported fake QR stickers on parking terminals. They led to fraudulent pages. Stickers could reappear after removal.",
+      "confidence": "high",
+      "evidenceNote": "Publication date is sourced; exact occurrence day and malicious infrastructure were not established."
+    },
+    "title": {
+      "cs": "Podvodné přelepky na parkovacích terminálech",
+      "en": "Fraudulent stickers on parking terminals"
+    }
+  },
+  {
+    "record": {
+      "schemaVersion": "1.0",
+      "id": "sqr_6f319e9529a17c37b2d16fb24bbb6ee49462fb73f60a9c4971474c254523dd52",
+      "recordKind": "reported_case",
+      "scamType": "credential_phishing",
+      "lure": "Fake tax refund with a QR code",
+      "channel": "email_body",
+      "payloadType": "url",
+      "indicators": [],
+      "location": {
+        "countryCode": "CZ",
+        "region": null,
+        "city": null
+      },
+      "firstSeen": null,
+      "firstSeenSourceUrl": null,
+      "sourceUrl": "https://financnisprava.gov.cz/cs/financni-sprava/media-a-verejnost/tiskove-zpravy-gfr/tiskove-zpravy-2025/dalsi-intenzivni-vlna-podvodnych-emailu-a-sms",
+      "sourcePublishedDate": "2025-10-30",
+      "summaryCs": "Finanční správa ukázala podvodný e-mail slibující daňový přeplatek. QR kód vedl na napodobenou stránku, která žádala přihlašovací údaje.",
+      "summaryEn": "The Czech tax authority showed a fraudulent email promising a tax refund. Its QR code led to an imitation website asking for sign-in details.",
+      "confidence": "high",
+      "evidenceNote": "Publication date is sourced; exact occurrence day and malicious infrastructure were not established."
+    },
+    "title": {
+      "cs": "Falešný daňový přeplatek s QR kódem",
+      "en": "Fake tax refund with a QR code"
+    }
+  },
+  {
+    "record": {
+      "schemaVersion": "1.0",
+      "id": "sqr_2c8d5adf5f42d4629fea8a6c5bd2d86256bc8f22fd596673d73242d8d9a60f3f",
+      "recordKind": "reported_case",
+      "scamType": "payment_redirection",
+      "lure": "Fake parking fine notices",
+      "channel": "other",
+      "payloadType": "unknown",
+      "indicators": [],
+      "location": {
+        "countryCode": "SK",
+        "region": null,
+        "city": "Bratislava"
+      },
+      "firstSeen": null,
+      "firstSeenSourceUrl": null,
+      "sourceUrl": "https://msp.bratislava.sk/novinka/130491/zachranili-sme-zivot-a-postarali-sa-o-stratene-dieta-zasahy-hliadok-303-542026",
+      "sourcePublishedDate": "2026-04-07",
+      "summaryCs": "Bratislavská městská policie popsala falešné výzvy na autech. Žádaly zaplacení přes QR kód. Skutečné policejní QR kódy na oznámeních sloužily k informacím, nikoli k platbě.",
+      "summaryEn": "Bratislava municipal police reported fake notices placed on cars. They demanded payment through a QR code. Genuine police notice codes provided information rather than collecting payment.",
+      "confidence": "high",
+      "evidenceNote": "Publication date is sourced; exact occurrence day and malicious infrastructure were not established."
+    },
+    "title": {
+      "cs": "Falešné výzvy k zaplacení pokuty",
+      "en": "Fake parking fine notices"
+    }
+  },
+  {
+    "record": {
+      "schemaVersion": "1.0",
+      "id": "sqr_ab101938be7f99ea73baa61be725be7d53ae6b0560d47ee88846b000f617533f",
+      "recordKind": "reported_case",
+      "scamType": "fraudulent_subscription",
+      "lure": "Hidden subscriptions charged through a phone",
+      "channel": "unknown",
+      "payloadType": "unknown",
+      "indicators": [],
+      "location": {
+        "countryCode": "CZ",
+        "region": null,
+        "city": null
+      },
+      "firstSeen": null,
+      "firstSeenSourceUrl": null,
+      "sourceUrl": "https://tn.nova.cz/zpravodajstvi/clanek/657902-nenapadny-podvod-v-telefonu-cesi-tydne-prichazeji-o-penize-za-falesne-predplatne",
+      "sourcePublishedDate": "2026-09-28",
+      "summaryCs": "Reportáž popsala nepozorované předplatné za 99 Kč týdně. Falešné QR kódy byly uvedeny jako jedna z cest k takové službě. U konkrétního případu nebyl vstup přes QR doložen.",
+      "summaryEn": "A report described an unnoticed subscription costing CZK 99 a week. Fake QR codes were named as one route to such services. QR use was not established for the particular example.",
+      "confidence": "medium",
+      "evidenceNote": "Publication date is sourced; exact occurrence day and malicious infrastructure were not established."
+    },
+    "title": {
+      "cs": "Skryté předplatné účtované přes telefon",
+      "en": "Hidden subscriptions charged through a phone"
+    }
+  }
+]
