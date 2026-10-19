@@ -1,0 +1,143 @@
+---
+import { categories, gallery } from "../data/gallery";
+import Layout from "../layouts/Layout.astro";
+import { type Locale, text } from "../lib/locale";
+import Verdict from "./Verdict.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (cs: string, en: string) => text(locale, cs, en);
+---
+
+<Layout locale={locale} page="gallery" title={t("Galerie QR kódů", "QR code gallery")}>
+  <div class="container">
+    <div class="page-heading">
+      <span class="eyebrow"
+        >{t("PROHLÉDNĚTE. NASKENUJTE. POCHOPTE.", "LOOK. SCAN. UNDERSTAND.")}</span
+      >
+      <h1>{t("Co všechno se vejde do QR kódu?", "What can a QR code really do?")}</h1>
+      <p>
+        {t(
+          "Třicet skutečně čitelných kódů. U každého uvidíte obsah, možné riziko a co by následovalo.",
+          "Thirty scannable codes. See what each contains, what the risk could be and what happens next.",
+        )}
+      </p>
+    </div>
+    <div class="notice-box">
+      <p>
+        <strong
+          >{t(
+            "Cvičné ukázky. Nic neplaťte ani nepotvrzujte.",
+            "Training examples. Do not pay or confirm actions.",
+          )}</strong
+        >
+        {t(
+          "Hodnocení je ilustrační, není to živý výsledek aplikace. Odkazy vedou jen na ukázkové nebo vyhrazené domény. Platby používají účet z dokumentace ČNB; ostatní cíle jsou záměrně neplatné.",
+          "Scores are illustrative, not live app results. Links use only training or reserved domains. Payments use the ČNB documentation account; other destinations are deliberately invalid.",
+        )}
+      </p>
+    </div>
+    <fieldset
+      class="filters"
+      aria-label={t("Filtrovat podle typu", "Filter by type")}
+      data-filters
+      hidden
+    >
+      <button type="button" data-filter="all" aria-pressed="true">
+        {t("Všechny kódy", "All codes")}
+      </button>{Object.entries(categories).map(([id, label]) => (
+        <button type="button" data-filter={id} aria-pressed="false">
+          {label[locale]}
+        </button>
+      ))}
+    </fieldset>
+    <div class="gallery-tools" data-search-tools hidden>
+      <label for="qr-search"
+        >{t("Hledat v ukázkách", "Search examples")}<input
+          id="qr-search"
+          type="search"
+          placeholder={t("Např. platba, Wi-Fi, SMS…", "Try payment, Wi-Fi, SMS…")}
+        ></label
+      >
+      <p class="result-count" aria-live="polite" data-count data-locale={locale}>
+        {gallery.length} {t("ukázek", "examples")}
+      </p>
+    </div>
+    <div class="gallery-grid">
+      {gallery.map((item) => {
+        const copy = item[locale];
+        return (
+          <article
+            class="qr-card"
+            id={item.id}
+            data-qr-card
+            data-category={item.category}
+            data-search={`${copy.title} ${copy.reason}`}
+          >
+            <div class:list={["qr-art", item.arrangement]}>
+              <img
+                src={`/qr/${item.id}.svg`}
+                width="220"
+                height="220"
+                loading="lazy"
+                alt={t(`QR kód: ${copy.title}`, `QR code: ${copy.title}`)}
+              />
+              {item.secondPayload && item.arrangement !== "nested" && (
+                <img
+                  class:list={{ overlay: item.arrangement === "sticker" }}
+                  src={`/qr/${item.id}-second.svg`}
+                  width="220"
+                  height="220"
+                  loading="lazy"
+                  alt={t(
+                    "Druhý, překrývající nebo sousední QR kód",
+                    "The second, overlaid or adjacent QR code",
+                  )}
+                />
+              )}
+            </div>
+            <a class="qr-enlarge" href={`/qr/${item.id}.svg`}>
+              {t("Zvětšit kód", "Enlarge code")} ↗
+            </a>
+            <h2>{copy.title}</h2>
+            <Verdict score={item.score} locale={locale} />
+            <p>{copy.reason}</p>
+            <details>
+              <summary>{t("Co je uvnitř a co se stane", "Contents and what happens next")}</summary>
+              <dl>
+                <dt>{t("Obsah kódu", "Decoded contents")}</dt>
+                <dd>
+                  <code class="payload">{item.payload}</code>
+                </dd>
+                {item.secondPayload && (
+                  <>
+                    <dt>{t("Druhý kód", "Second code")}</dt>
+                    <dd>
+                      <code class="payload">{item.secondPayload}</code>
+                      <a class="qr-enlarge" href={`/qr/${item.id}-second.svg`}>
+                        {t("Zvětšit druhý kód", "Enlarge second code")} ↗
+                      </a>
+                    </dd>
+                  </>
+                )}
+                <dt>{t("Pokračováním…", "If you continue…")}</dt>
+                <dd>{copy.action}</dd>
+                <dt>{t("Co nelze ověřit", "What cannot be checked")}</dt>
+                <dd>{copy.limitation}</dd>
+              </dl>
+            </details>
+          </article>
+        );
+      })}
+    </div>
+    <p data-no-results hidden>
+      {t(
+        "Žádná ukázka neodpovídá. Zkuste jiné slovo nebo typ kódu.",
+        "No examples match. Try another word or code type.",
+      )}
+    </p>
+  </div>
+  <script src="../scripts/gallery.ts"></script>
+</Layout>

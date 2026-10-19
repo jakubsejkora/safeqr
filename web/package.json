@@ -1,0 +1,38 @@
+{
+  "name": "safeqr-web",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "wrangler dev",
+    "check": "astro check && tsc -p tsconfig.worker.json && biome check .",
+    "format": "biome check --write .",
+    "test": "node --test tests/*.test.ts",
+    "test:qr": "node scripts/verify-qr.ts",
+    "test:browser": "node scripts/verify-browser.ts",
+    "deploy": "pnpm build && wrangler deploy",
+    "deploy:demo": "wrangler deploy --config demo/wrangler.jsonc"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.11",
+    "@axe-core/playwright": "4.14.0",
+    "@biomejs/biome": "2.5.15",
+    "@cloudflare/workers-types": "5.20261019.1",
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.5",
+    "@types/qrcode": "1.5.6",
+    "astro": "7.4.1",
+    "bysquare": "4.1.0",
+    "jsqr": "1.4.0",
+    "lighthouse": "13.5.0",
+    "qrcode": "1.5.4",
+    "sharp": "0.35.5",
+    "typescript": "6.0.3",
+    "wrangler": "4.151.2"
+  }
+}

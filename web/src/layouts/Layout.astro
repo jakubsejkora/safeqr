@@ -1,0 +1,102 @@
+---
+import Logo from "../components/Logo.astro";
+import { type Locale, type Page, routes, text } from "../lib/locale";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  locale: Locale;
+  page?: Page;
+}
+const {
+  title,
+  locale,
+  page = "home",
+  description = text(
+    locale,
+    "Zjistěte, co QR kód udělá, než mu dáte svolení. Srozumitelná kontrola odkazů, plateb a dalších kódů.",
+    "Know what a QR code does before you act on it. Clear checks for links, payments and more.",
+  ),
+} = Astro.props;
+const other = locale === "cs" ? "en" : "cs";
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content={description}>
+    <title>{title} · Safe QR</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href={`https://safeqr.cz${routes[page][locale]}`}>
+    <link rel="alternate" hreflang="cs" href={`https://safeqr.cz${routes[page].cs}`}>
+    <link rel="alternate" hreflang="en" href={`https://safeqr.cz${routes[page].en}`}>
+    <link rel="alternate" hreflang="x-default" href={`https://safeqr.cz${routes[page].cs}`}>
+    <meta property="og:title" content={`${title} · Safe QR`}>
+    <meta property="og:description" content={description}>
+    <meta property="og:type" content="website">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{text(locale, "Přejít na obsah", "Skip to content")}</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a
+          class="brand"
+          href={routes.home[locale]}
+          aria-label={text(locale, "Safe QR — úvod", "Safe QR — home")}
+          ><Logo /><span>Safe QR<span class="brand-dot">.</span></span></a
+        >
+        <nav aria-label={text(locale, "Hlavní navigace", "Main navigation")}>
+          <a href={routes.gallery[locale]} aria-current={page === "gallery" ? "page" : undefined}
+            >{text(locale, "Galerie kódů", "QR gallery")}</a
+          >
+          <a href={routes.guides[locale]} aria-current={page === "guides" ? "page" : undefined}
+            >{text(locale, "Jak se chránit", "Stay safe")}</a
+          >
+          <a
+            class="nav-privacy"
+            href={routes.privacy[locale]}
+            aria-current={page === "privacy" ? "page" : undefined}
+            >{text(locale, "Soukromí", "Privacy")}</a
+          >
+          <a
+            class="language"
+            href={routes[page][other]}
+            lang={other}
+            hreflang={other}
+            aria-label={text(locale, "EN — Switch to English", "CZ — Přepnout do češtiny")}
+            >{text(locale, "EN", "CZ")}<span aria-hidden="true"> ↗</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <a class="brand" href={routes.home[locale]}><Logo /><span>Safe QR.</span></a>
+          <p>{text(locale, "Malá kontrola. Velký rozdíl.", "A small check. A big difference.")}</p>
+        </div>
+        <div class="footer-links">
+          <a href={routes.privacy[locale]}>{text(locale, "Soukromí a AI", "Privacy & AI")}</a
+          ><a href={routes.guides[locale]}>{text(locale, "Potřebuji pomoc", "I need help")}</a
+          ><a href={routes.kit[locale]}>{text(locale, "Ukázky k tisku", "Print the demo")}</a
+          ><a href="https://github.com/jakubsejkora/safeqr">GitHub ↗</a>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            {text(
+              locale,
+              "Vytvořeno na The FinTechers Hackathon 2026 v Praze.",
+              "Built at The FinTechers Hackathon 2026 in Prague.",
+            )}
+          </p>
+          <p>© 2026 Safe QR · {text(locale, "Prototyp", "Prototype")}</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

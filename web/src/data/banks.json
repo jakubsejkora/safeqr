@@ -1,0 +1,74 @@
+[
+  {
+    "bank": "Česká spořitelna",
+    "phone": "277 207 207",
+    "phoneAbroad": "+420 277 207 207",
+    "url": "https://www.csas.cz/cs/osobni-finance/kontakty-podpora"
+  },
+  {
+    "bank": "ČSOB",
+    "phone": "+420 495 800 111",
+    "phoneAbroad": "+420 495 800 111",
+    "url": "https://www.csob.cz/v-obraze/blog/clanky/hlaseni-internetovych-podvodu"
+  },
+  {
+    "bank": "Komerční banka",
+    "phone": "+420 955 512 230",
+    "phoneAbroad": "+420 955 512 230",
+    "url": "https://www.kb.cz/cs/podpora/bezpecnost/co-delat-pri-podvodu-na-internetu"
+  },
+  {
+    "bank": "MONETA Money Bank",
+    "phone": "224 442 424",
+    "phoneAbroad": "+420 224 442 424",
+    "url": "https://www.moneta.cz/bezpecnost"
+  },
+  {
+    "bank": "Air Bank",
+    "phone": "+420 547 134 134",
+    "phoneAbroad": "+420 547 134 134",
+    "url": "https://www.airbank.cz/kontakty/"
+  },
+  {
+    "bank": "Fio banka",
+    "phone": "+420 224 346 777",
+    "phoneAbroad": "+420 224 346 777",
+    "url": "https://www.fio.cz/kontakty"
+  },
+  {
+    "bank": "Raiffeisenbank",
+    "phone": "+420 412 446 402",
+    "phoneAbroad": "+420 412 446 402",
+    "url": "https://www.rb.cz/bezpecne-bankovnictvi/phishing"
+  },
+  {
+    "bank": "UniCredit Bank",
+    "phone": "+420 221 210 031",
+    "phoneAbroad": "+420 221 210 031",
+    "url": "https://www.unicreditbank.cz/cs/obcane/kontakty.html"
+  },
+  {
+    "bank": "mBank",
+    "phone": "222 111 999",
+    "phoneAbroad": "+420 222 111 999",
+    "url": "https://www.mbank.cz/o-nas/kontakt/"
+  },
+  {
+    "bank": "Partners Banka",
+    "phone": "800 720 636",
+    "phoneAbroad": "+420 225 636 225",
+    "url": "https://www.partnersbanka.cz/caste-dotazy"
+  },
+  {
+    "bank": "Banka CREDITAS",
+    "phone": "+420 583 037 088",
+    "phoneAbroad": "+420 583 037 088",
+    "url": "https://www.creditas.cz/kontakty-firmy"
+  },
+  {
+    "bank": "Max banka",
+    "phone": "+420 583 037 060",
+    "phoneAbroad": "+420 583 037 060",
+    "url": "https://www.maxbanka.eu/kontakt"
+  }
+]

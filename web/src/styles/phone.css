@@ -1,0 +1,229 @@
+.phone-scene {
+  position: relative;
+  justify-self: center;
+  padding: 0 30px 30px;
+}
+.phone {
+  position: relative;
+  background: #edf1ed;
+  color: #183a2e;
+  width: 306px;
+  border: 7px solid #23302b;
+  border-radius: 46px;
+  box-shadow:
+    0 0 0 2px #5b6962,
+    0 28px 55px #123d2926;
+  overflow: hidden;
+  padding-bottom: 15px;
+  transform: rotate(3deg);
+}
+.phone-status {
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 10px;
+  font-weight: 750;
+}
+.island {
+  width: 90px;
+  height: 24px;
+  background: #1e2924;
+  border-radius: 20px;
+  position: absolute;
+  top: 10px;
+  left: 101px;
+}
+.phone-app {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.phone-app svg {
+  width: 20px;
+  height: 20px;
+}
+.phone-close {
+  margin-left: auto;
+  font-size: 24px;
+  color: #5d7068;
+}
+.scan-preview {
+  height: 125px;
+  background: #dce3dc;
+  margin: 10px 20px 0;
+  position: relative;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 8px;
+  color: #526358;
+  overflow: hidden;
+}
+.parking-p {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  background: #e9efe9;
+  padding: 10px 16px;
+}
+.tiny-qr {
+  font-size: 22px;
+  line-height: 0.8;
+  letter-spacing: -2px;
+  color: #1d3128;
+  padding: 8px;
+  background: white;
+}
+.scan-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+}
+.top-left {
+  left: 8px;
+  top: 8px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.bottom-right {
+  right: 8px;
+  bottom: 8px;
+  border-left: 0;
+  border-top: 0;
+}
+.result-sheet {
+  border-radius: 24px 24px 0 0;
+  background: #fff;
+  position: relative;
+  padding: 12px 22px 0;
+  margin-top: -18px;
+  text-align: center;
+}
+.sheet-handle {
+  width: 32px;
+  height: 4px;
+  border-radius: 5px;
+  background: #d8dedb;
+  margin: 0 auto 13px;
+}
+.result-icon {
+  display: grid;
+  place-items: center;
+  background: #f9eac9;
+  color: #8f5b07;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 10px;
+  font-size: 26px;
+  font-weight: 650;
+}
+.result-sheet .eyebrow {
+  font-size: 8px;
+  color: #77715f;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+.result-sheet h2 {
+  font-size: 28px;
+  font-weight: 660;
+  letter-spacing: -1px;
+  color: #755016;
+}
+.risk-number {
+  font-size: 31px;
+  color: #755016;
+  line-height: 1.3;
+  margin-top: 7px;
+  font-weight: 650;
+}
+.risk-number span {
+  font-size: 14px;
+  color: #706553;
+  font-weight: 400;
+}
+.phone-explainer {
+  color: #5b625d;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 8px 0 14px;
+}
+.phone-reason {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #e9ede9;
+  font-size: 11px;
+}
+.phone-reason > span {
+  width: 26px;
+  height: 26px;
+  background: #f5f4ef;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #8a692c;
+}
+.phone-reason strong {
+  display: block;
+  font-weight: 650;
+}
+.phone-reason small {
+  color: #6a756e;
+  font-size: 10px;
+}
+.phone-decision {
+  border-radius: 10px;
+  background: #1b654e;
+  color: white;
+  font-size: 12px;
+  font-weight: 650;
+  padding: 12px;
+  margin-top: 10px;
+}
+.phone-link {
+  font-size: 10px;
+  color: #6c756f;
+  margin: 10px 0 0;
+  padding-bottom: 12px;
+}
+.home-indicator {
+  height: 4px;
+  width: 93px;
+  background: #26392e;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+.phone-note {
+  position: absolute;
+  bottom: 70px;
+  left: -25px;
+  padding: 15px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.note-dot {
+  height: 7px;
+  width: 7px;
+  background: var(--green);
+  border-radius: 50%;
+}
+.prototype-label {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 25px;
+}

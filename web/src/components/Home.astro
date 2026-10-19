@@ -1,0 +1,380 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { type Locale, routes, text } from "../lib/locale";
+import CaseFeed from "./CaseFeed.astro";
+import Phone from "./Phone.astro";
+import Verdict from "./Verdict.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (cs: string, en: string) => text(locale, cs, en);
+const steps = [
+  [
+    "01",
+    t("Namiřte. A načtěte.", "Point. And scan."),
+    t(
+      "Kód na automatu, v dopise nebo na obrazovce. Safe QR nejdřív přečte, co je uvnitř.",
+      "A code on a meter, a letter or a screen. Safe QR first reads what is inside.",
+    ),
+  ],
+  [
+    "02",
+    t("První kontrola v telefonu", "An instant phone check"),
+    t(
+      "Odkaz, platba, SMS nebo něco jiného? Telefon hned rozpozná známá rizika. I bez internetu.",
+      "A link, a payment, an SMS or something else? Your phone spots known risks immediately. Even offline.",
+    ),
+  ],
+  [
+    "03",
+    t("Podíváme se hlouběji", "A closer look"),
+    t(
+      "Po vašem souhlasu cloud ověří cestu odkazu, okolí kódu a podobnost se známými podvody.",
+      "With your consent, the cloud checks the link’s journey, the code’s surroundings and known scams.",
+    ),
+  ],
+  [
+    "04",
+    t("Rozhodnete vy", "You decide"),
+    t(
+      "Uvidíte riziko, důvody i to, co nešlo ověřit. Nic se neotevře ani neodešle bez vašeho rozhodnutí.",
+      "See the risk, the reasons and what could not be checked. Nothing opens or sends without your decision.",
+    ),
+  ],
+];
+const faq = [
+  [
+    t("Je každý QR kód nebezpečný?", "Is every QR code dangerous?"),
+    t(
+      "Ne. QR kód je jen způsob, jak zapsat informace. Může obsahovat jídelní lístek i příkaz k platbě. Důležité je vědět, co udělá další krok.",
+      "No. A QR code is a way to store information. It can contain a menu or a payment request. What matters is understanding the next step.",
+    ),
+  ],
+  [
+    t("Stačí k podvodu samotné načtení?", "Can scanning alone cause a scam?"),
+    t(
+      "U běžných plateb a přihlášení bývá potřeba další krok. Riziko často vzniká až otevřením webu, zadáním údajů nebo potvrzením. Safe QR vám nejdřív ukáže obsah a možné následky.",
+      "Payments and logins usually require another step. Risk often comes from opening a website, entering details or confirming. Safe QR shows the contents and possible consequences first.",
+    ),
+  ],
+  [
+    t("Co znamená skóre 0–100?", "What does the 0–100 score mean?"),
+    t(
+      "Vyšší číslo znamená více zjištěných rizik. Pod 30: vypadá bezpečně. Od 30 do 69: buďte opatrní. Od 70: nebezpečné. Není to procentní pravděpodobnost podvodu ani záruka bezpečí.",
+      "A higher number means more risk was found. Below 30: looks safe. 30–69: be careful. 70 and above: dangerous. It is not a percentage chance of fraud or a safety guarantee.",
+    ),
+  ],
+  [
+    t("Funguje to bez internetu?", "Does it work without the internet?"),
+    t(
+      "Ano, první kontrola běží přímo v telefonu. Bez připojení ale nejde prohlédnout cílový web ani získat nová zjištění z cloudu. Aplikace to jasně uvede.",
+      "Yes, the first check runs on your phone. Without a connection, it cannot inspect the destination or obtain new cloud evidence. The app makes that limit clear.",
+    ),
+  ],
+  [
+    t("Kdo rozhoduje: já, nebo AI?", "Who decides: me or AI?"),
+    t(
+      "Vždy vy. AI pomáhá vysvětlit zjištění. Může riziko zvýšit, ale nesmí jej snížit pod prokázané minimum z telefonu. Nemůže za vás platit, posílat zprávy ani schválit přihlášení.",
+      "You always decide. AI helps explain the findings. It can raise risk, but cannot lower it below the proven minimum set by the phone. It cannot pay, send messages or approve logins for you.",
+    ),
+  ],
+  [
+    t("Kdy bude aplikace ke stažení?", "When can I download the app?"),
+    t(
+      "Safe QR je funkční prototyp pro The FinTechers Hackathon 2026. Vydání pro iPhone s iOS 26 a novějším připravujeme. Termín ani cenu zatím neslibujeme.",
+      "Safe QR is a working prototype for The FinTechers Hackathon 2026. An iPhone release for iOS 26 and later is planned. We have not announced a date or price.",
+    ),
+  ],
+];
+---
+
+<Layout locale={locale} title={t("Nejdřív vědět. Potom jednat.", "Know first. Then act.")}>
+  <div class="container hero">
+    <div>
+      <span class="eyebrow"
+        >{t("VÁŠ KLID PŘED KAŽDÝM SKENOVÁNÍM", "A LITTLE CLARITY BEFORE YOU CONTINUE")}</span
+      >
+      <h1>
+        {t("Zjistěte, co QR kód udělá.", "Know what a QR code does.")}
+        <span>{t("Než mu dáte svolení.", "Before you act on it.")}</span>
+      </h1>
+      <p class="lead">
+        {t(
+          "QR kód neřekne, kam vás zavede. Safe QR ano. Přečte ho, vysvětlí rizika a nechá rozhodnutí na vás.",
+          "A QR code doesn’t tell you where it leads. Safe QR does. It reads the code, explains the risks and leaves the decision to you.",
+        )}
+      </p>
+      <div class="hero-actions">
+        <a class="button" href={routes.gallery[locale]}
+          >{t("Prohlédnout QR kódy", "Explore the QR gallery")}<span aria-hidden="true">↗</span></a
+        ><a class="text-link" href="#how-it-works"
+          >{t("Jak to funguje", "How it works")}<span aria-hidden="true">↓</span></a
+        >
+      </div>
+      <div class="availability">
+        <span aria-hidden="true">◉</span>
+        {t("Pro iPhone · v App Storu již brzy", "For iPhone · coming soon to the App Store")}
+      </div>
+      <div class="hero-proof">
+        <span>{t("První kontrola offline", "First check offline")}</span
+        ><span>{t("Srozumitelně česky", "Plain English & Czech")}</span
+        ><span>{t("Vždy rozhodujete vy", "Always your decision")}</span>
+      </div>
+    </div>
+    <Phone locale={locale} />
+  </div>
+  <div class="principle-strip">
+    <div class="container principles">
+      <div class="principle">
+        <span class="symbol" aria-hidden="true">◎</span>
+        {t("Nejdřív obsah. Až potom akce.", "See the content before taking action.")}
+      </div>
+      <div class="principle">
+        <span class="symbol" aria-hidden="true">≡</span>
+        {t("Každé varování má svůj důvod.", "Every warning comes with a reason.")}
+      </div>
+      <div class="principle">
+        <span class="symbol" aria-hidden="true">⌁</span>
+        {t("Vaše data zůstávají pod kontrolou.", "Stay in control of your data.")}
+      </div>
+    </div>
+  </div>
+  <section class="section container" id="how-it-works">
+    <span class="eyebrow"
+      >{t("OD KÓDU K JASNÉMU ROZHODNUTÍ", "FROM A CODE TO A CLEAR DECISION")}</span
+    >
+    <h2>{t("Chvilka navíc. Klid na duši.", "A moment to check. Peace of mind.")}</h2>
+    <div class="steps">
+      {steps.map(([n, title, description]) => (
+        <article>
+          <div class="step-number">{n}</div>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </article>
+      ))}
+    </div>
+    <div class="deep-details">
+      <strong>{t("Co dělá hloubková kontrola?", "What happens in a deep check?")}</strong
+      ><span
+        >{t(
+          "Prohlížeč oddělený od vašeho telefonu projde odkazy.",
+          "A browser isolated from your phone follows the links.",
+        )}</span
+      ><span>{t("AI prohlédne fotku okolí.", "AI examines the surrounding scene.")}</span
+      ><span>{t("Porovnáme známé podvody.", "We match known scams.")}</span>
+    </div>
+  </section>
+  <section class="section soft">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow"
+            >{t("MALÝ ČTVEREČEK. SKUTEČNÉ RIZIKO.", "A SMALL SQUARE. A REAL RISK.")}</span
+          >
+          <h2>
+            {t(
+              "Důvěryhodné místo nemusí znamenat bezpečný kód.",
+              "A familiar place doesn’t make a code safe.",
+            )}
+          </h2>
+        </div>
+        <p>
+          {t(
+            "V Praze se objevily falešné samolepky EasyPark na parkovacích automatech. V Bratislavě i falešné pokuty za stěrači.",
+            "Fake EasyPark stickers appeared on Prague parking meters. In Bratislava, fake fine notices appeared on windscreens.",
+          )}
+          <a
+            href="https://praha10.cz/varovani-pred-falesnymi-qr-kody-na-parkovacich-automatech/"
+            class="source"
+            >Praha 10, 26. 11. 2024 ↗</a
+          >
+          <a
+            class="source"
+            href="https://msp.bratislava.sk/novinka/130491/zachranili-sme-zivot-a-postarali-sa-o-stratene-dieta-zasahy-hliadok-303-542026"
+            >{t("Městská policie Bratislava", "Bratislava municipal police")}, 7. 4. 2026 ↗</a
+          >
+        </p>
+      </div>
+      <div class="stats">
+        <article>
+          <div class="stat-value">+146 %</div>
+          <p>
+            {t(
+              "Nárůst e-mailových útoků s QR kódy v měření Microsoftu. Z 7,6 milionu v lednu na 18,7 milionu v březnu 2026.",
+              "Increase in QR-code email phishing attacks in Microsoft telemetry. From 7.6 million in January to 18.7 million in March 2026.",
+            )}
+          </p>
+          <a
+            class="source"
+            href="https://www.microsoft.com/en-us/security/blog/2026/04/30/email-threat-landscape-q1-2026-trends-and-insights/"
+            >Microsoft, 30. 4. 2026 ↗</a
+          >
+        </article>
+        <article>
+          <div class="stat-value">{t("1,9 mld. Kč", "CZK 1.9bn")}</div>
+          <p>
+            {t(
+              "Tolik ztratili klienti českých bank kvůli podvodům od ledna do července 2026. Meziročně o 79 % více. Jde o všechny podvody, ne pouze QR kódy.",
+              "Lost by Czech bank clients to fraud in January–July 2026. Up 79% year on year. This covers all fraud, not only QR codes.",
+            )}
+          </p>
+          <a
+            class="source"
+            href="https://www.cnb.cz/cs/cnb-news/tiskove-zpravy/Pracovni-skupina-pro-prevenci-podvodu-resila-edukaci-verejnosti-i-zkusenosti-zezahranici"
+            >ČNB, 9. 10. 2026 ↗</a
+          >
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section container">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">{t("Z REÁLNÉHO SVĚTA", "FROM THE REAL WORLD")}</span>
+        <h2>{t("Podvody, o kterých je dobré vědět.", "Scams worth knowing about.")}</h2>
+      </div>
+      <p>
+        {t(
+          "Zprávy z dohledatelných zdrojů. Bez domněnek vydávaných za fakta.",
+          "Reports with traceable sources. Clear about what is known.",
+        )}
+      </p>
+    </div>
+    <CaseFeed locale={locale} />
+  </section>
+  <section class="section container feature-split">
+    <div>
+      <span class="eyebrow">{t("NENÍ TO VŽDY JEN ODKAZ", "IT ISN’T ALWAYS JUST A LINK")}</span>
+      <h2>{t("Stejný tvar. Úplně jiný příběh.", "Same shape. A different story.")}</h2>
+      <p>
+        {t(
+          "QR kód může připravit platbu, napsat SMS, připojit Wi-Fi nebo přidat cizí zařízení k účtu. Prohlédněte si 30 ukázek a to, na co si dát pozor.",
+          "A QR code can prepare a payment, write an SMS, join Wi-Fi or link a device to your account. Explore 30 examples and learn what to look for.",
+        )}
+      </p>
+      <a class="text-link" href={routes.gallery[locale]}
+        >{t("Otevřít galerii kódů", "Open the QR gallery")}<span aria-hidden="true">→</span></a
+      >
+    </div>
+    <div class="sample-panel">
+      <div class="sample-row">
+        <span>{t("Běžný odkaz", "Ordinary link")}</span><Verdict score={8} locale={locale} />
+      </div>
+      <div class="sample-row">
+        <span>{t("Otevřená Wi-Fi", "Open Wi-Fi")}</span><Verdict score={55} locale={locale} />
+      </div>
+      <div class="sample-row">
+        <span>{t("Placená SMS", "Premium SMS")}</span><Verdict score={90} locale={locale} />
+      </div>
+      <p class="prototype-label">
+        {t(
+          "Ilustrační hodnocení · vyšší číslo znamená vyšší riziko",
+          "Illustrative scores · higher means more risk",
+        )}
+      </p>
+    </div>
+  </section>
+  <section class="section soft">
+    <div class="container feature-split">
+      <div>
+        <span class="eyebrow"
+          >{t("TECHNOLOGIE S JASNÝMI HRANICEMI", "TECHNOLOGY WITH CLEAR BOUNDARIES")}</span
+        >
+        <h2>
+          {t(
+            "Pomáháme se rozhodnout. Rozhodnutí nepřebíráme.",
+            "Help with the decision. Never a decision for you.",
+          )}
+        </h2>
+        <p>
+          {t(
+            "AI vysvětlí zjištění lidskou řečí. Nemůže zlehčit riziko, které telefon prokázal. A když něco nevíme, řekneme to.",
+            "AI explains the findings in everyday language. It cannot dismiss a risk proven by the phone. When something is unknown, we say so.",
+          )}
+        </p>
+        <a class="text-link" href={routes.privacy[locale]}
+          >{t("Jak chráníme soukromí", "How we protect privacy")}<span aria-hidden="true"
+            >→</span
+          ></a
+        >
+      </div>
+      <aside class="guide-teaser">
+        <span class="eyebrow">{t("UŽ SE NĚCO STALO?", "HAS SOMETHING ALREADY HAPPENED?")}</span>
+        <h3>{t("Nejste na to sami.", "You don’t have to face it alone.")}</h3>
+        <p>
+          {t(
+            "Zadaná karta, podezřelá platba nebo nechtěné předplatné. Máme jasné kroky a ověřené kontakty na banky.",
+            "Card details entered, a suspicious payment or an unwanted subscription. Find clear next steps and verified bank contacts.",
+          )}
+        </p>
+        <a class="button secondary" href={routes.guides[locale]}
+          >{t("Najít pomoc", "Find help")}<span aria-hidden="true">→</span></a
+        >
+      </aside>
+    </div>
+    <div class="container privacy-points">
+      <article>
+        <h3>{t("Nejdřív v telefonu", "On your phone first")}</h3>
+        <p>
+          {t(
+            "Základní kontrola funguje bez odesílání dat. Cloud se zapne až po jednorázovém souhlasu.",
+            "The first check sends no data. Cloud checks start only after one-time consent.",
+          )}
+        </p>
+      </article>
+      <article>
+        <h3>{t("Cloud v Evropské unii", "Cloud checks in the EU")}</h3>
+        <p>
+          {t(
+            "Hloubkové kontroly běží v AWS ve Frankfurtu. Fotky se zpracují v paměti a neukládají se.",
+            "Deep checks run on AWS in Frankfurt. Photos are processed in memory and never stored.",
+          )}
+        </p>
+      </article>
+      <article>
+        <h3>{t("Žádná záruka bez rizika", "No promise of zero risk")}</h3>
+        <p>
+          {t(
+            "Výsledek pomáhá, ale může se mýlit. Vždy uvádíme i to, co nešlo ověřit.",
+            "The result helps, but it can be wrong. We always explain what could not be checked.",
+          )}
+        </p>
+      </article>
+    </div>
+  </section>
+  <section class="section container">
+    <span class="eyebrow">{t("MOŽNÁ VÁS NAPADÁ", "YOU MIGHT BE WONDERING")}</span>
+    <h2>{t("Dobré otázky. Jasné odpovědi.", "Good questions. Clear answers.")}</h2>
+    <div class="faq">
+      {faq.map(([question, answer]) => (
+        <details>
+          <summary>{question}</summary>
+          <p>{answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+  <section class="closing">
+    <div class="container">
+      <span class="eyebrow">{t("SAFE QR PRO IPHONE", "SAFE QR FOR IPHONE")}</span>
+      <h2>
+        {t(
+          "Příště naskenujte s větším klidem.",
+          "A little more peace of mind with your next scan.",
+        )}
+      </h2>
+      <p>
+        {t(
+          "Česky i anglicky. Srozumitelně pro každého.",
+          "In Czech and English. Clear enough for everyone.",
+        )}
+      </p>
+      <div class="coming-soon">
+        <span aria-hidden="true">◉</span
+        ><span>{t("Již brzy v", "Coming soon to the")}<strong>App Store</strong></span>
+      </div>
+    </div>
+  </section>
+</Layout>

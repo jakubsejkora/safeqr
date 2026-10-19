@@ -1,0 +1,172 @@
+.page-heading {
+  padding-block: 65px 42px;
+}
+.page-heading h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  max-width: 850px;
+}
+.page-heading p {
+  max-width: 740px;
+  margin-top: 24px;
+  font-size: 20px;
+}
+.notice-box {
+  padding: 22px 26px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  background: var(--soft);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+.notice-box p {
+  color: var(--text);
+}
+.content-section {
+  padding-block: 32px 48px;
+}
+.content-section h2 {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+.content-section > p {
+  margin-bottom: 20px;
+}
+.content-section li {
+  margin-block: 12px;
+  color: var(--muted);
+}
+.content-section h3 {
+  margin: 25px 0 15px;
+}
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.help-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px;
+  background: var(--surface);
+}
+.help-card h3 {
+  margin-top: 0;
+  font-size: 22px;
+}
+.help-card ol {
+  padding-left: 22px;
+}
+.help-card li {
+  font-size: 16px;
+}
+.help-card a.source {
+  font-size: 14px;
+  min-height: 44px;
+}
+.bank-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.bank-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.bank-card h3 {
+  font-size: 19px;
+  margin: 0 0 12px;
+}
+.bank-phone {
+  font-size: 22px;
+  font-weight: 650;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.bank-card p {
+  font-size: 14px;
+}
+.bank-card .source {
+  min-height: 30px;
+}
+.privacy-table {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 22px;
+  border-block: 1px solid var(--line);
+  padding: 25px 0;
+}
+.privacy-table dt {
+  font-weight: 650;
+}
+.privacy-table dd {
+  margin: 0;
+  color: var(--muted);
+}
+.print-controls {
+  margin-bottom: 32px;
+}
+.print-sheet {
+  padding: 45px;
+  margin-bottom: 35px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  break-after: page;
+}
+.print-sheet h2 {
+  margin-block: 20px;
+  font-size: 42px;
+}
+.print-sheet p {
+  color: var(--text);
+  max-width: 600px;
+}
+.print-sheet img {
+  width: 225px;
+  margin-block: 25px;
+}
+.print-label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  padding: 8px 12px;
+  display: inline-block;
+}
+.parking-kit {
+  background: #e9f0ec;
+  color: #18362a;
+}
+.parking-kit .parking-sign {
+  font-size: 100px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.newspaper-kit h2 {
+  font-family: Georgia, serif;
+  font-size: 52px;
+  letter-spacing: -2px;
+}
+.kit-caption {
+  font-size: 14px;
+  margin-top: 20px;
+}
+.print-sheet code {
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
+.demo-safe {
+  padding-block: 80px;
+  min-height: 60vh;
+}
+.demo-safe .verdict {
+  margin-bottom: 30px;
+}
+.demo-safe h1 {
+  font-size: 55px;
+  margin-bottom: 25px;
+}

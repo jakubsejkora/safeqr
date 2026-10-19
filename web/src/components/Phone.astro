@@ -1,0 +1,77 @@
+---
+import type { Locale } from "../lib/locale";
+import { text } from "../lib/locale";
+import Logo from "./Logo.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<div class="phone-scene">
+  <div
+    class="phone"
+    role="img"
+    aria-label={text(
+      locale,
+      "Ukázka výsledku: Buďte opatrní. Riziko 68 ze 100. Odkaz vede jinam a stránka chce údaje z karty.",
+      "Example result: Be careful. Risk 68 out of 100. The link leads elsewhere and asks for card details.",
+    )}
+  >
+    <div class="phone-status"><span>9:41</span><span class="island"></span><span>▮▮▮ ▰</span></div>
+    <div class="phone-app"><Logo /><strong>Safe QR</strong><span class="phone-close">×</span></div>
+    <div class="scan-preview">
+      <div class="scan-corner top-left"></div>
+      <div class="scan-corner bottom-right"></div>
+      <span class="parking-p">P</span><span>{text(locale, "PARKOVÁNÍ", "PARKING")}</span>
+      <div class="tiny-qr" aria-hidden="true">▙ ▟<br>▛ ▚</div>
+    </div>
+    <div class="result-sheet">
+      <div class="sheet-handle"></div>
+      <div class="result-icon">!</div>
+      <span class="eyebrow">{text(locale, "VÝSLEDEK KONTROLY", "CHECK RESULT")}</span>
+      <h2>{text(locale, "Buďte opatrní", "Be careful")}</h2>
+      <p class="risk-number">68 <span>/ 100</span></p>
+      <p class="phone-explainer">
+        {text(
+          locale,
+          "Tento odkaz chce údaje z vaší karty.",
+          "This link asks for your card details.",
+        )}
+      </p>
+      <div class="phone-reason">
+        <span>↗</span>
+        <div>
+          <strong>{text(locale, "Odkaz vede jinam", "The link leads elsewhere")}</strong
+          ><small
+            >{text(locale, "Cíl se třikrát změnil.", "The destination changed three times.")}</small
+          >
+        </div>
+      </div>
+      <div class="phone-reason">
+        <span>▧</span>
+        <div>
+          <strong>{text(locale, "Neznáme příjemce", "Recipient not verified")}</strong
+          ><small
+            >{text(
+              locale,
+              "Majitele webu nelze ověřit.",
+              "We could not verify the site owner.",
+            )}</small
+          >
+        </div>
+      </div>
+      <div class="phone-decision">{text(locale, "Raději neotevírat", "Keep me here")}</div>
+      <p class="phone-link">{text(locale, "Otevřít i přes riziko", "Open despite the risk")}</p>
+    </div>
+    <div class="home-indicator"></div>
+  </div>
+  <div class="phone-note">
+    <span class="note-dot"></span>
+    {text(locale, "Vy rozhodujete. Vždycky.", "You decide. Every time.")}
+  </div>
+  <p class="prototype-label">
+    {text(locale, "Ilustrační obrazovka aplikace", "Illustrative app screen")}
+  </p>
+</div>

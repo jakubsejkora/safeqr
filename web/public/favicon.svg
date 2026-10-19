@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Safe QR</title>
+  <rect width="64" height="64" rx="16" fill="#17664e" />
+  <path
+    d="M13 27V14h12m14 0h12v13m0 12v12H39m-14 0H13V39m9-7 8 8 13-18"
+    fill="none"
+    stroke="#fff"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

@@ -1,0 +1,16 @@
+---
+import { type Locale, verdict } from "../lib/locale";
+
+interface Props {
+  score: number;
+  locale: Locale;
+}
+const { score, locale } = Astro.props;
+const state = verdict(score, locale);
+---
+
+<span class:list={["verdict", state.level]}
+  ><span aria-hidden="true" class="verdict-icon">{state.icon}</span>{state.label}<span class="score"
+    >{score}<span>/100</span></span
+  ></span
+>

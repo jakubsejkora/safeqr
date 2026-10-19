@@ -1,0 +1,43 @@
+---
+import { seedCases } from "../data/cases";
+import { type Locale, text } from "../lib/locale";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<div data-case-feed data-locale={locale}>
+  <p class="feed-status" data-feed-status>
+    {text(
+      locale,
+      "Ověřený výběr případů · aktualizováno 19. 10. 2026",
+      "Verified case selection · reviewed 19 Oct 2026",
+    )}
+  </p>
+  <div class="case-grid" data-case-list>
+    {seedCases(locale).map((item) => (
+      <article class="case-card">
+        <div class="case-meta">
+          <time datetime={item.publishedAt}>
+            {new Intl.DateTimeFormat(locale === "cs" ? "cs-CZ" : "en-GB", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            }).format(new Date(item.publishedAt))}
+          </time>
+          <span>↗</span>
+        </div>
+        <h3>
+          <a href={item.sourceUrl} rel="noreferrer">
+            {item.title}
+          </a>
+        </h3>
+        <p>{item.summary}</p>
+        <span class="case-source">{new URL(item.sourceUrl).hostname}</span>
+      </article>
+    ))}
+  </div>
+</div>
+<script src="../scripts/cases.ts"></script>

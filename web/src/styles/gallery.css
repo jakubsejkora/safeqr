@@ -1,0 +1,139 @@
+.filters {
+  border: 0;
+  padding: 0;
+  margin-inline: 0;
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.filters button {
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--surface);
+  min-height: 44px;
+  padding: 9px 17px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.filters button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+.gallery-tools {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+.gallery-tools label {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 360px);
+}
+.gallery-tools input {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 11px 15px;
+  width: 100%;
+}
+.result-count {
+  font-size: 14px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding-bottom: 80px;
+}
+.qr-card {
+  padding: 25px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  min-width: 0;
+  scroll-margin-top: 20px;
+}
+.qr-card h2 {
+  font-size: 23px;
+  line-height: 1.2;
+  margin-top: 19px;
+  letter-spacing: -0.025em;
+}
+.qr-card > p {
+  font-size: 15px;
+  margin-top: 16px;
+}
+.qr-card .verdict {
+  width: 100%;
+  margin-top: 20px;
+}
+.qr-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 4px;
+  background: #fff;
+  border-radius: 12px;
+}
+.qr-art img {
+  width: 200px;
+  height: 200px;
+}
+.qr-art.side img {
+  width: 48%;
+  height: auto;
+}
+.qr-art.sticker .overlay {
+  position: absolute;
+  width: 155px;
+  height: 155px;
+  transform: rotate(-8deg);
+  border: 5px solid white;
+  box-shadow: 0 3px 6px #0005;
+}
+.qr-card details {
+  padding-bottom: 0;
+  font-size: 13px;
+  border: 0;
+}
+.qr-card summary {
+  font-size: 14px;
+}
+.qr-card dl {
+  font-size: 14px;
+}
+.qr-card dt {
+  font-weight: 650;
+  margin-top: 17px;
+}
+.qr-card dd {
+  margin: 5px 0 0;
+  color: var(--muted);
+}
+.payload {
+  display: block;
+  background: var(--soft);
+  padding: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  line-height: 1.7;
+  border-radius: 8px;
+}
+.qr-enlarge {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  min-height: 44px;
+  align-content: center;
+}

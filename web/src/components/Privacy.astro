@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { type Locale, text } from "../lib/locale";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (cs: string, en: string) => text(locale, cs, en);
+---
+
+<Layout
+  locale={locale}
+  page="privacy"
+  title={t("Soukromí a umělá inteligence", "Privacy and artificial intelligence")}
+  ><div class="container narrow">
+    <div class="page-heading">
+      <span class="eyebrow">{t("VAŠE DŮVĚRA NENÍ SAMOZŘEJMOST", "YOUR TRUST MATTERS")}</span>
+      <h1>
+        {t("Co kontrolujeme. A co si nenecháváme.", "What we check. And what we don’t keep.")}
+      </h1>
+      <p>
+        {t(
+          "Safe QR vám má vrátit kontrolu. I nad tím, co se děje s vašimi údaji.",
+          "Safe QR is here to give you control. That includes control over your information.",
+        )}
+      </p>
+    </div>
+    <div class="notice-box">
+      <p>
+        {t(
+          "Safe QR je hackathonový prototyp. Toto je popis jeho zpracování dat a pravidel návrhu k 19. 10. 2026. Nejde o certifikaci bezpečnosti ani prohlášení o splnění všech právních povinností.",
+          "Safe QR is a hackathon prototype. This describes its data handling and design rules as of 19 Oct 2026. It is not a security certification or a claim that every legal obligation has been fulfilled.",
+        )}
+      </p>
+    </div>
+    <section class="content-section">
+      <h2>{t("První kontrola zůstává v telefonu", "The first check stays on your phone")}</h2>
+      <p>
+        {t(
+          "Aplikace přečte obsah QR kódu a zkontroluje ho přímo v zařízení. K této kontrole nepotřebuje internet. Neotevře odkaz, neodešle zprávu ani nepotvrdí platbu za vás.",
+          "The app reads and checks the QR code on your device. This check needs no internet. It does not open links, send messages or approve payments for you.",
+        )}
+      </p>
+    </section>
+    <section class="content-section">
+      <h2>{t("Hloubková kontrola jen se souhlasem", "Deep checks require your consent")}</h2>
+      <p>
+        {t(
+          "Po jednorázovém souhlasu běží hloubková kontrola automaticky. Do cloudu odejde obsah kódu, typ kódu, jazyk a výsledek kontroly v telefonu. Pokud přidáte fotografii okolí, odejde také ona. Fotka může zachytit lidi nebo osobní údaje. Zabírejte jen okolí, které je pro kontrolu potřebné.",
+          "After one-time consent, deep checks run automatically. The code contents, type, language and device findings go to the cloud. A scene photo is sent if you provide one. Photos can capture people or personal information. Include only the surroundings needed for the check.",
+        )}
+      </p>
+      <dl class="privacy-table">
+        <dt>{t("Kde", "Where")}</dt>
+        <dd>
+          {t(
+            "AWS, oblast eu-central-1, Frankfurt, Evropská unie. Týká se hloubkových kontrol a modelů Amazon Bedrock.",
+            "AWS eu-central-1, Frankfurt, European Union. This applies to deep checks and Amazon Bedrock models.",
+          )}
+        </dd>
+        <dt>{t("Fotografie", "Photos")}</dt>
+        <dd>
+          {t(
+            "Zpracují se v paměti a nikdy se neukládají.",
+            "Processed in memory and never stored.",
+          )}
+        </dd>
+        <dt>{t("Výsledky kontrol", "Check results")}</dt>
+        <dd>{t("Kontroly se mažou po 24 hodinách.", "Checks are deleted after 24 hours.")}</dd>
+        <dt>{t("Záznamy provozu", "Application logs")}</dt>
+        <dd>
+          {t(
+            "Do aplikačních logů nepatří osobní údaje ani úplný obsah QR kódů.",
+            "Application logs must not contain personal data or full QR payloads.",
+          )}
+        </dd>
+      </dl>
+      <p>
+        {t(
+          "Izolovaný prohlížeč navštíví cíl odkazu v cloudu. Cílový web tak může vidět požadavek cloudového prohlížeče a údaje obsažené v samotné adrese. Nepředáváme mu vaše cookies ani přihlášení z telefonu.",
+          "An isolated browser visits the destination in the cloud. The destination may see that browser request and information within the URL itself. Your phone’s cookies and signed-in sessions are not passed to it.",
+        )}
+      </p>
+    </section>
+    <section class="content-section">
+      <h2>{t("Jak do výsledku vstupuje AI", "How AI contributes to a result")}</h2>
+      <p>
+        {t(
+          "Pravidla v telefonu určují známá rizika a jejich prokázané minimum. Hloubková kontrola přidá cestu odkazu, zjištění z webu, vyhodnocení okolí a shody se známými případy. Model Claude v Amazon Bedrock pomáhá tato zjištění spojit a vysvětlit.",
+          "Rules on your phone identify known risks and a proven minimum score. The deep check adds redirects, page findings, scene analysis and matches to known cases. Claude on Amazon Bedrock helps combine and explain that evidence.",
+        )}
+      </p>
+      <p>
+        <strong
+          >{t(
+            "AI může riziko zvýšit. Nesmí ho snížit pod minimum, které prokázal telefon.",
+            "AI can raise risk. It cannot lower it below the minimum proven by your phone.",
+          )}</strong
+        >
+        {t(
+          "Vyšší skóre znamená vyšší zjištěné riziko, ne procentní pravděpodobnost podvodu. Výsledek uvádí důvody, následky dalšího kroku i meze ověření.",
+          "A higher score means more detected risk, not a percentage probability of fraud. Results explain the reasons, the consequences of continuing and the limits of the check.",
+        )}
+      </p>
+      <p>
+        {t(
+          "AI se může mýlit. Může přehlédnout podvod nebo varovat i u poctivého kódu. V duchu transparentnosti EU AI Act jasně označujeme pomoc AI a zachováváme lidské rozhodnutí. Safe QR za vás neprovádí platby ani neuděluje oprávnění.",
+          "AI can be wrong. It may miss fraud or flag a legitimate code. In the spirit of EU AI Act transparency, we identify AI assistance and keep the decision with you. Safe QR does not make payments or grant permissions for you.",
+        )}
+      </p>
+    </section>
+    <section class="content-section">
+      <h2>{t("Tento web a cvičné stránky", "This website and the training pages")}</h2>
+      <p>
+        {t(
+          "Web hostuje Cloudflare Workers. To je oddělené od kontrol v AWS: webové požadavky zpracovává síť Cloudflare a neslibujeme jejich omezení na Frankfurt. Pro doručení stránky se zpracují běžné údaje spojení, například IP adresa.",
+          "The website is hosted on Cloudflare Workers. This is separate from checks on AWS: web requests pass through Cloudflare’s network and are not promised to stay in Frankfurt. Ordinary connection information, such as an IP address, is processed to deliver pages.",
+        )}
+      </p>
+      <p>
+        {t(
+          "Nepoužíváme analytické ani reklamní skripty, sledovací cookies nebo formulář pro odběr novinek. Galerie nepřijímá vaše QR kódy. Vyhledávání v ní probíhá pouze v prohlížeči. Cvičný platební formulář nic neodesílá ani neukládá.",
+          "We use no analytics or advertising scripts, tracking cookies or newsletter forms. The gallery does not accept your QR codes. Gallery search stays in your browser. The training payment form sends and stores nothing.",
+        )}
+      </p>
+      <p>
+        {t(
+          "Přehled případů načítá veřejné zprávy. Při nedostupnosti zdroje zobrazí jasně označený ověřený výběr. Kliknutím na zdroj přejdete na web jeho provozovatele.",
+          "The cases feed loads public reports. If its source is unavailable, a labeled verified selection is shown. Following a source link takes you to that publisher’s website.",
+        )}
+      </p>
+    </section>
+    <section class="content-section">
+      <h2>{t("Kontakt a oprava chyby", "Contact and corrections")}</h2>
+      <p>
+        {t(
+          "Tým Safe QR zastihnete v repozitáři projektu. Do veřejného hlášení nevkládejte údaje z karty, přihlašovací kódy, fotografie lidí ani celý soukromý QR kód.",
+          "Contact the Safe QR team through the project repository. Do not include card details, login codes, photos of people or full private QR codes in public reports.",
+        )}
+      </p>
+      <a class="text-link" href="https://github.com/jakubsejkora/safeqr/issues"
+        >{t("Kontaktovat tým na GitHubu", "Contact the team on GitHub")}
+        ↗</a
+      >
+    </section>
+  </div></Layout
+>

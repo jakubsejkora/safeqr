@@ -1,0 +1,176 @@
+---
+import banks from "../data/banks.json";
+import { bankNotes, operators, recovery } from "../data/guides";
+import Layout from "../layouts/Layout.astro";
+import { type Locale, text } from "../lib/locale";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (cs: string, en: string) => text(locale, cs, en);
+---
+
+<Layout
+  locale={locale}
+  page="guides"
+  title={t("Jak se chránit a kde najít pomoc", "Stay safe and find help")}
+>
+  <div class="container">
+    <div class="page-heading">
+      <span class="eyebrow"
+        >{t("JASNÉ KROKY. OVĚŘENÉ KONTAKTY.", "CLEAR STEPS. VERIFIED CONTACTS.")}</span
+      >
+      <h1>{t("Zastavte škodu. Najděte pomoc.", "Stop the harm. Find help.")}</h1>
+      <p>
+        {t(
+          "Pokud jde o peníze, nejdřív volejte banku. Nečekejte na odpověď na e-mail. Není ostuda říct si o pomoc.",
+          "If money is at risk, call your bank first. Do not wait for an email reply. There is no shame in asking for help.",
+        )}
+      </p>
+    </div>
+    <div class="notice-box">
+      <p>
+        <strong
+          >{t(
+            "Ukončete podezřelý hovor. Nic dalšího nepotvrzujte.",
+            "End a suspicious call. Do not approve anything else.",
+          )}</strong
+        >
+        {t(
+          "Neposílejte peníze na údajný „bezpečný účet“. Při bezprostředním ohrožení volejte 158, případně 112.",
+          "Do not transfer money to a supposed “safe account”. For immediate danger in Czechia call 158, or 112.",
+        )}
+      </p>
+      <a class="source" href="https://policie.gov.cz/kyberkriminalita/pomoc-v-nouzi-4"
+        >{t("Policie ČR — oficiální pomoc", "Czech Police — official help")}
+        ↗</a
+      >
+    </div>
+    <div class="hero-actions">
+      <a class="button" href="#banks">{t("Najít číslo banky", "Find my bank’s number")} ↓</a
+      ><a class="button secondary" href="#operators"
+        >{t("Zablokovat placené služby", "Block premium services")}
+        ↓</a
+      >
+    </div>
+    <section class="content-section" id="recovery">
+      <h2>{t("Co se stalo?", "What happened?")}</h2>
+      <div class="help-grid">
+        {recovery.map((guide) => (
+          <article class="help-card">
+            <h3>{guide[locale].title}</h3>
+            <ol>
+              {guide[locale].steps.map((step) => (
+                <li>{step}</li>
+              ))}
+            </ol>
+            {guide.sources.map((source) => (
+              <a class="source" href={source.url}>
+                {source.label} ↗
+              </a>
+            ))}
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="content-section" id="banks">
+      <span class="eyebrow">{t("BANKOVNÍ POMOC", "BANK EMERGENCY CONTACTS")}</span>
+      <h2>
+        {t("Volejte sami. Na ověřené číslo.", "Make the call yourself. Use a verified number.")}
+      </h2>
+      <p>
+        {t(
+          "Veřejné kontakty ověřené ze zdrojů bank k 19. 10. 2026. Linky jsme zkušebně nevolali. Rozlišujeme blokaci karty a pomoc s účtem.",
+          "Public contacts checked against banks’ own sources on 19 Oct 2026. We did not test-call the lines. Card blocking and account support may use different numbers.",
+        )}
+      </p>
+      <div class="bank-grid">
+        {banks.map((bank) => (
+          <article class="bank-card">
+            <h3>{bank.bank}</h3>
+            <a class="bank-phone" href={`tel:${bank.phoneAbroad.replaceAll(" ", "")}`}>
+              {bank.phone}
+            </a>
+            <p>{bankNotes[bank.bank]?.[locale]}</p>
+            {bank.phoneAbroad !== bank.phone && (
+              <p>
+                {t("Ze zahraničí:", "From abroad:")} {bank.phoneAbroad}
+              </p>
+            )}
+            <a class="source" href={bank.url}>
+              {t("Oficiální kontakt banky", "Official bank contact")} ↗
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="content-section" id="operators">
+      <span class="eyebrow">{t("PŘEDEJDĚTE DALŠÍM PLATBÁM", "PREVENT FURTHER CHARGES")}</span>
+      <h2>{t("Ochrana u mobilního operátora", "Protection through your mobile carrier")}</h2>
+      <p>
+        {t(
+          "Premium SMS jsou drahé placené zprávy. Audiotex jsou drahé hovory, například na 900, 906 nebo 909. Předplatné zrušte a potom zablokujte další platby. Samotná blokace předplatné neruší.",
+          "Premium SMS are paid messages. Audiotex means premium-rate calls, including Czech 900, 906 and 909 numbers. Cancel the subscription, then block further payments. A payment block alone does not cancel a subscription.",
+        )}
+      </p>
+      <a class="source" href="https://www.t-mobile.cz/platebni-a-premium-sms">T-Mobile ↗</a>
+      <div class="notice-box">
+        <p>
+          {t(
+            "Operátorovi můžete říct: „Chci zablokovat Premium SMS, platby mobilem včetně Apple a Google a drahé hovory audiotex. Pomozte mi najít opakované platby.“",
+            "You can ask: “Please block Premium SMS, mobile payments including Apple and Google billing, and premium-rate calls. Help me find recurring charges.”",
+          )}
+        </p>
+      </div>
+      {operators.map((guide) => (
+        <details>
+          <summary>{guide[locale].title}</summary>
+          <ol>
+            {guide[locale].steps.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ol>
+          {guide.sources.map((source) => (
+            <a class="source" href={source.url}>
+              {source.label} ↗
+            </a>
+          ))}
+        </details>
+      ))}
+      <h3>
+        {t("Předplatné v App Storu nebo Google Play", "App Store or Google Play subscriptions")}
+      </h3>
+      <p>
+        {t(
+          "iPhone: Nastavení → vaše jméno → Předplatná → vybraná služba → Zrušit předplatné. Google Play: profil → Platby a předplatné → Předplatná → vybraná služba → Zrušit. Zrušení si ověřte i v obchodě.",
+          "iPhone: Settings → your name → Subscriptions → selected service → Cancel Subscription. Google Play: profile → Payments and subscriptions → Subscriptions → selected service → Cancel. Check the cancellation in the store too.",
+        )}
+      </p>
+      <a class="source" href="https://www.t-mobile.cz/m-platba/"
+        >{t("Zdroj: T-Mobile", "Source: T-Mobile")}
+        ↗</a
+      >
+      <h3>{t("Menší operátoři", "Other carriers")}</h3>
+      <p>
+        {t(
+          "Kontaktujte svou vlastní značku. MOBIL.CZ: o blokaci Premium SMS požádejte na 3333 nebo +420 738 333 333. SAZKAmobil: *11 nebo 800 77 11 11. Nepřebírejte automaticky nastavení jiné sítě.",
+          "Contact your own carrier. MOBIL.CZ: request Premium SMS blocking on 3333 or +420 738 333 333. SAZKAmobil: *11 or 800 77 11 11. Do not assume another network’s settings apply.",
+        )}
+      </p>
+      <a class="source" href="https://www.mobil.cz/podpora/?cat=nastaveni">MOBIL.CZ ↗</a>
+      <a class="source" href="https://www.sazkamobil.cz/podpora/kontakt">SAZKAmobil ↗</a>
+      <p>
+        {t(
+          "Operátoři od 1. října 2026 zablokovali problematické Premium SMS služby. Neznamená to konec všech nechtěných předplatných. Vyúčtování dál kontrolujte.",
+          "Operators blocked problematic Premium SMS services from 1 October 2026. This does not mean every unwanted subscription has ended. Keep checking your bill.",
+        )}
+      </p>
+      <a
+        class="source"
+        href="https://apms.cz/mobilni-operatori-zastavi-problematicke-premium-sms-sluzby/"
+        >APMS, 1. 10. 2026 ↗</a
+      >
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,143 @@
+---
+import { DEMO_ORIGIN } from "../data/gallery";
+import Layout from "../layouts/Layout.astro";
+import { type Locale, text } from "../lib/locale";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (cs: string, en: string) => text(locale, cs, en);
+---
+
+<Layout locale={locale} page="kit" title={t("Ukázky k tisku", "Print the demo")}
+  ><div class="container narrow">
+    <div class="page-heading kit-heading">
+      <span class="eyebrow">THE FINTECHERS HACKATHON 2026</span>
+      <h1>
+        {t("Podvod na papíře. Bez skutečného rizika.", "A scam on paper. A safe way to learn.")}
+      </h1>
+      <p>
+        {t(
+          "Čtyři materiály pro živou ukázku. Tiskněte na A4, v měřítku 100 %. Každý materiál dostane vlastní stránku. Všechny jsou zřetelně označené jako cvičení.",
+          "Four materials for a live demonstration. Print on A4 at 100% scale. Each item gets its own page. Every item is clearly marked as training.",
+        )}
+      </p>
+    </div>
+    <div class="print-controls">
+      <button type="button" class="button" data-print>
+        {t("Vytisknout čtyři stránky", "Print four pages")}
+        ↗
+      </button>
+      <p class="source">
+        {t(
+          "Ve třech příkladech vede kód na stejnou cvičnou platbu za parkování. Reklamní a dopisní příběh s cílem záměrně nesouhlasí.",
+          "Three examples lead to the same parking-payment training page. The advertisement and letter deliberately do not match that destination.",
+        )}
+      </p>
+    </div>
+    <article class="print-sheet parking-kit">
+      <span class="print-label"
+        >SAFE QR · {t("CVIČNÁ UKÁZKA — NEPLATIT", "TRAINING EXAMPLE — DO NOT PAY")}</span
+      >
+      <div class="parking-sign">P</div>
+      <h2>{t("Zaplaťte parkování telefonem.", "Pay for parking with your phone.")}</h2>
+      <p>{t("Zóna A · 1 hodina · 40 Kč", "Zone A · 1 hour · CZK 40")}</p>
+      <img
+        src="/qr/redirect-chain.svg"
+        width="225"
+        height="225"
+        alt={t("QR kód k cvičné platební stránce", "QR code to the training payment page")}
+      >
+      <p>{t("Naskenujte a pokračujte k platbě.", "Scan to continue to payment.")}</p>
+      <p class="kit-caption">
+        {t(
+          "Scénář: cizí samolepka na parkovacím automatu. Pouze pro školení, nikam ji nevylepujte.",
+          "Scenario: an unfamiliar sticker on a parking meter. For training only; do not place it on real equipment.",
+        )}
+      </p>
+      <code>{DEMO_ORIGIN}/start</code>
+    </article>
+    <article class="print-sheet newspaper-kit">
+      <span class="print-label"
+        >SAFE QR · {t("SMYŠLENÝ INZERÁT — CVIČENÍ", "FICTIONAL ADVERTISEMENT — TRAINING")}</span
+      >
+      <p class="source">{t("MALÝ INZERÁT · VELKÁ NABÍDKA", "SMALL AD · BIG OFFER")}</p>
+      <h2>{t("Výhodná nabídka jen pro vás.", "A special offer just for you.")}</h2>
+      <p>
+        {t(
+          "Načtěte QR kód a prohlédněte si nabídku. Stačí jeden krok.",
+          "Scan the code to see the offer. Just one step away.",
+        )}
+      </p>
+      <img
+        src="/qr/redirect-chain.svg"
+        width="225"
+        height="225"
+        alt={t("QR kód z fiktivního inzerátu", "QR code from the fictional advertisement")}
+      >
+      <p class="kit-caption">
+        {t(
+          "Co nesedí? Inzerát slibuje nabídku, ale kód vede na platbu za parkování. Jde o smyšlený příklad, nikoli doložený případ z novin.",
+          "What is wrong? The ad promises an offer but leads to a parking payment. This is a fictional scenario, not a documented newspaper case.",
+        )}
+      </p>
+      <code>{DEMO_ORIGIN}/start</code>
+    </article>
+    <article class="print-sheet">
+      <span class="print-label"
+        >SAFE QR · {t("SMYŠLENÝ DOPIS — CVIČENÍ", "FICTIONAL LETTER — TRAINING")}</span
+      >
+      <p class="source">{t("UKÁZKOVÉ ODDĚLENÍ PLATEB", "FICTIONAL PAYMENT OFFICE")}</p>
+      <h2>{t("Výzva k doplnění údajů", "Request to update your details")}</h2>
+      <p>{t("Vážená paní, vážený pane,", "Dear reader,")}</p>
+      <p>
+        {t(
+          "k dokončení vašeho požadavku prosím načtěte přiložený QR kód a doplňte údaje. Vyřízení údajně zabere jen minutu.",
+          "To complete your request, please scan the enclosed QR code and update your details. The message claims it will take only a minute.",
+        )}
+      </p>
+      <img
+        src="/qr/redirect-chain.svg"
+        width="225"
+        height="225"
+        alt={t("QR kód ze smyšleného dopisu", "QR code from the fictional letter")}
+      >
+      <p class="kit-caption">
+        {t(
+          "Co nesedí? Neurčitý odesílatel a platební stránka místo doplnění údajů. Nejde o dopis skutečného úřadu ani o doložený incident.",
+          "What is wrong? An unclear sender and a payment page instead of a details update. This is not a real authority’s letter or a documented incident.",
+        )}
+      </p>
+      <code>{DEMO_ORIGIN}/start</code>
+    </article>
+    <article class="print-sheet">
+      <span class="print-label"
+        >SAFE QR · {t("SROVNÁNÍ — BĚŽNÝ ODKAZ", "COMPARISON — AN ORDINARY LINK")}</span
+      >
+      <h2>{t("Ne každý QR kód je past.", "Not every QR code is a trap.")}</h2>
+      <p>
+        {t(
+          "Tento kód vede přímo na example.com, doménu vyhrazenou pro ukázky. Neobsahuje příkaz k platbě, SMS ani instalaci.",
+          "This code points straight to example.com, a domain reserved for examples. It contains no payment, SMS or installation instruction.",
+        )}
+      </p>
+      <img
+        src="/qr/normal-link.svg"
+        width="225"
+        height="225"
+        alt={t("Běžný QR odkaz na example.com", "An ordinary QR link to example.com")}
+      >
+      <p><strong>https://example.com</strong></p>
+      <p class="kit-caption">
+        {t(
+          "Porovnejte cíl, obsah i okolí. Ani nízké skóre není zárukou bezpečnosti.",
+          "Compare the destination, contents and surroundings. Even a low score is not a safety guarantee.",
+        )}
+      </p>
+    </article>
+  </div>
+  <script>
+  document.querySelector("[data-print]")?.addEventListener("click", () => window.print());
+  </script></Layout
+>
