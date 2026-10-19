@@ -5,6 +5,7 @@ import {
 } from "@aws-sdk/client-bedrock-runtime";
 import { z } from "zod";
 import { env, LIMITS, REGION } from "./config.js";
+import { logger } from "./observability.js";
 import { takeQuota } from "./storage.js";
 
 export interface ModelRequest<T> {
@@ -75,6 +76,12 @@ export class BedrockModel implements Model {
     )?.toolUse;
     const result = request.schema.parse(tool?.input);
     this.used.add(request.model);
+    logger.info("Model completed", {
+      model: request.model,
+      inputTokens: response.usage?.inputTokens,
+      outputTokens: response.usage?.outputTokens,
+      latencyMs: response.metrics?.latencyMs,
+    });
     return result;
   }
 }

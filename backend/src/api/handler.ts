@@ -56,6 +56,9 @@ export function createApi(deps: ApiDependencies) {
     event: APIGatewayProxyEventV2,
   ): Promise<APIGatewayProxyStructuredResultV2> => {
     try {
+      // The HTTP API's default integration also receives CORS preflight requests.
+      if (event.requestContext.http.method === "OPTIONS")
+        return { statusCode: 204, headers: { "cache-control": "no-store" } };
       if (event.routeKey === "POST /v1/checks") return await start(event);
       if (event.routeKey === "GET /v1/checks/{checkId}") {
         const id = checkIdSchema.safeParse(event.pathParameters?.checkId);

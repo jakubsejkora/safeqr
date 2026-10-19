@@ -10,6 +10,6 @@
     "run_worker_first": true,
     "not_found_handling": "404-page"
   },
-  "vars": { "BACKEND_BASE_URL": "" },
+  "vars": { "BACKEND_BASE_URL": "https://xj5yhhdhb1.execute-api.eu-central-1.amazonaws.com" },
   "observability": { "enabled": false }
 }

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { logger } from "../shared/observability.js";
 import type { ActorJob } from "./sources.js";
 
 const runSchema = z.object({
@@ -7,6 +8,7 @@ const runSchema = z.object({
   defaultDatasetId: z.string().optional(),
   defaultKeyValueStoreId: z.string().optional(),
   defaultRequestQueueId: z.string().optional(),
+  usageTotalUsd: z.number().optional(),
 });
 type Run = z.infer<typeof runSchema>;
 const finished = (run: Run) =>
@@ -53,7 +55,13 @@ export class Apify {
         );
       }
       if (!finished(run)) throw new Error("Actor time limit reached");
-      if (run.status !== "SUCCEEDED" || !run.defaultDatasetId) return [];
+      logger.info("Public-source actor completed", {
+        actor: job.actor,
+        status: run.status,
+        costUsd: run.usageTotalUsd,
+      });
+      if (run.status !== "SUCCEEDED" || !run.defaultDatasetId)
+        throw new Error("Actor did not complete successfully");
       const items = await this.api(
         `datasets/${run.defaultDatasetId}/items?clean=true&limit=40&format=json&fields=sourceUrl,isSeed,hasQrMention,organicResults,url,text,time,timestamp,postId,pageName`,
       );
@@ -106,7 +114,6 @@ export class Apify {
       signal: AbortSignal.timeout(20_000),
       redirect: "error",
     });
-    if (!response.ok) throw new Error("Public-source service unavailable");
     if (response.status === 204) return undefined;
     if (!response.body) throw new Error("Empty source response");
     const reader = response.body.getReader();
@@ -123,6 +130,19 @@ export class Apify {
     } finally {
       await reader.cancel();
     }
-    return JSON.parse(Buffer.concat(chunks).toString("utf8"));
+    const parsed: unknown = JSON.parse(Buffer.concat(chunks).toString("utf8"));
+    if (!response.ok) {
+      const error = z
+        .object({
+          error: z.object({ type: z.string().regex(/^[a-z-]{1,100}$/) }),
+        })
+        .safeParse(parsed);
+      logger.warn("Public-source API unavailable", {
+        status: response.status,
+        code: error.success ? error.data.error.type : "unknown",
+      });
+      throw new Error("Public-source service unavailable");
+    }
+    return parsed;
   }
 }

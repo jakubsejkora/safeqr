@@ -28,13 +28,13 @@ const draftSchema = z.object({
   findings: z
     .array(
       findingSchema.extend({
-        title: z.string().max(120),
-        detail: z.string().max(400),
+        title: z.string().max(90),
+        detail: z.string().max(220),
       }),
     )
-    .max(6),
-  consequences: z.array(z.string().max(300)).max(4),
-  limitations: z.array(z.string().max(300)).max(6),
+    .max(3),
+  consequences: z.array(z.string().max(180)).max(2),
+  limitations: z.array(z.string().max(180)).max(2),
 });
 
 export function deterministicVerdict(
@@ -106,6 +106,36 @@ export function deterministicVerdict(
       "The website asks for sensitive details",
       "Než něco zadáte, ověřte si provozovatele jinou cestou.",
       "Check the operator another way before entering anything.",
+    );
+  const hops = evidence.link?.hops ?? [];
+  if (
+    evidence.link?.asksFor?.includes("card") &&
+    new Set(hops.map((hop) => hop.url)).size >= 4 &&
+    hops.some((hop) => hop.status && hop.status >= 300 && hop.status < 400) &&
+    hops.some((hop) => hop.via === "meta") &&
+    hops.some((hop) => hop.via === "javascript")
+  )
+    add(
+      "concealed-card-form",
+      75,
+      "sandbox",
+      "Odkaz skrývá cestu k údajům z karty",
+      "The link hides the route to a card form",
+      "Než se ukázal formulář pro kartu, odkaz vás několikrát přesměroval různými způsoby. Kartu nezadávejte, dokud si provozovatele neověříte jinou cestou.",
+      "Several kinds of redirection led to a card form. Do not enter your card until you have checked the operator another way.",
+    );
+  if (
+    evidence.scene?.tamperingSigns?.length &&
+    evidence.link?.asksFor?.includes("card")
+  )
+    add(
+      "covered-payment-code",
+      80,
+      "scene",
+      "Přelepený kód vede k platbě kartou",
+      "A covered code leads to a card payment",
+      "Kód může překrývat původní značku a web žádá kartu. Platbu si ověřte přímo u provozovatele.",
+      "The code may cover the original marking and the website asks for a card. Check the payment directly with the operator.",
     );
   if (
     evidence.link?.domainAgeDays !== undefined &&
@@ -219,11 +249,13 @@ export async function createVerdict(
       model: MODELS.sonnet,
       system: VERDICT_PROMPT,
       schema: draftSchema,
+      maxTokens: 850,
       data: {
         locale: request.locale,
         kind: request.kind,
         payload: describePayload(request.kind, request.payload),
         device: request.device,
+        existingFindings: baseline.findings,
         evidence: redact(
           JSON.stringify({
             ...evidence,

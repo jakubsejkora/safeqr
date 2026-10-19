@@ -6,10 +6,14 @@ export async function domainAge(
   input: string,
   fetchPage: WebFetch = safeFetch,
 ): Promise<number | undefined> {
-  const domain = getDomain(new URL(input).hostname, {
+  const hostname = new URL(input).hostname;
+  const domain = getDomain(hostname, {
     allowPrivateDomains: false,
   });
   if (!domain) return undefined;
+  // A hosting provider's age says nothing about a customer's newly created site.
+  if (getDomain(hostname, { allowPrivateDomains: true }) !== domain)
+    return undefined;
   const signal = AbortSignal.timeout(3000);
   try {
     let url = `https://rdap.org/domain/${encodeURIComponent(domain)}`;

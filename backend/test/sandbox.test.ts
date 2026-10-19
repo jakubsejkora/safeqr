@@ -26,7 +26,7 @@ describe("isolated browser lifecycle", () => {
       title: async () => "Destination",
       locator: () => ({ click, evaluate: vi.fn().mockResolvedValue(true) }),
       mainFrame: vi.fn(),
-      waitForURL: vi.fn().mockResolvedValue(undefined),
+      waitForURL: vi.fn().mockRejectedValue(new Error("No navigation")),
       waitForLoadState: vi.fn().mockResolvedValue(undefined),
     };
     const context = {
@@ -68,7 +68,7 @@ describe("isolated browser lifecycle", () => {
     ).rejects.toThrow("disconnected");
     expect(stop).toHaveBeenCalledOnce();
   });
-  it("ignores a model's unlisted action, retains observations on model failure, and cleans up", async () => {
+  it("survives navigation during evidence capture, ignores unlisted actions, and retains observations on model failure", async () => {
     const stop = vi.fn().mockResolvedValue(undefined);
     const click = vi.fn();
     const evidence = {
@@ -80,12 +80,20 @@ describe("isolated browser lifecycle", () => {
     const page = {
       on: vi.fn(),
       goto: vi.fn(),
-      evaluate: vi.fn().mockResolvedValue(evidence),
+      evaluate: vi
+        .fn()
+        .mockRejectedValueOnce(
+          new Error(
+            "Execution context was destroyed, most likely because of a navigation",
+          ),
+        )
+        .mockResolvedValue(evidence),
       url: () => "https://example.com",
       screenshot: vi.fn().mockResolvedValue(new Uint8Array()),
       title: async () => "Login",
       locator: () => ({ click }),
       mainFrame: vi.fn(),
+      waitForURL: vi.fn().mockRejectedValue(new Error("No navigation")),
     };
     const context = {
       routeWebSocket: vi.fn(),

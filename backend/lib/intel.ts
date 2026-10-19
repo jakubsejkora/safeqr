@@ -27,7 +27,7 @@ export class Intel extends Construct {
         APIFY_SECRET_ARN: secret.secretArn,
       },
       Duration.minutes(14).toSeconds(),
-      { memory: 512, concurrency: 1 },
+      { memory: 512 },
     );
     secret.grantRead(collector);
     grantTable(

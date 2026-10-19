@@ -19,7 +19,7 @@ export function makeFunction(
   entry: string,
   environment: Record<string, string>,
   timeout: number,
-  options: { browser?: boolean; memory?: number; concurrency?: number } = {},
+  options: { browser?: boolean; memory?: number } = {},
 ): NodejsFunction {
   const logGroup = new logs.LogGroup(scope, `${id}Logs`, {
     retention: logs.RetentionDays.ONE_WEEK,
@@ -29,12 +29,11 @@ export function makeFunction(
     entry: path.join(root, entry),
     projectRoot: root,
     depsLockFilePath: path.join(root, "pnpm-lock.yaml"),
-    runtime: new lambda.Runtime("nodejs26.x", lambda.RuntimeFamily.NODEJS),
+    runtime: lambda.Runtime.NODEJS_24_X,
     architecture: lambda.Architecture.ARM_64,
     handler: "handler",
     timeout: Duration.seconds(timeout),
     memorySize: options.memory ?? 256,
-    reservedConcurrentExecutions: options.concurrency ?? 2,
     tracing: lambda.Tracing.ACTIVE,
     logGroup,
     environment: {
@@ -50,7 +49,7 @@ export function makeFunction(
     },
     bundling: {
       format: OutputFormat.ESM,
-      target: "node26",
+      target: "node24",
       sourceMap: true,
       minify: true,
       externalModules: [],

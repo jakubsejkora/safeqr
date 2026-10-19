@@ -30,7 +30,6 @@ export class Api extends Construct {
         WORKER_NAME: worker.functionName,
       },
       15,
-      { concurrency: 5 },
     );
     grantTable(
       handler,

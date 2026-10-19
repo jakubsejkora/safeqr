@@ -114,6 +114,33 @@ async function pageEvidence(page: Page): Promise<PageEvidence> {
   });
 }
 
+async function settledEvidence(page: Page): Promise<PageEvidence> {
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const previous = page.url();
+    try {
+      const evidence = await pageEvidence(page);
+      const navigated = await page
+        .waitForURL((url) => url.href !== previous, {
+          timeout: 1100,
+          waitUntil: "domcontentloaded",
+        })
+        .then(
+          () => true,
+          () => false,
+        );
+      if (!navigated) return evidence;
+    } catch (error) {
+      if (
+        !(error instanceof Error) ||
+        !/context was destroyed|Cannot find context/i.test(error.message)
+      )
+        throw error;
+      await delay(100);
+    }
+  }
+  throw new Error("Page kept redirecting during inspection");
+}
+
 export async function inspectLink(
   input: string,
   model: Model,
@@ -231,7 +258,7 @@ export async function inspectLink(
         hops.push({ url: frame.url(), via: "javascript" });
     });
     await page.goto(input, { waitUntil: "domcontentloaded", timeout: 6000 });
-    const before = await pageEvidence(page);
+    const before = await settledEvidence(page);
     let modelFailed = false;
     let decision: z.infer<typeof decisionSchema> = {
       candidateIndex: null,
@@ -289,7 +316,7 @@ export async function inspectLink(
         .waitForLoadState("domcontentloaded", { timeout: 2000 })
         .catch(() => undefined);
     }
-    const after = await pageEvidence(page);
+    const after = await settledEvidence(page);
     const finalUrl = webUrl(page.url()).href;
     const screenshot = await page.screenshot({
       type: "jpeg",
@@ -318,3 +345,5 @@ export async function inspectLink(
     };
   }
 }
+
+import { setTimeout as delay } from "node:timers/promises";

@@ -35,6 +35,25 @@ function event(routeKey: string, body?: unknown): APIGatewayProxyEventV2 {
 }
 
 describe("HTTP contract and retention", () => {
+  it("answers browser preflights without starting a check", async () => {
+    const invoke = vi.fn();
+    const admit = vi.fn();
+    const api = createApi({
+      checks: new MemoryChecks(),
+      media: media(),
+      intel: intel(),
+      invoke,
+      admit,
+    });
+    const preflight = event("$default");
+    preflight.requestContext.http.method = "OPTIONS";
+    expect(await api(preflight)).toEqual({
+      statusCode: 204,
+      headers: { "cache-control": "no-store" },
+    });
+    expect(invoke).not.toHaveBeenCalled();
+    expect(admit).not.toHaveBeenCalled();
+  });
   it("returns 202, queues only a capability ID, and hides internal state when polled", async () => {
     const checks = new MemoryChecks();
     const invoke = vi.fn().mockResolvedValue(undefined);

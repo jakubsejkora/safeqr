@@ -143,10 +143,15 @@ export function createWorker(
         evidence.limitations.push("model");
       evidence.link = sandbox?.report ?? trace?.report;
       if (evidence.link) {
-        evidence.link.hops = [
-          ...(trace?.report?.hops ?? []),
-          ...(sandbox?.report.hops ?? []),
-        ].slice(0, 20);
+        const traced = trace?.report?.hops ?? [];
+        const browsed = sandbox?.report.hops ?? [];
+        const overlap = browsed.findLastIndex(
+          (hop) => hop.url === traced.at(-1)?.url,
+        );
+        evidence.link.hops = [...traced, ...browsed.slice(overlap + 1)].slice(
+          0,
+          20,
+        );
         const [age, matches] = await Promise.allSettled([
           (deps.age ?? domainAge)(evidence.link.finalUrl),
           deps.intel.match(

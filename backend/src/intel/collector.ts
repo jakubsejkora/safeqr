@@ -5,7 +5,7 @@ import {
 import { z } from "zod";
 import { env, REGION } from "../shared/config.js";
 import { BedrockModel, type Model } from "../shared/model.js";
-import { count, measured } from "../shared/observability.js";
+import { count, logger, measured } from "../shared/observability.js";
 import { claimOnce, QuotaExceeded } from "../shared/storage.js";
 import { Apify } from "./apify.js";
 import { type Article, fetchArticle } from "./article.js";
@@ -104,6 +104,10 @@ export async function collect(
       );
     } catch {
       result.failed++;
+      logger.warn("Collection operation failed", {
+        stage: "actor",
+        actor: job.actor,
+      });
       continue;
     }
     const articles: Article[] = [...discovered.posts];
@@ -115,6 +119,10 @@ export async function collect(
         if (article) articles.push(article);
       } catch {
         result.failed++;
+        logger.warn("Collection operation failed", {
+          stage: "article",
+          actor: job.actor,
+        });
       }
     }
     for (const article of articles) {
@@ -131,6 +139,10 @@ export async function collect(
         }
       } catch {
         result.failed++;
+        logger.warn("Collection operation failed", {
+          stage: "extraction",
+          actor: job.actor,
+        });
       }
     }
   }

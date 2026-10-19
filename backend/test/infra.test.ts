@@ -33,9 +33,10 @@ describe("deployable infrastructure", () => {
     );
     template.resourceCountIs("AWS::Lambda::Function", 3);
     template.allResourcesProperties("AWS::Lambda::Function", {
-      Runtime: "nodejs26.x",
+      Runtime: "nodejs24.x",
       Architectures: ["arm64"],
       TracingConfig: { Mode: "Active" },
+      ReservedConcurrentExecutions: Match.absent(),
     });
     template.hasResourceProperties("AWS::DynamoDB::Table", {
       TimeToLiveSpecification: { AttributeName: "expiresAt", Enabled: true },

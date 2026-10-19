@@ -1,0 +1,6 @@
+{
+  "synthetic": true,
+  "purpose": "Live vision smoke test; no real people or payment details.",
+  "prompt": "Realistic smartphone photograph of a Czech parking payment machine in overcast daylight. A crooked QR sticker visibly covers an older QR code, with a lifted corner. Labels PARKOVÁNÍ and PAY PARKING. No people, faces, license plates, brands or personal data.",
+  "conversion": "Generated PNG converted to JPEG quality 70, longest edge 1280 pixels."
+}

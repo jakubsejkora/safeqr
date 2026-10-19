@@ -24,7 +24,7 @@ export class Storage extends Construct {
       sortKey: { name: "sk", type: dynamodb.AttributeType.STRING },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       encryption: dynamodb.TableEncryption.AWS_MANAGED,
-      removalPolicy: RemovalPolicy.RETAIN,
+      removalPolicy: RemovalPolicy.RETAIN_ON_UPDATE_OR_DELETE,
     });
     this.media = new s3.Bucket(this, "Media", {
       encryption: s3.BucketEncryption.S3_MANAGED,
@@ -37,7 +37,7 @@ export class Storage extends Construct {
           abortIncompleteMultipartUploadAfter: Duration.days(1),
         },
       ],
-      removalPolicy: RemovalPolicy.RETAIN,
+      removalPolicy: RemovalPolicy.RETAIN_ON_UPDATE_OR_DELETE,
     });
   }
 }

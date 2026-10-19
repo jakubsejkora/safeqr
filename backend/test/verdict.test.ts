@@ -15,6 +15,47 @@ const known: Case = {
 };
 
 describe("deterministic safety boundaries", () => {
+  it("raises concealed card collection to danger while an ordinary card form remains caution", () => {
+    const link = {
+      finalUrl: "https://parking.example/pay",
+      asksFor: ["card" as const],
+      hops: [
+        {
+          url: "https://parking.example/start",
+          status: 302,
+          via: "http" as const,
+        },
+        {
+          url: "https://parking.example/next",
+          status: 200,
+          via: "http" as const,
+        },
+        {
+          url: "https://parking.example/wait",
+          status: 200,
+          via: "meta" as const,
+        },
+        { url: "https://parking.example/pay", via: "javascript" as const },
+      ],
+    };
+    expect(
+      deterministicVerdict(request, { intel: [], limitations: [], link }).score,
+    ).toBe(75);
+    expect(
+      deterministicVerdict(request, {
+        intel: [],
+        limitations: [],
+        link: { ...link, hops: [] },
+      }).score,
+    ).toBe(40);
+    expect(
+      deterministicVerdict(request, {
+        intel: [],
+        limitations: [],
+        link: { ...link, asksFor: [] },
+      }).score,
+    ).toBe(request.device.score);
+  });
   it("an AI response cannot lower the device floor or contradict its headline", async () => {
     const result = await createVerdict(
       { ...request, device: { score: 85, floor: 85, findingIds: ["danger"] } },

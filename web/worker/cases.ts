@@ -55,7 +55,7 @@ export async function getCases(
       url.searchParams.set("limit", "5");
       const upstream = await fetcher(url, {
         signal: AbortSignal.timeout(3500),
-        redirect: "error",
+        redirect: "manual",
         headers: { Accept: "application/json" },
       });
       if (!upstream.ok || !upstream.headers.get("content-type")?.includes("application/json"))

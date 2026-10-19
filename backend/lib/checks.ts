@@ -29,7 +29,7 @@ export class Checks extends Construct {
         MEDIA_BUCKET: storage.media.bucketName,
       },
       70,
-      { browser: true, memory: 1024, concurrency: 3 },
+      { browser: true, memory: 1024 },
     );
     grantTable(
       this.worker,
