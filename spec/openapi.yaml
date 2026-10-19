@@ -1,0 +1,278 @@
+openapi: 3.1.0
+info:
+  title: Safe QR API
+  version: 1.0.0
+  summary: Deep checks for scanned codes and a feed of recent quishing cases.
+  description: |
+    Clients decode and assess codes on device first. A deep check adds evidence the device cannot gather:
+    an isolated cloud browser follows the link, a vision model reads the surroundings of the code,
+    and known quishing cases are matched. All processing runs in AWS eu-central-1.
+servers:
+  - url: https://api.safeqr.cz
+paths:
+  /v1/checks:
+    post:
+      operationId: startCheck
+      summary: Start a deep check of one scanned code.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/CheckRequest" }
+      responses:
+        "202":
+          description: Check started. Poll it until it is completed or failed.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/CheckAccepted" }
+        "400": { $ref: "#/components/responses/Problem" }
+        "413": { $ref: "#/components/responses/Problem" }
+        "429": { $ref: "#/components/responses/Problem" }
+  /v1/checks/{checkId}:
+    get:
+      operationId: getCheck
+      summary: Read the progress and result of a deep check.
+      parameters:
+        - name: checkId
+          in: path
+          required: true
+          schema: { type: string, pattern: "^chk_[A-Za-z0-9]{20,}$" }
+      responses:
+        "200":
+          description: Current state. Checks expire 24 hours after creation.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Check" }
+        "404": { $ref: "#/components/responses/Problem" }
+  /v1/cases:
+    get:
+      operationId: listCases
+      summary: Recent quishing cases collected from public sources.
+      parameters:
+        - name: locale
+          in: query
+          schema: { $ref: "#/components/schemas/Locale" }
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 50, default: 20 }
+      responses:
+        "200":
+          description: Newest first.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [cases]
+                properties:
+                  cases:
+                    type: array
+                    items: { $ref: "#/components/schemas/Case" }
+components:
+  responses:
+    Problem:
+      description: Error in RFC 9457 problem format.
+      content:
+        application/problem+json:
+          schema:
+            type: object
+            required: [title, status]
+            properties:
+              type: { type: string }
+              title: { type: string }
+              status: { type: integer }
+              detail: { type: string }
+  schemas:
+    Locale:
+      type: string
+      enum: [cs, en]
+      default: en
+    CodeKind:
+      type: string
+      enum: [link, payment, crypto, sms, phone, email, wifi, contact, event, location, messaging, login, eSIM, appLink, text]
+    Severity:
+      type: string
+      enum: [info, warning, danger]
+    Level:
+      type: string
+      enum: [safe, caution, danger]
+      description: safe < 30 ≤ caution < 70 ≤ danger
+    CheckRequest:
+      type: object
+      required: [payload, kind, locale, device]
+      properties:
+        payload:
+          type: string
+          maxLength: 4096
+          description: The raw decoded text of the code.
+        kind: { $ref: "#/components/schemas/CodeKind" }
+        locale: { $ref: "#/components/schemas/Locale" }
+        device:
+          type: object
+          description: The on-device assessment. The final score never drops below `floor`.
+          required: [score, floor, findingIds]
+          properties:
+            score: { type: integer, minimum: 0, maximum: 100 }
+            floor: { type: integer, minimum: 0, maximum: 100 }
+            findingIds:
+              type: array
+              items: { type: string }
+        scene:
+          type: object
+          description: A photo of where the code was found. Analysed in memory and never stored.
+          required: [image, source]
+          properties:
+            image:
+              type: string
+              contentEncoding: base64
+              contentMediaType: image/jpeg
+              maxLength: 2000000
+            source:
+              type: string
+              enum: [ultraWideCamera, camera, photo]
+            codeBounds:
+              description: Where the code sits in the image, normalised to 0–1 with the origin top-left.
+              type: object
+              required: [x, y, width, height]
+              properties:
+                x: { type: number }
+                y: { type: number }
+                width: { type: number }
+                height: { type: number }
+    CheckAccepted:
+      type: object
+      required: [id, status, pollAfterMs]
+      properties:
+        id: { type: string }
+        status: { type: string, const: running }
+        pollAfterMs: { type: integer }
+    Check:
+      type: object
+      required: [id, status, steps]
+      properties:
+        id: { type: string }
+        status:
+          type: string
+          enum: [running, completed, failed]
+        steps:
+          type: array
+          items: { $ref: "#/components/schemas/Step" }
+        result: { $ref: "#/components/schemas/Verdict" }
+    Step:
+      type: object
+      required: [id, status, label]
+      properties:
+        id:
+          type: string
+          enum: [redirects, sandbox, scene, intel, verdict]
+        status:
+          type: string
+          enum: [pending, running, done, skipped, failed]
+        label:
+          type: string
+          description: Localized progress text, e.g. "Following redirect 2 of 4".
+    Verdict:
+      type: object
+      required: [score, level, headline, findings, consequences, limitations, models]
+      properties:
+        score: { type: integer, minimum: 0, maximum: 100 }
+        level: { $ref: "#/components/schemas/Level" }
+        headline:
+          type: string
+          description: One plain sentence for the top of the result.
+        findings:
+          type: array
+          items: { $ref: "#/components/schemas/Finding" }
+        consequences:
+          type: array
+          description: What happens if the person continues.
+          items: { type: string }
+        limitations:
+          type: array
+          description: What could not be checked.
+          items: { type: string }
+        link: { $ref: "#/components/schemas/LinkReport" }
+        scene: { $ref: "#/components/schemas/SceneReport" }
+        intel:
+          type: array
+          items: { $ref: "#/components/schemas/Case" }
+        models:
+          type: array
+          description: Bedrock model IDs that contributed, for transparency.
+          items: { type: string }
+    Finding:
+      type: object
+      required: [id, severity, title, detail, source]
+      properties:
+        id: { type: string }
+        severity: { $ref: "#/components/schemas/Severity" }
+        title: { type: string }
+        detail: { type: string }
+        source:
+          type: string
+          enum: [device, sandbox, scene, intel, ai]
+    LinkReport:
+      type: object
+      required: [finalUrl, hops]
+      properties:
+        finalUrl: { type: string, format: uri }
+        hops:
+          type: array
+          items:
+            type: object
+            required: [url, via]
+            properties:
+              url: { type: string, format: uri }
+              status: { type: integer }
+              via:
+                type: string
+                enum: [http, meta, javascript]
+        pageTitle: { type: string }
+        screenshotUrl:
+          type: string
+          format: uri
+          description: Short-lived link to a screenshot taken in the sandbox.
+        domainAgeDays: { type: integer }
+        asksFor:
+          type: array
+          items:
+            type: string
+            enum: [password, card, bankLogin, phone, otp, personalData, payment, appInstall, permission]
+    SceneReport:
+      type: object
+      required: [summary]
+      properties:
+        setting:
+          type: string
+          description: Where the code appears, e.g. "parking machine".
+        tamperingSigns:
+          type: array
+          items: { type: string }
+        matchesContent:
+          type: boolean
+          description: Whether what the code does fits where it was found.
+        summary: { type: string }
+    Case:
+      type: object
+      required: [id, title, summary, sourceUrl, publishedAt]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        summary: { type: string }
+        scamType: { type: string }
+        channel:
+          type: string
+          description: Where the code appeared, e.g. "parking machine sticker".
+        payloadKind: { $ref: "#/components/schemas/CodeKind" }
+        region: { type: string }
+        publishedAt: { type: string, format: date }
+        sourceUrl: { type: string, format: uri }
+        indicators:
+          type: array
+          items:
+            type: object
+            required: [type, value]
+            properties:
+              type:
+                type: string
+                enum: [domain, urlPattern, iban, phone, shortCode, cryptoAddress]
+              value: { type: string }
