@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Xcode / Swift
+xcuserdata/
+*.xcuserstate
+DerivedData/
+.build/
+.swiftpm/
+*.ipa
+*.dSYM.zip
+
+# Node / TypeScript
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# AWS CDK
+cdk.out/
+cdk.context.json
+
+# Cloudflare / Astro
+.wrangler/
+.astro/
