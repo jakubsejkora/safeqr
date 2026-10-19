@@ -3,18 +3,28 @@ import Foundation
 struct OutcomeBuilder {
     let localizer: Localizer
 
-    func consequences(_ payload: Payload) -> [String] {
+    func consequences(_ parsed: ParsedCode) -> [String] {
+        let payload = parsed.payload
+        if case .login(let login) = payload, login.service == .authenticatorExport && login.accountCount == 0 {
+            return [localizer.text("consequence.emptyExport")]
+        }
+        if case .payment(let payment) = payload, payment.format == .payBySquare {
+            return [localizer.text("consequence.payBySquare")]
+        }
+        guard parsed.allowsHandoff else { return [localizer.text("consequence.unavailable")] }
         switch payload {
         case .link(let url): return [localizer.text("consequence.link", url.host(percentEncoded: false) ?? "")]
         case .payment(let payment):
-            if payment.format == .payBySquare { return [localizer.text("consequence.payBySquare")] }
+            if payment.checksum == .invalid || payment.iban.map({ !IBAN.isValid($0) }) == true {
+                return [localizer.text("consequence.unavailable")]
+            }
             if payment.format == .czechInvoice { return [localizer.text("consequence.invoice")] }
             let amount = payment.amount.map { localizer.amount($0, currency: payment.currency ?? localizer.text("value.currencyUnknown")) }
                 ?? localizer.text("value.amountUnknown")
             var account = ContentBuilder(localizer: localizer).account(payment) ?? localizer.text("value.accountUnknown")
             if let bank = payment.bankName { account += " (\(bank))" }
             return [localizer.text("consequence.payment", amount, account), localizer.text("consequence.paymentConfirm")]
-        case .crypto: return [localizer.text("consequence.crypto")]
+        case .crypto(let crypto): return [localizer.text(crypto.checksum == .invalid ? "consequence.unavailable" : "consequence.crypto")]
         case .sms(let recipient, _): return [localizer.text("consequence.sms", recipient)]
         case .phone(let number):
             let service = number.contains("*") || number.contains("#")
@@ -25,7 +35,8 @@ struct OutcomeBuilder {
         case .event(let event): return [localizer.text("consequence.event", event.title ?? localizer.text("value.unnamedEvent"))]
         case .location: return [localizer.text("consequence.location")]
         case .messaging(let link): return [localizer.text("consequence.messaging", localizer.text("messaging.\(link.app.rawValue)"))]
-        case .login(let login): return [localizer.text("consequence.login.\(login.service.rawValue)")]
+        case .login(let login):
+            return [localizer.text("consequence.login.\(login.service.rawValue)")]
         case .eSIM: return [localizer.text("consequence.eSIM")]
         case .appLink(let url):
             if url.pathExtension.lowercased() == "mobileconfig" { return [localizer.text("consequence.profile")] }

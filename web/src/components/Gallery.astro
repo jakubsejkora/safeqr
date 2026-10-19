@@ -1,5 +1,7 @@
 ---
 import { categories, gallery } from "../data/gallery";
+import type { GalleryVerdicts } from "../data/verdicts";
+import generatedVerdicts from "../data/verdicts.json";
 import Layout from "../layouts/Layout.astro";
 import { type Locale, text } from "../lib/locale";
 import Verdict from "./Verdict.astro";
@@ -9,6 +11,7 @@ interface Props {
 }
 const { locale } = Astro.props;
 const t = (cs: string, en: string) => text(locale, cs, en);
+const verdicts: Record<string, GalleryVerdicts> = generatedVerdicts;
 ---
 
 <Layout locale={locale} page="gallery" title={t("Galerie QR kódů", "QR code gallery")}>
@@ -34,8 +37,8 @@ const t = (cs: string, en: string) => text(locale, cs, en);
           )}</strong
         >
         {t(
-          "Hodnocení je ilustrační, není to živý výsledek aplikace. Odkazy vedou jen na ukázkové nebo vyhrazené domény. Platby používají účet z dokumentace ČNB; ostatní cíle jsou záměrně neplatné.",
-          "Scores are illustrative, not live app results. Links use only training or reserved domains. Payments use the ČNB documentation account; other destinations are deliberately invalid.",
+          "Hodnocení pochází z kontroly, kterou Safe QR provádí přímo v telefonu. Aplikace u odkazů přidává kontrolu v cloudu. Zde vidíte výsledek bez ní. Odkazy vedou jen na ukázkové nebo vyhrazené domény. Platné bankovní ukázky používají účet z dokumentace ČNB; ostatní platební, telefonní a přihlašovací údaje jsou záměrně neplatné.",
+          "Verdicts come from the Safe QR on-device engine; the app adds a cloud check for links. These results do not include that check. Links use only training or reserved domains. Valid bank examples use the ČNB documentation account; other payment, phone and login details are deliberately invalid.",
         )}
       </p>
     </div>
@@ -68,13 +71,37 @@ const t = (cs: string, en: string) => text(locale, cs, en);
     <div class="gallery-grid">
       {gallery.map((item) => {
         const copy = item[locale];
+        const saved = verdicts[item.id];
+        if (
+          !saved ||
+          saved.payload !== item.payload ||
+          saved.secondPayload !== (item.secondPayload ?? null)
+        ) {
+          throw new Error(`Regenerate gallery verdicts with pnpm gallery:verdicts (${item.id})`);
+        }
+        const results = [
+          { verdict: saved[locale].primary, payload: item.payload, suffix: "" },
+          ...(saved[locale].secondary && item.secondPayload
+            ? [{ verdict: saved[locale].secondary, payload: item.secondPayload, suffix: "-second" }]
+            : []),
+        ];
+        const searchable = [
+          copy.title,
+          copy.context ?? "",
+          ...results.flatMap(({ verdict }) => [
+            verdict.title,
+            verdict.summary,
+            ...verdict.findings.flatMap((finding) => [finding.title, finding.detail]),
+            ...verdict.facts.flatMap((fact) => [fact.label, fact.value]),
+          ]),
+        ].join(" ");
         return (
           <article
             class="qr-card"
             id={item.id}
             data-qr-card
             data-category={item.category}
-            data-search={`${copy.title} ${copy.reason}`}
+            data-search={searchable}
           >
             <div class:list={["qr-art", item.arrangement]}>
               <img
@@ -102,32 +129,83 @@ const t = (cs: string, en: string) => text(locale, cs, en);
               {t("Zvětšit kód", "Enlarge code")} ↗
             </a>
             <h2>{copy.title}</h2>
-            <Verdict score={item.score} locale={locale} />
-            <p>{copy.reason}</p>
-            <details>
-              <summary>{t("Co je uvnitř a co se stane", "Contents and what happens next")}</summary>
-              <dl>
-                <dt>{t("Obsah kódu", "Decoded contents")}</dt>
-                <dd>
-                  <code class="payload">{item.payload}</code>
-                </dd>
-                {item.secondPayload && (
-                  <>
-                    <dt>{t("Druhý kód", "Second code")}</dt>
-                    <dd>
-                      <code class="payload">{item.secondPayload}</code>
-                      <a class="qr-enlarge" href={`/qr/${item.id}-second.svg`}>
-                        {t("Zvětšit druhý kód", "Enlarge second code")} ↗
-                      </a>
-                    </dd>
-                  </>
+            {copy.context && (
+              <p>
+                <strong>{t("O této ukázce: ", "About this example: ")}</strong>
+                {copy.context}
+              </p>
+            )}
+            {results.map(({ verdict, payload, suffix }, index) => (
+              <section
+                class="engine-result"
+                aria-label={
+                  results.length > 1
+                    ? t(`Kód ${index === 0 ? "A" : "B"}`, `Code ${index === 0 ? "A" : "B"}`)
+                    : verdict.title
+                }
+                data-engine-verdict={`${item.id}${suffix}`}
+                data-score={verdict.score}
+                data-level={verdict.level}
+              >
+                {results.length > 1 && (
+                  <h3>{t(`Kód ${index === 0 ? "A" : "B"}`, `Code ${index === 0 ? "A" : "B"}`)}</h3>
                 )}
-                <dt>{t("Pokračováním…", "If you continue…")}</dt>
-                <dd>{copy.action}</dd>
-                <dt>{t("Co nelze ověřit", "What cannot be checked")}</dt>
-                <dd>{copy.limitation}</dd>
-              </dl>
-            </details>
+                <Verdict score={verdict.score} locale={locale} />
+                <p>{verdict.summary}</p>
+                <p>{verdict.findings[0]?.detail ?? verdict.limitations[0]}</p>
+                <details>
+                  <summary>
+                    {t("Co je uvnitř a co se stane", "Contents and what happens next")}
+                  </summary>
+                  <dl>
+                    <dt>{t("Typ obsahu", "Content type")}</dt>
+                    <dd>{verdict.title}</dd>
+                    {verdict.facts.map((fact) => (
+                      <>
+                        <dt>{fact.label}</dt>
+                        <dd>{fact.value}</dd>
+                      </>
+                    ))}
+                    <dt>{t("Obsah kódu", "Decoded contents")}</dt>
+                    <dd>
+                      <code class="payload">{payload}</code>
+                    </dd>
+                    {suffix && (
+                      <dd>
+                        <a class="qr-enlarge" href={`/qr/${item.id}${suffix}.svg`}>
+                          {t("Zvětšit druhý kód", "Enlarge second code")} ↗
+                        </a>
+                      </dd>
+                    )}
+                    {verdict.findings.map((finding) => (
+                      <div data-finding={finding.id} data-severity={finding.severity}>
+                        <dt>{finding.title}</dt>
+                        <dd>{finding.detail}</dd>
+                      </div>
+                    ))}
+                    <dt>{t("Pokračováním…", "If you continue…")}</dt>
+                    {verdict.consequences.map((consequence) => (
+                      <dd>{consequence}</dd>
+                    ))}
+                    <dt>{t("Co nelze ověřit", "What cannot be checked")}</dt>
+                    {verdict.limitations.map((limitation) => (
+                      <dd>{limitation}</dd>
+                    ))}
+                    {verdict.containsSecrets && (
+                      <>
+                        <dt>{t("Soukromé údaje", "Private information")}</dt>
+                        <dd>
+                          {t(
+                            "Tento typ kódu může obsahovat soukromé údaje. Skutečné kódy nesdílejte.",
+                            "This code type can contain private information. Do not share real codes.",
+                          )}
+                        </dd>
+                      </>
+                    )}
+                  </dl>
+                </details>
+              </section>
+            ))}
           </article>
         );
       })}
@@ -141,3 +219,22 @@ const t = (cs: string, en: string) => text(locale, cs, en);
   </div>
   <script src="../scripts/gallery.ts"></script>
 </Layout>
+
+<style>
+.engine-result {
+  overflow-wrap: anywhere;
+}
+.engine-result + .engine-result {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.engine-result h3 {
+  font-size: 17px;
+  margin: 0;
+}
+.engine-result p {
+  font-size: 15px;
+  margin-top: 16px;
+}
+</style>

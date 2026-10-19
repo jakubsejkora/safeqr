@@ -12,7 +12,7 @@ enum RiskEngine {
             for url in embedded.links { signals += LinkRules.evaluate(url, original: url.absoluteString) }
             for code in embedded.codes { signals += rules(code, raw: "", localizer: localizer) }
         }
-        if containsDirectionControls(raw) { signals.append(RiskSignal("content.hiddenCharacters", 40, floor: 30)) }
+        if containsHiddenCharacters(raw) { signals.append(RiskSignal("content.hiddenCharacters", 40, floor: 30)) }
         var unique: [String: RiskSignal] = [:]
         for signal in signals {
             if let previous = unique[signal.id], (previous.floor, previous.points) >= (signal.floor, signal.points) { continue }
@@ -55,7 +55,10 @@ enum RiskEngine {
             if !card.phoneNumbers.isEmpty && authority.contains(where: { name.contains($0) }) { signals.append(RiskSignal("contact.impersonation", 55, floor: 30)) }
             for number in card.phoneNumbers { signals += PhoneRules.evaluate(number, sms: false, localizer: localizer) }
         case .login(let login):
-            signals.append(RiskSignal("login.\(login.service.rawValue)", login.service == .authenticatorExport ? 85 : 70, floor: login.service == .authenticatorExport ? 85 : 70))
+            signals.append(RiskSignal("login.\(login.service.rawValue)", login.service == .authenticatorExport ? 85 : 70,
+                                      floor: login.service == .authenticatorExport ? 85 : 70,
+                                      detailKey: login.service == .authenticatorExport && login.accountCount == 0
+                                        ? "finding.login.authenticatorExport.empty" : nil))
         case .eSIM: signals.append(RiskSignal("esim.activation", 70, floor: 70))
         case .appLink(let url):
             signals += LinkRules.evaluate(url, original: raw)
@@ -75,7 +78,10 @@ enum RiskEngine {
         return signals
     }
 
-    private static func containsDirectionControls(_ raw: String) -> Bool {
-        raw.unicodeScalars.contains { (0x202A...0x202E).contains($0.value) || (0x2066...0x2069).contains($0.value) }
+    private static func containsHiddenCharacters(_ raw: String) -> Bool {
+        raw.unicodeScalars.contains {
+            [0xAD, 0x61C, 0x200B, 0x200E, 0x200F, 0x2060, 0xFEFF].contains($0.value)
+                || (0x202A...0x202E).contains($0.value) || (0x2066...0x2069).contains($0.value)
+        }
     }
 }

@@ -11,6 +11,9 @@ let result = CodeInspector(locale: Locale(identifier: "cs_CZ")).inspect(scannedT
 
 From this directory, run `swift build` and `swift test`. Tests use Swift Testing and the shared `../../spec/fixtures/codes.json` cases: original text, locale, expected kind, level, exact finding IDs and selected display facts. The catalog is copied intact so an inspector's locale works independently of the host app's language.
 
+Run `swift run safeqr-inspect --locale cs -- 'https://example.com'` for one JSON result per argument; use `en` for English (the default).
+With no payload arguments, it reads newline-delimited stdin and emits one JSON result per line; pass multiline payloads as quoted arguments.
+
 The score sums contributions from distinct rule IDs, takes at least the highest hard floor, then caps at 100. Below 30 is safe, 30–69 caution, 70–100 danger. A safe result means no known warning, not verified trust. Remote assessments cannot go below the device floor. Inputs above 32 KiB are not parsed; at most 32 distinct embedded items are inspected, with explicit warnings when a limit is reached.
 
 PAY by square is detected from its header; raw LZMA decoding is intentionally unsupported. Wallet ownership, token decimals, Ethereum address checksums and Lightning signatures/expiry are not verified. Unsupported structured features and ambiguous fields suppress handoffs. Bank formats without a universal app link, eSIM activation and device-login approvals offer copy/share only. `containsSecrets` also checks embedded codes and disables `benefitsFromCloudCheck`. The host must still protect raw codes and action data in storage, logs and sharing.

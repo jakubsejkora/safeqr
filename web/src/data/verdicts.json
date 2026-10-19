@@ -1,0 +1,2220 @@
+{
+  "normal-link": {
+    "payload": "https://example.com",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře example.com v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          { "id": "address", "label": "Celá adresa", "value": "https://example.com" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na example.com.",
+        "title": "Webová stránka"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": ["Opens example.com in a browser, where the website can see your visit."],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          { "id": "address", "label": "Full address", "value": "https://example.com" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to example.com.",
+        "title": "Website"
+      },
+      "secondary": null
+    }
+  },
+  "redirect-chain": {
+    "payload": "https://safeqr-training.jakub-f9d.workers.dev/start",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře safeqr-training.jakub-f9d.workers.dev v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "domain",
+            "label": "Název webu",
+            "value": "safeqr-training.jakub-f9d.workers.dev"
+          },
+          {
+            "id": "address",
+            "label": "Celá adresa",
+            "value": "https://safeqr-training.jakub-f9d.workers.dev/start"
+          }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
+        "title": "Webová stránka"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Opens safeqr-training.jakub-f9d.workers.dev in a browser, where the website can see your visit."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "domain",
+            "label": "Website name",
+            "value": "safeqr-training.jakub-f9d.workers.dev"
+          },
+          {
+            "id": "address",
+            "label": "Full address",
+            "value": "https://safeqr-training.jakub-f9d.workers.dev/start"
+          }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to safeqr-training.jakub-f9d.workers.dev.",
+        "title": "Website"
+      },
+      "secondary": null
+    }
+  },
+  "lookalike": {
+    "payload": "https://xn--pple-43d.test",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře xn--pple-43d.test v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "xn--pple-43d.test" },
+          { "id": "address", "label": "Celá adresa", "value": "https://xn--pple-43d.test" }
+        ],
+        "findings": [
+          {
+            "detail": "Název webu míchá různé abecedy, což může skrývat jinou adresu.",
+            "id": "link.mixedScripts",
+            "severity": "warning",
+            "title": "Písmena z různých abeced"
+          },
+          {
+            "detail": "Název obsahuje mezinárodní znaky, kvůli kterým mohou různé weby vypadat stejně.",
+            "id": "link.punycode",
+            "severity": "warning",
+            "title": "Název webu používá zakódovaná písmena"
+          }
+        ],
+        "kind": "link",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 75,
+        "summary": "Tento kód vede na xn--pple-43d.test.",
+        "title": "Webová stránka"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Opens xn--pple-43d.test in a browser, where the website can see your visit."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "xn--pple-43d.test" },
+          { "id": "address", "label": "Full address", "value": "https://xn--pple-43d.test" }
+        ],
+        "findings": [
+          {
+            "detail": "The website name mixes alphabets, which can disguise a different address.",
+            "id": "link.mixedScripts",
+            "severity": "warning",
+            "title": "Letters from different alphabets"
+          },
+          {
+            "detail": "The name contains international characters that can make different websites look alike.",
+            "id": "link.punycode",
+            "severity": "warning",
+            "title": "Website name uses encoded letters"
+          }
+        ],
+        "kind": "link",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 75,
+        "summary": "This code leads to xn--pple-43d.test.",
+        "title": "Website"
+      },
+      "secondary": null
+    }
+  },
+  "user-host": {
+    "payload": "https://bank.example@example.com",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře example.com v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          { "id": "address", "label": "Celá adresa", "value": "https://bank.example@example.com" }
+        ],
+        "findings": [
+          {
+            "detail": "Text před znakem @ není název webu; tento odkaz vede na example.com.",
+            "id": "link.userinfo",
+            "severity": "danger",
+            "title": "Adresa skrývá skutečný cíl"
+          }
+        ],
+        "kind": "link",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 70,
+        "summary": "Tento kód vede na example.com.",
+        "title": "Webová stránka"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": ["Opens example.com in a browser, where the website can see your visit."],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          { "id": "address", "label": "Full address", "value": "https://bank.example@example.com" }
+        ],
+        "findings": [
+          {
+            "detail": "The text before @ is not the website name; this link goes to example.com.",
+            "id": "link.userinfo",
+            "severity": "danger",
+            "title": "The address hides its real destination"
+          }
+        ],
+        "kind": "link",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 70,
+        "summary": "This code leads to example.com.",
+        "title": "Website"
+      },
+      "secondary": null
+    }
+  },
+  "http": {
+    "payload": "http://example.com",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře example.com v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          { "id": "address", "label": "Celá adresa", "value": "http://example.com" }
+        ],
+        "findings": [
+          {
+            "detail": "Tato adresa používá nešifrované připojení, takže jiní lidé v síti mohou obsah číst nebo měnit.",
+            "id": "link.http",
+            "severity": "warning",
+            "title": "Připojení není chráněné"
+          }
+        ],
+        "kind": "link",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 30,
+        "summary": "Tento kód vede na example.com.",
+        "title": "Webová stránka"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": ["Opens example.com in a browser, where the website can see your visit."],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          { "id": "address", "label": "Full address", "value": "http://example.com" }
+        ],
+        "findings": [
+          {
+            "detail": "This address uses an unencrypted connection, so others on the network may read or change it.",
+            "id": "link.http",
+            "severity": "warning",
+            "title": "Connection is not protected"
+          }
+        ],
+        "kind": "link",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 30,
+        "summary": "This code leads to example.com.",
+        "title": "Website"
+      },
+      "secondary": null
+    }
+  },
+  "javascript": {
+    "payload": "javascript:void(0)",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Tato adresa může spouštět obsah nebo přistupovat k souborům v zařízení, proto ji Safe QR nenabízí k otevření."
+        ],
+        "containsSecrets": false,
+        "facts": [{ "id": "address", "label": "Celá adresa", "value": "javascript:void(0)" }],
+        "findings": [
+          {
+            "detail": "Jde o pokyn ke spuštění obsahu nebo přístupu k souborům v zařízení, ne o běžnou webovou adresu.",
+            "id": "link.unsafeScheme",
+            "severity": "danger",
+            "title": "Může spustit obsah nebo otevřít soubory"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme."
+        ],
+        "score": 95,
+        "summary": "Tento kód obsahuje přímo obsah nebo příkaz místo běžné webové adresy.",
+        "title": "Otevření aplikace"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "This address can run content or access local files, so Safe QR does not offer to open it."
+        ],
+        "containsSecrets": false,
+        "facts": [{ "id": "address", "label": "Full address", "value": "javascript:void(0)" }],
+        "findings": [
+          {
+            "detail": "This is an instruction to run content or access local files, not an ordinary website address.",
+            "id": "link.unsafeScheme",
+            "severity": "danger",
+            "title": "This can run content or access files"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify the app's behavior, permissions or who will handle this link."
+        ],
+        "score": 95,
+        "summary": "This code contains embedded content or a command instead of an ordinary website address.",
+        "title": "Open an app"
+      },
+      "secondary": null
+    }
+  },
+  "data-uri": {
+    "payload": "data:text/plain,SAFE%20QR%20TRAINING",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Tato adresa může spouštět obsah nebo přistupovat k souborům v zařízení, proto ji Safe QR nenabízí k otevření."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "address",
+            "label": "Celá adresa",
+            "value": "data:text/plain,SAFE%20QR%20TRAINING"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "Jde o pokyn ke spuštění obsahu nebo přístupu k souborům v zařízení, ne o běžnou webovou adresu.",
+            "id": "link.unsafeScheme",
+            "severity": "danger",
+            "title": "Může spustit obsah nebo otevřít soubory"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme."
+        ],
+        "score": 95,
+        "summary": "Tento kód obsahuje přímo obsah nebo příkaz místo běžné webové adresy.",
+        "title": "Otevření aplikace"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "This address can run content or access local files, so Safe QR does not offer to open it."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "address",
+            "label": "Full address",
+            "value": "data:text/plain,SAFE%20QR%20TRAINING"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "This is an instruction to run content or access local files, not an ordinary website address.",
+            "id": "link.unsafeScheme",
+            "severity": "danger",
+            "title": "This can run content or access files"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify the app's behavior, permissions or who will handle this link."
+        ],
+        "score": 95,
+        "summary": "This code contains embedded content or a command instead of an ordinary website address.",
+        "title": "Open an app"
+      },
+      "secondary": null
+    }
+  },
+  "qr-platba": {
+    "payload": "SPD*1.0*ACC:CZ6508000000192000145399*AM:1.00*CC:CZK*MSG:SAFE QR DEMO - NEPLATIT",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Připraví platbu ve výši 1 Kč na účet 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nic se nezaplatí, dokud platbu nepotvrdíte v bankovní aplikaci."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Částka", "value": "1 Kč" },
+          { "id": "account", "label": "Účet nebo adresa", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Banka", "value": "Česká spořitelna, a.s." },
+          { "id": "format", "label": "Druh kódu", "value": "Česká QR platba" },
+          { "id": "message", "label": "Zpráva", "value": "SAFE QR DEMO - NEPLATIT" }
+        ],
+        "findings": [
+          {
+            "detail": "Kód neuvádí, kdo má peníze dostat.",
+            "id": "payment.missingRecipient",
+            "severity": "info",
+            "title": "Chybí jméno příjemce"
+          }
+        ],
+        "kind": "payment",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
+          "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
+        ],
+        "score": 10,
+        "summary": "Tento kód obsahuje údaje k platbě.",
+        "title": "Platba"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Prepares a payment of CZK 1 to 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nothing is paid until you confirm the payment in your banking app."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Amount", "value": "CZK 1" },
+          { "id": "account", "label": "Account or address", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Bank", "value": "Česká spořitelna, a.s." },
+          { "id": "format", "label": "Code type", "value": "Czech QR payment" },
+          { "id": "message", "label": "Message", "value": "SAFE QR DEMO - NEPLATIT" }
+        ],
+        "findings": [
+          {
+            "detail": "The code does not say who should receive the money.",
+            "id": "payment.missingRecipient",
+            "severity": "info",
+            "title": "Recipient name is missing"
+          }
+        ],
+        "kind": "payment",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot tell who owns this account or whether you owe this payment.",
+          "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
+        ],
+        "score": 10,
+        "summary": "This code contains details for a payment.",
+        "title": "Bank payment"
+      },
+      "secondary": null
+    }
+  },
+  "payment-link": {
+    "payload": "SPD*1.0*ACC:CZ6508000000192000145399*AM:1.00*CC:CZK*MSG:SAFE QR DEMO - NEPLATIT*X-URL:https://example.com",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Připraví platbu ve výši 1 Kč na účet 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nic se nezaplatí, dokud platbu nepotvrdíte v bankovní aplikaci."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Částka", "value": "1 Kč" },
+          { "id": "account", "label": "Účet nebo adresa", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Banka", "value": "Česká spořitelna, a.s." },
+          { "id": "format", "label": "Druh kódu", "value": "Česká QR platba" },
+          { "id": "message", "label": "Zpráva", "value": "SAFE QR DEMO - NEPLATIT" },
+          { "id": "paymentURL", "label": "Odkaz uvnitř platby", "value": "https://example.com" }
+        ],
+        "findings": [
+          {
+            "detail": "Uvnitř kódu je další odkaz nebo pokyn, proto před pokračováním zkontrolujte obojí.",
+            "id": "content.combination",
+            "severity": "warning",
+            "title": "Jeden kód obsahuje víc věcí"
+          },
+          {
+            "detail": "Platba obsahuje webovou adresu, která může vést jinam než k bankovnímu převodu.",
+            "id": "payment.link",
+            "severity": "warning",
+            "title": "Uvnitř platby je odkaz"
+          },
+          {
+            "detail": "Kód neuvádí, kdo má peníze dostat.",
+            "id": "payment.missingRecipient",
+            "severity": "info",
+            "title": "Chybí jméno příjemce"
+          }
+        ],
+        "kind": "payment",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
+          "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 60,
+        "summary": "Tento kód obsahuje údaje k platbě.",
+        "title": "Platba"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Prepares a payment of CZK 1 to 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nothing is paid until you confirm the payment in your banking app."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Amount", "value": "CZK 1" },
+          { "id": "account", "label": "Account or address", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Bank", "value": "Česká spořitelna, a.s." },
+          { "id": "format", "label": "Code type", "value": "Czech QR payment" },
+          { "id": "message", "label": "Message", "value": "SAFE QR DEMO - NEPLATIT" },
+          { "id": "paymentURL", "label": "Link inside the payment", "value": "https://example.com" }
+        ],
+        "findings": [
+          {
+            "detail": "There is another link or instruction inside this code, so check both before acting.",
+            "id": "content.combination",
+            "severity": "warning",
+            "title": "One code contains more than one thing"
+          },
+          {
+            "detail": "The payment contains a website address that may lead somewhere unrelated to the bank transfer.",
+            "id": "payment.link",
+            "severity": "warning",
+            "title": "There is a link inside the payment"
+          },
+          {
+            "detail": "The code does not say who should receive the money.",
+            "id": "payment.missingRecipient",
+            "severity": "info",
+            "title": "Recipient name is missing"
+          }
+        ],
+        "kind": "payment",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot tell who owns this account or whether you owe this payment.",
+          "Most banking apps need you to scan or import the original code; there is no single link that opens every bank.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 60,
+        "summary": "This code contains details for a payment.",
+        "title": "Bank payment"
+      },
+      "secondary": null
+    }
+  },
+  "swapped-account": {
+    "payload": "SPD*1.0*ACC:CZ6508000000192000145399*AM:1.00*CC:CZK*MSG:SAFE QR DEMO - NEPLATIT*RN:DEMO PARKING",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Připraví platbu ve výši 1 Kč na účet 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nic se nezaplatí, dokud platbu nepotvrdíte v bankovní aplikaci."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Částka", "value": "1 Kč" },
+          { "id": "account", "label": "Účet nebo adresa", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Banka", "value": "Česká spořitelna, a.s." },
+          { "id": "recipient", "label": "Příjemce", "value": "DEMO PARKING" },
+          { "id": "format", "label": "Druh kódu", "value": "Česká QR platba" },
+          { "id": "message", "label": "Zpráva", "value": "SAFE QR DEMO - NEPLATIT" }
+        ],
+        "findings": [],
+        "kind": "payment",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
+          "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
+        ],
+        "score": 0,
+        "summary": "Tento kód obsahuje údaje k platbě.",
+        "title": "Platba"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Prepares a payment of CZK 1 to 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nothing is paid until you confirm the payment in your banking app."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Amount", "value": "CZK 1" },
+          { "id": "account", "label": "Account or address", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Bank", "value": "Česká spořitelna, a.s." },
+          { "id": "recipient", "label": "Recipient", "value": "DEMO PARKING" },
+          { "id": "format", "label": "Code type", "value": "Czech QR payment" },
+          { "id": "message", "label": "Message", "value": "SAFE QR DEMO - NEPLATIT" }
+        ],
+        "findings": [],
+        "kind": "payment",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot tell who owns this account or whether you owe this payment.",
+          "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
+        ],
+        "score": 0,
+        "summary": "This code contains details for a payment.",
+        "title": "Bank payment"
+      },
+      "secondary": null
+    }
+  },
+  "epc-sepa": {
+    "payload": "BCD\n002\n1\nSCT\n\nSAFE QR DEMO\nCZ6508000000192000145399\nEUR1\n\n\nDO NOT PAY",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Připraví platbu ve výši EUR 1 na účet 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nic se nezaplatí, dokud platbu nepotvrdíte v bankovní aplikaci."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Částka", "value": "EUR 1" },
+          { "id": "account", "label": "Účet nebo adresa", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Banka", "value": "Česká spořitelna, a.s." },
+          { "id": "recipient", "label": "Příjemce", "value": "SAFE QR DEMO" },
+          { "id": "format", "label": "Druh kódu", "value": "Bankovní platba SEPA" },
+          { "id": "message", "label": "Zpráva", "value": "DO NOT PAY" }
+        ],
+        "findings": [],
+        "kind": "payment",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
+          "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
+        ],
+        "score": 0,
+        "summary": "Tento kód obsahuje údaje k platbě.",
+        "title": "Platba"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Prepares a payment of EUR 1 to 19-2000145399/0800 (Česká spořitelna, a.s.).",
+          "Nothing is paid until you confirm the payment in your banking app."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Amount", "value": "EUR 1" },
+          { "id": "account", "label": "Account or address", "value": "19-2000145399/0800" },
+          { "id": "bank", "label": "Bank", "value": "Česká spořitelna, a.s." },
+          { "id": "recipient", "label": "Recipient", "value": "SAFE QR DEMO" },
+          { "id": "format", "label": "Code type", "value": "SEPA bank payment" },
+          { "id": "message", "label": "Message", "value": "DO NOT PAY" }
+        ],
+        "findings": [],
+        "kind": "payment",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot tell who owns this account or whether you owe this payment.",
+          "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
+        ],
+        "score": 0,
+        "summary": "This code contains details for a payment.",
+        "title": "Bank payment"
+      },
+      "secondary": null
+    }
+  },
+  "foreign-iban": {
+    "payload": "BCD\n002\n1\nSCT\n\nSAFE QR INVALID EXAMPLE\nDE00000000000000000000\nEUR1\n\n\nDO NOT PAY",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Některé údaje jsou neplatné nebo je neumíme přečíst, proto Safe QR nenabízí pokračovat; kód si můžete zkopírovat pro kontrolu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Částka", "value": "EUR 1" },
+          { "id": "account", "label": "Účet nebo adresa", "value": "DE00 0000 0000 0000 0000 00" },
+          { "id": "recipient", "label": "Příjemce", "value": "SAFE QR INVALID EXAMPLE" },
+          { "id": "format", "label": "Druh kódu", "value": "Bankovní platba SEPA" },
+          { "id": "message", "label": "Zpráva", "value": "DO NOT PAY" }
+        ],
+        "findings": [
+          {
+            "detail": "Číslo účtu má neplatný formát nebo kontrolní součet a nemělo by se použít k platbě.",
+            "id": "payment.invalidIBAN",
+            "severity": "danger",
+            "title": "Neplatné číslo účtu"
+          }
+        ],
+        "kind": "payment",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
+          "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
+        ],
+        "score": 80,
+        "summary": "Tento kód obsahuje údaje k platbě.",
+        "title": "Platba"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Some details are invalid or unsupported, so Safe QR does not offer to continue; you can copy the code for checking."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "amount", "label": "Amount", "value": "EUR 1" },
+          {
+            "id": "account",
+            "label": "Account or address",
+            "value": "DE00 0000 0000 0000 0000 00"
+          },
+          { "id": "recipient", "label": "Recipient", "value": "SAFE QR INVALID EXAMPLE" },
+          { "id": "format", "label": "Code type", "value": "SEPA bank payment" },
+          { "id": "message", "label": "Message", "value": "DO NOT PAY" }
+        ],
+        "findings": [
+          {
+            "detail": "An account number has an invalid format or checksum and should not be used for payment.",
+            "id": "payment.invalidIBAN",
+            "severity": "danger",
+            "title": "Invalid account number"
+          }
+        ],
+        "kind": "payment",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot tell who owns this account or whether you owe this payment.",
+          "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
+        ],
+        "score": 80,
+        "summary": "This code contains details for a payment.",
+        "title": "Bank payment"
+      },
+      "secondary": null
+    }
+  },
+  "pay-by-square": {
+    "payload": "0804Q0006GO413BG9LBBE3A19QOLF1IL5KKN3ME7GCNSBO8APJ5VT40EJG2Q3EQKCK9TBFM7B6NNA5VJ5JT2DG0F8KNI8V6M01FCSKMEMAL2B36GTM45VVP2BO000",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": ["Původní kód můžete zkopírovat a ověřit v aplikaci své banky."],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "format", "label": "Druh kódu", "value": "Slovenská platba PAY by square" }
+        ],
+        "findings": [
+          {
+            "detail": "Tento kód používá funkci nebo verzi, kterou telefon nedokáže plně zkontrolovat.",
+            "id": "code.unsupported",
+            "severity": "warning",
+            "title": "Neumíme přečíst všechny údaje"
+          },
+          {
+            "detail": "Hlavička připomíná PAY by square, ale zabalené číslo účtu a částku neumíme ověřit.",
+            "id": "payment.payBySquare",
+            "severity": "warning",
+            "title": "Platební údaje nejsou přečtené"
+          }
+        ],
+        "kind": "payment",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
+          "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
+          "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje.",
+          "PAY by square poznáme podle hlavičky; tato verze zatím neumí rozbalit jeho platební údaje."
+        ],
+        "score": 40,
+        "summary": "Vypadá to na slovenský platební kód, který zatím neumíme celý přečíst.",
+        "title": "Platba"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": ["The original code can be copied for checking in your bank's app."],
+        "containsSecrets": false,
+        "facts": [{ "id": "format", "label": "Code type", "value": "Slovak PAY by square" }],
+        "findings": [
+          {
+            "detail": "This code uses a feature or version that this device cannot fully check.",
+            "id": "code.unsupported",
+            "severity": "warning",
+            "title": "We cannot read every detail"
+          },
+          {
+            "detail": "The header resembles PAY by square, but we cannot check the compressed account and amount.",
+            "id": "payment.payBySquare",
+            "severity": "warning",
+            "title": "Payment details are not decoded"
+          }
+        ],
+        "kind": "payment",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Some details could not be read reliably; compare them with the original before continuing.",
+          "We cannot tell who owns this account or whether you owe this payment.",
+          "Most banking apps need you to scan or import the original code; there is no single link that opens every bank.",
+          "PAY by square is detected by its header; its compressed payment details cannot be decoded by this version."
+        ],
+        "score": 40,
+        "summary": "This looks like a Slovak payment code that we cannot fully read.",
+        "title": "Bank payment"
+      },
+      "secondary": null
+    }
+  },
+  "crypto": {
+    "payload": "bitcoin:SAFE_QR_INVALID_DEMO_ADDRESS?amount=0.001&label=Donation",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Některé údaje jsou neplatné nebo je neumíme přečíst, proto Safe QR nenabízí pokračovat; kód si můžete zkopírovat pro kontrolu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "network", "label": "Síť kryptoměny", "value": "Bitcoin" },
+          { "id": "account", "label": "Účet nebo adresa", "value": "SAFE_QR_INVALID_DEMO_ADDRESS" },
+          { "id": "amount", "label": "Částka", "value": "BTC 0,001" },
+          { "id": "recipient", "label": "Příjemce", "value": "Donation" }
+        ],
+        "findings": [
+          {
+            "detail": "Adresa nebo faktura neprošla kontrolou dat a neměla by se použít k platbě.",
+            "id": "crypto.checksum",
+            "severity": "danger",
+            "title": "Adresa peněženky nebo faktura je neplatná"
+          },
+          {
+            "detail": "Platbu kryptoměnou obvykle nelze vrátit, pokud je příjemce chybný nebo nepoctivý.",
+            "id": "crypto.irreversible",
+            "severity": "warning",
+            "title": "Potvrzené platby se těžko vracejí"
+          }
+        ],
+        "kind": "crypto",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme zjistit, kdo tuto peněženku ovládá.",
+          "Správná síť, dostupný zůstatek ani konečné poplatky nebyly ověřeny."
+        ],
+        "score": 100,
+        "summary": "Tento kód žádá o platbu kryptoměnou.",
+        "title": "Platba kryptoměnou"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Some details are invalid or unsupported, so Safe QR does not offer to continue; you can copy the code for checking."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "network", "label": "Currency network", "value": "Bitcoin" },
+          {
+            "id": "account",
+            "label": "Account or address",
+            "value": "SAFE_QR_INVALID_DEMO_ADDRESS"
+          },
+          { "id": "amount", "label": "Amount", "value": "BTC 0.001" },
+          { "id": "recipient", "label": "Recipient", "value": "Donation" }
+        ],
+        "findings": [
+          {
+            "detail": "The address or invoice failed its data check and should not be used for payment.",
+            "id": "crypto.checksum",
+            "severity": "danger",
+            "title": "The wallet address or invoice is invalid"
+          },
+          {
+            "detail": "A cryptocurrency payment usually cannot be reversed if the recipient is wrong or dishonest.",
+            "id": "crypto.irreversible",
+            "severity": "warning",
+            "title": "Approved payments are hard to recover"
+          }
+        ],
+        "kind": "crypto",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot tell who controls this wallet.",
+          "The correct network, available balance and final fees have not been checked."
+        ],
+        "score": 100,
+        "summary": "This code requests a cryptocurrency payment.",
+        "title": "Cryptocurrency payment"
+      },
+      "secondary": null
+    }
+  },
+  "premium-sms": {
+    "payload": "SMSTO:90X00:START",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Některé údaje jsou neplatné nebo je neumíme přečíst, proto Safe QR nenabízí pokračovat; kód si můžete zkopírovat pro kontrolu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "recipient", "label": "Příjemce", "value": "90X00" },
+          { "id": "message", "label": "Zpráva", "value": "START" }
+        ],
+        "findings": [
+          {
+            "detail": "Kód je neúplný nebo obsahuje neplatné údaje, proto jeho akci nenabízíme.",
+            "id": "code.malformed",
+            "severity": "warning",
+            "title": "Některé údaje jsou neplatné"
+          },
+          {
+            "detail": "Připravený text obsahuje slova používaná k aktivaci předplatného nebo opakovaných služeb.",
+            "id": "sms.subscription",
+            "severity": "warning",
+            "title": "Může spustit opakované poplatky"
+          }
+        ],
+        "kind": "sms",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
+          "Neumíme zjistit, kdo toto telefonní číslo používá.",
+          "Skutečná cena u vašeho operátora ani případné běžící předplatné nebyly ověřeny."
+        ],
+        "score": 80,
+        "summary": "Tento kód připraví SMS zprávu k odeslání.",
+        "title": "SMS zpráva"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Some details are invalid or unsupported, so Safe QR does not offer to continue; you can copy the code for checking."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "recipient", "label": "Recipient", "value": "90X00" },
+          { "id": "message", "label": "Message", "value": "START" }
+        ],
+        "findings": [
+          {
+            "detail": "The code is incomplete or contains invalid details, so its action is not offered.",
+            "id": "code.malformed",
+            "severity": "warning",
+            "title": "Some details are invalid"
+          },
+          {
+            "detail": "The prepared text includes words used to activate subscriptions or recurring services.",
+            "id": "sms.subscription",
+            "severity": "warning",
+            "title": "This may start repeated charges"
+          }
+        ],
+        "kind": "sms",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Some details could not be read reliably; compare them with the original before continuing.",
+          "We cannot tell who uses this phone number.",
+          "Your operator's actual price and any existing subscription have not been checked."
+        ],
+        "score": 80,
+        "summary": "This code prepares a text message for you to send.",
+        "title": "Text message"
+      },
+      "secondary": null
+    }
+  },
+  "premium-call": {
+    "payload": "tel:+420900000",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Některé údaje jsou neplatné nebo je neumíme přečíst, proto Safe QR nenabízí pokračovat; kód si můžete zkopírovat pro kontrolu."
+        ],
+        "containsSecrets": false,
+        "facts": [{ "id": "phone", "label": "Telefonní číslo", "value": "+420900000" }],
+        "findings": [
+          {
+            "detail": "Kód je neúplný nebo obsahuje neplatné údaje, proto jeho akci nenabízíme.",
+            "id": "code.malformed",
+            "severity": "warning",
+            "title": "Některé údaje jsou neplatné"
+          },
+          {
+            "detail": "Předvolba patří placeným službám, ale číslo má nesprávnou délku, takže cenu hovoru nelze určit.",
+            "id": "phone.incompletePremium",
+            "severity": "warning",
+            "title": "Neúplné číslo placené linky"
+          }
+        ],
+        "kind": "phone",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
+          "Neumíme zjistit, kdo toto telefonní číslo používá.",
+          "Skutečná cena u vašeho operátora ani případné běžící předplatné nebyly ověřeny."
+        ],
+        "score": 40,
+        "summary": "Tento kód obsahuje číslo, na které můžete zavolat.",
+        "title": "Telefonní hovor"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Some details are invalid or unsupported, so Safe QR does not offer to continue; you can copy the code for checking."
+        ],
+        "containsSecrets": false,
+        "facts": [{ "id": "phone", "label": "Phone number", "value": "+420900000" }],
+        "findings": [
+          {
+            "detail": "The code is incomplete or contains invalid details, so its action is not offered.",
+            "id": "code.malformed",
+            "severity": "warning",
+            "title": "Some details are invalid"
+          },
+          {
+            "detail": "The prefix belongs to paid services, but the number has the wrong length, so a call price cannot be determined.",
+            "id": "phone.incompletePremium",
+            "severity": "warning",
+            "title": "An incomplete premium-rate number"
+          }
+        ],
+        "kind": "phone",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Some details could not be read reliably; compare them with the original before continuing.",
+          "We cannot tell who uses this phone number.",
+          "Your operator's actual price and any existing subscription have not been checked."
+        ],
+        "score": 40,
+        "summary": "This code contains a number to call.",
+        "title": "Phone call"
+      },
+      "secondary": null
+    }
+  },
+  "call-forwarding": {
+    "payload": "tel:**21*+420000000000%23",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Kód **21*+420000000000# může změnit telefonní služby nebo zobrazit soukromá nastavení telefonu."
+        ],
+        "containsSecrets": false,
+        "facts": [{ "id": "phone", "label": "Telefonní číslo", "value": "**21*+420000000000#" }],
+        "findings": [
+          {
+            "detail": "Tento kód může přesměrovat vaše hovory na jiné číslo včetně hovorů pro ověření totožnosti.",
+            "id": "phone.forwarding",
+            "severity": "danger",
+            "title": "Může přesměrovat vaše hovory"
+          }
+        ],
+        "kind": "phone",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme zjistit, kdo toto telefonní číslo používá.",
+          "Skutečná cena u vašeho operátora ani případné běžící předplatné nebyly ověřeny."
+        ],
+        "score": 90,
+        "summary": "Tento kód obsahuje číslo, na které můžete zavolat.",
+        "title": "Telefonní hovor"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "The code **21*+420000000000# can change phone services or show private phone settings."
+        ],
+        "containsSecrets": false,
+        "facts": [{ "id": "phone", "label": "Phone number", "value": "**21*+420000000000#" }],
+        "findings": [
+          {
+            "detail": "This service code can forward your calls to another number, including calls used to verify your identity.",
+            "id": "phone.forwarding",
+            "severity": "danger",
+            "title": "This can redirect your calls"
+          }
+        ],
+        "kind": "phone",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot tell who uses this phone number.",
+          "Your operator's actual price and any existing subscription have not been checked."
+        ],
+        "score": 90,
+        "summary": "This code contains a number to call.",
+        "title": "Phone call"
+      },
+      "secondary": null
+    }
+  },
+  "open-wifi": {
+    "payload": "WIFI:T:nopass;S:SafeQR-TRAINING-NO-NETWORK;;",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Požádá telefon o připojení k síti SafeQR-TRAINING-NO-NETWORK; její provozovatel může vidět, k jakým službám se připojujete."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "networkName", "label": "Název sítě", "value": "SafeQR-TRAINING-NO-NETWORK" },
+          { "id": "security", "label": "Ochrana sítě", "value": "Bez ochrany heslem" },
+          { "id": "hiddenNetwork", "label": "Skrytá síť", "value": "Ne" }
+        ],
+        "findings": [
+          {
+            "detail": "K síti se může připojit kdokoli v okolí a nechráněný přenos může číst nebo měnit.",
+            "id": "wifi.open",
+            "severity": "warning",
+            "title": "Síť není chráněná heslem"
+          }
+        ],
+        "kind": "wifi",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit, kdo síť provozuje ani jak zachází s vaším připojením."
+        ],
+        "score": 30,
+        "summary": "Tento kód nabízí připojení telefonu k síti Wi-Fi.",
+        "title": "Síť Wi-Fi"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Asks your phone to join SafeQR-TRAINING-NO-NETWORK; its operator may see which services you connect to."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "networkName", "label": "Network name", "value": "SafeQR-TRAINING-NO-NETWORK" },
+          { "id": "security", "label": "Network protection", "value": "No password protection" },
+          { "id": "hiddenNetwork", "label": "Hidden network", "value": "No" }
+        ],
+        "findings": [
+          {
+            "detail": "Anyone nearby may join this network, and unprotected traffic can be read or changed.",
+            "id": "wifi.open",
+            "severity": "warning",
+            "title": "The network has no password protection"
+          }
+        ],
+        "kind": "wifi",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify who runs this network or how it handles your connection."
+        ],
+        "score": 30,
+        "summary": "This code offers to connect your phone to a Wi-Fi network.",
+        "title": "Wi-Fi network"
+      },
+      "secondary": null
+    }
+  },
+  "wep-wifi": {
+    "payload": "WIFI:T:WEP;S:SafeQR-TRAINING-WEP;P:0000000000;;",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Požádá telefon o připojení k síti SafeQR-TRAINING-WEP; její provozovatel může vidět, k jakým službám se připojujete."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "networkName", "label": "Název sítě", "value": "SafeQR-TRAINING-WEP" },
+          { "id": "security", "label": "Ochrana sítě", "value": "Zastaralá, slabá ochrana (WEP)" },
+          { "id": "password", "label": "Heslo", "value": "Skryto — soukromý údaj" },
+          { "id": "hiddenNetwork", "label": "Skrytá síť", "value": "Ne" }
+        ],
+        "findings": [
+          {
+            "detail": "Tuto starou ochranu Wi-Fi lze snadno prolomit, proto jí nesvěřujte soukromé údaje.",
+            "id": "wifi.wep",
+            "severity": "warning",
+            "title": "Síť používá slabou ochranu"
+          }
+        ],
+        "kind": "wifi",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit, kdo síť provozuje ani jak zachází s vaším připojením."
+        ],
+        "score": 40,
+        "summary": "Tento kód nabízí připojení telefonu k síti Wi-Fi.",
+        "title": "Síť Wi-Fi"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Asks your phone to join SafeQR-TRAINING-WEP; its operator may see which services you connect to."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "networkName", "label": "Network name", "value": "SafeQR-TRAINING-WEP" },
+          {
+            "id": "security",
+            "label": "Network protection",
+            "value": "Old, weak protection (WEP)"
+          },
+          { "id": "password", "label": "Password", "value": "Hidden — private information" },
+          { "id": "hiddenNetwork", "label": "Hidden network", "value": "No" }
+        ],
+        "findings": [
+          {
+            "detail": "This old Wi-Fi protection is easy to break and should not be trusted with private information.",
+            "id": "wifi.wep",
+            "severity": "warning",
+            "title": "The network uses weak protection"
+          }
+        ],
+        "kind": "wifi",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify who runs this network or how it handles your connection."
+        ],
+        "score": 40,
+        "summary": "This code offers to connect your phone to a Wi-Fi network.",
+        "title": "Wi-Fi network"
+      },
+      "secondary": null
+    }
+  },
+  "bank-contact": {
+    "payload": "BEGIN:VCARD\nVERSION:3.0\nFN:DEMO Bank Security - NOT A REAL BANK\nTEL:+420000000000\nEND:VCARD",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Nabídne uložení kontaktu DEMO Bank Security - NOT A REAL BANK, takže budoucí hovor z tohoto čísla může působit důvěryhodně."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "name", "label": "Název", "value": "DEMO Bank Security - NOT A REAL BANK" },
+          { "id": "phone.0", "label": "Telefonní číslo", "value": "+420000000000" }
+        ],
+        "findings": [
+          {
+            "detail": "Uložením názvu banky nebo úřadu k neověřenému číslu může pozdější podvodný hovor působit pravě.",
+            "id": "contact.impersonation",
+            "severity": "warning",
+            "title": "Kontakt se vydává za důvěryhodnou instituci"
+          }
+        ],
+        "kind": "contact",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Jména a kontaktní údaje v kódu mohou být smyšlené."
+        ],
+        "score": 55,
+        "summary": "Tento kód obsahuje kontakt k uložení.",
+        "title": "Kontakt"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Offers to save DEMO Bank Security - NOT A REAL BANK in Contacts, which may later make calls from this number look familiar."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "name", "label": "Name", "value": "DEMO Bank Security - NOT A REAL BANK" },
+          { "id": "phone.0", "label": "Phone number", "value": "+420000000000" }
+        ],
+        "findings": [
+          {
+            "detail": "Saving this bank or authority name with an unverified number can make a later scam call look genuine.",
+            "id": "contact.impersonation",
+            "severity": "warning",
+            "title": "This contact claims to be an authority"
+          }
+        ],
+        "kind": "contact",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Names and contact details in a code can be invented."
+        ],
+        "score": 55,
+        "summary": "This code contains a contact to save.",
+        "title": "Contact"
+      },
+      "secondary": null
+    }
+  },
+  "whatsapp-login": {
+    "payload": "2@SAFE-QR-INVALID-TRAINING,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Potvrzením tohoto kódu ve WhatsAppu můžete dát jinému zařízení přístup ke svým zprávám."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "service", "label": "Služba", "value": "WhatsApp Web" },
+          { "id": "secret", "label": "Soukromý kód", "value": "Skryto — soukromý údaj" }
+        ],
+        "findings": [
+          {
+            "detail": "Potvrzením tohoto kódu ve WhatsAppu můžete dát jinému zařízení přístup ke svým zprávám.",
+            "id": "login.whatsAppWeb",
+            "severity": "danger",
+            "title": "Jiné zařízení může číst váš WhatsApp"
+          }
+        ],
+        "kind": "login",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit, které zařízení o přihlášení požádalo ani zda kód ještě platí."
+        ],
+        "score": 70,
+        "summary": "Tento kód může propojit další zařízení s vaším WhatsAppem.",
+        "title": "Přihlašovací kód"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Approving this code in WhatsApp can give another device access to your messages."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "service", "label": "Service", "value": "WhatsApp Web" },
+          { "id": "secret", "label": "Private code", "value": "Hidden — private information" }
+        ],
+        "findings": [
+          {
+            "detail": "Approving this code in WhatsApp can give another device access to your messages.",
+            "id": "login.whatsAppWeb",
+            "severity": "danger",
+            "title": "Another device could read your WhatsApp"
+          }
+        ],
+        "kind": "login",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify which device requested this sign-in or whether the code is still valid."
+        ],
+        "score": 70,
+        "summary": "This code can link another device to your WhatsApp account.",
+        "title": "Sign-in code"
+      },
+      "secondary": null
+    }
+  },
+  "telegram-login": {
+    "payload": "tg://login?token=INVALID_SAFE_QR_TRAINING",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Potvrzením tohoto kódu v Telegramu můžete dát jinému zařízení přístup k účtu a uloženým chatům."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "service", "label": "Služba", "value": "Telegram" },
+          { "id": "secret", "label": "Soukromý kód", "value": "Skryto — soukromý údaj" }
+        ],
+        "findings": [
+          {
+            "detail": "Potvrzením tohoto kódu v Telegramu můžete dát jinému zařízení přístup k účtu a uloženým chatům.",
+            "id": "login.telegram",
+            "severity": "danger",
+            "title": "Jiné zařízení může získat přístup k Telegramu"
+          }
+        ],
+        "kind": "login",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit, které zařízení o přihlášení požádalo ani zda kód ještě platí."
+        ],
+        "score": 70,
+        "summary": "Tento kód může přihlásit další zařízení k vašemu Telegramu.",
+        "title": "Přihlašovací kód"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Approving this code in Telegram can give another device access to your account and cloud chats."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "service", "label": "Service", "value": "Telegram" },
+          { "id": "secret", "label": "Private code", "value": "Hidden — private information" }
+        ],
+        "findings": [
+          {
+            "detail": "Approving this code in Telegram can give another device access to your account and cloud chats.",
+            "id": "login.telegram",
+            "severity": "danger",
+            "title": "Another device could access Telegram"
+          }
+        ],
+        "kind": "login",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify which device requested this sign-in or whether the code is still valid."
+        ],
+        "score": 70,
+        "summary": "This code can sign another device into your Telegram account.",
+        "title": "Sign-in code"
+      },
+      "secondary": null
+    }
+  },
+  "auth-export": {
+    "payload": "otpauth-migration://offline?data=EAEYASAAKAA%3D",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "V exportu nejsou žádné účty k načtení, proto ho Safe QR nenabízí otevřít."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "service", "label": "Služba", "value": "Export z ověřovací aplikace" },
+          { "id": "accountCount", "label": "Účtů v tomto kódu", "value": "0" },
+          { "id": "batchSize", "label": "Kódů v tomto exportu", "value": "1" }
+        ],
+        "findings": [
+          {
+            "detail": "Načtený export neobsahuje žádné účty; skutečné exporty ale mohou prozradit soukromé přihlašovací klíče.",
+            "id": "login.authenticatorExport",
+            "severity": "danger",
+            "title": "Mohou se prozradit klíče k více účtům"
+          },
+          {
+            "detail": "Kód je neúplný nebo obsahuje neplatné údaje, proto jeho akci nenabízíme.",
+            "id": "code.malformed",
+            "severity": "warning",
+            "title": "Některé údaje jsou neplatné"
+          }
+        ],
+        "kind": "login",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
+          "Neumíme ověřit, které zařízení o přihlášení požádalo ani zda kód ještě platí.",
+          "Počet účtů platí jen pro tento kód; export může být rozdělen do několika kódů."
+        ],
+        "score": 100,
+        "summary": "Tento export z ověřovací aplikace neobsahuje žádné účty.",
+        "title": "Přihlašovací kód"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "This export contains no accounts to import, so Safe QR does not offer to open it."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "service", "label": "Service", "value": "Authenticator export" },
+          { "id": "accountCount", "label": "Accounts in this code", "value": "0" },
+          { "id": "batchSize", "label": "Codes in this export", "value": "1" }
+        ],
+        "findings": [
+          {
+            "detail": "The decoded export has no accounts; real exports can expose private sign-in keys.",
+            "id": "login.authenticatorExport",
+            "severity": "danger",
+            "title": "Private keys for several accounts may be exposed"
+          },
+          {
+            "detail": "The code is incomplete or contains invalid details, so its action is not offered.",
+            "id": "code.malformed",
+            "severity": "warning",
+            "title": "Some details are invalid"
+          }
+        ],
+        "kind": "login",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Some details could not be read reliably; compare them with the original before continuing.",
+          "We cannot verify which device requested this sign-in or whether the code is still valid.",
+          "The account count covers this code only; an export may be split across several codes."
+        ],
+        "score": 100,
+        "summary": "This authenticator export contains no accounts.",
+        "title": "Sign-in code"
+      },
+      "secondary": null
+    }
+  },
+  "esim": {
+    "payload": "LPA:1$esim.test$INVALID-SAFE-QR-TRAINING",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Instalací tohoto kódu můžete v telefonu aktivovat mobilní tarif; kód nikomu neposílejte a nejdřív ověřte poskytovatele."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "provider", "label": "Adresa poskytovatele tarifu", "value": "esim.test" },
+          { "id": "secret", "label": "Soukromý kód", "value": "Skryto — soukromý údaj" },
+          {
+            "id": "confirmationCode",
+            "label": "Další potvrzovací kód",
+            "value": "V kódu není uvedeno"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "Kdo tento kód získá, může mobilní tarif nahrát do jiného telefonu.",
+            "id": "esim.activation",
+            "severity": "danger",
+            "title": "Aktivační kód nikomu neposílejte"
+          }
+        ],
+        "kind": "eSIM",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit vlastníka tarifu, poplatky ani to, zda aktivační kód ještě platí."
+        ],
+        "score": 70,
+        "summary": "Tento soukromý kód umožňuje nahrát mobilní tarif do telefonu.",
+        "title": "Aktivace mobilního tarifu"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Installing this code can activate a mobile plan on a phone; keep it private and check the provider first."
+        ],
+        "containsSecrets": true,
+        "facts": [
+          { "id": "provider", "label": "Mobile plan provider address", "value": "esim.test" },
+          { "id": "secret", "label": "Private code", "value": "Hidden — private information" },
+          {
+            "id": "confirmationCode",
+            "label": "Extra confirmation code",
+            "value": "Not specified in the code"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "Someone who gets this code may install the mobile plan on another phone.",
+            "id": "esim.activation",
+            "severity": "danger",
+            "title": "Keep this activation code private"
+          }
+        ],
+        "kind": "eSIM",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify the plan owner, charges or whether the activation code is still valid."
+        ],
+        "score": 70,
+        "summary": "This private code can install a mobile plan on a phone.",
+        "title": "Mobile plan activation"
+      },
+      "secondary": null
+    }
+  },
+  "enterprise-app": {
+    "payload": "itms-services://?action=download-manifest&url=https%3A%2F%2Fexample.com%2Fdemo%2Fno-app.plist",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": ["Zahájí instalaci aplikace šířené mimo App Store."],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "address",
+            "label": "Celá adresa",
+            "value": "itms-services://?action=download-manifest&url=https%3A%2F%2Fexample.com%2Fdemo%2Fno-app.plist"
+          },
+          {
+            "id": "embeddedLink.0",
+            "label": "Odkaz uvnitř kódu",
+            "value": "https://example.com/demo/no-app.plist"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "Firemní instalace může do telefonu přidat aplikaci, kterou App Store neprověřil.",
+            "id": "app.enterprise",
+            "severity": "danger",
+            "title": "Aplikace mimo App Store"
+          },
+          {
+            "detail": "Uvnitř kódu je další odkaz nebo pokyn, proto před pokračováním zkontrolujte obojí.",
+            "id": "content.combination",
+            "severity": "warning",
+            "title": "Jeden kód obsahuje víc věcí"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 100,
+        "summary": "Tento kód nabízí instalaci aplikace mimo App Store.",
+        "title": "Otevření aplikace"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": ["Starts installation of an app distributed outside the App Store."],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "address",
+            "label": "Full address",
+            "value": "itms-services://?action=download-manifest&url=https%3A%2F%2Fexample.com%2Fdemo%2Fno-app.plist"
+          },
+          {
+            "id": "embeddedLink.0",
+            "label": "Link inside the code",
+            "value": "https://example.com/demo/no-app.plist"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "An enterprise installation can put an unreviewed app on your phone.",
+            "id": "app.enterprise",
+            "severity": "danger",
+            "title": "An app outside the App Store"
+          },
+          {
+            "detail": "There is another link or instruction inside this code, so check both before acting.",
+            "id": "content.combination",
+            "severity": "warning",
+            "title": "One code contains more than one thing"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify the app's behavior, permissions or who will handle this link.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 100,
+        "summary": "This code offers to install an app outside the App Store.",
+        "title": "Open an app"
+      },
+      "secondary": null
+    }
+  },
+  "profile": {
+    "payload": "https://example.com/demo/no-profile.mobileconfig",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Stáhne profil nastavení, který může změnit síť nebo dát organizaci správu nad částí telefonu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          {
+            "id": "address",
+            "label": "Celá adresa",
+            "value": "https://example.com/demo/no-profile.mobileconfig"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "Profil nastavení může změnit síť nebo umožnit organizaci spravovat část telefonu.",
+            "id": "app.profile",
+            "severity": "danger",
+            "title": "Může změnit nastavení telefonu"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme."
+        ],
+        "score": 85,
+        "summary": "Tento kód nabízí instalaci nastavení, které může změnit fungování telefonu.",
+        "title": "Otevření aplikace"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": [
+          "Downloads a settings profile that may change your network or give an organization control over parts of your phone."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          {
+            "id": "address",
+            "label": "Full address",
+            "value": "https://example.com/demo/no-profile.mobileconfig"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "A settings profile can change your network or let an organization manage parts of your phone.",
+            "id": "app.profile",
+            "severity": "danger",
+            "title": "This can change phone settings"
+          }
+        ],
+        "kind": "appLink",
+        "level": "danger",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "We cannot verify the app's behavior, permissions or who will handle this link."
+        ],
+        "score": 85,
+        "summary": "This code offers to install settings that can change how your phone works.",
+        "title": "Open an app"
+      },
+      "secondary": null
+    }
+  },
+  "nested": {
+    "payload": "https://example.com",
+    "secondPayload": "https://example.com/B",
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře example.com v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          { "id": "address", "label": "Celá adresa", "value": "https://example.com" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na example.com.",
+        "title": "Webová stránka"
+      },
+      "secondary": {
+        "consequences": [
+          "Otevře example.com v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          { "id": "address", "label": "Celá adresa", "value": "https://example.com/B" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na example.com.",
+        "title": "Webová stránka"
+      }
+    },
+    "en": {
+      "primary": {
+        "consequences": ["Opens example.com in a browser, where the website can see your visit."],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          { "id": "address", "label": "Full address", "value": "https://example.com" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to example.com.",
+        "title": "Website"
+      },
+      "secondary": {
+        "consequences": ["Opens example.com in a browser, where the website can see your visit."],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          { "id": "address", "label": "Full address", "value": "https://example.com/B" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to example.com.",
+        "title": "Website"
+      }
+    }
+  },
+  "sticker": {
+    "payload": "https://example.com/original",
+    "secondPayload": "https://safeqr-training.jakub-f9d.workers.dev/start",
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře example.com v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          { "id": "address", "label": "Celá adresa", "value": "https://example.com/original" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na example.com.",
+        "title": "Webová stránka"
+      },
+      "secondary": {
+        "consequences": [
+          "Otevře safeqr-training.jakub-f9d.workers.dev v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "domain",
+            "label": "Název webu",
+            "value": "safeqr-training.jakub-f9d.workers.dev"
+          },
+          {
+            "id": "address",
+            "label": "Celá adresa",
+            "value": "https://safeqr-training.jakub-f9d.workers.dev/start"
+          }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
+        "title": "Webová stránka"
+      }
+    },
+    "en": {
+      "primary": {
+        "consequences": ["Opens example.com in a browser, where the website can see your visit."],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          { "id": "address", "label": "Full address", "value": "https://example.com/original" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to example.com.",
+        "title": "Website"
+      },
+      "secondary": {
+        "consequences": [
+          "Opens safeqr-training.jakub-f9d.workers.dev in a browser, where the website can see your visit."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "domain",
+            "label": "Website name",
+            "value": "safeqr-training.jakub-f9d.workers.dev"
+          },
+          {
+            "id": "address",
+            "label": "Full address",
+            "value": "https://safeqr-training.jakub-f9d.workers.dev/start"
+          }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to safeqr-training.jakub-f9d.workers.dev.",
+        "title": "Website"
+      }
+    }
+  },
+  "hidden-text": {
+    "payload": "Parkovani zdarma / Free parking\n​https://example.com/demo/payment",
+    "secondPayload": null,
+    "cs": {
+      "primary": {
+        "consequences": ["Text můžete zkopírovat nebo sdílet; nic se samo neotevře."],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "text",
+            "label": "Text",
+            "value": "Parkovani zdarma / Free parking ​https://example.com/demo/payment"
+          },
+          {
+            "id": "embeddedLink.0",
+            "label": "Odkaz uvnitř kódu",
+            "value": "https://example.com/demo/payment"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "Uvnitř kódu je další odkaz nebo pokyn, proto před pokračováním zkontrolujte obojí.",
+            "id": "content.combination",
+            "severity": "warning",
+            "title": "Jeden kód obsahuje víc věcí"
+          },
+          {
+            "detail": "Kód obsahuje neviditelné znaky, které mohou skrýt část odkazu nebo změnit zobrazení textu.",
+            "id": "content.hiddenCharacters",
+            "severity": "warning",
+            "title": "Skryté znaky mohou mást"
+          }
+        ],
+        "kind": "text",
+        "level": "caution",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Text může obsahovat klamavé pokyny nebo formáty, které neznáme.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 60,
+        "summary": "Tento kód obsahuje text.",
+        "title": "Text"
+      },
+      "secondary": null
+    },
+    "en": {
+      "primary": {
+        "consequences": ["You can copy or share the text; nothing opens automatically."],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "text",
+            "label": "Text",
+            "value": "Parkovani zdarma / Free parking ​https://example.com/demo/payment"
+          },
+          {
+            "id": "embeddedLink.0",
+            "label": "Link inside the code",
+            "value": "https://example.com/demo/payment"
+          }
+        ],
+        "findings": [
+          {
+            "detail": "There is another link or instruction inside this code, so check both before acting.",
+            "id": "content.combination",
+            "severity": "warning",
+            "title": "One code contains more than one thing"
+          },
+          {
+            "detail": "The code contains invisible characters that can hide parts of a link or change how text appears.",
+            "id": "content.hiddenCharacters",
+            "severity": "warning",
+            "title": "Hidden characters can disguise text"
+          }
+        ],
+        "kind": "text",
+        "level": "caution",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Text can contain misleading instructions or formats we do not recognize.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 60,
+        "summary": "This code contains text.",
+        "title": "Text"
+      },
+      "secondary": null
+    }
+  },
+  "side-by-side": {
+    "payload": "https://example.com/official",
+    "secondPayload": "https://safeqr-training.jakub-f9d.workers.dev/start",
+    "cs": {
+      "primary": {
+        "consequences": [
+          "Otevře example.com v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Název webu", "value": "example.com" },
+          { "id": "address", "label": "Celá adresa", "value": "https://example.com/official" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na example.com.",
+        "title": "Webová stránka"
+      },
+      "secondary": {
+        "consequences": [
+          "Otevře safeqr-training.jakub-f9d.workers.dev v prohlížeči a provozovatel webu uvidí vaši návštěvu."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "domain",
+            "label": "Název webu",
+            "value": "safeqr-training.jakub-f9d.workers.dev"
+          },
+          {
+            "id": "address",
+            "label": "Celá adresa",
+            "value": "https://safeqr-training.jakub-f9d.workers.dev/start"
+          }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+        ],
+        "score": 0,
+        "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
+        "title": "Webová stránka"
+      }
+    },
+    "en": {
+      "primary": {
+        "consequences": ["Opens example.com in a browser, where the website can see your visit."],
+        "containsSecrets": false,
+        "facts": [
+          { "id": "domain", "label": "Website name", "value": "example.com" },
+          { "id": "address", "label": "Full address", "value": "https://example.com/official" }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to example.com.",
+        "title": "Website"
+      },
+      "secondary": {
+        "consequences": [
+          "Opens safeqr-training.jakub-f9d.workers.dev in a browser, where the website can see your visit."
+        ],
+        "containsSecrets": false,
+        "facts": [
+          {
+            "id": "domain",
+            "label": "Website name",
+            "value": "safeqr-training.jakub-f9d.workers.dev"
+          },
+          {
+            "id": "address",
+            "label": "Full address",
+            "value": "https://safeqr-training.jakub-f9d.workers.dev/start"
+          }
+        ],
+        "findings": [],
+        "kind": "link",
+        "level": "safe",
+        "limitations": [
+          "This is an offline check, not a guarantee of safety.",
+          "Without a cloud check we only see the address, not the page or its redirects."
+        ],
+        "score": 0,
+        "summary": "This code leads to safeqr-training.jakub-f9d.workers.dev.",
+        "title": "Website"
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "gallery:verdicts": "node src/data/generate-verdicts.ts",
     "build": "astro build",
     "preview": "wrangler dev",
     "check": "astro check && tsc -p tsconfig.worker.json && biome check .",

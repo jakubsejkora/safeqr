@@ -96,7 +96,7 @@ struct ContentBuilder {
             add("account", login.account)
             add("accountCount", login.accountCount.map(String.init))
             add("batchSize", login.batchSize.map(String.init))
-            add("secret", localizer.text("value.hidden"), emphasis: .warning)
+            if login.accountCount != 0 { add("secret", localizer.text("value.hidden"), emphasis: .warning) }
         case .eSIM(let activation):
             add("provider", activation.smdpAddress, emphasis: .primary)
             add("secret", localizer.text("value.hidden"), emphasis: .warning)
@@ -122,6 +122,7 @@ struct ContentBuilder {
         case .link(let url): localizer.text("summary.link", url.host(percentEncoded: false) ?? "")
         case .payment(let payment) where payment.format == .payBySquare: localizer.text("summary.payBySquare")
         case .payment(let payment) where payment.format == .czechInvoice: localizer.text("summary.invoice")
+        case .login(let login) where login.service == .authenticatorExport && login.accountCount == 0: localizer.text("summary.emptyExport")
         case .login(let login): localizer.text("summary.login.\(login.service.rawValue)")
         case .appLink(let url): appSummary(url)
         default: localizer.text("summary.\(payload.kind.rawValue)")
@@ -129,6 +130,7 @@ struct ContentBuilder {
     }
 
     private func appSummary(_ url: URL) -> String {
+        if ["javascript", "data", "file"].contains(url.scheme?.lowercased() ?? "") { return localizer.text("summary.unsafeScheme") }
         if url.pathExtension.lowercased() == "mobileconfig" { return localizer.text("summary.profile") }
         if url.scheme?.lowercased() == "itms-services" { return localizer.text("summary.enterprise") }
         if ["apk", "ipa"].contains(url.pathExtension.lowercased()) { return localizer.text("summary.download") }

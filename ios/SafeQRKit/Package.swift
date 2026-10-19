@@ -7,6 +7,7 @@ let package = Package(
     platforms: [.iOS(.v26), .macOS(.v26)],
     products: [
         .library(name: "SafeQRKit", targets: ["SafeQRKit"]),
+        .executable(name: "safeqr-inspect", targets: ["SafeQRInspect"]),
     ],
     targets: [
         .target(
@@ -20,6 +21,7 @@ let package = Package(
                 .process("Resources/iso-currencies.json"),
             ]
         ),
+        .executableTarget(name: "SafeQRInspect", dependencies: ["SafeQRKit"]),
         .testTarget(
             name: "SafeQRKitTests",
             dependencies: ["SafeQRKit"]

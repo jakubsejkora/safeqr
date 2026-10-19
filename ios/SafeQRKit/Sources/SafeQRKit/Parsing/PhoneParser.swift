@@ -23,6 +23,7 @@ enum PhoneParser {
         if let suffix = parameters["ext"], !ParseSupport.matches(suffix, #"^[0-9]{1,20}$"#) { issues.insert(.malformed) }
         let valid = ParseSupport.matches(main, #"^[+0-9*#(). -]+$"#) && main.contains(where: \.isNumber) && main.utf8.count <= 64
         if !valid || LinkParser.containsControls(number) { issues.insert(.malformed) }
+        if PhoneRules.isIncompletePremiumNumber(main) { issues.insert(.malformed) }
         if !main.contains("*") && !main.contains("#") && main.filter(\.isNumber).count > 15 { issues.insert(.malformed) }
         let destination = main + (parameters["ext"].map { ";ext=" + $0 } ?? "")
         return ParsedCode(payload: .phone(number: issues.contains(.unsupported) ? number : destination), issues: issues)

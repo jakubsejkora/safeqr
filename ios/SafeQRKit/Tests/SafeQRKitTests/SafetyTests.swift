@@ -54,6 +54,26 @@ struct SafetyTests {
         #expect(PayBySquareParser.recognizes("000FVVV00000000000000000"))
     }
 
+    @Test func incompletePremiumNumbersCannotBeCalledOrGivenAPrice() {
+        for raw in ["tel:+420900000", "tel:900000", "tel:00420906000;ext=12"] {
+            let result = inspector.inspect(raw)
+            #expect(result.assessment.level == .caution)
+            #expect(result.assessment.findings.contains { $0.id == "phone.incompletePremium" })
+            #expect(!result.content.facts.contains { $0.id == "price" })
+            #expect(result.actions.allSatisfy { $0.confirmation == nil })
+            #expect(result.assessment.consequences.first?.contains("does not offer") == true)
+        }
+    }
+
+    @Test func emptyAuthenticatorExportDoesNotClaimToContainKeys() {
+        let result = inspector.inspect("otpauth-migration://offline?data=EAEYASAAKAA%3D")
+        #expect(result.content.facts.first { $0.id == "accountCount" }?.value == "0")
+        #expect(!result.content.facts.contains { $0.id == "secret" })
+        #expect(result.content.summary.contains("no accounts"))
+        #expect(result.actions.allSatisfy { $0.confirmation == nil })
+        #expect(!result.benefitsFromCloudCheck)
+    }
+
     @Test(arguments: ["javascript:alert(1)", "data:text/html,example", "file:///private/example", "tel:**21*+420777000000%23"])
     func unsafeCommandsHaveNoHandoff(_ raw: String) {
         let result = inspector.inspect(raw)

@@ -6,6 +6,13 @@ enum PhoneRules {
         let unit: String
     }
 
+    static func isIncompletePremiumNumber(_ raw: String) -> Bool {
+        let number = national(String(raw.split(separator: ";", maxSplits: 1, omittingEmptySubsequences: false)[0]))
+        return ParseSupport.matches(number, #"^[0-9]+$"#) && ResourceData.premium.domesticPremiumRanges.contains {
+            number.hasPrefix($0.prefix) && number.count != $0.nationalNumberLength
+        }
+    }
+
     static func charge(_ raw: String, sms: Bool) -> Charge? {
         let destination = !sms && !raw.lowercased().contains(";phone-context=")
             ? String(raw.split(separator: ";", maxSplits: 1, omittingEmptySubsequences: false)[0]) : raw
@@ -30,6 +37,9 @@ enum PhoneRules {
         let numbers = recipients.components(separatedBy: CharacterSet(charactersIn: ",;"))
         for raw in numbers where !raw.lowercased().hasPrefix("ext=") && !raw.lowercased().hasPrefix("phone-context=") {
             let normalized = PhoneParser.normalized(raw)
+            if !sms && isIncompletePremiumNumber(raw) {
+                rules.append(RiskSignal("phone.incompletePremium", 0, severity: .warning))
+            }
             if !sms && (normalized.contains("*") || normalized.contains("#")) {
                 let forwarding = ParseSupport.matches(normalized, #"^\*{1,2}(?:21|61|62|67|004)\*"#)
                 rules.append(RiskSignal(forwarding ? "phone.forwarding" : "phone.serviceCode", 90, floor: 90))

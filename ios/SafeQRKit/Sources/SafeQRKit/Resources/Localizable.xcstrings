@@ -239,6 +239,23 @@
         }
       }
     },
+    "amount.czk": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CZK %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Kč"
+          }
+        }
+      }
+    },
     "charge.call": {
       "extractionState": "manual",
       "localizations": {
@@ -320,6 +337,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "U této placené služby neznáme ověřenou cenu; odesláním zprávy můžete spustit placené odpovědi."
+          }
+        }
+      }
+    },
+    "charge.unknownCall": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a paid-service number, but its actual call price could not be determined."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jde o číslo placené služby, ale skutečnou cenu hovoru se nepodařilo zjistit."
           }
         }
       }
@@ -660,6 +694,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Připraví e-mail pro %@; odešle se až po klepnutí na Odeslat v poštovní aplikaci."
+          }
+        }
+      }
+    },
+    "consequence.emptyExport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This export contains no accounts to import, so Safe QR does not offer to open it."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V exportu nejsou žádné účty k načtení, proto ho Safe QR nenabízí otevřít."
           }
         }
       }
@@ -1021,6 +1072,23 @@
         }
       }
     },
+    "consequence.store": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens the app page in %@; check the publisher and price before installing."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevře stránku aplikace v obchodě %@; před instalací zkontrolujte vydavatele a cenu."
+          }
+        }
+      }
+    },
     "consequence.text": {
       "extractionState": "manual",
       "localizations": {
@@ -1034,6 +1102,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Text můžete zkopírovat nebo sdílet; nic se samo neotevře."
+          }
+        }
+      }
+    },
+    "consequence.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some details are invalid or unsupported, so Safe QR does not offer to continue; you can copy the code for checking."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Některé údaje jsou neplatné nebo je neumíme přečíst, proto Safe QR nenabízí pokračovat; kód si můžete zkopírovat pro kontrolu."
           }
         }
       }
@@ -1374,6 +1459,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "E-mailová adresa"
+          }
+        }
+      }
+    },
+    "fact.embeddedContent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Also inside the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Také uvnitř kódu"
+          }
+        }
+      }
+    },
+    "fact.embeddedLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link inside the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz uvnitř kódu"
           }
         }
       }
@@ -2370,13 +2489,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The code contains invisible direction controls that can change how an address or account looks."
+            "value": "The code contains invisible characters that can hide parts of a link or change how text appears."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kód obsahuje neviditelné znaky měnící směr textu, které mohou zkreslit adresu nebo účet."
+            "value": "Kód obsahuje neviditelné znaky, které mohou skrýt část odkazu nebo změnit zobrazení textu."
           }
         }
       }
@@ -2394,6 +2513,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "Skryté znaky mohou mást"
+          }
+        }
+      }
+    },
+    "finding.content.tooMany.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code contains more links or instructions than this check can inspect safely."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód obsahuje víc odkazů nebo pokynů, než dokážeme bezpečně prověřit."
+          }
+        }
+      }
+    },
+    "finding.content.tooMany.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many hidden items to check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příliš mnoho skrytých položek"
           }
         }
       }
@@ -2989,6 +3142,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nahraje soukromé klíče k účtům do ověřovací aplikace; sdílením tohoto kódu sdílíte i tyto klíče."
+          }
+        }
+      }
+    },
+    "finding.login.authenticatorExport.empty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The decoded export has no accounts; real exports can expose private sign-in keys."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Načtený export neobsahuje žádné účty; skutečné exporty ale mohou prozradit soukromé přihlašovací klíče."
           }
         }
       }
@@ -3775,6 +3945,23 @@
         }
       }
     },
+    "finding.payment.retry.one": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code asks the bank to retry a failed payment for up to %@ day."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kód žádá banku, aby neúspěšnou platbu zkoušela znovu až po dobu %@ dne."
+          }
+        }
+      }
+    },
     "finding.payment.retry.title": {
       "extractionState": "manual",
       "localizations": {
@@ -3860,6 +4047,40 @@
         }
       }
     },
+    "finding.phone.incompletePremium.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The prefix belongs to paid services, but the number has the wrong length, so a call price cannot be determined."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Předvolba patří placeným službám, ale číslo má nesprávnou délku, takže cenu hovoru nelze určit."
+          }
+        }
+      }
+    },
+    "finding.phone.incompletePremium.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An incomplete premium-rate number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neúplné číslo placené linky"
+          }
+        }
+      }
+    },
     "finding.phone.international.detail": {
       "extractionState": "manual",
       "localizations": {
@@ -3890,6 +4111,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zahraniční telefonní číslo"
+          }
+        }
+      }
+    },
+    "finding.phone.internationalPremium.detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This foreign service-number range can have extra charges; the actual tariff has not been checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato zahraniční číselná řada může mít zvýšenou cenu; skutečný tarif nebyl ověřen."
+          }
+        }
+      }
+    },
+    "finding.phone.internationalPremium.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A foreign paid-service number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zahraniční číslo placené služby"
           }
         }
       }
@@ -4540,6 +4795,23 @@
         }
       }
     },
+    "limitation.ethereum": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We have not fully verified the Ethereum address."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tuto adresu Etherea jsme úplně neověřili."
+          }
+        }
+      }
+    },
     "limitation.event": {
       "extractionState": "manual",
       "localizations": {
@@ -4676,6 +4948,23 @@
         }
       }
     },
+    "limitation.nestedLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the first 32 distinct embedded items were checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bylo prověřeno jen prvních 32 různých vložených položek."
+          }
+        }
+      }
+    },
     "limitation.numberOwner": {
       "extractionState": "manual",
       "localizations": {
@@ -4791,6 +5080,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Totožnost tokenu ani počet jeho desetinných míst nebyly ověřeny v síti."
+          }
+        }
+      }
+    },
+    "limitation.tooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only the code size was checked; its contents were not inspected."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Byla zkontrolována jen velikost kódu; jeho obsah nebyl prověřen."
           }
         }
       }
@@ -5220,6 +5526,40 @@
         }
       }
     },
+    "store.appStore": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        }
+      }
+    },
+    "store.googlePlay": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Play"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Play"
+          }
+        }
+      }
+    },
     "summary.appLink": {
       "extractionState": "manual",
       "localizations": {
@@ -5271,6 +5611,23 @@
         }
       }
     },
+    "summary.download": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code leads to an app installation file."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód vede na instalační soubor aplikace."
+          }
+        }
+      }
+    },
     "summary.eSIM": {
       "extractionState": "manual",
       "localizations": {
@@ -5301,6 +5658,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tento kód připraví e-mail k odeslání."
+          }
+        }
+      }
+    },
+    "summary.emptyExport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This authenticator export contains no accounts."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento export z ověřovací aplikace neobsahuje žádné účty."
+          }
+        }
+      }
+    },
+    "summary.enterprise": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code offers to install an app outside the App Store."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód nabízí instalaci aplikace mimo App Store."
           }
         }
       }
@@ -5577,6 +5968,23 @@
         }
       }
     },
+    "summary.profile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code offers to install settings that can change how your phone works."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód nabízí instalaci nastavení, které může změnit fungování telefonu."
+          }
+        }
+      }
+    },
     "summary.sms": {
       "extractionState": "manual",
       "localizations": {
@@ -5594,6 +6002,23 @@
         }
       }
     },
+    "summary.store": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code opens an app page in %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód otevře stránku aplikace v obchodě %@."
+          }
+        }
+      }
+    },
     "summary.text": {
       "extractionState": "manual",
       "localizations": {
@@ -5607,6 +6032,40 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tento kód obsahuje text."
+          }
+        }
+      }
+    },
+    "summary.tooLarge": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code is too large for this offline check."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód je pro kontrolu v telefonu příliš velký."
+          }
+        }
+      }
+    },
+    "summary.unsafeScheme": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This code contains embedded content or a command instead of an ordinary website address."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód obsahuje přímo obsah nebo příkaz místo běžné webové adresy."
           }
         }
       }
@@ -6202,346 +6661,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ochrana heslem (WPA)"
-          }
-        }
-      }
-    },
-    "amount.czk": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CZK %@"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ Kč"
-          }
-        }
-      }
-    },
-    "finding.phone.internationalPremium.title": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A foreign paid-service number"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zahraniční číslo placené služby"
-          }
-        }
-      }
-    },
-    "finding.phone.internationalPremium.detail": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This foreign service-number range can have extra charges; the actual tariff has not been checked."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tato zahraniční číselná řada může mít zvýšenou cenu; skutečný tarif nebyl ověřen."
-          }
-        }
-      }
-    },
-    "limitation.tooLarge": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Only the code size was checked; its contents were not inspected."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Byla zkontrolována jen velikost kódu; jeho obsah nebyl prověřen."
-          }
-        }
-      }
-    },
-    "summary.tooLarge": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This code is too large for this offline check."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tento kód je pro kontrolu v telefonu příliš velký."
-          }
-        }
-      }
-    },
-    "finding.content.tooMany.title": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Too many hidden items to check"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Příliš mnoho skrytých položek"
-          }
-        }
-      }
-    },
-    "finding.content.tooMany.detail": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The code contains more links or instructions than this check can inspect safely."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kód obsahuje víc odkazů nebo pokynů, než dokážeme bezpečně prověřit."
-          }
-        }
-      }
-    },
-    "limitation.nestedLimit": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Only the first 32 distinct embedded items were checked."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bylo prověřeno jen prvních 32 různých vložených položek."
-          }
-        }
-      }
-    },
-    "fact.embeddedLink": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Link inside the code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odkaz uvnitř kódu"
-          }
-        }
-      }
-    },
-    "fact.embeddedContent": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Also inside the code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Také uvnitř kódu"
-          }
-        }
-      }
-    },
-    "charge.unknownCall": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This is a paid-service number, but its actual call price could not be determined."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jde o číslo placené služby, ale skutečnou cenu hovoru se nepodařilo zjistit."
-          }
-        }
-      }
-    },
-    "limitation.ethereum": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "We have not fully verified the Ethereum address."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tuto adresu Etherea jsme úplně neověřili."
-          }
-        }
-      }
-    },
-    "store.appStore": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        }
-      }
-    },
-    "store.googlePlay": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Google Play"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Google Play"
-          }
-        }
-      }
-    },
-    "summary.profile": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This code offers to install settings that can change how your phone works."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tento kód nabízí instalaci nastavení, které může změnit fungování telefonu."
-          }
-        }
-      }
-    },
-    "summary.enterprise": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This code offers to install an app outside the App Store."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tento kód nabízí instalaci aplikace mimo App Store."
-          }
-        }
-      }
-    },
-    "summary.download": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This code leads to an app installation file."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tento kód vede na instalační soubor aplikace."
-          }
-        }
-      }
-    },
-    "summary.store": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This code opens an app page in %@."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tento kód otevře stránku aplikace v obchodě %@."
-          }
-        }
-      }
-    },
-    "consequence.store": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opens the app page in %@; check the publisher and price before installing."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otevře stránku aplikace v obchodě %@; před instalací zkontrolujte vydavatele a cenu."
-          }
-        }
-      }
-    },
-    "finding.payment.retry.one": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The code asks the bank to retry a failed payment for up to %@ day."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kód žádá banku, aby neúspěšnou platbu zkoušela znovu až po dobu %@ dne."
           }
         }
       }

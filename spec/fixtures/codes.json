@@ -1432,5 +1432,105 @@
       ],
       "facts": {}
     }
+  },
+  {
+    "id": "gallery-pay-by-square",
+    "raw": "0804Q0006GO413BG9LBBE3A19QOLF1IL5KKN3ME7GCNSBO8APJ5VT40EJG2Q3EQKCK9TBFM7B6NNA5VJ5JT2DG0F8KNI8V6M01FCSKMEMAL2B36GTM45VVP2BO000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "caution",
+      "findings": [
+        "code.unsupported",
+        "payment.payBySquare"
+      ],
+      "facts": {
+        "format": "Slovak PAY by square"
+      }
+    }
+  },
+  {
+    "id": "gallery-hidden-text",
+    "raw": "Parkovani zdarma / Free parking\n​https://example.com/demo/payment",
+    "locale": "en_US",
+    "expected": {
+      "kind": "text",
+      "level": "caution",
+      "findings": [
+        "content.combination",
+        "content.hiddenCharacters"
+      ],
+      "facts": {
+        "embeddedLink.0": "https://example.com/demo/payment"
+      }
+    }
+  },
+  {
+    "id": "gallery-premium-call",
+    "raw": "tel:+420900000",
+    "locale": "en_US",
+    "expected": {
+      "kind": "phone",
+      "level": "caution",
+      "findings": [
+        "code.malformed",
+        "phone.incompletePremium"
+      ],
+      "facts": {
+        "phone": "+420900000"
+      }
+    }
+  },
+  {
+    "id": "gallery-auth-export",
+    "raw": "otpauth-migration://offline?data=EAEYASAAKAA%3D",
+    "locale": "en_US",
+    "expected": {
+      "kind": "login",
+      "level": "danger",
+      "findings": [
+        "login.authenticatorExport",
+        "code.malformed"
+      ],
+      "facts": {
+        "accountCount": "0",
+        "batchSize": "1"
+      }
+    }
+  },
+  {
+    "id": "gallery-lookalike",
+    "raw": "https://xn--pple-43d.test",
+    "locale": "en_US",
+    "expected": {
+      "kind": "link",
+      "level": "danger",
+      "findings": [
+        "link.mixedScripts",
+        "link.punycode"
+      ],
+      "facts": {
+        "domain": "xn--pple-43d.test"
+      }
+    }
+  },
+  {
+    "id": "gallery-payment-link",
+    "raw": "SPD*1.0*ACC:CZ6508000000192000145399*AM:1.00*CC:CZK*MSG:SAFE QR DEMO - NEPLATIT*X-URL:https://example.com",
+    "locale": "en_US",
+    "expected": {
+      "kind": "payment",
+      "level": "caution",
+      "findings": [
+        "content.combination",
+        "payment.link",
+        "payment.missingRecipient"
+      ],
+      "facts": {
+        "amount": "CZK 1",
+        "account": "19-2000145399/0800",
+        "paymentURL": "https://example.com"
+      }
+    }
   }
 ]

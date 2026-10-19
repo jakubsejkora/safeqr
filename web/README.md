@@ -7,6 +7,7 @@ Use Node 22.22+ and pnpm 12.14 (`packageManager` is pinned). Run from `web/`:
 ```sh
 pnpm install
 pnpm dev
+pnpm gallery:verdicts
 pnpm check
 pnpm test
 pnpm build
@@ -15,7 +16,9 @@ pnpm exec playwright install chromium
 pnpm test:browser
 ```
 
-`pnpm preview` runs the built site with the Worker locally. Browser checks default to the deployed site; override `SITE_URL` and `SCREEN_DIR` as needed. They check both color schemes, desktop/mobile/320px layouts, accessibility, filtering, no-JavaScript content, response headers and the training flow. QR verification decodes every generated SVG, both layers of the nested code, and the PAY by square payment. Gallery scores are educational examples, not engine output. Invalid foreign-account, crypto, phone and login examples cannot authorize real transactions; valid bank formats use only the specified ČNB documentation account.
+`pnpm preview` runs the built site with the Worker locally. Browser checks default to the deployed site; override `SITE_URL` and `SCREEN_DIR` as needed. They check both color schemes, desktop/mobile/320px layouts, accessibility, filtering, no-JavaScript content, response headers and the training flow. QR verification decodes every generated SVG, both layers of the nested code, and the PAY by square payment. Invalid foreign-account, crypto, phone and login examples cannot authorize real transactions; valid bank formats use only the specified ČNB documentation account.
+
+`pnpm gallery:verdicts` requires Swift 6.2+ on macOS 26 and runs `swift run --package-path ../ios/SafeQRKit safeqr-inspect` for both languages. It writes `src/data/verdicts.json` for all 30 examples, including separate results for the three second codes. Regenerate after engine or payload changes; builds reject snapshots whose payloads differ. The gallery shows these offline results, findings, facts, consequences and limitations. The app adds a cloud check for links. Scene descriptions remain labeled as context: text alone cannot expose a sticker, verify an account owner or follow redirects.
 
 Deploy with `pnpm deploy` and `pnpm deploy:demo`. No routes or custom domains are configured.
 

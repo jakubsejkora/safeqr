@@ -15,7 +15,7 @@ public struct CodeInspector: Sendable {
         let outcomes = OutcomeBuilder(localizer: localizer)
         let embedded = parsed.issues.contains(.tooLarge) ? EmbeddedPayloads.Result() : EmbeddedPayloads.inspect(parsed.payload, raw: raw)
         let assessment = RiskEngine.assess(parsed, embedded: embedded, raw: raw, localizer: localizer,
-                                           consequences: outcomes.consequences(parsed.payload),
+                                           consequences: outcomes.consequences(parsed),
                                            limitations: outcomes.limitations(parsed, embedded: embedded))
         let content = parsed.issues.contains(.tooLarge)
             ? CodeContent(kind: .text, payload: parsed.payload, title: localizer.text("title.text"),

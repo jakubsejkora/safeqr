@@ -4,8 +4,8 @@ enum PayBySquareParser {
     static func recognizes(_ raw: String) -> Bool {
         guard (20...12_000).contains(raw.utf8.count), ParseSupport.matches(raw, #"^[0-9A-Va-v]+$"#),
               let header = decodeHeader(raw) else { return false }
-        // The first two bytes identify PAY (0), version 0 and document type 0.
-        return header[0] == 0 && header[1] == 0 && (header[2] != 0 || header[3] != 0)
+        // PAY versions 1.0–1.2 share the type and document nibbles, but increment the version nibble.
+        return header[0] <= 2 && header[1] == 0 && (header[2] != 0 || header[3] != 0)
     }
 
     static func parse() -> ParsedCode {

@@ -17,13 +17,14 @@ enum AuthenticatorExportParser {
             return ParsedCode(payload: .login(login), issues: [.malformed])
         }
         let accounts = fields.filter { $0.number == 1 }
-        guard !accounts.isEmpty, accounts.allSatisfy({ field in
+        guard accounts.allSatisfy({ field in
             guard let bytes = field.bytes, let account = decode(bytes) else { return false }
             return account.contains { $0.number == 1 && $0.bytes?.isEmpty == false }
         }) else { return ParsedCode(payload: .login(login), issues: [.malformed]) }
         login.accountCount = accounts.count
         if let size = fields.first(where: { $0.number == 3 })?.integer, size <= 1_000 { login.batchSize = Int(size) }
         var issues: Set<DecodeIssue> = query.duplicate ? [.ambiguous] : []
+        if accounts.isEmpty { issues.insert(.malformed) }
         if let version = fields.first(where: { $0.number == 2 })?.integer, version > 1 { issues.insert(.unsupported) }
         return ParsedCode(payload: .login(login), issues: issues)
     }
