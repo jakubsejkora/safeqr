@@ -95,6 +95,7 @@ struct OnboardingView: View {
                     .font(.headline).frame(maxWidth: .infinity, minHeight: 38)
             }
             .buttonStyle(.glassProminent)
+            .foregroundStyle(AppStyle.onAccent)
             if page > 0 {
                 Button {
                     if page == 1 {

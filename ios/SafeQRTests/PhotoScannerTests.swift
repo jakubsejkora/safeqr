@@ -4,6 +4,19 @@ import Testing
 @testable import SafeQR
 
 struct PhotoScannerTests {
+    @Test(arguments: ["gallery-nested", "gallery-two-codes"])
+    func galleryCombinationsFindBothCodes(_ name: String) async throws {
+        let url = try #require(Bundle(for: PhotoFixtureBundle.self).url(forResource: name, withExtension: "png"))
+        let scan = try await PhotoScanner.scan(Data(contentsOf: url))
+        #expect(scan.codes.count == 2)
+        if name == "gallery-nested" {
+            #expect(Set(scan.codes.map(\.raw)) == ["https://example.com", "https://example.com/B"])
+        } else {
+            #expect(scan.codes.contains { $0.raw == "https://example.com/official" })
+            #expect(scan.codes.contains { $0.raw == "https://safeqr-training.jakub-f9d.workers.dev/start" })
+        }
+    }
+
     @Test func findsAllCodesInOnePictureWithTopLeftBounds() async throws {
         let context = CIContext()
         let canvas = try #require(CGContext(data: nil, width: 760, height: 400, bitsPerComponent: 8, bytesPerRow: 0,
@@ -27,3 +40,5 @@ struct PhotoScannerTests {
         #expect(scan.jpeg.count <= 1_500_000)
     }
 }
+
+private final class PhotoFixtureBundle: NSObject {}

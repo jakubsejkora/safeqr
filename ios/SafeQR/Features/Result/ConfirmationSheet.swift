@@ -9,6 +9,7 @@ struct ConfirmationSheet: View {
     @State private var secondDecision = false
 
     private var risky: Bool { level != .safe || action.requiredConfirmation.isRisky }
+    private var warningColor: Color { level == .caution ? RiskLevel.caution.color : RiskLevel.danger.color }
 
     var body: some View {
         NavigationStack {
@@ -16,30 +17,34 @@ struct ConfirmationSheet: View {
                 VStack(alignment: .leading, spacing: 24) {
                     Image(systemName: secondDecision ? "hand.raised.fill" : "arrow.up.forward.app")
                         .font(.system(size: 42, weight: .medium))
-                        .foregroundStyle(risky ? RiskLevel.danger.color : AppStyle.accent)
+                        .foregroundStyle(risky ? warningColor : AppStyle.accent)
                         .accessibilityHidden(true)
                     Text(secondDecision ? L10n.text("This code may harm you") : action.requiredConfirmation.title)
                         .font(.largeTitle.bold())
                         .accessibilityAddTraits(.isHeader)
                     Text(secondDecision ? L10n.text("We recommend going back. Continue only if you understand the risk and trust the destination.") : action.requiredConfirmation.message)
                         .font(.title3)
-                    Button(role: risky ? .destructive : nil) {
-                        if level == .danger && !secondDecision {
-                            secondDecision = true
-                        } else {
-                            dismiss()
-                            onConfirm()
+                    if risky {
+                        Button(role: .cancel) { dismiss() } label: {
+                            Text(L10n.text("Go back"))
+                                .frame(maxWidth: .infinity, minHeight: 36)
                         }
-                    } label: {
-                        Text(secondDecision ? L10n.text("I understand the risk. Continue") : action.requiredConfirmation.confirmTitle)
-                            .frame(maxWidth: .infinity, minHeight: 36)
+                        .buttonStyle(.glassProminent)
+                        .foregroundStyle(AppStyle.onAccent)
+                        .tint(AppStyle.accent)
+                        .accessibilityIdentifier("confirm-go-back")
+                        continueButton
+                            .buttonStyle(.glass)
+                            .tint(warningColor)
+                    } else {
+                        continueButton
+                            .buttonStyle(.glassProminent)
+                            .foregroundStyle(AppStyle.onAccent)
+                            .tint(AppStyle.accent)
+                        Button(L10n.text("Go back"), role: .cancel) { dismiss() }
+                            .frame(maxWidth: .infinity, minHeight: 44)
+                            .buttonStyle(.glass)
                     }
-                    .buttonStyle(.glassProminent)
-                    .tint(risky ? RiskLevel.danger.color : AppStyle.accent)
-                    .accessibilityIdentifier(secondDecision ? "confirm-danger" : "confirm-action")
-                    Button(L10n.text("Go back"), role: .cancel) { dismiss() }
-                        .frame(maxWidth: .infinity, minHeight: 44)
-                        .buttonStyle(.glass)
                 }
                 .padding(24)
             }
@@ -48,6 +53,21 @@ struct ConfirmationSheet: View {
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L10n.text("Cancel")) { dismiss() } } }
         }
         .presentationDetents([.large])
+    }
+
+    private var continueButton: some View {
+        Button(role: risky ? .destructive : nil) {
+            if level == .danger && !secondDecision {
+                secondDecision = true
+            } else {
+                dismiss()
+                onConfirm()
+            }
+        } label: {
+            Text(risky ? L10n.text("Continue anyway") : action.requiredConfirmation.confirmTitle)
+                .frame(maxWidth: .infinity, minHeight: 36)
+        }
+        .accessibilityIdentifier(secondDecision ? "confirm-danger" : "confirm-action")
     }
 }
 

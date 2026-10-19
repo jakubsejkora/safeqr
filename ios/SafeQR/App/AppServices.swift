@@ -17,7 +17,7 @@ final class AppServices {
         history = try? HistoryStore(inMemory: inMemoryHistory)
         guides = GuideLibrary()
         let configured = Bundle.main.object(forInfoDictionaryKey: "SafeQRAPIBaseURL") as? String
-        let baseURL = URL(string: configured ?? "") ?? URL(string: "https://api.safeqr.cz")!
+        let baseURL = URL(string: configured ?? "https://api.safeqr.cz")
         self.cloud = cloud ?? CloudClient(baseURL: baseURL)
     }
 

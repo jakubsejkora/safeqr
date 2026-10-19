@@ -13,7 +13,9 @@ struct ScanView: View {
     @State private var errorMessage: String?
     @State private var importing = false
     @State private var detent = PresentationDetent.medium
+    #if DEBUG
     @State private var launchedSample = false
+    #endif
 
     var body: some View {
         NavigationStack {
@@ -37,8 +39,12 @@ struct ScanView: View {
                 #if DEBUG
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        ForEach(DebugSample.allCases) { sample in
-                            Button(sample.title) { show(raw: sample.raw, symbology: .qr, scene: nil) }
+                        ForEach(DebugSample.Category.allCases) { category in
+                            Menu(category.title) {
+                                ForEach(DebugSample.allCases.filter { $0.category == category }) { sample in
+                                    Button(sample.title) { show(raw: sample.raw, symbology: .qr, scene: nil) }
+                                }
+                            }
                         }
                     } label: { Label(L10n.text("Sample codes"), systemImage: "ellipsis.circle") }
                     .accessibilityIdentifier("sample-codes")
@@ -111,16 +117,19 @@ struct ScanView: View {
                     .font(.largeTitle.bold()).multilineTextAlignment(.center)
                 Text(placeholderMessage).font(.title3).foregroundStyle(.secondary).multilineTextAlignment(.center)
                 if services.camera.state == .denied {
-                    Button(L10n.text("Open Settings")) { openSettings() }.buttonStyle(.glassProminent).controlSize(.large)
+                    Button(L10n.text("Open Settings")) { openSettings() }.buttonStyle(.glassProminent)
+                        .foregroundStyle(AppStyle.onAccent).controlSize(.large)
                 } else if services.camera.state == .idle {
                     Button(L10n.text("Allow camera")) { Task { await services.camera.start(requestPermission: true) } }
-                        .buttonStyle(.glassProminent).controlSize(.large)
+                        .buttonStyle(.glassProminent)
+                        .foregroundStyle(AppStyle.onAccent).controlSize(.large)
                 }
                 PhotosPicker(selection: $selectedPhoto, matching: .images, photoLibrary: .shared()) {
                     Label(L10n.text("Import photo"), systemImage: "photo.on.rectangle")
                         .font(.headline).frame(maxWidth: .infinity, minHeight: 38)
                 }
                 .buttonStyle(.glassProminent)
+                .foregroundStyle(AppStyle.onAccent)
                 .disabled(importing)
                 Label(L10n.text("Nothing opens without your say-so."), systemImage: "hand.raised")
                     .font(.callout).foregroundStyle(.secondary).multilineTextAlignment(.center)

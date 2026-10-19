@@ -102,11 +102,13 @@ struct GuideDetailView: View {
                 }
                 if guide.id.hasPrefix("recovery-") {
                     NavigationLink { BankHotlinesView() } label: { Label(L10n.text("Find your bank’s number"), systemImage: "phone") }
-                        .buttonStyle(.glassProminent).controlSize(.large)
+                        .buttonStyle(.glassProminent)
+                        .foregroundStyle(AppStyle.onAccent).controlSize(.large)
                 }
                 if guide.id == "report" {
                     ConfirmedActionButton(action: phoneAction(name: L10n.text("Czech Police"), number: "158"))
-                        .buttonStyle(.glassProminent).controlSize(.large)
+                        .buttonStyle(.glassProminent)
+                        .foregroundStyle(AppStyle.onAccent).controlSize(.large)
                 }
                 if !guide.sources.isEmpty {
                     SectionCard(title: L10n.text("Official sources"), symbol: "checkmark.seal") {

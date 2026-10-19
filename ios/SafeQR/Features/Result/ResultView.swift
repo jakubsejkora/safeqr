@@ -18,15 +18,7 @@ struct ResultView: View {
                     SectionCard(title: L10n.text("What's inside"), symbol: model.analysis.content.kind.symbol) {
                         Text(model.analysis.content.title).font(.title3.weight(.semibold))
                         ForEach(model.analysis.content.facts) { fact in
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(fact.label).font(.subheadline).foregroundStyle(.secondary)
-                                Text(fact.value)
-                                    .font(fact.emphasis == .primary ? .title3.weight(.semibold) : .body)
-                                    .foregroundStyle(fact.emphasis == .warning ? RiskLevel.caution.color : .primary)
-                                    .textSelection(.enabled)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                            .accessibilityElement(children: .combine)
+                            FactRow(fact: fact)
                         }
                     }
                     if model.checking || !model.steps.isEmpty {
@@ -122,6 +114,7 @@ struct ResultView: View {
             ForEach(model.analysis.actions) { action in
                 if action.isPrimary {
                     actionButton(action).buttonStyle(.glassProminent)
+                        .foregroundStyle(AppStyle.onAccent)
                         .tint(action.isHandoff && model.assessment.level != .safe ? model.assessment.level.color : AppStyle.accent)
                 } else {
                     actionButton(action).buttonStyle(.glass)

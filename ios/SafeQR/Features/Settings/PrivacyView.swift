@@ -29,36 +29,3 @@ struct PrivacyView: View {
     }
 }
 
-struct AboutView: View {
-    private var version: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0" }
-
-    var body: some View {
-        List {
-            Section {
-                VStack(spacing: 16) {
-                    ShieldMark(size: 92)
-                    Text("Safe QR").font(.title.bold())
-                    Text(L10n.text("Know what a QR code does before you act on it.")).multilineTextAlignment(.center)
-                    Text(L10n.format("Version %@", version)).font(.footnote).foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity).padding(.vertical, 24)
-            }
-            Section {
-                ConfirmedActionButton(action: sourceAction(title: "safeqr.cz", url: URL(string: "https://safeqr.cz")!))
-                ConfirmedActionButton(action: sourceAction(title: "GitHub", url: URL(string: "https://github.com/jakubsejkora/safeqr")!))
-                NavigationLink(L10n.text("Open-source notices")) {
-                    List {
-                        Text(L10n.text("Safe QR uses Apple system frameworks and the local SafeQRKit package. No third-party libraries are bundled in the app target."))
-                        ConfirmedActionButton(action: sourceAction(title: L10n.text("Source code and licences"), url: URL(string: "https://github.com/jakubsejkora/safeqr")!))
-                    }
-                    .navigationTitle(L10n.text("Open-source notices"))
-                }
-            }
-            Section {
-                Text(L10n.text("Built at The FinTechers Hackathon 2026 in Prague."))
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .navigationTitle(L10n.text("About Safe QR"))
-    }
-}

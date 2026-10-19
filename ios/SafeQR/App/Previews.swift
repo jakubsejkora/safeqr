@@ -2,7 +2,7 @@
 import SwiftUI
 
 @MainActor private func previewServices() -> AppServices {
-    let defaults = UserDefaults(suiteName: "cz.safeqr.previews")!
+    let defaults = UserDefaults(suiteName: "cz.safeqr.previews") ?? UserDefaults()
     let services = AppServices(defaults: defaults, cloud: PreviewCloudClient(), inMemoryHistory: true)
     services.preferences.finishedOnboarding = true
     return services

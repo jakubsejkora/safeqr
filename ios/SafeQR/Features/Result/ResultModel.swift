@@ -50,6 +50,8 @@ final class ResultModel: Identifiable {
             assessment = analysis.assessment.merged(with: result.assessment)
         } catch is CancellationError {
             cloudLimitation = L10n.text("The deep check was stopped. The result from this iPhone is still available.")
+        } catch CloudError.invalidResponse {
+            cloudLimitation = L10n.text("Some deep-check results could not be read. Only the checks on this iPhone are shown.")
         } catch {
             cloudLimitation = L10n.text("The deep check is unavailable. Only the checks on this iPhone are shown. Try again later.")
         }

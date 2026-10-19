@@ -15,6 +15,7 @@ enum L10n {
 
 enum AppStyle {
     static let accent = Color("AccentColor")
+    static let onAccent = Color(uiColor: .systemBackground)
     static let canvas = Color(uiColor: .systemGroupedBackground)
     static let card = Color(uiColor: .secondarySystemGroupedBackground)
 }

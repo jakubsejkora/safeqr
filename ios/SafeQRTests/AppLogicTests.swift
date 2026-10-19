@@ -20,21 +20,21 @@ struct AppLogicTests {
         """#
         let check = try JSONDecoder().decode(CloudCheck.self, from: Data(json.utf8))
         let verdict = try #require(check.result)
-        let local = sample(score: 85, floor: 80).assessment
+        let local = try sample(score: 85, floor: 80).assessment
         let merged = local.merged(with: verdict.assessment)
         #expect(merged.score == 80)
         #expect(merged.findings.contains { $0.id == "device.proven" })
         #expect(verdict.link?.hops.count == 2)
         #expect(verdict.intel?.first?.publishedAt == "2026-10-19")
-        #expect(check.steps.last?.status == .skipped)
-        let model = ResultModel(analysis: sample(score: 85, floor: 80), scene: nil)
+        #expect(check.steps.last?.status.value == .skipped)
+        let model = ResultModel(analysis: try sample(score: 85, floor: 80), scene: nil)
         await model.run(using: CompletedCloud(verdict: verdict), consent: CheckConsent(links: true, surroundings: false))
         #expect(model.assessment.score == 80)
         #expect(model.headline == model.analysis.content.summary)
     }
 
     @Test func consentSeparatesPayloadAndPhotoAndBlocksSecrets() throws {
-        let analysis = sample()
+        let analysis = try sample()
         let photo = ScenePhoto(jpeg: Data([1, 2, 3]), source: .photo,
                                bounds: CodeBounds(rect: CGRect(x: 0.2, y: 0.1, width: 0.4, height: 0.3)))
         #expect(CheckConsent(links: false, surroundings: true).request(for: analysis, scene: photo) == nil)
@@ -51,8 +51,8 @@ struct AppLogicTests {
         }
     }
 
-    @Test func failedCloudLeavesDeviceResultUsable() async {
-        let model = ResultModel(analysis: sample(), scene: nil)
+    @Test func failedCloudLeavesDeviceResultUsable() async throws {
+        let model = ResultModel(analysis: try sample(), scene: nil)
         await model.run(using: FailingCloud(), consent: CheckConsent(links: true, surroundings: false))
         #expect(model.assessment.score == 60)
         #expect(model.cloudLimitation != nil)
@@ -62,7 +62,7 @@ struct AppLogicTests {
 
     @Test func historyRequiresOptInAndCanBeDeleted() throws {
         let history = try HistoryStore(inMemory: true)
-        let analysis = sample()
+        let analysis = try sample()
         history.record(analysis, assessment: analysis.assessment, enabled: false)
         #expect(history.records.isEmpty)
         history.record(analysis, assessment: analysis.assessment, enabled: true)
@@ -114,8 +114,8 @@ struct AppLogicTests {
         #expect(library.banks.allSatisfy { !$0.scope.cs.isEmpty && !$0.hours.cs.isEmpty })
     }
 
-    private func sample(score: Int = 60, floor: Int = 40) -> CodeAnalysis {
-        let url = URL(string: "https://example.com")!
+    private func sample(score: Int = 60, floor: Int = 40) throws -> CodeAnalysis {
+        let url = try #require(URL(string: "https://example.com"))
         return CodeAnalysis(raw: url.absoluteString, symbology: .qr,
                             content: CodeContent(kind: .link, payload: .link(url), title: "Link", summary: "A website.", facts: []),
                             assessment: RiskAssessment(score: score, floor: floor,

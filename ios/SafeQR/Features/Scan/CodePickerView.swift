@@ -14,6 +14,27 @@ struct CodePickerView: View {
                         .font(.title3.weight(.medium))
                     if let image = UIImage(data: scan.jpeg) {
                         Image(uiImage: image).resizable().scaledToFit()
+                            .overlay {
+                                GeometryReader { geometry in
+                                    ForEach(Array(scan.codes.enumerated()), id: \.element.id) { index, code in
+                                        let bounds = code.bounds
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .strokeBorder(AppStyle.accent, lineWidth: 2)
+                                            .overlay(alignment: .topLeading) {
+                                                Text("\(index + 1)").font(.caption.bold())
+                                                    .padding(5).background(.background, in: Circle())
+                                                    .foregroundStyle(AppStyle.accent)
+                                            }
+                                            .frame(width: bounds.width * geometry.size.width,
+                                                   height: bounds.height * geometry.size.height)
+                                            .position(x: (bounds.x + bounds.width / 2) * geometry.size.width,
+                                                      y: (bounds.y + bounds.height / 2) * geometry.size.height)
+                                    }
+                                }
+                                .accessibilityHidden(true)
+                            }
+                            .frame(maxHeight: 260)
+                            .frame(maxWidth: .infinity)
                             .accessibilityLabel(L10n.text("The imported picture"))
                     }
                 }
@@ -28,7 +49,14 @@ struct CodePickerView: View {
                                 Text("\(index + 1)").font(.title3.bold()).foregroundStyle(AppStyle.accent)
                                 VStack(alignment: .leading, spacing: 6) {
                                     Label(content.title, systemImage: content.kind.symbol).font(.headline)
-                                    Text(content.summary).foregroundStyle(.secondary).lineLimit(4)
+                                    if content.facts.isEmpty {
+                                        Text(content.summary).foregroundStyle(.secondary)
+                                    } else {
+                                        ForEach(content.facts.prefix(2)) { fact in
+                                            Text("\(fact.label): \(fact.value)")
+                                                .font(.callout).foregroundStyle(.primary)
+                                        }
+                                    }
                                 }
                             }
                             .padding(.vertical, 8)

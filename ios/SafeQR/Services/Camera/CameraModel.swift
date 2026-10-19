@@ -9,7 +9,7 @@ final class CameraModel {
     private(set) var hasUltraWide = false
     private(set) var hasTorch = false
     var showsUltraWide = false
-    var torchEnabled = false
+    private(set) var torchEnabled = false
     var onDetection: ((ScannedCode, ScenePhoto?) -> Void)?
     private(set) var capture: CameraCapture?
 
@@ -39,6 +39,8 @@ final class CameraModel {
                     onDetection?(code, scene)
                 case .unavailable:
                     state = .unavailable
+                case .torchChanged(let enabled):
+                    torchEnabled = enabled
                 }
             }
         }

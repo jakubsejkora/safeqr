@@ -9,7 +9,7 @@ struct CloudProgressView: View {
             if steps.isEmpty { ProgressView(L10n.text("Starting the deep check…")) }
             ForEach(steps) { step in
                 HStack(alignment: .top, spacing: 12) {
-                    if step.status == .running { ProgressView().accessibilityLabel(L10n.text("In progress")) }
+                    if step.status.value == .running { ProgressView().accessibilityLabel(L10n.text("In progress")) }
                     else { Image(systemName: symbol(step.status)).foregroundStyle(.secondary).accessibilityHidden(true) }
                     Text(step.label).frame(maxWidth: .infinity, alignment: .leading)
                     Text(statusLabel(step.status)).font(.caption).foregroundStyle(.secondary)
@@ -19,22 +19,24 @@ struct CloudProgressView: View {
         }
     }
 
-    private func statusLabel(_ status: CheckStep.Status) -> String {
-        switch status {
+    private func statusLabel(_ status: CloudEnum<CheckStep.Status>) -> String {
+        switch status.value {
         case .pending: L10n.text("Waiting")
         case .running: L10n.text("In progress")
         case .done: L10n.text("Done")
         case .skipped: L10n.text("Skipped")
         case .failed: L10n.text("Unavailable")
+        case nil: L10n.text("Unknown status")
         }
     }
 
-    private func symbol(_ status: CheckStep.Status) -> String {
-        switch status {
+    private func symbol(_ status: CloudEnum<CheckStep.Status>) -> String {
+        switch status.value {
         case .done: "checkmark.circle.fill"
         case .failed: "exclamationmark.circle"
         case .skipped: "minus.circle"
         case .pending, .running: "circle.dotted"
+        case nil: "questionmark.circle"
         }
     }
 }

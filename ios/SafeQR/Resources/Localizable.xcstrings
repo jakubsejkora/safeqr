@@ -1106,23 +1106,6 @@
         }
       }
     },
-    "I understand the risk. Continue": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I understand the risk. Continue"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rozumím riziku. Pokračovat"
-          }
-        }
-      }
-    },
     "If money is at risk, call now. Card blocking may not block access to your account. Choose the line for what happened.": {
       "extractionState": "manual",
       "localizations": {
@@ -3075,6 +3058,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Premium SMS"
+          }
+        }
+      }
+    },
+    "Continue anyway": {
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přesto pokračovat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue anyway"
+          }
+        }
+      }
+    },
+    "Unknown status": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown status"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neznámý stav"
+          }
+        }
+      }
+    },
+    "Some deep-check results could not be read. Only the checks on this iPhone are shown.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some deep-check results could not be read. Only the checks on this iPhone are shown."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Část výsledků podrobné kontroly se nepodařilo přečíst. Zobrazujeme jen kontrolu v tomto iPhonu."
           }
         }
       }

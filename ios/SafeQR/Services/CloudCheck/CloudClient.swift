@@ -5,7 +5,7 @@ protocol CloudChecking: Sendable {
                onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict
 }
 
-enum CloudError: Error {
+enum CloudError: Error, Equatable {
     case unavailable, invalidResponse, timedOut
 }
 
@@ -19,10 +19,10 @@ final class APIRedirectPolicy: NSObject, URLSessionTaskDelegate, Sendable {
 }
 
 struct CloudClient: CloudChecking {
-    let baseURL: URL
+    let baseURL: URL?
     private let session: URLSession
 
-    init(baseURL: URL, session: URLSession? = nil) {
+    init(baseURL: URL?, session: URLSession? = nil) {
         self.baseURL = baseURL
         let configuration = URLSessionConfiguration.ephemeral
         configuration.timeoutIntervalForRequest = 12
@@ -35,11 +35,12 @@ struct CloudClient: CloudChecking {
 
     func check(_ request: CheckRequest,
                onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
-        guard baseURL.scheme == "https", baseURL.user == nil, baseURL.password == nil,
+        guard let baseURL, baseURL.scheme == "https", baseURL.host()?.isEmpty == false,
+              baseURL.user == nil, baseURL.password == nil, baseURL.query == nil, baseURL.fragment == nil,
               !request.payload.isEmpty, request.payload.utf16.count <= 4096,
               (request.scene?.image.count ?? 0) <= 2_000_000 else { throw CloudError.invalidResponse }
         return try await withThrowingTaskGroup(of: CloudVerdict.self) { group in
-            group.addTask { try await poll(request, onProgress: onProgress) }
+            group.addTask { try await poll(request, baseURL: baseURL, onProgress: onProgress) }
             group.addTask {
                 try await Task.sleep(for: .seconds(45))
                 throw CloudError.timedOut
@@ -50,14 +51,14 @@ struct CloudClient: CloudChecking {
         }
     }
 
-    private func poll(_ body: CheckRequest,
+    private func poll(_ body: CheckRequest, baseURL: URL,
                       onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
         var request = URLRequest(url: baseURL.appending(path: "v1/checks"))
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(body)
         let accepted: CheckAccepted = try await send(request, status: 202)
-        guard accepted.status == "running",
+        guard accepted.status.value == .running,
               accepted.id.range(of: "^chk_[A-Za-z0-9]{20,}$", options: .regularExpression) != nil else {
             throw CloudError.invalidResponse
         }
@@ -69,14 +70,15 @@ struct CloudClient: CloudChecking {
             guard check.id == accepted.id else { throw CloudError.invalidResponse }
             await onProgress(check.steps)
             switch check.status {
-            case .completed:
-                guard let verdict = check.result, (0...100).contains(verdict.score),
-                      verdict.level == .init(score: verdict.score) else { throw CloudError.invalidResponse }
+            case .known(.completed):
+                guard let verdict = check.result, verdict.isValid else { throw CloudError.invalidResponse }
                 return verdict
-            case .failed:
+            case .known(.failed):
                 throw CloudError.unavailable
-            case .running:
+            case .known(.running):
                 delay = check.pollAfterMs ?? accepted.pollAfterMs
+            case .unknown:
+                throw CloudError.invalidResponse
             }
         }
         throw CancellationError()
@@ -88,26 +90,8 @@ struct CloudClient: CloudChecking {
         let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse, http.statusCode == status,
               data.count <= 4_000_000 else { throw CloudError.unavailable }
-        return try JSONDecoder().decode(T.self, from: data)
+        do { return try JSONDecoder().decode(T.self, from: data) }
+        catch { throw CloudError.invalidResponse }
     }
 }
 
-#if DEBUG
-struct PreviewCloudClient: CloudChecking {
-    func check(_ request: CheckRequest,
-               onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
-        let labels = ["Following redirects", "Checking the website", "Checking the surroundings", "Checking known scams", "Preparing the result"]
-        let ids = ["redirects", "sandbox", "scene", "intel", "verdict"]
-        for index in ids.indices {
-            try await Task.sleep(for: .milliseconds(350))
-            await onProgress(ids.enumerated().map { offset, id in
-                CheckStep(id: id, status: offset <= index ? .done : .pending, label: L10n.text(labels[offset]))
-            })
-        }
-        return CloudVerdict(score: request.device.score, level: .init(score: request.device.score),
-                            headline: L10n.text("This is a demonstration. No website was visited."), findings: [],
-                            consequences: [], limitations: [L10n.text("Demo evidence is not a real safety check.")],
-                            link: nil, scene: nil, intel: nil, models: ["demo"])
-    }
-}
-#endif
