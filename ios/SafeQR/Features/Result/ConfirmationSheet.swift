@@ -23,8 +23,8 @@ struct ConfirmationSheet: View {
                     .font(.system(.title, design: .rounded, weight: .bold)).accessibilityAddTraits(.isHeader)
                 destination
                 Text(action.requiredConfirmation.message).fixedSize(horizontal: false, vertical: true)
-                if let reason, level == .danger {
-                    Text(reason).font(.subheadline.weight(.medium)).foregroundStyle(RiskLevel.danger.color)
+                if let reason, risky {
+                    Text(reason).font(.subheadline.weight(.medium)).foregroundStyle(level.color)
                 }
                 if !typeSize.isAccessibilitySize { decisionButtons }
             }
@@ -82,12 +82,16 @@ struct ConfirmationSheet: View {
 
 struct ConfirmedActionButton: View {
     let action: CodeAction
+    var symbol: String? = nil
     var level: RiskLevel = .safe
     @State private var confirming = false
     @State private var handler = ActionHandler()
 
     var body: some View {
-        Button(action.title) { confirming = true }
+        Button { confirming = true } label: {
+            if let symbol { Label(action.title, systemImage: symbol) }
+            else { Text(action.title) }
+        }
             .sheet(isPresented: $confirming) {
                 ConfirmationSheet(action: action, level: level) {
                     Task { await handler.perform(action) }

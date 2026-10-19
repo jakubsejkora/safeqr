@@ -591,7 +591,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Připojeno pro tuto relaci. Od sítě se můžete odpojit v Nastavení."
+            "value": "Dočasně připojeno. Od sítě se můžete odpojit v Nastavení."
           }
         }
       }
@@ -2389,7 +2389,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Akci se nepodařilo dokončit. Safe QR nic neodeslalo ani neuložilo."
+            "value": "Akci se nepodařilo dokončit. Aplikace Safe QR nic neodeslala ani neuložila."
           }
         }
       }
@@ -2714,23 +2714,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Doporučujeme vrátit se. Pokračujte jen tehdy, pokud riziku rozumíte a příjemci důvěřujete."
-          }
-        }
-      }
-    },
-    "Website preview. This page was opened away from your iPhone.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Website preview. This page was opened away from your iPhone."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Náhled webu. Stránka se otevřela mimo váš iPhone."
           }
         }
       }
@@ -3106,6 +3089,7 @@
       }
     },
     "Camera access is off": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3116,12 +3100,13 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kamera nemá povolený přístup"
+            "value": "Přístup k fotoaparátu je vypnutý"
           }
         }
       }
     },
     "Camera unavailable": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3132,7 +3117,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kamera není k dispozici"
+            "value": "Fotoaparát není k dispozici"
           }
         }
       }
@@ -3154,6 +3139,7 @@
       }
     },
     "Allow camera access or import a picture to check a code.": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3164,7 +3150,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Povolte přístup ke kameře nebo vyberte obrázek s kódem."
+            "value": "Povolte přístup k fotoaparátu nebo vyberte fotku s kódem."
           }
         }
       }
@@ -3330,6 +3316,7 @@
       }
     },
     "AI-assisted check: %@": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3340,7 +3327,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "S kontrolou pomohly modely AI: %@"
+            "value": "S kontrolou pomohla umělá inteligence: %@"
           }
         }
       }
@@ -3712,6 +3699,7 @@
       }
     },
     "Deep check · %lld s": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3722,12 +3710,13 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hloubková kontrola · %lld s"
+            "value": "Podrobná kontrola · %lld s"
           }
         }
       }
     },
     "Deep check unavailable": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3738,7 +3727,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hloubková kontrola není dostupná"
+            "value": "Podrobná kontrola není dostupná"
           }
         }
       }
@@ -3872,6 +3861,7 @@
       }
     },
     "Hold for one and a half seconds. Release to cancel.": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -3882,7 +3872,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Podržte jednu a půl sekundy. Puštěním zrušíte."
+            "value": "Podržte jednu a půl sekundy. Puštěním pokračování zrušíte."
           }
         }
       }
@@ -4752,6 +4742,7 @@
       }
     },
     "Deep checks": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -4762,7 +4753,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hloubková kontrola"
+            "value": "Podrobná kontrola"
           }
         }
       }
@@ -4800,6 +4791,7 @@
       }
     },
     "Call %@ · %@": {
+      "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -4810,7 +4802,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Volat %@ · %@"
+            "value": "Volat: %@ · %@"
           }
         }
       }
@@ -4859,6 +4851,210 @@
           "stringUnit": {
             "state": "translated",
             "value": "iPhone zavolá na %@."
+          }
+        }
+      }
+    },
+    "Checking the link…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking the link…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ověřujeme odkaz…"
+          }
+        }
+      }
+    },
+    "Checking…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ověřuji…"
+          }
+        }
+      }
+    },
+    "Tap to check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klepněte pro kontrolu"
+          }
+        }
+      }
+    },
+    "Not checked": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not checked"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neověřeno"
+          }
+        }
+      }
+    },
+    "Main camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hlavní fotoaparát"
+          }
+        }
+      }
+    },
+    "Surroundings camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surroundings camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoaparát pro okolí"
+          }
+        }
+      }
+    },
+    "The destination could not be checked. Be careful if you continue.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The destination could not be checked. Be careful if you continue."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cíl odkazu se nepodařilo ověřit. Pokud budete pokračovat, buďte opatrní."
+          }
+        }
+      }
+    },
+    "Too many deep checks are running. The destination could not be checked.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many deep checks are running. The destination could not be checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Právě probíhá příliš mnoho kontrol. Cíl odkazu se nepodařilo ověřit."
+          }
+        }
+      }
+    },
+    "Call emergency services · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call emergency services · %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volat tísňovou linku · %@"
+          }
+        }
+      }
+    },
+    "Call emergency services?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call emergency services?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat tísňovou linku?"
+          }
+        }
+      }
+    },
+    "Call Czech Police · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call Czech Police · %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volat Policii ČR · %@"
+          }
+        }
+      }
+    },
+    "Call Czech Police?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call Czech Police?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat Policii ČR?"
           }
         }
       }

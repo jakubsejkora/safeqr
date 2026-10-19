@@ -4,6 +4,8 @@ import SafeQRKit
 struct ScannerOverlay: View {
     let codes: [TrackedCode]
     var ultraWide = false
+    var checks: [String: ResultModel] = [:]
+    var consentGiven = false
     let onSelect: (TrackedCode) -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var typeSize
@@ -36,7 +38,7 @@ struct ScannerOverlay: View {
                         .position(x: rect.midX, y: rect.midY)
                         .animation(reduceMotion ? nil : .spring(response: 0.38, dampingFraction: 0.86), value: rect)
                     if !typeSize.isAccessibilitySize {
-                        ScannerVerdictPill(code: code) { onSelect(code) }
+                        ScannerVerdictPill(code: code, model: checks[code.analysis.raw], consentGiven: consentGiven) { onSelect(code) }
                             .glassEffectID(code.id, in: glass)
                             .frame(maxWidth: min(340, geometry.size.width - 32))
                             .fixedSize(horizontal: false, vertical: true)
@@ -49,7 +51,7 @@ struct ScannerOverlay: View {
                 if typeSize.isAccessibilitySize && !codes.isEmpty {
                     ScrollView {
                         VStack(spacing: 12) {
-                            ForEach(codes) { code in ScannerVerdictPill(code: code) { onSelect(code) } }
+                            ForEach(codes) { code in ScannerVerdictPill(code: code, model: checks[code.analysis.raw], consentGiven: consentGiven) { onSelect(code) } }
                         }.padding(.horizontal, 16)
                     }.frame(maxHeight: geometry.size.height * 0.5)
                 }
@@ -99,40 +101,3 @@ private struct ScannerCutout: Shape {
     }
 }
 
-private struct ScannerVerdictPill: View {
-    let code: TrackedCode
-    let action: () -> Void
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var pulse = false
-    @Environment(\.dynamicTypeSize) private var typeSize
-
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 10) {
-                Image(systemName: code.analysis.assessment.level == .safe ? "checkmark.circle.fill"
-                      : code.analysis.assessment.level == .danger ? "exclamationmark.octagon.fill" : "exclamationmark.triangle.fill")
-                    .foregroundStyle(code.analysis.assessment.level.color)
-                    .font(.system(size: 20, weight: .medium))
-                Image(systemName: code.analysis.content.kind.symbol)
-                    .font(.system(size: 20, weight: .medium))
-                Text(typeSize.isAccessibilitySize ? code.analysis.content.title : code.title).font(.subheadline.weight(.semibold)).fixedSize(horizontal: false, vertical: true)
-                Image(systemName: "chevron.right").font(.caption.bold())
-            }
-            .padding(.horizontal, 16).padding(.vertical, 14)
-            .foregroundStyle(.primary)
-            .glassEffect(.regular.tint(code.analysis.assessment.level == .safe ? .clear : code.analysis.assessment.level.color.opacity(0.18)).interactive())
-        }
-        .buttonStyle(.plain)
-        .scaleEffect(pulse ? 1.04 : 1)
-        .accessibilityLabel("\(code.analysis.assessment.level.title). \(code.title)")
-        .accessibilityHint(L10n.text("Show the result"))
-        .task {
-            guard !reduceMotion else { return }
-            try? await Task.sleep(for: .seconds(1.5))
-            guard !Task.isCancelled else { return }
-            withAnimation(.spring(duration: 0.3)) { pulse = true }
-            try? await Task.sleep(for: .milliseconds(300))
-            withAnimation(.spring(duration: 0.3)) { pulse = false }
-        }
-    }
-}

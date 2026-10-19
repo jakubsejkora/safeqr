@@ -45,6 +45,9 @@ struct PresentationLogicTests {
         #expect(rules.registrableDomain("bank.example.co.uk") == "example.co.uk")
         #expect(rules.registrableDomain("a.b.ck") == "a.b.ck")
         #expect(rules.registrableDomain("a.www.ck") == "www.ck")
+        #expect(PublicSuffixRules.bundled.registrableDomain("www.食狮.公司.cn") == "食狮.公司.cn")
+        #expect(PublicSuffixRules.bundled.registrableDomain("safeqr-training.jakub-f9d.workers.dev") == "jakub-f9d.workers.dev")
+        #expect(PublicSuffixRules.bundled.registrableDomain("example.co.uk.") == "example.co.uk")
     }
 
     @Test func portraitAspectFillMapsTheRotatedCaptureWithoutASecondRotation() {

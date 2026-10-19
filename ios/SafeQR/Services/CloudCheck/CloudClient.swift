@@ -6,7 +6,7 @@ protocol CloudChecking: Sendable {
 }
 
 enum CloudError: Error, Equatable {
-    case unavailable, invalidResponse, timedOut
+    case unavailable, invalidResponse, timedOut, rateLimited
 }
 
 final class APIRedirectPolicy: NSObject, URLSessionTaskDelegate, Sendable {
@@ -21,6 +21,7 @@ final class APIRedirectPolicy: NSObject, URLSessionTaskDelegate, Sendable {
 struct CloudClient: CloudChecking {
     let baseURL: URL?
     private let session: URLSession
+    private let starts = CheckStartLimiter()
 
     init(baseURL: URL?, session: URLSession? = nil) {
         self.baseURL = baseURL
@@ -40,7 +41,10 @@ struct CloudClient: CloudChecking {
               !request.payload.isEmpty, request.payload.utf16.count <= 4096,
               (request.scene?.image.count ?? 0) <= 2_000_000 else { throw CloudError.invalidResponse }
         return try await withThrowingTaskGroup(of: CloudVerdict.self) { group in
-            group.addTask { try await poll(request, baseURL: baseURL, onProgress: onProgress) }
+            group.addTask {
+                try await starts.acquire()
+                return try await poll(request, baseURL: baseURL, onProgress: onProgress)
+            }
             group.addTask {
                 try await Task.sleep(for: .seconds(45))
                 throw CloudError.timedOut
@@ -88,6 +92,11 @@ struct CloudClient: CloudChecking {
         var request = request
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         let (data, response) = try await session.data(for: request)
+        if let http = response as? HTTPURLResponse, http.statusCode == 429 {
+            let delay = http.value(forHTTPHeaderField: "Retry-After").flatMap(TimeInterval.init) ?? 60
+            await starts.postpone(seconds: delay)
+            throw CloudError.rateLimited
+        }
         guard let http = response as? HTTPURLResponse, http.statusCode == status,
               data.count <= 4_000_000 else { throw CloudError.unavailable }
         do { return try JSONDecoder().decode(T.self, from: data) }

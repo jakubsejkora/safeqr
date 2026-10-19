@@ -60,6 +60,7 @@ final class CameraModel {
                 .min { distance($0.element.bounds, observation.code.bounds) < distance($1.element.bounds, observation.code.bounds) }
             if let match {
                 var tracked = remaining.remove(at: match.offset)
+                tracked.stability.observe(observation.code.bounds)
                 tracked.bounds = PreviewGeometry.smooth(observation.code.bounds, from: tracked.bounds)
                 if let next = observation.ultraBounds, let previous = tracked.ultraBounds {
                     tracked.ultraBounds = PreviewGeometry.smooth(next, from: previous)

@@ -372,8 +372,8 @@
       },
       {
         "text": {
-          "en": "If you entered details on a suspicious page, use checklist 2 or 3. If you installed an app, use checklist 4. Choose the recovery steps for what actually happened.",
-          "cs": "Pokud jste zadali údaje na podezřelé stránce, použijte checklist 2 nebo 3. Pokud jste nainstalovali aplikaci, použijte checklist 4. Jde o rozdělení postupu podle toho, co se skutečně stalo."
+          "en": "If you entered details on a suspicious page, open the guide for card details or bank login. If you installed an app, open the guide for apps and remote access.",
+          "cs": "Pokud jste na podezřelé stránce zadali údaje, otevřete návod pro údaje z karty nebo přihlášení do banky. Pokud jste nainstalovali aplikaci, otevřete návod pro instalaci aplikace a vzdálený přístup."
         },
         "numbered": true
       }

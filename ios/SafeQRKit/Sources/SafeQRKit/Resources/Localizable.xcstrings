@@ -795,7 +795,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Otevře místo v Mapách; tím se samotným neodešle vaše současná poloha."
+            "value": "Otevře místo v Mapách. Tím se neodešle vaše současná poloha."
           }
         }
       }
@@ -2393,7 +2393,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uložením názvu banky nebo úřadu k neověřenému číslu může pozdější podvodný hovor působit pravě."
+            "value": "Uložením názvu banky nebo úřadu k neověřenému číslu může pozdější podvodný hovor působit důvěryhodně."
           }
         }
       }
@@ -3005,7 +3005,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tento zkrácený odkaz skrývá konečný web, dokud se neotevře nebo neprověří v cloudu."
+            "value": "Tento zkrácený odkaz skrývá konečný web, dokud se neotevře nebo neprověří při podrobné kontrole."
           }
         }
       }
@@ -3906,7 +3906,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hlavička připomíná PAY by square, ale zabalené číslo účtu a částku neumíme ověřit."
+            "value": "Hlavička připomíná PAY by square, ale zakódované číslo účtu a částku neumíme ověřit."
           }
         }
       }
@@ -4994,7 +4994,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bez kontroly v cloudu vidíme jen adresu, ne stránku ani její přesměrování."
+            "value": "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
           }
         }
       }

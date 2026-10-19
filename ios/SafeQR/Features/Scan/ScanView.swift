@@ -8,6 +8,7 @@ struct ScanView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var typeSize
+    @Environment(\.colorScheme) private var systemAppearance
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var imported: ImportedScan?
     @State private var pendingImport: (code: ScannedCode, scan: ImportedScan)?
@@ -26,7 +27,8 @@ struct ScanView: View {
                 if services.camera.state == .ready, let capture = services.camera.capture {
                     CameraPreview(capture: capture, ultraWide: services.camera.showsUltraWide)
                         .ignoresSafeArea().accessibilityHidden(true)
-                    ScannerOverlay(codes: services.camera.codes, ultraWide: services.camera.showsUltraWide, onSelect: select)
+                    ScannerOverlay(codes: services.camera.codes, ultraWide: services.camera.showsUltraWide,
+                                   checks: services.checks.models, consentGiven: services.preferences.consent.links, onSelect: select)
                         .ignoresSafeArea()
                     cameraControls
                 } else {
@@ -58,6 +60,8 @@ struct ScanView: View {
                 #endif
             }
         }
+        .environment(\.colorScheme, cameraVisible ? .dark : systemAppearance)
+        .toolbarColorScheme(cameraVisible ? .dark : nil, for: .navigationBar, .tabBar)
         .sheet(item: $result, onDismiss: { Task { await services.camera.start() } }) { result in
             ResultView(model: result, compact: detent == .medium && !typeSize.isAccessibilitySize)
                 .presentationDetents([.medium, .large], selection: $detent)
@@ -92,6 +96,15 @@ struct ScanView: View {
                 }
             }
         }
+        .task(id: observingCamera) {
+            guard observingCamera else { return }
+            while !Task.isCancelled {
+                services.checks.observe(visibleCodes, sceneContainsSecrets: services.camera.sceneContainsSecrets,
+                                        using: services.checker, consent: services.preferences.consent)
+                do { try await Task.sleep(for: .milliseconds(200)) }
+                catch { return }
+            }
+        }
         .task {
             if services.preferences.finishedOnboarding { await services.camera.start() }
             #if DEBUG
@@ -121,7 +134,8 @@ struct ScanView: View {
             GeometryReader { geometry in
                 Image(uiImage: image).resizable().scaledToFill()
                     .frame(width: geometry.size.width, height: geometry.size.height).clipped()
-                ScannerOverlay(codes: fixtureCodes, onSelect: select)
+                ScannerOverlay(codes: fixtureCodes, checks: services.checks.models,
+                               consentGiven: services.preferences.consent.links, onSelect: select)
             }
             .ignoresSafeArea()
             cameraControls
@@ -164,7 +178,7 @@ struct ScanView: View {
     private var cameraControls: some View {
         VStack {
             HStack(alignment: .top, spacing: 12) {
-                if !typeSize.isAccessibilitySize || (services.camera.codes.isEmpty && !isFixtureLocked) {
+                if visibleCodes.isEmpty {
                 Text(L10n.text("Point at a QR code"))
                     .font(.subheadline.weight(.medium)).padding(.horizontal, 16).padding(.vertical, 12)
                     .glassEffect(in: RoundedRectangle(cornerRadius: typeSize.isAccessibilitySize ? 24 : 30))
@@ -182,13 +196,8 @@ struct ScanView: View {
                             .labelStyle(.iconOnly).frame(width: 56, height: 56)
                     }.buttonStyle(.glass)
                     if services.camera.hasUltraWide || isFixture {
-                        Button { services.camera.showsUltraWide.toggle() } label: {
-                            Text(services.camera.showsUltraWide ? "0.5×" : "1×")
-                                .font(.system(.headline, design: .rounded)).monospacedDigit().frame(width: 74, height: 56)
-                                .contentTransition(.numericText())
-                        }
-                        .buttonStyle(.glass)
-                        .accessibilityLabel(services.camera.showsUltraWide ? L10n.text("Show the main camera") : L10n.text("Show the surroundings camera"))
+                        CameraZoomControl(ultraWide: Binding(get: { services.camera.showsUltraWide },
+                                                            set: { services.camera.showsUltraWide = $0 }))
                     }
                     if services.camera.hasTorch || isFixture {
                         Button { services.camera.toggleTorch() } label: {
@@ -203,15 +212,20 @@ struct ScanView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 20).padding(.top, 8)
+        .tint(.white)
         .symbolEffectsRemoved(reduceMotion)
     }
 
-    private var isFixtureLocked: Bool {
+    private var visibleCodes: [TrackedCode] {
         #if DEBUG
-        ScannerFixture.enabled && !fixtureCodes.isEmpty
-        #else
-        false
+        if isFixture { return fixtureCodes }
         #endif
+        return services.camera.codes
+    }
+
+    private var cameraVisible: Bool { services.camera.state == .ready || isFixture }
+    private var observingCamera: Bool {
+        isSelected && scenePhase == .active && result == nil && imported == nil && cameraVisible
     }
 
     private var isFixture: Bool {
@@ -230,10 +244,13 @@ struct ScanView: View {
     }
 
     private func select(_ code: TrackedCode) {
+        guard result == nil else { return }
         let privateScene = services.camera.sceneContainsSecrets
-        show(raw: code.observation.code.raw, symbology: code.observation.code.symbology,
-             scene: privateScene ? nil : code.observation.scene,
-             limitations: privateScene ? [L10n.text("The surroundings photo stayed on this iPhone because it contains a private code.")] : [])
+        services.camera.stop()
+        if typeSize.isAccessibilitySize { detent = .large }
+        result = services.checks.result(for: code.analysis, scene: privateScene ? nil : code.observation.scene,
+                                       limitations: privateScene ? [L10n.text("The surroundings photo stayed on this iPhone because it contains a private code.")] : [],
+                                       using: services.checker, consent: services.preferences.consent)
     }
 
     private func finishImportSelection() {
@@ -257,8 +274,8 @@ struct ScanView: View {
         if typeSize.isAccessibilitySize { detent = .large }
         services.camera.stop()
         let analysis = CodeInspector(locale: L10n.locale).inspect(raw, symbology: symbology)
-        result = ResultModel(analysis: analysis, scene: scene, extraLimitations: limitations)
-        services.history?.record(analysis, assessment: analysis.assessment, enabled: services.preferences.historyEnabled)
+        result = services.checks.result(for: analysis, scene: scene, limitations: limitations,
+                                       using: services.checker, consent: services.preferences.consent)
     }
 }
 

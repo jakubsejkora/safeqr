@@ -2,7 +2,7 @@
 import SwiftUI
 
 @MainActor enum ScannerFixture {
-    static var enabled: Bool { ["scannerIdle", "scannerLocked"].contains(DebugLaunch.screen ?? "") }
+    static var enabled: Bool { ["scannerIdle", "scannerLocked", "scannerChecking", "scannerDanger"].contains(DebugLaunch.screen ?? "") }
     static var image: UIImage? {
         guard let url = Bundle.main.url(forResource: "parking-machine", withExtension: "jpg"),
               let data = try? Data(contentsOf: url) else { return nil }
@@ -14,7 +14,7 @@ import SwiftUI
                           bounds: CodeBounds(rect: CGRect(x: 0.418, y: 0.352, width: 0.205, height: 0.275)))
     }
     static var codes: [TrackedCode] {
-        DebugLaunch.screen == "scannerLocked" ? lockedCodes : []
+        DebugLaunch.screen == "scannerIdle" ? [] : lockedCodes
     }
     static var lockedCodes: [TrackedCode] {
         let bounds = CodeBounds(rect: CGRect(x: 0.418, y: 0.352, width: 0.205, height: 0.275))

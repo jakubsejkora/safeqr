@@ -64,8 +64,8 @@ struct ResultView: View {
             }
             .background(Color(uiColor: .systemBackground))
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                ResultActionBar(actions: model.analysis.actions, level: model.assessment.level,
-                                compact: compact || typeSize.isAccessibilitySize, goBack: { dismiss() }, perform: perform)
+                ResultActionBar(actions: model.analysis.actions, level: model.handoffLevel,
+                                compact: compact || typeSize.isAccessibilitySize, pending: model.linkPending, goBack: { dismiss() }, perform: perform)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -78,14 +78,14 @@ struct ResultView: View {
                         } label: { Label(L10n.text("Copy or share"), systemImage: "ellipsis") }
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(L10n.text("Done"), systemImage: "xmark") { dismiss() }
-                        .labelStyle(.iconOnly).accessibilityIdentifier("result-done")
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(role: .close) { dismiss() }
+                        .accessibilityIdentifier("result-done")
                 }
             }
         }
         .fontDesign(.rounded)
-        .onAppear { initialFeedback = true }
+        .onAppear { initialFeedback = !model.linkPending }
         .sensoryFeedback(model.assessment.level.feedback, trigger: initialFeedback)
         .animation(reduceMotion ? nil : .spring(duration: 0.55), value: model.assessment.score)
         .sensoryFeedback(trigger: model.checking) { old, new in
@@ -93,7 +93,7 @@ struct ResultView: View {
             return model.assessment.level.feedback
         }
         .sheet(item: $selectedAction, onDismiss: finishConfirmation) { action in
-            ConfirmationSheet(action: action, level: model.assessment.level, reason: model.assessment.findings.first?.title) {
+            ConfirmationSheet(action: action, level: model.handoffLevel, reason: model.destinationUnchecked ? L10n.text("The destination could not be checked. Be careful if you continue.") : model.assessment.findings.first?.title) {
                 confirmedAction = action
             }
         }
@@ -105,7 +105,7 @@ struct ResultView: View {
         .task {
             if DebugLaunch.screen != nil, ProcessInfo.processInfo.arguments.contains("--confirmation") {
                 try? await Task.sleep(for: .milliseconds(500))
-                selectedAction = model.analysis.actions.first(where: \.isHandoff)
+                if model.allowsHandoff { selectedAction = model.analysis.actions.first(where: \.isHandoff) }
             }
         }
         #endif
@@ -140,14 +140,17 @@ struct ResultView: View {
     }
 
     private func finishConfirmation() {
-        guard let action = confirmedAction else { return }
+        guard let action = confirmedAction, model.allowsHandoff else { confirmedAction = nil; return }
         confirmedAction = nil
         // Contact and calendar editors need the confirmation's presentation to finish first.
         Task { await handler.perform(action, payload: model.analysis.content.payload) }
     }
 
     private func perform(_ action: CodeAction) {
-        if action.isHandoff { selectedAction = action }
+        if action.isHandoff {
+            guard model.allowsHandoff else { return }
+            selectedAction = action
+        }
         else { Task { await handler.perform(action, payload: model.analysis.content.payload) } }
     }
 }

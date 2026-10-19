@@ -5,6 +5,7 @@ import Observation
 final class AppServices {
     let preferences: AppPreferences
     let camera = CameraModel()
+    let checks = ScanChecks()
     let history: HistoryStore?
     let guides: GuideLibrary
     private let cloud: any CloudChecking
@@ -14,7 +15,7 @@ final class AppServices {
         #if DEBUG
         if let screen = DebugLaunch.screen {
             preferences.finishedOnboarding = screen != "onboarding"
-            preferences.deepChecksEnabled = screen == "training" && ProcessInfo.processInfo.arguments.contains("--live-check")
+            preferences.deepChecksEnabled = (["training", "scannerChecking", "scannerDanger"].contains(screen)) && ProcessInfo.processInfo.arguments.contains("--live-check")
             preferences.sceneChecksEnabled = preferences.deepChecksEnabled && ProcessInfo.processInfo.arguments.contains("--live-scene")
         }
         #endif

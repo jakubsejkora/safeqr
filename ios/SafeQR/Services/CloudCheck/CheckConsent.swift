@@ -6,7 +6,7 @@ struct CheckConsent: Sendable, Hashable {
     let surroundings: Bool
 
     func request(for analysis: CodeAnalysis, scene: ScenePhoto?) -> CheckRequest? {
-        guard links, analysis.benefitsFromCloudCheck, analysis.raw.utf16.count <= 4096 else { return nil }
+        guard links, !analysis.containsSecrets, analysis.benefitsFromCloudCheck, analysis.raw.utf16.count <= 4096 else { return nil }
         // Authentication secrets and personal records must stay on the phone, even when link checks are enabled.
         switch analysis.content.payload {
         case .wifi, .login, .eSIM, .contact, .event, .email, .sms, .phone, .text:

@@ -12,6 +12,7 @@ enum RiskMeterScale {
 struct RiskMeter: View {
     let score: Int
     var compact = false
+    var pending = false
     @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
@@ -21,9 +22,9 @@ struct RiskMeter: View {
                                                       .init(color: RiskLevel.caution.color, location: 0.45),
                                                       .init(color: RiskLevel.danger.color, location: 1)], startPoint: .leading, endPoint: .trailing))
                     .frame(height: 6).padding(.vertical, 4)
-                Circle().fill(.primary).frame(width: 10, height: 10)
+                if !pending { Circle().fill(.primary).frame(width: 10, height: 10)
                     .overlay { Circle().stroke(.background, lineWidth: 2) }
-                    .position(x: RiskMeterScale.position(score, width: geometry.size.width), y: 7)
+                    .position(x: RiskMeterScale.position(score, width: geometry.size.width), y: 7) }
             }.frame(height: 14)
             if !typeSize.isAccessibilitySize {
                 HStack {
@@ -34,13 +35,13 @@ struct RiskMeter: View {
                     Text(L10n.text("Danger"))
                 }.font(.caption2).foregroundStyle(.secondary)
             }
-            if !compact {
+            if !compact && !pending {
                 Text(L10n.format("Risk score: %lld out of 100", score))
                     .font(.caption2).monospacedDigit().foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(L10n.format("Risk score: %lld out of 100", score))
+        .accessibilityLabel(pending ? L10n.text("Checking the link…") : L10n.format("Risk score: %lld out of 100", score))
     }
 }

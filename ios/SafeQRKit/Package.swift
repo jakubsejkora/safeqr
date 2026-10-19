@@ -19,6 +19,7 @@ let package = Package(
                 .process("Resources/official-domains.json"),
                 .process("Resources/url-shorteners.json"),
                 .process("Resources/iso-currencies.json"),
+                .process("Resources/public_suffix_list.dat"),
             ]
         ),
         .executableTarget(name: "SafeQRInspect", dependencies: ["SafeQRKit"]),

@@ -82,8 +82,7 @@ enum LinkRules {
         for brand in ResourceData.brands {
             for domain in brand.domains where host.contains(domain + ".") { return brand }
             let names = Set(brand.aliases + brand.domains.compactMap { domain -> String? in
-                let parts = domain.split(separator: ".")
-                return parts.count == 2 ? parts.first.map(String.init) : nil
+                PublicSuffixRules.bundled.registrableDomain(domain).split(separator: ".").first.map(String.init)
             })
             for name in names {
                 let canonical = skeleton(name)

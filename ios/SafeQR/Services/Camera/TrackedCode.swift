@@ -15,10 +15,12 @@ struct TrackedCode: Identifiable {
     var bounds: CodeBounds
     var ultraBounds: CodeBounds?
     let analysis: CodeAnalysis
+    var stability: CodeStability
 
     init(observation: CameraObservation) {
         self.observation = observation
         bounds = observation.code.bounds
+        stability = CodeStability(bounds: observation.code.bounds)
         ultraBounds = observation.ultraBounds
         analysis = CodeInspector(locale: L10n.locale).inspect(observation.code.raw, symbology: observation.code.symbology)
     }
@@ -26,7 +28,7 @@ struct TrackedCode: Identifiable {
     var title: String {
         let detail: String?
         switch analysis.content.payload {
-        case .link(let url), .appLink(let url): detail = url.host(percentEncoded: false)
+        case .link(let url), .appLink(let url): detail = url.host(percentEncoded: false).map { PublicSuffixRules.bundled.registrableDomain($0) }
         case .payment: detail = analysis.content.facts.first(where: { $0.id == "amount" })?.value
         case .sms(let recipient, _): detail = recipient
         case .wifi(let network): detail = network.ssid

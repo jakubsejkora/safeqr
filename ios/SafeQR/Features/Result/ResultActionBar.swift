@@ -5,6 +5,7 @@ struct ResultActionBar: View {
     let actions: [CodeAction]
     let level: RiskLevel
     var compact = false
+    var pending = false
     let goBack: () -> Void
     let perform: (CodeAction) -> Void
 
@@ -13,15 +14,16 @@ struct ResultActionBar: View {
 
     var body: some View {
         VStack(spacing: 6) {
-            if risky {
+            if risky || pending {
                 Button(action: goBack) {
                     Text(L10n.text("Back to scanning")).fontWeight(.semibold).frame(maxWidth: .infinity, minHeight: 36)
                 }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
                 if let primary {
                     Button { perform(primary) } label: {
-                        Text(primary.isHandoff ? L10n.text("Continue anyway…") : primary.title)
+                        Text(pending ? primary.title : primary.isHandoff ? L10n.text("Continue anyway…") : primary.title)
                             .frame(minHeight: 38)
                     }.tint(primary.isHandoff ? level.color : AppStyle.accent)
+                    .disabled(pending && primary.isHandoff)
                 }
             } else if let primary {
                 Button { perform(primary) } label: {
@@ -32,6 +34,7 @@ struct ResultActionBar: View {
                 HStack(spacing: 24) {
                     ForEach(actions.filter { $0.id != primary?.id }) { action in
                         Button(action.title) { perform(action) }.font(.subheadline).frame(minHeight: 32)
+                            .disabled(pending && action.isHandoff)
                     }
                 }
             }

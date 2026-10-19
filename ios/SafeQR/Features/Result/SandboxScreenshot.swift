@@ -18,8 +18,6 @@ struct SandboxScreenshot: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel(L10n.text("Enlarge the isolated browser preview"))
-                Text(L10n.text("Website preview. This page was opened away from your iPhone."))
-                    .font(.footnote).foregroundStyle(.secondary)
             } else if failed {
                 Text(L10n.text("The website preview could not be loaded.")).font(.footnote).foregroundStyle(.secondary)
             } else {
@@ -33,7 +31,7 @@ struct SandboxScreenshot: View {
                 }
                 .navigationTitle(L10n.text("Website preview"))
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L10n.text("Done")) { expanded = false } } }
+                .toolbar { ToolbarItem(placement: .cancellationAction) { Button(role: .close) { expanded = false } } }
             }
         }
         .task(id: url) {

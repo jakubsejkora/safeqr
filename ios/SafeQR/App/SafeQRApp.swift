@@ -35,6 +35,9 @@ struct RootView: View {
         .fullScreenCover(isPresented: Binding(get: { !preferences.finishedOnboarding }, set: { _ in })) {
             OnboardingView()
         }
+        .onChange(of: preferences.consent) { old, new in
+            if (old.links && !new.links) || (old.surroundings && !new.surroundings) { services.checks.revokeConsent() }
+        }
         .onChange(of: tab) { _, newTab in
             if newTab != .scan { services.camera.stop() }
             else if preferences.finishedOnboarding { Task { await services.camera.start() } }

@@ -19,10 +19,10 @@ struct HelpView: View {
                         Label(L10n.text("Something has gone wrong"), systemImage: "lifepreserver")
                     }
                     if let card = services.guides.guides.first(where: { $0.id == "recovery-2" }) {
-                        NavigationLink(value: card) { Text(L10n.text("Block a card")) }
+                        NavigationLink(value: card) { Label(L10n.text("Block a card"), systemImage: "creditcard") }
                     }
-                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Czech Police"), number: "158"))
-                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Emergency services"), number: "112"))
+                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Czech Police"), number: "158"), symbol: "phone")
+                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Emergency services"), number: "112"), symbol: "phone")
                     if let report = services.guides.guides.first(where: { $0.id == "report" }) {
                         NavigationLink(value: report) { Label(report.title.value, systemImage: report.symbol) }
                     }
@@ -100,7 +100,7 @@ struct GuideDetailView: View {
                         .foregroundStyle(AppStyle.onAccent).controlSize(.large)
                 }
                 if guide.id == "report" {
-                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Czech Police"), number: "158"))
+                    ConfirmedActionButton(action: phoneAction(name: L10n.text("Czech Police"), number: "158"), symbol: "phone")
                         .buttonStyle(.glassProminent)
                         .foregroundStyle(AppStyle.onAccent).controlSize(.large)
                 }
@@ -148,8 +148,21 @@ struct BankHotlinesView: View {
 }
 
 func phoneAction(name: String, number: String) -> CodeAction {
-    CodeAction(id: number, kind: .call(phoneNumber: number), title: L10n.format("Call %@ · %@", name, number),
-               confirmation: Confirmation(title: L10n.format("Call %@?", name),
+    let title: String
+    let question: String
+    switch number {
+    case "112":
+        title = L10n.format("Call emergency services · %@", number)
+        question = L10n.text("Call emergency services?")
+    case "158":
+        title = L10n.format("Call Czech Police · %@", number)
+        question = L10n.text("Call Czech Police?")
+    default:
+        title = L10n.format("Call %@ · %@", name, number)
+        question = L10n.format("Call %@?", name)
+    }
+    return CodeAction(id: number, kind: .call(phoneNumber: number), title: title,
+               confirmation: Confirmation(title: question,
                                           message: L10n.format(["158", "112"].contains(number) ? "Your iPhone will call %@."
                                                                : "Your iPhone will call %@. Your operator’s usual call charges may apply.", number),
                                           confirmTitle: L10n.text("Call"), isRisky: false))
