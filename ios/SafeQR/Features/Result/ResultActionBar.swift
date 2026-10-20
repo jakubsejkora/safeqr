@@ -10,12 +10,13 @@ struct ResultActionBar: View {
     let perform: (CodeAction) -> Void
     @Environment(\.appTheme) private var theme
 
-    private var primary: CodeAction? { actions.first(where: \.isPrimary) ?? actions.first }
+    private var handoffs: [CodeAction] { actions.filter(\.isHandoff) }
+    private var primary: CodeAction? { handoffs.first(where: \.isPrimary) ?? handoffs.first }
     private var risky: Bool { level != .safe || primary?.isRisky == true }
 
     var body: some View {
         VStack(spacing: 6) {
-            if risky || pending {
+            if risky || pending || primary == nil {
                 Button(action: goBack) {
                     Text(L10n.text("Back to scanning")).fontWeight(.semibold).frame(maxWidth: .infinity, minHeight: 36)
                 }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
@@ -31,9 +32,9 @@ struct ResultActionBar: View {
                     Text(primary.title).fontWeight(.semibold).frame(maxWidth: .infinity, minHeight: 36)
                 }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
             }
-            if actions.count > 1 && !compact {
+            if handoffs.count > 1 && !compact {
                 HStack(spacing: 24) {
-                    ForEach(actions.filter { $0.id != primary?.id }) { action in
+                    ForEach(handoffs.filter { $0.id != primary?.id }) { action in
                         Button(action.title) { perform(action) }.font(.subheadline).frame(minHeight: 32)
                             .disabled(pending && action.isHandoff)
                     }

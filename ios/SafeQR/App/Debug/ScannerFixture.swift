@@ -9,8 +9,10 @@ final class ScannerFixture: CameraSource {
         case locked = "scannerLocked"
         case checking = "scannerChecking"
         case danger = "scannerDanger"
+        case multiple = "scannerMultiple"
     }
 
+    private(set) var isFrozen = false
     let mode: Mode
     let state = CameraState.ready
     let hasUltraWide = true
@@ -25,7 +27,7 @@ final class ScannerFixture: CameraSource {
 
     init(mode: Mode) {
         self.mode = mode
-        codes = mode == .idle ? [] : Self.lockedCodes
+        codes = mode == .idle ? [] : mode == .multiple ? Self.multipleCodes : Self.lockedCodes
     }
 
     var preview: AnyView {
@@ -38,7 +40,8 @@ final class ScannerFixture: CameraSource {
         })
     }
 
-    func start(requestPermission: Bool) async {}
+    func start(requestPermission: Bool) async { isFrozen = false }
+    func freeze() async { isFrozen = true; torchEnabled = false }
     func stop() { torchEnabled = false }
     func toggleTorch() { torchEnabled.toggle() }
 
@@ -69,6 +72,14 @@ final class ScannerFixture: CameraSource {
         return ScenePhoto(jpeg: jpeg, source: .photo,
                           bounds: CodeBounds(rect: CGRect(x: 0.418, y: 0.352, width: 0.205, height: 0.275)))
     }
+    static var multipleCodes: [TrackedCode] {
+        let first = lockedCodes
+        let bounds = CodeBounds(rect: CGRect(x: 0.62, y: 0.37, width: 0.06, height: 0.22))
+        let code = ScannedCode(raw: "https://parking.praha.eu", symbology: .qr, bounds: bounds)
+        return first + [TrackedCode(observation: CameraObservation(code: code, scene: scene,
+            frameSize: CGSize(width: 1280, height: 960), ultraBounds: bounds, ultraSize: CGSize(width: 1280, height: 960)))]
+    }
+
     static var lockedCodes: [TrackedCode] {
         let bounds = CodeBounds(rect: CGRect(x: 0.418, y: 0.352, width: 0.205, height: 0.275))
         let code = ScannedCode(raw: DebugSample.training.raw, symbology: .qr, bounds: bounds)
@@ -81,11 +92,11 @@ final class ScannerFixture: CameraSource {
         if let image = ScannerFixture.image {
             Image(uiImage: image).resizable().scaledToFill().frame(width: geometry.size.width, height: geometry.size.height).clipped()
         }
-        ScannerOverlay(codes: ScannerFixture.lockedCodes) { _ in }
+        ScannerOverlay(codes: ScannerFixture.lockedCodes)
     }.ignoresSafeArea()
 }
 
 #Preview("Scanner · idle") {
-    Color.gray.overlay { ScannerOverlay(codes: []) { _ in } }.ignoresSafeArea()
+    Color.gray.overlay { ScannerOverlay(codes: []) }.ignoresSafeArea()
 }
 #endif

@@ -36,7 +36,7 @@ struct SandboxScreenshot: View {
         }
         .task(id: url) {
             guard url.scheme == "https", let host = url.host(),
-                  host == "api.safeqr.cz" || host.hasSuffix(".amazonaws.com") else { failed = true; return }
+                  host == "api.bezpecneqr.cz" || host.hasSuffix(".amazonaws.com") else { failed = true; return }
             let configuration = URLSessionConfiguration.ephemeral
             configuration.timeoutIntervalForRequest = 10
             configuration.httpCookieStorage = nil

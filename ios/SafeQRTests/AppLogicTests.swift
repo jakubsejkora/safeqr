@@ -13,7 +13,7 @@ struct AppLogicTests {
           "result":{"score":12,"level":"safe","headline":"No new warning signs.",
             "findings":[{"id":"sandbox.review","severity":"info","title":"Reviewed","detail":"A page was inspected.","source":"sandbox"}],
             "consequences":["Your browser opens."],"limitations":["Ownership is unverified."],
-            "link":{"finalUrl":"https://example.com/","hops":[{"url":"https://example.org/","via":"http","status":302},{"url":"https://example.com/","via":"javascript"}],"screenshotUrl":"https://api.safeqr.cz/screenshot","asksFor":["card"]},
+            "link":{"finalUrl":"https://example.com/","hops":[{"url":"https://example.org/","via":"http","status":302},{"url":"https://example.com/","via":"javascript"}],"screenshotUrl":"https://api.bezpecneqr.cz/screenshot","asksFor":["card"]},
             "scene":{"summary":"A parking machine.","matchesContent":true},
             "intel":[{"id":"case-1","title":"Reported sticker","summary":"A reported case.","sourceUrl":"https://example.org/report","publishedAt":"2026-10-19"}],
             "models":["model-id"]}}

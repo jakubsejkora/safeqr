@@ -41,26 +41,12 @@ struct CodePickerView: View {
                 }
                 Section(L10n.text("Choose a code to check")) {
                     ForEach(Array(scan.codes.enumerated()), id: \.element.id) { index, code in
-                        let content = CodeInspector(locale: L10n.locale).inspect(code.raw, symbology: code.symbology).content
+                        let analysis = CodeInspector(locale: L10n.locale).inspect(code.raw, symbology: code.symbology)
                         Button {
                             dismiss()
                             onSelect(code)
                         } label: {
-                            HStack(alignment: .top, spacing: 16) {
-                                Text("\(index + 1)").font(.title3.bold()).foregroundStyle(theme.accent)
-                                VStack(alignment: .leading, spacing: 6) {
-                                    Label(content.title, systemImage: content.kind.symbol).font(.headline)
-                                    if content.facts.isEmpty {
-                                        Text(content.summary).foregroundStyle(.secondary)
-                                    } else {
-                                        ForEach(content.facts.prefix(2)) { fact in
-                                            Text("\(fact.label): \(fact.value)")
-                                                .font(.callout).foregroundStyle(.primary)
-                                        }
-                                    }
-                                }
-                            }
-                            .padding(.vertical, 8)
+                            CodeChoiceRow(number: index + 1, analysis: analysis)
                         }
                         .buttonStyle(.plain)
                     }

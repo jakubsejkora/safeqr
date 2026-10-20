@@ -20,10 +20,10 @@ struct DebugLaunchTests {
     }
 
     @Test(arguments: DebugSample.allCases)
-    func everySampleStillUsesTheDeviceEngine(_ sample: DebugSample) throws {
+    func everySampleStillUsesTheDeviceEngine(_ sample: DebugSample) async throws {
         let configuration = configuration(sample.rawValue)
         let services = services(configuration)
-        configuration.presentSample(in: services)
+        await configuration.presentSample(in: services)
         let result = try #require(services.navigation.result)
         #expect(configuration.sample == sample)
         #expect(result.model.analysis.raw == sample.raw)
@@ -40,7 +40,7 @@ struct DebugLaunchTests {
         #expect(camera.mode == mode)
         #expect(camera.state == .ready)
         #expect(camera.frame != nil)
-        #expect(camera.codes.count == (mode == .idle ? 0 : 1))
+        #expect(camera.codes.count == (mode == .idle ? 0 : mode == .multiple ? 2 : 1))
         #expect(camera.codes.first?.analysis.raw == (mode == .idle ? nil : DebugSample.training.raw))
         #expect(services.navigation.result == nil)
         camera.toggleTorch()
@@ -84,7 +84,7 @@ struct DebugLaunchTests {
     @Test func confirmationOpensWithoutPerformingTheAction() async throws {
         let configuration = configuration("premiumSMS", flags: ["--confirmation"])
         let services = services(configuration)
-        configuration.presentSample(in: services)
+        await configuration.presentSample(in: services)
         let result = try #require(services.navigation.result)
         await result.model.run(using: services.checker, consent: services.preferences.consent)
         await configuration.prepareConfirmation(in: services)

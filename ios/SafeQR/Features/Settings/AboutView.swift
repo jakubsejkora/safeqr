@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AboutView: View {
-    private let websiteURL = URL(string: "https://safeqr.cz")
+    private let websiteURL = URL(string: "https://bezpecneqr.cz")
     private let repositoryURL = URL(string: "https://github.com/jakubsejkora/safeqr")
     private var version: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0" }
 
@@ -18,7 +18,7 @@ struct AboutView: View {
             }
             Section {
                 if let websiteURL {
-                    ConfirmedActionButton(action: sourceAction(title: "safeqr.cz", url: websiteURL))
+                    ConfirmedActionButton(action: sourceAction(title: "bezpecneqr.cz", url: websiteURL))
                 }
                 if let repositoryURL {
                     ConfirmedActionButton(action: sourceAction(title: "GitHub", url: repositoryURL))

@@ -23,15 +23,16 @@ final class AppServices {
 
     static func cloudClient() -> CloudClient {
         let configured = Bundle.main.object(forInfoDictionaryKey: "SafeQRAPIBaseURL") as? String
-        let baseURL = URL(string: configured ?? "https://api.safeqr.cz")
+        let baseURL = URL(string: configured ?? "https://api.bezpecneqr.cz")
         return CloudClient(baseURL: baseURL)
     }
 
-    func present(_ analysis: CodeAnalysis, scene: ScenePhoto?, limitations: [String] = []) {
+    func present(_ analysis: CodeAnalysis, scene: ScenePhoto?, limitations: [String] = []) async {
         guard navigation.result == nil else { return }
-        camera.stop()
         let model = checks.result(for: analysis, scene: scene, limitations: limitations,
                                   using: checker, consent: preferences.consent)
+        await camera.freeze()
+        guard navigation.result == nil else { return }
         navigation.result = ResultPresentation(model: model)
     }
 }

@@ -1299,22 +1299,6 @@
         }
       }
     },
-    "Copy or share": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copy or share"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kopírovat nebo sdílet"
-          }
-        }
-      }
-    },
     "Couldn't read this picture": {
       "extractionState": "manual",
       "localizations": {
@@ -2484,7 +2468,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Na fotce je více kódů"
+            "value": "Více kódů"
           }
         }
       }
@@ -3986,23 +3970,6 @@
         }
       }
     },
-    "Tap to check": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap to check"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Klepněte pro kontrolu"
-          }
-        }
-      }
-    },
     "Text with a hidden paid SMS": {
       "localizations": {
         "en": {
@@ -5415,6 +5382,57 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dvojnásobné přiblížení"
+          }
+        }
+      }
+    },
+    "Waiting for check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čeká na kontrolu"
+          }
+        }
+      }
+    },
+    "A sticker may be covering the original.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A sticker may be covering the original."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Původní kód může být přelepený nálepkou."
+          }
+        }
+      }
+    },
+    "Share": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sdílet"
           }
         }
       }

@@ -24,6 +24,21 @@ final class ResultModel: Identifiable {
         (destinationUnchecked || linkPending) && assessment.level == .safe ? .caution : assessment.level
     }
     var allowsHandoff: Bool { !linkPending }
+    var verdictAnnouncement: String {
+        linkPending ? L10n.text("Checking the link…") : "\(assessment.level.title). \(headline)"
+    }
+
+    var shareText: String? {
+        guard !analysis.containsSecrets else { return nil }
+        return actions.compactMap { action in
+            if case .share(let text) = action.kind { return text }
+            return nil
+        }.first
+    }
+
+    var copyAction: CodeAction? {
+        actions.first { if case .copy = $0.kind { return true }; return false }
+    }
 
     var secureURL: URL? {
         guard finished, !checking, let verdict, verdict.isValid,

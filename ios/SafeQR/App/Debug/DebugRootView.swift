@@ -40,13 +40,13 @@ struct DebugRootView: View {
             guard !launched else { return }
             launched = true
             if typeSize.isAccessibilitySize { services.navigation.resultDetent = .large }
-            launch.presentSample(in: services)
+            await launch.presentSample(in: services)
         }
     }
 
     private func present(_ sample: DebugSample) {
         if typeSize.isAccessibilitySize { services.navigation.resultDetent = .large }
-        launch.present(sample, in: services)
+        Task { await launch.present(sample, in: services) }
     }
 }
 #endif

@@ -37,13 +37,13 @@ final class DebugLaunchConfiguration {
         return services
     }
 
-    func presentSample(in services: AppServices) {
+    func presentSample(in services: AppServices) async {
         guard let sample else { return }
-        present(sample, in: services, scene: sample == .training && options.liveScene ? ScannerFixture.scene : nil)
+        await present(sample, in: services, scene: sample == .training && options.liveScene ? ScannerFixture.scene : nil)
     }
 
-    func present(_ sample: DebugSample, in services: AppServices, scene: ScenePhoto? = nil) {
-        services.present(CodeInspector(locale: L10n.locale).inspect(sample.raw), scene: scene)
+    func present(_ sample: DebugSample, in services: AppServices, scene: ScenePhoto? = nil) async {
+        await services.present(CodeInspector(locale: L10n.locale).inspect(sample.raw), scene: scene)
     }
 
     func prepareConfirmation(in services: AppServices) async {

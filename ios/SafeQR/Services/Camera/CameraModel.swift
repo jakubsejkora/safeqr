@@ -16,11 +16,20 @@ final class CameraModel: CameraSource {
     private(set) var sceneContainsPrivateCodes = false
     private var lastSeen: [UUID: Date] = [:]
     private var acceptsFrames = false
+    private var frozenFrame: UIImage?
+    var isFrozen: Bool { frozenFrame != nil }
     private(set) var capture: CameraCapture?
 
     var preview: AnyView {
         if let capture {
-            AnyView(CameraPreview(capture: capture, ultraWide: showsUltraWide))
+            AnyView(CameraPreview(capture: capture, ultraWide: showsUltraWide).overlay {
+                if let frozenFrame {
+                    GeometryReader { geometry in
+                        Image(uiImage: frozenFrame).resizable().scaledToFill()
+                            .frame(width: geometry.size.width, height: geometry.size.height).clipped()
+                    }
+                }
+            })
         } else { AnyView(EmptyView()) }
     }
 
@@ -59,6 +68,7 @@ final class CameraModel: CameraSource {
                     state = .ready
                 case .frame(let observations, let revision):
                     guard acceptsFrames, revision == zoomRevision else { return }
+                    frozenFrame = nil
                     update(observations)
                 case .zoomChanged(let applied, let revision):
                     guard revision == zoomRevision else { return }
@@ -69,6 +79,11 @@ final class CameraModel: CameraSource {
                     torchEnabled = enabled
                 }
             }
+        }
+        if !acceptsFrames {
+            codes = []
+            lastSeen.removeAll()
+            sceneContainsPrivateCodes = false
         }
         acceptsFrames = true
         capture?.start()
@@ -109,12 +124,25 @@ final class CameraModel: CameraSource {
 
     func stop() {
         acceptsFrames = false
-        codes = []
-        lastSeen.removeAll()
-        sceneContainsPrivateCodes = false
+        if !isFrozen {
+            codes = []
+            lastSeen.removeAll()
+            sceneContainsPrivateCodes = false
+        }
         capture?.setTorch(false)
         torchEnabled = false
         capture?.stop()
+    }
+
+    func freeze() async {
+        guard let capture else { return }
+        acceptsFrames = false
+        if !isFrozen, let image = await capture.frozenFrame(ultraWide: showsUltraWide) {
+            frozenFrame = UIImage(cgImage: image)
+        }
+        capture.setTorch(false)
+        capture.stop()
+        torchEnabled = false
     }
 
     func toggleTorch() {

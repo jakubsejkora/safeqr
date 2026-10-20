@@ -5,8 +5,6 @@ struct ScannerOverlay: View {
     let codes: [TrackedCode]
     var ultraWide = false
     var checks: [String: ResultModel] = [:]
-    var consentGiven = false
-    let onSelect: (TrackedCode) -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var typeSize
     @State private var breathing = false
@@ -37,8 +35,14 @@ struct ScannerOverlay: View {
                     brackets.frame(width: max(32, rect.width + 14), height: max(32, rect.height + 14))
                         .position(x: rect.midX, y: rect.midY)
                         .animation(reduceMotion ? nil : .spring(response: 0.38, dampingFraction: 0.86), value: rect)
-                    if !typeSize.isAccessibilitySize {
-                        ScannerVerdictPill(code: code, model: checks[code.analysis.raw], consentGiven: consentGiven) { onSelect(code) }
+                    if codes.count > 1 {
+                        Text("\(index + 1)").font(.headline.bold()).monospacedDigit()
+                            .foregroundStyle(.black).padding(8).background(.white, in: Circle())
+                            .position(x: max(24, rect.minX), y: max(100, rect.minY))
+                            .accessibilityHidden(true)
+                    }
+                    if codes.count == 1 && !typeSize.isAccessibilitySize {
+                        ScannerVerdictPill(code: code, model: checks[code.analysis.raw])
                             .glassEffectID(code.id, in: glass)
                             .frame(maxWidth: min(340, geometry.size.width - 32))
                             .fixedSize(horizontal: false, vertical: true)
@@ -48,10 +52,10 @@ struct ScannerOverlay: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .overlay {
-                if typeSize.isAccessibilitySize && !codes.isEmpty {
+                if typeSize.isAccessibilitySize && codes.count == 1 {
                     ScrollView {
                         VStack(spacing: 12) {
-                            ForEach(codes) { code in ScannerVerdictPill(code: code, model: checks[code.analysis.raw], consentGiven: consentGiven) { onSelect(code) } }
+                            ForEach(codes) { code in ScannerVerdictPill(code: code, model: checks[code.analysis.raw]) }
                         }.padding(.horizontal, 16)
                     }.frame(maxHeight: geometry.size.height * 0.5)
                 }

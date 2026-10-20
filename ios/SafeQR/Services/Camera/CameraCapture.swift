@@ -24,6 +24,7 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
     private var wideOutput: AVCaptureVideoDataOutput?
     private var ultraOutput: AVCaptureVideoDataOutput?
     private var latestUltra: CVPixelBuffer?
+    private var latestWide: CVPixelBuffer?
     private var lastUltraTime: CMTime = .zero
     private var lastScanTime: CMTime = .zero
     private var configured = false
@@ -60,6 +61,20 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
         queue.async { [self] in
             if session.isRunning { session.stopRunning() }
             latestUltra = nil
+            latestWide = nil
+        }
+    }
+
+    func frozenFrame(ultraWide: Bool) async -> CGImage? {
+        await withCheckedContinuation { continuation in
+            queue.async { [self] in
+                let buffer = ultraWide ? latestUltra ?? latestWide : latestWide
+                let image = buffer.flatMap { buffer in
+                    let image = CIImage(cvPixelBuffer: buffer)
+                    return context.createCGImage(image, from: image.extent)
+                }
+                continuation.resume(returning: image)
+            }
         }
     }
 
@@ -178,6 +193,7 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
             lastUltraTime = time
             return
         }
+        latestWide = buffer
         if validFramesAfter.isValid, time < validFramesAfter { return }
         guard CMTimeGetSeconds(time - lastScanTime) >= 0.25 else { return }
         lastScanTime = time

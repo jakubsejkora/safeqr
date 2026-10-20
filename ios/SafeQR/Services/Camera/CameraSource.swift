@@ -5,6 +5,7 @@ enum CameraState { case idle, ready, denied, unavailable }
 @MainActor
 protocol CameraSource: AnyObject {
     var state: CameraState { get }
+    var isFrozen: Bool { get }
     var preview: AnyView { get }
     var hasUltraWide: Bool { get }
     var hasTorch: Bool { get }
@@ -17,6 +18,7 @@ protocol CameraSource: AnyObject {
 
     func start(requestPermission: Bool) async
     func stop()
+    func freeze() async
     func toggleTorch()
     func selectZoom(_ zoom: CameraZoom)
 }

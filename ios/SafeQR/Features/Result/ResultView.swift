@@ -24,6 +24,11 @@ struct ResultView: View {
                                           completed: model.verdict != nil)
                     }
                     PayloadView(content: model.analysis.content, compact: compact, secureURL: model.secureURL)
+                        .contextMenu {
+                            if let action = model.copyAction {
+                                Button(action.title, systemImage: "doc.on.doc") { perform(action) }
+                            }
+                        }
                     if let link = model.verdict?.link {
                         LinkJourneyView(link: link, original: model.analysis.raw).id("journey")
                     }
@@ -59,23 +64,28 @@ struct ResultView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                if compact || typeSize.isAccessibilitySize {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Menu {
-                            ForEach(model.actions.filter { !$0.isHandoff }) { action in
-                                Button(action.title) { perform(action) }
-                            }
-                        } label: { Label(L10n.text("Copy or share"), systemImage: "ellipsis") }
-                    }
-                }
-                ToolbarItem(placement: .cancellationAction) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close) { dismiss() }
                         .accessibilityIdentifier("result-done")
+                }
+                if let text = model.shareText {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        ShareLink(item: text) {
+                            Label(L10n.text("Share"), systemImage: "square.and.arrow.up")
+                        }
+                        .accessibilityIdentifier("result-share")
+                    }
                 }
             }
         }
         .fontDesign(.rounded)
         .onAppear { initialFeedback = !model.linkPending }
+        .task(id: model.verdictAnnouncement) {
+            guard UIAccessibility.isVoiceOverRunning else { return }
+            do { try await Task.sleep(for: .milliseconds(650)) }
+            catch { return }
+            UIAccessibility.post(notification: .announcement, argument: model.verdictAnnouncement)
+        }
         .sensoryFeedback(model.assessment.level.feedback, trigger: initialFeedback)
         .animation(reduceMotion ? nil : .spring(duration: 0.55), value: model.assessment.score)
         .sensoryFeedback(trigger: model.checking) { old, new in
