@@ -9,7 +9,7 @@ Safe QR is a native iOS app in Czech and English, plus safeqr.cz: scan a code, r
 <table>
   <tr>
     <td><img src="docs/screenshots/scanner-en.jpg" width="200" alt="Camera locked onto a QR sticker on a parking machine; the label under the code reads Dangerous."></td>
-    <td><img src="docs/screenshots/verdict-en.jpg" width="200" alt="Dangerous: the website asks for sensitive details. Risk meter at 85, deep check in 13 seconds, and where the link leads."></td>
+    <td><img src="docs/screenshots/verdict-en.jpg" width="200" alt="Dangerous: the website asks for sensitive details. Risk meter at 75, deep check in 11 seconds, and where the link leads."></td>
     <td><img src="docs/screenshots/sandbox-en.jpg" width="200" alt="Screenshot of the fake parking payment page, taken in an isolated browser in AWS Frankfurt, with the reasons below."></td>
     <td><img src="docs/screenshots/sms-cs.jpg" width="200" alt="Czech premium SMS result: Dangerous, the message START in a text bubble and the price of up to 99 Kč per received message."></td>
   </tr>

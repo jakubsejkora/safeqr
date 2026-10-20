@@ -11,7 +11,7 @@ const { screen, locale, alt } = Astro.props;
 // The confirmation capture is available only in Czech light and English dark.
 const hasLight = screen !== "danger-confirmation" || locale === "cs";
 const hasDark = screen !== "danger-confirmation" || locale === "en";
-const source = (theme: "light" | "dark") => `/app/ios3-${screen}-${locale}-${theme}.webp`;
+const source = (theme: "light" | "dark") => `/app/ios5-${screen}-${locale}-${theme}.webp`;
 ---
 
 <picture class="app-screenshot">
