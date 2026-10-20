@@ -2,8 +2,9 @@ import SwiftUI
 import PhotosUI
 import SafeQRKit
 
-struct ScanView: View {
-    var isSelected = true
+struct ScanView<ResultContent: View>: View {
+    var isSelected: Bool
+    @ViewBuilder var resultContent: (ResultPresentation, Bool) -> ResultContent
     @Environment(AppServices.self) private var services
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -12,59 +13,35 @@ struct ScanView: View {
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var imported: ImportedScan?
     @State private var pendingImport: (code: ScannedCode, scan: ImportedScan)?
-    @State private var result: ResultModel?
     @State private var errorMessage: String?
     @State private var importing = false
-    @State private var detent = PresentationDetent.medium
-    #if DEBUG
-    @State private var launchedSample = false
-    @State private var fixtureCodes = ScannerFixture.codes
-    #endif
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                if services.camera.state == .ready, let capture = services.camera.capture {
-                    CameraPreview(capture: capture, ultraWide: services.camera.showsUltraWide)
-                        .ignoresSafeArea().accessibilityHidden(true)
-                    ScannerOverlay(codes: services.camera.codes, ultraWide: services.camera.showsUltraWide,
-                                   checks: services.checks.models, consentGiven: services.preferences.consent.links, onSelect: select)
-                        .ignoresSafeArea()
-                    cameraControls
-                } else {
-                    placeholder
-                }
-                if importing {
-                    ProgressView(L10n.text("Reading the picture…"))
-                        .padding(24).glassEffect(in: RoundedRectangle(cornerRadius: 24))
-                }
+        @Bindable var navigation = services.navigation
+        ZStack {
+            if services.camera.state == .ready {
+                services.camera.preview
+                    .ignoresSafeArea().accessibilityHidden(true)
+                ScannerOverlay(codes: services.camera.codes, ultraWide: services.camera.showsUltraWide,
+                               checks: services.checks.models, consentGiven: services.preferences.consent.links, onSelect: select)
+                    .ignoresSafeArea()
+                cameraControls
+            } else {
+                unavailable
             }
-            .background(AppStyle.canvas)
-            .toolbarBackground(.hidden, for: .navigationBar)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                #if DEBUG
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button(DebugSample.training.title) { show(raw: DebugSample.training.raw, symbology: .qr, scene: nil) }
-                        ForEach(DebugSample.Category.allCases) { category in
-                            Menu(category.title) {
-                                ForEach(DebugSample.allCases.filter { $0.category == category && $0 != .training }) { sample in
-                                    Button(sample.title) { show(raw: sample.raw, symbology: .qr, scene: nil) }
-                                }
-                            }
-                        }
-                    } label: { Label(L10n.text("Sample codes"), systemImage: "ellipsis.circle") }
-                    .accessibilityIdentifier("sample-codes")
-                }
-                #endif
+            if importing {
+                ProgressView(L10n.text("Reading the picture…"))
+                    .padding(24).glassEffect(in: RoundedRectangle(cornerRadius: 24))
             }
         }
+        .background(AppStyle.canvas)
+        .toolbarBackground(.hidden, for: .navigationBar)
+        .navigationBarTitleDisplayMode(.inline)
         .environment(\.colorScheme, cameraVisible ? .dark : systemAppearance)
         .toolbarColorScheme(cameraVisible ? .dark : nil, for: .navigationBar, .tabBar)
-        .sheet(item: $result, onDismiss: { Task { await services.camera.start() } }) { result in
-            ResultView(model: result, compact: detent == .medium && !typeSize.isAccessibilitySize)
-                .presentationDetents([.medium, .large], selection: $detent)
+        .sheet(item: $navigation.result, onDismiss: { Task { await services.camera.start() } }) { result in
+            resultContent(result, navigation.resultDetent == .medium && !typeSize.isAccessibilitySize)
+                .presentationDetents([.medium, .large], selection: $navigation.resultDetent)
                 .presentationDragIndicator(.visible)
         }
         .sheet(isPresented: Binding(get: { imported != nil }, set: { if !$0 { imported = nil } }), onDismiss: finishImportSelection) {
@@ -99,7 +76,7 @@ struct ScanView: View {
         .task(id: observingCamera) {
             guard observingCamera else { return }
             while !Task.isCancelled {
-                services.checks.observe(visibleCodes, sceneContainsPrivateCodes: services.camera.sceneContainsPrivateCodes,
+                services.checks.observe(services.camera.codes, sceneContainsPrivateCodes: services.camera.sceneContainsPrivateCodes,
                                         using: services.checker, consent: services.preferences.consent)
                 do { try await Task.sleep(for: .milliseconds(200)) }
                 catch { return }
@@ -107,49 +84,23 @@ struct ScanView: View {
         }
         .task {
             if services.preferences.finishedOnboarding { await services.camera.start() }
-            #if DEBUG
-            if !launchedSample, let screen = DebugLaunch.screen,
-               let sample = DebugSample(rawValue: screen) {
-                launchedSample = true
-                detent = ProcessInfo.processInfo.arguments.contains("--medium") ? .medium : .large
-                let scene = sample == .training && ProcessInfo.processInfo.arguments.contains("--live-scene") ? ScannerFixture.scene : nil
-                show(raw: sample.raw, symbology: .qr, scene: scene)
-            }
-            #endif
         }
         .onChange(of: services.preferences.finishedOnboarding) { _, finished in
             if finished && isSelected { Task { await services.camera.start() } }
         }
         .onChange(of: scenePhase) { _, phase in
-            if isSelected && phase == .active && result == nil && imported == nil && services.preferences.finishedOnboarding {
+            if isSelected && phase == .active && services.navigation.result == nil && imported == nil && services.preferences.finishedOnboarding {
                 Task { await services.camera.start() }
             }
         }
         .onDisappear { services.camera.stop() }
     }
 
-    @ViewBuilder private var placeholder: some View {
-        #if DEBUG
-        if ScannerFixture.enabled, let image = ScannerFixture.image {
-            GeometryReader { geometry in
-                Image(uiImage: image).resizable().scaledToFill()
-                    .frame(width: geometry.size.width, height: geometry.size.height).clipped()
-                ScannerOverlay(codes: fixtureCodes, checks: services.checks.models,
-                               consentGiven: services.preferences.consent.links, onSelect: select)
-            }
-            .ignoresSafeArea()
-            cameraControls
-        } else { unavailable }
-        #else
-        unavailable
-        #endif
-    }
-
     private var unavailable: some View {
         ContentUnavailableView {
             Label(L10n.text(services.camera.state == .denied ? "Camera access is off" : "Camera unavailable"), systemImage: "camera")
         } description: {
-            Text(placeholderMessage)
+            Text(services.camera.unavailableMessage)
         } actions: {
             if services.camera.state == .denied {
                 Button(L10n.text("Open Settings")) { openSettings() }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
@@ -164,27 +115,16 @@ struct ScanView: View {
         }
     }
 
-    private var placeholderMessage: String {
-        if services.camera.state == .denied {
-            return L10n.text("Camera access is off. Allow it in Settings, or choose a picture to check.")
-        }
-        #if targetEnvironment(simulator)
-        return L10n.text("Import a picture to check a code in the Simulator.")
-        #else
-        return L10n.text("Allow camera access or import a picture to check a code.")
-        #endif
-    }
-
     private var cameraControls: some View {
         VStack {
             HStack(alignment: .top, spacing: 12) {
-                if visibleCodes.isEmpty {
-                Text(L10n.text("Point at a QR code"))
-                    .font(.subheadline.weight(.medium)).padding(.horizontal, 16).padding(.vertical, 12)
-                    .glassEffect(in: RoundedRectangle(cornerRadius: typeSize.isAccessibilitySize ? 24 : 30))
+                if services.camera.codes.isEmpty {
+                    Text(L10n.text("Point at a QR code"))
+                        .font(.subheadline.weight(.medium)).padding(.horizontal, 16).padding(.vertical, 12)
+                        .glassEffect(in: RoundedRectangle(cornerRadius: typeSize.isAccessibilitySize ? 24 : 30))
                 }
                 Spacer(minLength: 0)
-                if !typeSize.isAccessibilitySize, let thumbnail = surroundingsThumbnail {
+                if !typeSize.isAccessibilitySize, let thumbnail = services.camera.thumbnail {
                     SurroundingsThumbnail(image: thumbnail, captureCount: services.camera.codes.count)
                 }
             }
@@ -195,11 +135,11 @@ struct ScanView: View {
                         Label(L10n.text("Import photo"), systemImage: "photo")
                             .labelStyle(.iconOnly).frame(width: 56, height: 56)
                     }.buttonStyle(.glass).disabled(importing)
-                    if services.camera.hasUltraWide || isFixture {
+                    if services.camera.hasUltraWide {
                         CameraZoomControl(ultraWide: Binding(get: { services.camera.showsUltraWide },
                                                             set: { services.camera.showsUltraWide = $0 }))
                     }
-                    if services.camera.hasTorch || isFixture {
+                    if services.camera.hasTorch {
                         Button { services.camera.toggleTorch() } label: {
                             Label(services.camera.torchEnabled ? L10n.text("Turn light off") : L10n.text("Turn light on"),
                                   systemImage: services.camera.torchEnabled ? "flashlight.on.fill" : "flashlight.off.fill")
@@ -216,41 +156,17 @@ struct ScanView: View {
         .symbolEffectsRemoved(reduceMotion)
     }
 
-    private var visibleCodes: [TrackedCode] {
-        #if DEBUG
-        if isFixture { return fixtureCodes }
-        #endif
-        return services.camera.codes
-    }
-
-    private var cameraVisible: Bool { services.camera.state == .ready || isFixture }
+    private var cameraVisible: Bool { services.camera.state == .ready }
     private var observingCamera: Bool {
-        isSelected && scenePhase == .active && result == nil && imported == nil && !importing && cameraVisible
-    }
-
-    private var isFixture: Bool {
-        #if DEBUG
-        ScannerFixture.enabled
-        #else
-        false
-        #endif
-    }
-
-    private var surroundingsThumbnail: UIImage? {
-        #if DEBUG
-        if isFixture { return ScannerFixture.image }
-        #endif
-        return services.camera.thumbnail
+        isSelected && scenePhase == .active && services.navigation.result == nil && imported == nil && !importing && cameraVisible
     }
 
     private func select(_ code: TrackedCode) {
-        guard result == nil else { return }
+        guard services.navigation.result == nil else { return }
         let privateScene = services.camera.sceneContainsPrivateCodes
-        services.camera.stop()
-        if typeSize.isAccessibilitySize { detent = .large }
-        result = services.checks.result(for: code.analysis, scene: privateScene ? nil : code.observation.scene,
-                                       limitations: privateScene ? [L10n.text("The surroundings photo stayed on this iPhone because it contains a private code.")] : [],
-                                       using: services.checker, consent: services.preferences.consent)
+        if typeSize.isAccessibilitySize { services.navigation.resultDetent = .large }
+        services.present(code.analysis, scene: privateScene ? nil : code.observation.scene,
+                         limitations: privateScene ? [L10n.text("The surroundings photo stayed on this iPhone because it contains a private code.")] : [])
     }
 
     private func finishImportSelection() {
@@ -270,12 +186,16 @@ struct ScanView: View {
     }
 
     private func show(raw: String, symbology: Symbology, scene: ScenePhoto?, limitations: [String] = []) {
-        guard result == nil else { return }
-        if typeSize.isAccessibilitySize { detent = .large }
-        services.camera.stop()
+        guard services.navigation.result == nil else { return }
+        if typeSize.isAccessibilitySize { services.navigation.resultDetent = .large }
         let analysis = CodeInspector(locale: L10n.locale).inspect(raw, symbology: symbology)
-        result = services.checks.result(for: analysis, scene: scene, limitations: limitations,
-                                       using: services.checker, consent: services.preferences.consent)
+        services.present(analysis, scene: scene, limitations: limitations)
+    }
+}
+
+extension ScanView where ResultContent == ResultView {
+    init(isSelected: Bool = true) {
+        self.init(isSelected: isSelected) { ResultView(presentation: $0, compact: $1) }
     }
 }
 

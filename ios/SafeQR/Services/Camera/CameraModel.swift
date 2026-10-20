@@ -4,9 +4,8 @@ import SwiftUI
 import SafeQRKit
 
 @MainActor @Observable
-final class CameraModel {
-    enum State { case idle, ready, denied, unavailable }
-    private(set) var state: State = .idle
+final class CameraModel: CameraSource {
+    private(set) var state: CameraState = .idle
     private(set) var hasUltraWide = false
     private(set) var hasTorch = false
     var showsUltraWide = false
@@ -17,6 +16,23 @@ final class CameraModel {
     private var lastSeen: [UUID: Date] = [:]
     private var acceptsFrames = false
     private(set) var capture: CameraCapture?
+
+    var preview: AnyView {
+        if let capture {
+            AnyView(CameraPreview(capture: capture, ultraWide: showsUltraWide))
+        } else { AnyView(EmptyView()) }
+    }
+
+    var unavailableMessage: String {
+        if state == .denied {
+            return L10n.text("Camera access is off. Allow it in Settings, or choose a picture to check.")
+        }
+        #if targetEnvironment(simulator)
+        return L10n.text("Import a picture to check a code in the Simulator.")
+        #else
+        return L10n.text("Allow camera access or import a picture to check a code.")
+        #endif
+    }
 
     func start(requestPermission: Bool = false) async {
         #if targetEnvironment(simulator)

@@ -1,1 +1,3 @@
 #include "API.xcconfig"
+
+EXCLUDED_SOURCE_FILE_NAMES = $(inherited) Debug*.swift PreviewCloudClient.swift Previews.swift ScannerFixture.swift parking-machine.jpg

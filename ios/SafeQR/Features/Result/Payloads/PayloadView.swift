@@ -48,18 +48,3 @@ struct PayloadView: View {
     }
     private func value(_ id: String) -> String? { content.facts.first { $0.id == id }?.value }
 }
-
-#if DEBUG
-#Preview("Payloads") {
-    ScrollView {
-        VStack(alignment: .leading, spacing: 40) {
-            ForEach(DebugSample.allCases) { sample in
-                VStack(alignment: .leading, spacing: 12) {
-                    Text(sample.title).font(.headline)
-                    PayloadView(content: CodeInspector(locale: L10n.locale).inspect(sample.raw).content)
-                }
-            }
-        }.padding()
-    }
-}
-#endif

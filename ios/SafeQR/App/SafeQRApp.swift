@@ -2,35 +2,54 @@ import SwiftUI
 
 @main
 struct SafeQRApp: App {
-    @State private var services = AppServices()
+    @State private var services: AppServices
+    #if DEBUG
+    private let launch: DebugLaunchConfiguration
+    #endif
+
+    init() {
+        #if DEBUG
+        let launch = DebugLaunchConfiguration(DebugLaunch(arguments: ProcessInfo.processInfo.arguments))
+        self.launch = launch
+        _services = State(initialValue: launch.makeServices())
+        #else
+        _services = State(initialValue: AppServices())
+        #endif
+    }
 
     var body: some Scene {
         WindowGroup {
-            RootView().environment(services).tint(AppStyle.accent)
+            Group {
+                #if DEBUG
+                DebugRootView().environment(launch)
+                #else
+                RootView { ScanView(isSelected: $0) } settings: { SettingsSections() }
+                #endif
+            }
+            .environment(services).tint(AppStyle.accent)
         }
     }
 }
 
-struct RootView: View {
+struct RootView<Scanner: View, Settings: View>: View {
     @Environment(AppServices.self) private var services
     @Environment(\.scenePhase) private var scenePhase
-    @State private var tab = AppTab.scan
-
-    init() {
-        #if DEBUG
-        if let screen = DebugLaunch.screen {
-            if screen == "help" || screen == "guide" { _tab = State(initialValue: .help) }
-            if screen == "settings" { _tab = State(initialValue: .settings) }
-        }
-        #endif
-    }
+    @ViewBuilder var scanner: (Bool) -> Scanner
+    @ViewBuilder var settings: () -> Settings
 
     var body: some View {
         @Bindable var preferences = services.preferences
-        TabView(selection: $tab) {
-            Tab(L10n.text("Scan"), systemImage: "qrcode.viewfinder", value: AppTab.scan) { ScanView(isSelected: tab == .scan) }
+        @Bindable var navigation = services.navigation
+        TabView(selection: $navigation.tab) {
+            Tab(L10n.text("Scan"), systemImage: "qrcode.viewfinder", value: AppTab.scan) {
+                NavigationStack { scanner(navigation.tab == .scan) }
+            }
             Tab(L10n.text("Help"), systemImage: "questionmark.circle", value: AppTab.help) { HelpView() }
-            Tab(L10n.text("Settings"), systemImage: "gearshape", value: AppTab.settings) { SettingsView() }
+            Tab(L10n.text("Settings"), systemImage: "gearshape", value: AppTab.settings) {
+                NavigationStack {
+                    Form { settings() }.navigationTitle(L10n.text("Settings"))
+                }
+            }
         }
         .fullScreenCover(isPresented: Binding(get: { !preferences.finishedOnboarding }, set: { _ in })) {
             OnboardingView()
@@ -38,15 +57,12 @@ struct RootView: View {
         .onChange(of: preferences.consent) { old, new in
             if (old.links && !new.links) || (old.surroundings && !new.surroundings) { services.checks.revokeConsent() }
         }
-        .onChange(of: tab) { _, newTab in
+        .onChange(of: navigation.tab) { _, newTab in
             if newTab != .scan { services.camera.stop() }
             else if preferences.finishedOnboarding { Task { await services.camera.start() } }
         }
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { services.camera.stop() }
         }
-
     }
 }
-
-enum AppTab: Hashable { case scan, help, settings }

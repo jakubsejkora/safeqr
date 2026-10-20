@@ -5,10 +5,10 @@ struct ResultView: View {
     @Environment(AppServices.self) private var services
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Bindable var model: ResultModel
+    @Bindable var presentation: ResultPresentation
+    private var model: ResultModel { presentation.model }
     var compact = false
     @Environment(\.dynamicTypeSize) private var typeSize
-    @State private var selectedAction: CodeAction?
     @State private var confirmedAction: CodeAction?
     @State private var handler = ActionHandler()
     @State private var allReasons = false
@@ -16,51 +16,41 @@ struct ResultView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollViewReader { scroll in
-                ScrollView {
-                    VStack(alignment: .leading, spacing: compact ? 14 : 26) {
-                        ResultHeader(model: model, compact: compact)
-                        if model.checking || !model.steps.isEmpty {
-                            CloudProgressView(steps: model.steps, checking: model.checking, elapsedSeconds: model.elapsedSeconds,
-                                              completed: model.verdict != nil)
+            ScrollView {
+                VStack(alignment: .leading, spacing: compact ? 14 : 26) {
+                    ResultHeader(model: model, compact: compact)
+                    if model.checking || !model.steps.isEmpty {
+                        CloudProgressView(steps: model.steps, checking: model.checking, elapsedSeconds: model.elapsedSeconds,
+                                          completed: model.verdict != nil)
+                    }
+                    PayloadView(content: model.analysis.content, compact: compact)
+                    if let link = model.verdict?.link {
+                        LinkJourneyView(link: link, original: model.analysis.raw).id("journey")
+                    }
+                    reasons
+                    DetailSection(title: L10n.text("If you continue")) {
+                        if model.assessment.consequences.isEmpty {
+                            Text(L10n.text("Nothing happens until you choose an action and confirm it."))
                         }
-                        PayloadView(content: model.analysis.content, compact: compact)
-                        if let link = model.verdict?.link {
-                            LinkJourneyView(link: link, original: model.analysis.raw).id("journey")
-                        }
-                        reasons
-                        DetailSection(title: L10n.text("If you continue")) {
-                            if model.assessment.consequences.isEmpty {
-                                Text(L10n.text("Nothing happens until you choose an action and confirm it."))
-                            }
-                            ForEach(Array(model.assessment.consequences.enumerated()), id: \.offset) { _, item in
-                                Text(item).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
-                            }
-                        }
-                        if let verdict = model.verdict { CloudEvidenceView(verdict: verdict) }
-                        DetailSection(title: L10n.text("What we couldn't check")) {
-                            ForEach(Array(model.limitations.enumerated()), id: \.offset) { _, item in
-                                Text(item).font(.footnote).foregroundStyle(.secondary)
-                            }
-                            Text(L10n.text("A low score is not a guarantee. Check who you are paying or sharing information with."))
-                                .font(.footnote).foregroundStyle(.secondary)
-                            if let models = model.verdict?.models, !models.isEmpty {
-                                Text(L10n.format("AI-assisted check: %@", models.joined(separator: ", ")))
-                                    .font(.caption2).foregroundStyle(.secondary).textSelection(.enabled)
-                            }
+                        ForEach(Array(model.assessment.consequences.enumerated()), id: \.offset) { _, item in
+                            Text(item).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                         }
                     }
-                    .padding(.horizontal, 24).padding(.top, 8).padding(.bottom, 24)
-                    .frame(maxWidth: 680).frame(maxWidth: .infinity)
-                }
-                #if DEBUG
-                .onChange(of: model.verdict != nil) { _, ready in
-                    guard ready else { return }
-                    for section in ["journey", "sandbox", "scene"] where ProcessInfo.processInfo.arguments.contains("--" + section) {
-                        scroll.scrollTo(section, anchor: .top)
+                    if let verdict = model.verdict { CloudEvidenceView(verdict: verdict) }
+                    DetailSection(title: L10n.text("What we couldn't check")) {
+                        ForEach(Array(model.limitations.enumerated()), id: \.offset) { _, item in
+                            Text(item).font(.footnote).foregroundStyle(.secondary)
+                        }
+                        Text(L10n.text("A low score is not a guarantee. Check who you are paying or sharing information with."))
+                            .font(.footnote).foregroundStyle(.secondary)
+                        if let models = model.verdict?.models, !models.isEmpty {
+                            Text(L10n.format("AI-assisted check: %@", models.joined(separator: ", ")))
+                                .font(.caption2).foregroundStyle(.secondary).textSelection(.enabled)
+                        }
                     }
                 }
-                #endif
+                .padding(.horizontal, 24).padding(.top, 8).padding(.bottom, 24)
+                .frame(maxWidth: 680).frame(maxWidth: .infinity)
             }
             .background(Color(uiColor: .systemBackground))
             .safeAreaInset(edge: .bottom, spacing: 0) {
@@ -92,7 +82,7 @@ struct ResultView: View {
             guard old && !new && model.verdict != nil else { return nil }
             return model.assessment.level.feedback
         }
-        .sheet(item: $selectedAction, onDismiss: finishConfirmation) { action in
+        .sheet(item: $presentation.selectedAction, onDismiss: finishConfirmation) { action in
             ConfirmationSheet(action: action, level: model.handoffLevel, reason: model.destinationUnchecked ? L10n.text("The destination could not be checked. Be careful if you continue.") : model.assessment.findings.first?.title) {
                 confirmedAction = action
             }
@@ -101,14 +91,6 @@ struct ResultView: View {
         .alert(L10n.text("Safe QR"), isPresented: Binding(get: { handler.message != nil }, set: { if !$0 { handler.message = nil } })) {
             Button(L10n.text("OK"), role: .cancel) { handler.message = nil }
         } message: { Text(handler.message ?? "") }
-        #if DEBUG
-        .task {
-            if DebugLaunch.screen != nil, ProcessInfo.processInfo.arguments.contains("--confirmation") {
-                try? await Task.sleep(for: .milliseconds(500))
-                if model.allowsHandoff { selectedAction = model.analysis.actions.first(where: \.isHandoff) }
-            }
-        }
-        #endif
         .task(id: services.preferences.consent) {
             await model.run(using: services.checker, consent: services.preferences.consent)
             services.history?.record(model.analysis, assessment: model.assessment, enabled: services.preferences.historyEnabled)
@@ -149,7 +131,7 @@ struct ResultView: View {
     private func perform(_ action: CodeAction) {
         if action.isHandoff {
             guard model.allowsHandoff else { return }
-            selectedAction = action
+            presentation.selectedAction = action
         }
         else { Task { await handler.perform(action, payload: model.analysis.content.payload) } }
     }

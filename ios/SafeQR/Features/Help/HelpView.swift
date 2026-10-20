@@ -3,10 +3,10 @@ import SafeQRKit
 
 struct HelpView: View {
     @Environment(AppServices.self) private var services
-    @State private var path: [SafetyGuide] = []
 
     var body: some View {
-        NavigationStack(path: $path) {
+        @Bindable var navigation = services.navigation
+        NavigationStack(path: $navigation.guides) {
             List {
                 if services.guides.loadFailed {
                     Text(L10n.text("The guides could not be loaded. If money is at risk, call your bank using the number on your card."))
@@ -41,12 +41,6 @@ struct HelpView: View {
             .listStyle(.insetGrouped)
             .navigationTitle(L10n.text("Help"))
             .navigationDestination(for: SafetyGuide.self) { GuideDetailView(guide: $0) }
-            .task {
-                #if DEBUG
-                if DebugLaunch.screen == "guide", path.isEmpty,
-                   let guide = services.guides.guides.first(where: { $0.id == "recovery-1" }) { path = [guide] }
-                #endif
-            }
         }
     }
 

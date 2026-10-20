@@ -9,9 +9,6 @@ final class AppPreferences {
     var deepChecksEnabled: Bool { didSet { defaults.set(deepChecksEnabled, forKey: "deepChecks") } }
     var sceneChecksEnabled: Bool { didSet { defaults.set(sceneChecksEnabled, forKey: "sceneChecks") } }
     var historyEnabled: Bool { didSet { defaults.set(historyEnabled, forKey: "history") } }
-    #if DEBUG
-    var demoEnabled = false
-    #endif
 
     init(defaults: UserDefaults) {
         self.defaults = defaults
