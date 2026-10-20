@@ -2,14 +2,13 @@ import SwiftUI
 import SafeQRKit
 
 struct ResultActionBar: View {
-    @Environment(\.appTheme) private var theme
-
     let actions: [CodeAction]
     let level: RiskLevel
     var compact = false
     var pending = false
     let goBack: () -> Void
     let perform: (CodeAction) -> Void
+    @Environment(\.appTheme) private var theme
 
     private var primary: CodeAction? { actions.first(where: \.isPrimary) ?? actions.first }
     private var risky: Bool { level != .safe || primary?.isRisky == true }

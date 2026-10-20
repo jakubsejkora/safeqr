@@ -5299,6 +5299,23 @@
           }
         }
       }
+    },
+    "Theme": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Motiv"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -3,10 +3,9 @@ import PhotosUI
 import SafeQRKit
 
 struct ScanView<ResultContent: View>: View {
-    @Environment(\.appTheme) private var theme
-
     var isSelected: Bool
     @ViewBuilder var resultContent: (ResultPresentation, Bool) -> ResultContent
+    @Environment(\.appTheme) private var theme
     @Environment(AppServices.self) private var services
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -49,7 +48,7 @@ struct ScanView<ResultContent: View>: View {
                     if services.camera.hasTorch {
                         Button { services.camera.toggleTorch() } label: {
                             Label(services.camera.torchEnabled ? L10n.text("Turn light off") : L10n.text("Turn light on"),
-                                  systemImage: services.camera.torchEnabled ? "bolt.fill" : "bolt.slash")
+                                  systemImage: services.camera.torchEnabled ? "flashlight.on.fill" : "flashlight.off.fill")
                                 .foregroundStyle(services.camera.torchEnabled ? .yellow : .white)
                                 .symbolEffect(.bounce, value: services.camera.torchEnabled)
                                 .symbolEffectsRemoved(reduceMotion)

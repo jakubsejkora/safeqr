@@ -12,18 +12,20 @@ struct DebugRootView: View {
         RootView { selected in
             ScanView(isSelected: selected) { DebugResultView(presentation: $0, compact: $1) }
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Menu {
-                            Button(DebugSample.training.title) { present(.training) }
-                            ForEach(DebugSample.Category.allCases) { category in
-                                Menu(category.title) {
-                                    ForEach(DebugSample.allCases.filter { $0.category == category && $0 != .training }) { sample in
-                                        Button(sample.title) { present(sample) }
+                    if launch.options.screen == nil {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Menu {
+                                Button(DebugSample.training.title) { present(.training) }
+                                ForEach(DebugSample.Category.allCases) { category in
+                                    Menu(category.title) {
+                                        ForEach(DebugSample.allCases.filter { $0.category == category && $0 != .training }) { sample in
+                                            Button(sample.title) { present(sample) }
+                                        }
                                     }
                                 }
-                            }
-                        } label: { Label(L10n.text("Sample codes"), systemImage: "ellipsis.circle") }
-                        .accessibilityIdentifier("sample-codes")
+                            } label: { Label(L10n.text("Sample codes"), systemImage: "ellipsis.circle") }
+                            .accessibilityIdentifier("sample-codes")
+                        }
                     }
                 }
         } settings: {

@@ -3,7 +3,6 @@ import AVFoundation
 
 struct OnboardingView: View {
     @Environment(\.appTheme) private var theme
-
     @Environment(AppServices.self) private var services
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var page = 0

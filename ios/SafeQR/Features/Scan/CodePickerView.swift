@@ -3,7 +3,6 @@ import SafeQRKit
 
 struct CodePickerView: View {
     @Environment(\.appTheme) private var theme
-
     @Environment(\.dismiss) private var dismiss
     let scan: ImportedScan
     let onSelect: (ScannedCode) -> Void

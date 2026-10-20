@@ -3,7 +3,6 @@ import SafeQRKit
 
 struct ConfirmationSheet: View {
     @Environment(\.appTheme) private var theme
-
     @Environment(\.dismiss) private var dismiss
     @Environment(\.dynamicTypeSize) private var typeSize
     let action: CodeAction

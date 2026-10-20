@@ -22,7 +22,7 @@ struct AppearanceSection: View {
                 }
             }
             .pickerStyle(.menu)
-        } header: { Text(L10n.text("Appearance")) } footer: {
+        } header: { Text(L10n.text("Theme")) } footer: {
             if iconUnavailable {
                 Text(L10n.text("The theme changed. The app icon couldn't be changed this time."))
             }

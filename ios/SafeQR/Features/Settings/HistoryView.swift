@@ -3,7 +3,6 @@ import SafeQRKit
 
 struct HistoryView: View {
     @Environment(\.appTheme) private var theme
-
     @Environment(AppServices.self) private var services
     @State private var clearing = false
 

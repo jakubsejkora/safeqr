@@ -1,12 +1,11 @@
 import SwiftUI
 
 struct CloudProgressView: View {
-    @Environment(\.appTheme) private var theme
-
     let steps: [CheckStep]
     let checking: Bool
     let elapsedSeconds: Int
     let completed: Bool
+    @Environment(\.appTheme) private var theme
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {

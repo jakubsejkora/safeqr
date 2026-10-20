@@ -2,9 +2,8 @@ import SwiftUI
 import SafeQRKit
 
 struct EventPayloadView: View {
-    @Environment(\.appTheme) private var theme
-
     let facts: [Fact]
+    @Environment(\.appTheme) private var theme
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {

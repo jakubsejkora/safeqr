@@ -70,9 +70,8 @@ struct GuideListView: View {
 }
 
 struct GuideDetailView: View {
-    @Environment(\.appTheme) private var theme
-
     let guide: SafetyGuide
+    @Environment(\.appTheme) private var theme
 
     var body: some View {
         ScrollView {
