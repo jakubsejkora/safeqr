@@ -33,9 +33,11 @@ flowchart LR
   API --> Link["Link sandbox<br/>AgentCore Browser"]
   API --> Scene["Scene agent<br/>Bedrock vision"]
   API --> Intel["Intel matcher<br/>Apify feed"]
+  API --> Social["Social profiles<br/>Apify"]
   Link --> Verdict["Verdict agent<br/>Claude on Bedrock"]
   Scene --> Verdict
   Intel --> Verdict
+  Social --> Verdict
   Verdict --> Result
 ```
 
@@ -43,8 +45,10 @@ flowchart LR
 - **Link check:** an isolated AgentCore Browser inspects redirects and the landing page. Network guards block private addresses, form submission and downloads.
 - **Scene check:** Bedrock vision examines the surrounding photo for signs of an added sticker or a code that does not fit its location.
 - **Daily intelligence:** an Apify collector is scheduled for 06:00 Prague time. The matcher compares exact indicators with verified public cases.
+- **Social profiles:** Instagram shows cloud browsers only a login wall, so a code that lands on a profile is looked up through Apify. Its bio link and any link-in-bio page are expanded, and paid adult content, crypto offers and hidden forwarders are named.
 - **Risk floor:** AI may raise risk but cannot lower it below the device's proven floor or hide its findings. Model failure returns a deterministic verdict.
-- **Your decision:** “Looks safe”, “Be careful” or “Dangerous”, with reasons, consequences and unchecked details. The score is a warning scale, not a probability or guarantee of safety.
+- **Your decision:** holding a code steady opens its result without a tap; several codes open a numbered list. “Looks safe”, “Be careful” or “Dangerous” come with reasons, consequences and unchecked details. The score is a warning scale, not a probability or guarantee of safety.
+- **Payments:** Czech banks offer no link to a prefilled payment, so Safe QR hands your banking app a clean QR Platba with only the details you saw.
 
 ## Repository
 
@@ -88,14 +92,14 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Test and build with `pnpm check`, `pnpm test`, `pnpm build` and `pnpm test:qr`. The App Store release and custom domain are pending.
+Test and build with `pnpm check`, `pnpm test`, `pnpm build` and `pnpm test:qr`. The App Store release is pending; the app is in TestFlight.
 
 ## Responsible AI and privacy
 
 - Deep-check infrastructure is configured in **eu-central-1**. Bedrock EU inference profiles can route processing across six EU regions.
 - Scene photos have metadata removed, use temporary encrypted S3 storage, and are deleted after analysis; a one-day lifecycle rule backs up cleanup. Checks become inaccessible after **24 hours**; physical deletion can lag.
 - Recognized secrets are excluded from upload. Wi-Fi, authentication, eSIM, contacts, calendar events, SMS, email and phone codes stay on device. History is off by default.
-- Intelligence comes from allowlisted official public sources. Personal-data patterns are stripped before model calls, with a publication gate afterward; filtering is not perfect. Scan data never goes to Apify.
+- Intelligence comes from allowlisted official public sources. Personal-data patterns are stripped before model calls, with a publication gate afterward; filtering is not perfect. Scan data goes to Apify only when a code leads to an Instagram profile: then just the public username, which Apify may process outside the EU.
 - Verdicts use words and symbols as well as color, and expose evidence, limitations and model IDs: Claude Sonnet 4.5 and Haiku 4.5 on Bedrock. Deterministic rules enforce the risk floor.
 - Consented deep checks upload the raw code and device findings; photos need separate consent. Opening links requires confirmation, and dangerous handoffs require a second decision. Copy and share remain explicit user actions.
 
@@ -109,6 +113,7 @@ AI assistance: orchestrated with **Claude Code (Claude Opus 5.5)**, with impleme
 - Offline Swift engine, CLI and shared conformance suite.
 - Asynchronous cloud API, link sandbox, scene analysis and verdict agent.
 - Daily public-source intelligence collection and exact-indicator matching.
+- Instagram profile and link-page checks through Apify; bank-app handoff for Czech payment codes.
 - Bilingual website, 30-example QR gallery, recovery guides and printable demo kit.
 - Separate training redirect chain and a card form that sends and stores nothing.
 
