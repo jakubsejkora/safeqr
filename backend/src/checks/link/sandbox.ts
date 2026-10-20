@@ -1,17 +1,17 @@
+import { setTimeout as delay } from "node:timers/promises";
 import type { Page } from "playwright-core";
 import { z } from "zod";
 import { MODELS } from "../../shared/config.js";
 import type { Model } from "../../shared/model.js";
 import { safeFetch, type WebFetch, webUrl } from "../../shared/network.js";
 import { redact } from "../../shared/privacy.js";
-import { asksForSchema, type LinkReport } from "../../shared/schemas.js";
+import type { LinkReport } from "../../shared/schemas.js";
 import { type BrowserSession, startBrowser } from "./agentcore.js";
-import { BROWSER_PROMPT } from "./prompt.v1.js";
+import { inspectControls, riskyDownload } from "./page-requests.js";
+import { BROWSER_PROMPT } from "./prompt.v2.js";
 
 const decisionSchema = z.object({
   candidateIndex: z.number().int().min(0).max(7).nullable(),
-  asksFor: z.array(asksForSchema).max(9),
-  downloads: z.boolean(),
 });
 interface Candidate {
   index: number;
@@ -34,43 +34,40 @@ export interface SandboxResult {
 }
 
 async function pageEvidence(page: Page): Promise<PageEvidence> {
-  return page.evaluate(() => {
+  const snapshot = await page.evaluate(() => {
     const text = document.body?.innerText.slice(0, 8000) ?? "";
-    const inputHints = [...document.querySelectorAll("input")]
-      .map((input) =>
-        [input.type, input.name, input.autocomplete, input.placeholder].join(
-          " ",
-        ),
+    const controls: string[] = [];
+    for (const element of [
+      ...document.querySelectorAll<HTMLElement>(
+        "input, select, textarea, iframe, button, [role=button]",
+      ),
+      ...document.querySelectorAll<HTMLElement>("a[href]"),
+    ]) {
+      if (
+        !element.checkVisibility({
+          checkOpacity: true,
+          checkVisibilityCSS: true,
+        }) ||
+        element.closest('[hidden], [inert], [aria-hidden="true"]') ||
+        element.matches(":disabled")
       )
-      .join(" ");
-    const hints = `${inputHints} ${text}`.toLowerCase();
-    const asksFor: NonNullable<LinkReport["asksFor"]> = [];
-    if (/password|heslo/.test(hints)) asksFor.push("password");
-    if (
-      /credit.?card|card number|číslo karty|platební kart|cc-number|cvv|cvc/.test(
-        hints,
-      )
-    )
-      asksFor.push("card");
-    if (/bank.?login|bankid|bankovní identit|přihlášení.{0,20}bank/.test(hints))
-      asksFor.push("bankLogin");
-    if (/phone|telefon|autocomplete.?tel/.test(hints)) asksFor.push("phone");
-    if (
-      /one-time|otp|sms.{0,12}kód|verification code|ověřovací kód/.test(hints)
-    )
-      asksFor.push("otp");
-    if (/e-mail|email|home address|bydliště|datum narození/.test(hints))
-      asksFor.push("personalData");
-    if (/pay|payment|platba|zaplatit|parkovné/.test(hints))
-      asksFor.push("payment");
-    if (/install|instalovat|stáhnout aplikaci/.test(hints))
-      asksFor.push("appInstall");
-    if (
-      /allow notifications|povolit oznámení|povolit přístup|grant permission/.test(
-        hints,
-      )
-    )
-      asksFor.push("permission");
+        continue;
+      const clone = element.cloneNode(true) as HTMLElement;
+      const labels =
+        "labels" in element
+          ? [...((element as HTMLInputElement).labels ?? [])].map(
+              (label) => label.textContent ?? "",
+            )
+          : [];
+      for (const id of (element.getAttribute("aria-labelledby") ?? "").split(
+        /\s+/,
+      )) {
+        if (id) labels.push(document.getElementById(id)?.textContent ?? "");
+      }
+      clone.setAttribute("data-safeqr-label", labels.join(" ").slice(0, 500));
+      controls.push(clone.outerHTML.slice(0, 4000));
+      if (controls.length >= 200) break;
+    }
     const candidates: Candidate[] = [];
     for (const element of document.querySelectorAll<
       HTMLAnchorElement | HTMLButtonElement
@@ -105,14 +102,11 @@ async function pageEvidence(page: Page): Promise<PageEvidence> {
     return {
       text,
       candidates,
-      asksFor,
-      downloads: Boolean(
-        document.querySelector(
-          "a[download], a[href$='.apk'], a[href$='.exe'], a[href$='.dmg']",
-        ),
-      ),
+      controls: controls.join(""),
+      url: location.href,
     };
   });
+  return { ...snapshot, ...inspectControls(snapshot.controls, snapshot.url) };
 }
 
 async function settledEvidence(page: Page): Promise<PageEvidence> {
@@ -210,7 +204,7 @@ export async function inspectLink(
           { signal: AbortSignal.timeout(2500) },
         );
         receivedBytes += response.body.byteLength;
-        if (mainNavigation && response.status >= 400) navigationFailed = true;
+        if (mainNavigation) navigationFailed = response.status >= 400;
         if (receivedBytes > 8_000_000) {
           restricted = true;
           if (mainNavigation) navigationFailed = true;
@@ -218,8 +212,16 @@ export async function inspectLink(
           return;
         }
         if (/attachment/i.test(response.headers["content-disposition"] ?? "")) {
-          downloads = true;
-          if (mainNavigation) navigationFailed = true;
+          const disposition = response.headers["content-disposition"] ?? "";
+          const filename =
+            disposition.match(/filename\*?=(?:UTF-8'')?["']?([^"';]+)/i)?.[1] ??
+            "";
+          downloads ||= riskyDownload(
+            request.url(),
+            filename,
+            response.headers["content-type"],
+          );
+          restricted = true;
           await route.abort();
           return;
         }
@@ -278,7 +280,7 @@ export async function inspectLink(
       void dialog.dismiss();
     });
     page.on("download", (download) => {
-      downloads = true;
+      downloads ||= riskyDownload(download.url(), download.suggestedFilename());
       void download.cancel();
     });
     const hops: LinkReport["hops"] = [];
@@ -298,23 +300,22 @@ export async function inspectLink(
     let modelFailed = false;
     let decision: z.infer<typeof decisionSchema> = {
       candidateIndex: null,
-      asksFor: [],
-      downloads: false,
     };
     try {
-      decision = await model.ask({
-        model: MODELS.haiku,
-        system: BROWSER_PROMPT,
-        schema: decisionSchema,
-        data: {
-          text: redact(before.text),
-          candidates: before.candidates.map((candidate) => ({
-            ...candidate,
-            href: candidate.href ? redact(candidate.href) : null,
-          })),
-        },
-        maxTokens: 350,
-      });
+      if (before.candidates.length)
+        decision = await model.ask({
+          model: MODELS.haiku,
+          system: BROWSER_PROMPT,
+          schema: decisionSchema,
+          data: {
+            text: redact(before.text),
+            candidates: before.candidates.map((candidate) => ({
+              ...candidate,
+              href: candidate.href ? redact(candidate.href) : null,
+            })),
+          },
+          maxTokens: 350,
+        });
     } catch {
       modelFailed = true;
     }
@@ -365,22 +366,13 @@ export async function inspectLink(
         finalUrl,
         hops,
         pageTitle: (await page.title()).slice(0, 200),
-        asksFor: [
-          ...new Set([
-            ...(before.asksFor ?? []),
-            ...decision.asksFor,
-            ...(after.asksFor ?? []),
-          ]),
-        ],
+        asksFor: after.asksFor,
       },
       screenshot,
-      downloads:
-        downloads || before.downloads || decision.downloads || after.downloads,
+      downloads: downloads || before.downloads || after.downloads,
       restricted,
       navigationFailed,
       modelFailed,
     };
   }
 }
-
-import { setTimeout as delay } from "node:timers/promises";

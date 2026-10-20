@@ -7,9 +7,9 @@ export const MODELS = {
 export const LIMITS = {
   requestBytes: 2_100_000,
   retentionSeconds: 86_400,
-  checkStartsPerMinute: 12,
+  checkStartsPerMinute: 30,
   checksPerDay: 500,
-  modelCallsPerMinute: 20,
+  modelCallsPerMinute: 60,
   checkModelCalls: 3,
   linkBytes: 512_000,
   hops: 10,

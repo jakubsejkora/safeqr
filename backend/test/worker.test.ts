@@ -12,7 +12,7 @@ import {
 } from "./helpers.js";
 
 describe("worker orchestration", () => {
-  it("keeps a failed browser navigation at caution even when both models return a low score", async () => {
+  it("keeps a failed destination at caution with an explicit explanation", async () => {
     const checks = new MemoryChecks();
     await checks.create(record());
     await createWorker({
@@ -21,7 +21,11 @@ describe("worker orchestration", () => {
       intel: intel(),
       model: () => returning(draft),
       trace: async () => ({
-        report: { finalUrl: "https://example.com/", hops: [] },
+        report: {
+          finalUrl: "https://example.com/",
+          hops: [{ url: "https://example.com/", status: 403, via: "http" }],
+        },
+        limitation: "unavailable",
       }),
       sandbox: async () => ({
         report: { finalUrl: "https://example.com/", hops: [] },
@@ -79,7 +83,7 @@ describe("worker orchestration", () => {
     const result = await checks.get(id);
     expect(result?.status).toBe("completed");
     expect(result?.result?.link?.finalUrl).toBe("https://destination.example/");
-    expect(result?.result?.level).toBe("caution");
+    expect(result?.result?.level).toBe("safe");
     expect(files.delete).toHaveBeenCalledWith(`scenes/${id}.jpg`);
     expect(result?.request).toBeUndefined();
     expect(cases.match).toHaveBeenCalledWith(

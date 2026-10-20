@@ -29,8 +29,8 @@ describe("isolated browser lifecycle", () => {
         evaluate: vi.fn().mockResolvedValue({
           text: "Harmless page",
           candidates: [],
-          asksFor: [],
-          downloads: false,
+          controls: "",
+          url: "https://example.com/",
         }),
         url: () => "https://example.com/",
         screenshot: vi.fn().mockResolvedValue(new Uint8Array()),
@@ -81,8 +81,8 @@ describe("isolated browser lifecycle", () => {
       candidates: [
         { index: 0, text: "Continue", href: "https://final.example/" },
       ],
-      asksFor: [],
-      downloads: false,
+      controls: "",
+      url: "https://example.com/",
     };
     const page = {
       on: vi.fn(),
@@ -132,8 +132,8 @@ describe("isolated browser lifecycle", () => {
       const evidence = {
         text: "Continue",
         candidates: [{ index: 0, text: "Continue", href: null }],
-        asksFor: [],
-        downloads: false,
+        controls: "",
+        url: "https://example.com/",
       };
       const page = {
         on: vi.fn(),
@@ -209,9 +209,9 @@ describe("isolated browser lifecycle", () => {
     const click = vi.fn();
     const evidence = {
       text: "Enter your password",
-      candidates: [],
-      asksFor: ["password"],
-      downloads: false,
+      candidates: [{ index: 0, text: "Continue", href: null }],
+      controls: '<input type="password">',
+      url: "https://example.com/",
     };
     const page = {
       on: vi.fn(),

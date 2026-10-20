@@ -143,6 +143,16 @@ export function createWorker(
       if (settled.some((result) => result.status === "rejected"))
         evidence.limitations.push("model");
       evidence.link = sandbox?.report ?? trace?.report;
+      if (request.kind === "link") {
+        const tracedDestination = trace?.report?.hops.at(-1);
+        const traceOpened =
+          trace?.report &&
+          !trace.limitation &&
+          (!sandbox || sandbox.report.finalUrl === trace.report.finalUrl) &&
+          (!tracedDestination?.status || tracedDestination.status < 400);
+        evidence.destinationUnavailable =
+          !(sandbox && !sandbox.navigationFailed) && !traceOpened;
+      }
       if (evidence.link) {
         const traced = trace?.report?.hops ?? [];
         const browsed = sandbox?.report.hops ?? [];

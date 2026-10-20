@@ -3,6 +3,10 @@ import {
   createVerdict,
   deterministicVerdict,
 } from "../src/checks/verdict/agent.js";
+import {
+  effectiveDevice,
+  establishedDestination,
+} from "../src/checks/verdict/calibration.js";
 import type { Case } from "../src/shared/schemas.js";
 import { draft, failing, request, returning } from "./helpers.js";
 
@@ -15,6 +19,143 @@ const known: Case = {
 };
 
 describe("deterministic safety boundaries", () => {
+  it.each([undefined, 366, 3000])(
+    "ordinary own-site forms add information without points (age %s)",
+    (domainAgeDays) => {
+      const result = deterministicVerdict(request, {
+        intel: [],
+        limitations: ["restricted", "domain", "model", "browserModel"],
+        link: {
+          finalUrl: request.payload,
+          hops: [],
+          domainAgeDays,
+          asksFor: ["password", "card", "phone", "personalData"],
+        },
+      });
+      expect(result.score).toBe(10);
+      expect(result.findings).toEqual([
+        expect.objectContaining({ id: "page-request", severity: "info" }),
+      ]);
+    },
+  );
+  it("unknown domain age after a normal redirect is not evidence of deception", () => {
+    const result = deterministicVerdict(request, {
+      intel: [],
+      limitations: ["domain"],
+      link: { finalUrl: "https://other.example/", hops: [], asksFor: ["card"] },
+    });
+    expect(result.score).toBe(10);
+  });
+  it("a sensitive request on a known young domain is a warning", () => {
+    const result = deterministicVerdict(request, {
+      intel: [],
+      limitations: [],
+      link: {
+        finalUrl: "https://other.example/",
+        hops: [],
+        domainAgeDays: 100,
+        asksFor: ["card"],
+      },
+    });
+    expect(result.score).toBe(40);
+    expect(result.findings).toContainEqual(
+      expect.objectContaining({ id: "sensitive-request", severity: "warning" }),
+    );
+  });
+  it("resolves shortener and HTTP findings while preserving other findings and every floor", () => {
+    const link = { finalUrl: "https://destination.example/", hops: [] };
+    const deviceRequest = {
+      ...request,
+      device: {
+        score: 40,
+        floor: 0,
+        findingIds: ["link.shortener", "link.http"],
+      },
+    };
+    expect(effectiveDevice(deviceRequest, link).score).toBe(0);
+    expect(effectiveDevice(deviceRequest).score).toBe(40);
+    expect(
+      effectiveDevice(
+        { ...deviceRequest, device: { ...deviceRequest.device, floor: 35 } },
+        link,
+      ).score,
+    ).toBe(35);
+    expect(
+      effectiveDevice(
+        {
+          ...deviceRequest,
+          device: {
+            ...deviceRequest.device,
+            findingIds: ["link.shortener", "link.unusualHost"],
+          },
+        },
+        link,
+      ).score,
+    ).toBe(40);
+    expect(
+      effectiveDevice(deviceRequest, {
+        ...link,
+        finalUrl: "http://destination.example/",
+      }).findingIds,
+    ).toEqual(["link.http"]);
+  });
+  it("treats only a known registration age as established", () => {
+    expect(
+      establishedDestination({
+        finalUrl: "https://other.example/",
+        hops: [],
+        domainAgeDays: 365,
+      }),
+    ).toBe(true);
+    for (const domainAgeDays of [undefined, 364])
+      expect(
+        establishedDestination({
+          finalUrl: "https://shop.example.com/",
+          hops: [],
+          domainAgeDays,
+        }),
+      ).toBe(false);
+  });
+  it("does not accept an unexplained high model score", async () => {
+    for (const findings of [
+      [],
+      [
+        {
+          id: "info",
+          severity: "info",
+          source: "ai",
+          title: "Sign in",
+          detail: "The page offers sign-in.",
+        },
+      ],
+    ]) {
+      const result = await createVerdict(
+        request,
+        { intel: [], limitations: [] },
+        returning({ ...draft, score: 70, findings }),
+      );
+      expect(result.score).toBe(10);
+    }
+  });
+  it("always explains a verdict at or above 30, including unavailable destinations", async () => {
+    for (const score of [0, 29, 30, 69, 70, 100]) {
+      for (const destinationUnavailable of [false, true]) {
+        const result = await createVerdict(
+          { ...request, device: { score, floor: score, findingIds: [] } },
+          {
+            intel: [],
+            limitations: ["model", "sandbox"],
+            destinationUnavailable,
+          },
+          failing(),
+        );
+        if (result.score >= 30)
+          expect(
+            result.findings.some((finding) => finding.severity !== "info"),
+          ).toBe(true);
+      }
+    }
+  });
   it("does not call informational device findings warnings", () => {
     const result = deterministicVerdict(
       {
@@ -41,7 +182,7 @@ describe("deterministic safety boundaries", () => {
       }),
     );
   });
-  it("raises concealed card collection to danger while an ordinary card form remains caution", () => {
+  it("raises concealed card collection to danger while an ordinary card form stays low", () => {
     const link = {
       finalUrl: "https://parking.example/pay",
       asksFor: ["card" as const],
@@ -73,7 +214,7 @@ describe("deterministic safety boundaries", () => {
         limitations: [],
         link: { ...link, hops: [] },
       }).score,
-    ).toBe(40);
+    ).toBe(10);
     expect(
       deterministicVerdict(request, {
         intel: [],
@@ -112,8 +253,8 @@ describe("deterministic safety boundaries", () => {
       { intel: [], limitations: [] },
       returning({ score: -500 }),
     );
-    expect(result.level).toBe("caution");
-    expect(result.headline).toBe("Buďte opatrní.");
+    expect(result.level).toBe("safe");
+    expect(result.headline).toBe("Vypadá bezpečně.");
     expect(result.limitations.join(" ")).toContain("nebylo dostupné");
   });
   it("a model outage keeps factual findings and correct SMS consequences", async () => {
@@ -144,6 +285,7 @@ describe("deterministic safety boundaries", () => {
     const result = deterministicVerdict(request, {
       intel: [],
       limitations: ["sandbox"],
+      destinationUnavailable: true,
     });
     expect(result.score).toBeGreaterThanOrEqual(30);
   });

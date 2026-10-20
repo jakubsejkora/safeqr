@@ -13,8 +13,13 @@ import {
   verdictSchema,
 } from "../../shared/schemas.js";
 import type { StoredRequest } from "../../shared/storage.js";
+import {
+  concealedRedirects,
+  effectiveDevice,
+  establishedDestination,
+} from "./calibration.js";
 import { consequence, type Limitation, limitationText, say } from "./copy.js";
-import { VERDICT_PROMPT } from "./prompt.v1.js";
+import { VERDICT_PROMPT } from "./prompt.v2.js";
 
 export interface Evidence {
   link?: LinkReport;
@@ -22,6 +27,7 @@ export interface Evidence {
   intel: Case[];
   limitations: Limitation[];
   downloads?: boolean;
+  destinationUnavailable?: boolean;
 }
 const draftSchema = z.object({
   score: scoreSchema,
@@ -43,7 +49,7 @@ export function deterministicVerdict(
   models: string[] = [],
 ): Verdict {
   const locale = request.locale;
-  let score = Math.max(request.device.floor, request.device.score);
+  let score = effectiveDevice(request, evidence.link).score;
   const findings: Finding[] = [];
   const add = (
     id: string,
@@ -93,27 +99,58 @@ export function deterministicVerdict(
       "Na této stránce nezadávejte hesla ani platební údaje.",
       "Do not enter passwords or payment details on this page.",
     );
-  if (
-    evidence.link?.asksFor?.some((item) =>
-      ["password", "card", "bankLogin", "otp"].includes(item),
-    )
-  )
-    add(
-      "sensitive-request",
-      40,
-      "sandbox",
-      "Web žádá citlivé údaje",
-      "The website asks for sensitive details",
-      "Než něco zadáte, ověřte si provozovatele jinou cestou.",
-      "Check the operator another way before entering anything.",
+  const requested = evidence.link?.asksFor ?? [];
+  const requestRisk =
+    (evidence.link?.domainAgeDays !== undefined &&
+      evidence.link.domainAgeDays < 365) ||
+    evidence.link?.finalUrl.startsWith("http:") ||
+    Boolean(evidence.scene?.tamperingSigns?.length) ||
+    evidence.scene?.matchesContent === false ||
+    evidence.intel.length > 0 ||
+    concealedRedirects(evidence.link);
+  if (requested.length) {
+    const sensitive = requested.some((item) =>
+      [
+        "password",
+        "card",
+        "bankLogin",
+        "otp",
+        "phone",
+        "personalData",
+        "payment",
+      ].includes(item),
     );
-  const hops = evidence.link?.hops ?? [];
+    const names = {
+      password: ["heslo", "a password"],
+      card: ["údaje z karty", "card details"],
+      bankLogin: ["přihlášení k bance", "bank sign-in"],
+      otp: ["ověřovací kód", "a verification code"],
+      phone: ["telefonní číslo", "a phone number"],
+      personalData: ["osobní údaje", "personal details"],
+      payment: ["platbu", "a payment"],
+      appInstall: ["instalaci aplikace", "an app installation"],
+      permission: ["udělení oprávnění", "permission"],
+    } as const;
+    const details = requested
+      .map((item) => names[item][locale === "cs" ? 0 : 1])
+      .join(", ");
+    add(
+      sensitive && requestRisk ? "sensitive-request" : "page-request",
+      sensitive && requestRisk ? 40 : 0,
+      "sandbox",
+      sensitive && requestRisk
+        ? "Údaje žádá web s varovnými znaky"
+        : "Co po vás web žádá",
+      sensitive && requestRisk
+        ? "The request comes with warning signs"
+        : "What the website asks for",
+      `Web žádá: ${details}.${sensitive && requestRisk ? " Před zadáním si ověřte provozovatele." : " Samotná žádost není známkou podvodu."}`,
+      `The website asks for ${details}.${sensitive && requestRisk ? " Check the operator before entering anything." : " The request alone is not a sign of fraud."}`,
+    );
+  }
   if (
     evidence.link?.asksFor?.includes("card") &&
-    new Set(hops.map((hop) => hop.url)).size >= 4 &&
-    hops.some((hop) => hop.status && hop.status >= 300 && hop.status < 400) &&
-    hops.some((hop) => hop.via === "meta") &&
-    hops.some((hop) => hop.via === "javascript")
+    concealedRedirects(evidence.link)
   )
     add(
       "concealed-card-form",
@@ -175,10 +212,10 @@ export function deterministicVerdict(
       "download",
       40,
       "sandbox",
-      "Web nabízí stažení souboru",
-      "The website offers a download",
-      "Soubor jsme neotevřeli ani nespustili.",
-      "We did not open or run the file.",
+      "Web nabízí program nebo archiv",
+      "The website offers a program or archive",
+      "Stažený soubor může spustit program. Neotevřeli jsme jej ani nespustili.",
+      "The downloaded file may run a program. We did not open or run it.",
     );
   if (evidence.limitations.includes("blocked"))
     add(
@@ -190,19 +227,16 @@ export function deterministicVerdict(
       "Cíl odkazu není běžná veřejná webová stránka.",
       "The destination is not an ordinary public website.",
     );
-  if (
-    evidence.limitations.some((key) =>
-      [
-        "model",
-        "sandbox",
-        "redirects",
-        "intel",
-        "scene",
-        "browserModel",
-      ].includes(key),
-    )
-  )
-    score = Math.max(score, 30);
+  if (evidence.destinationUnavailable)
+    add(
+      "destination-unavailable",
+      30,
+      "sandbox",
+      "Cílový web se nepodařilo otevřít",
+      "The destination could not be opened",
+      "Nemohli jsme zjistit, co po vás cílová stránka žádá. Zkuste kontrolu později.",
+      "We could not see what the destination asks for. Try the check again later.",
+    );
   return finalize(
     {
       score,
@@ -254,7 +288,8 @@ export async function createVerdict(
         locale: request.locale,
         kind: request.kind,
         payload: describePayload(request.kind, request.payload),
-        device: request.device,
+        device: effectiveDevice(request, evidence.link),
+        establishedDestination: establishedDestination(evidence.link),
         existingFindings: baseline.findings,
         evidence: redact(
           JSON.stringify({
@@ -273,21 +308,27 @@ export async function createVerdict(
       ...(evidence.scene ? ["scene"] : []),
       ...(evidence.intel.length ? ["intel"] : []),
     ]);
+    const additions = draft.findings
+      .filter((finding) => supported.has(finding.source))
+      .map((finding, index) => ({
+        ...finding,
+        id: `ai-${index}`,
+        title: redact(finding.title),
+        detail: redact(finding.detail),
+      }));
+    // A numerical increase must have an accompanying explanation, even on model fallback.
+    const explainedScore = additions.some(
+      (finding) => finding.severity !== "info",
+    )
+      ? draft.score
+      : draft.score < 30
+        ? draft.score
+        : baseline.score;
     return finalize(
       {
         ...baseline,
-        score: Math.max(baseline.score, draft.score),
-        findings: [
-          ...baseline.findings,
-          ...draft.findings
-            .filter((finding) => supported.has(finding.source))
-            .map((finding, index) => ({
-              ...finding,
-              id: `ai-${index}`,
-              title: redact(finding.title),
-              detail: redact(finding.detail),
-            })),
-        ],
+        score: Math.max(baseline.score, explainedScore),
+        findings: [...baseline.findings, ...additions],
         consequences: [
           ...new Set([
             ...baseline.consequences,
