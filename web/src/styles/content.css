@@ -151,6 +151,21 @@
   font-size: 52px;
   letter-spacing: -2px;
 }
+.city-kit {
+  text-align: center;
+}
+.city-kit .sticker-heart {
+  font-size: 80px;
+  line-height: 1;
+  margin-top: 28px;
+}
+.city-kit p {
+  margin-inline: auto;
+}
+.city-kit img {
+  display: block;
+  margin-inline: auto;
+}
 .kit-caption {
   font-size: 14px;
   margin-top: 20px;

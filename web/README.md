@@ -1,6 +1,6 @@
 # Safe QR web
 
-Bilingual Astro static site, 30 build-time QR examples, recovery guides, and an A4 demo kit. Cloudflare Workers serves the assets and a validated, ten-minute cached cases proxy. `demo/` is an independent, clearly labeled training redirect chain with a non-submitting card form.
+Bilingual Astro static site, 30 build-time QR examples, recovery guides, and a five-page A4 demo kit. Cloudflare Workers serves the assets and a validated, ten-minute cached cases proxy. `demo/` serves a clearly labeled training redirect chain with a non-submitting card form and a fictional link-in-bio profile at `/bio`.
 
 Use Node 22.22+ and pnpm 12.14 (`packageManager` is pinned). Run from `web/`:
 

@@ -20,20 +20,20 @@ const t = (cs: string, en: string) => text(locale, cs, en);
       </h1>
       <p>
         {t(
-          "Čtyři cvičné materiály pro živou ukázku. Tiskněte na A4, v měřítku 100 %. Každý materiál dostane vlastní stránku. Skenujte je v Safe QR. Platby nepotvrzujte a SMS neodesílejte.",
-          "Four training materials for a live demonstration. Print on A4 at 100% scale. Each item gets its own page. Scan them in Safe QR. Do not confirm payments or send messages.",
+          "Pět cvičných materiálů pro živou ukázku. Tiskněte na A4, v měřítku 100 %. Každý materiál dostane vlastní stránku. Skenujte je v Safe QR. Platby nepotvrzujte a SMS neodesílejte.",
+          "Five training materials for a live demonstration. Print on A4 at 100% scale. Each item gets its own page. Scan them in Safe QR. Do not confirm payments or send messages.",
         )}
       </p>
     </div>
     <div class="print-controls">
       <button type="button" class="button" data-print>
-        {t("Vytisknout čtyři stránky", "Print four pages")}
+        {t("Vytisknout pět stránek", "Print five pages")}
         ↗
       </button>
       <p class="source">
         {t(
-          "Pořadí ukázky: parkovací samolepka s odkazem, novinový inzerát s QR platbou, karta s prémiovou SMS a běžný odkaz na example.com pro srovnání.",
-          "Demo order: a parking sticker with a link, a newspaper ad with a QR payment, a premium SMS card, and an ordinary example.com link for comparison.",
+          "Pořadí ukázky: parkovací samolepka s odkazem, novinový inzerát s QR platbou, karta s prémiovou SMS, běžný odkaz na example.com pro srovnání a městská samolepka s odkazem na smyšlený profil.",
+          "Demo order: a parking sticker with a link, a newspaper ad with a QR payment, a premium SMS card, an ordinary example.com link for comparison, and a city sticker linking to a fictional profile.",
         )}
       </p>
     </div>
@@ -134,6 +134,25 @@ const t = (cs: string, en: string) => text(locale, cs, en);
           "Compare the destination, contents and surroundings. Even a low score is not a safety guarantee.",
         )}
       </p>
+    </article>
+    <article class="print-sheet city-kit">
+      <span class="print-label">SAFE QR · {t("CVIČNÁ SAMOLEPKA", "TRAINING STICKER")}</span>
+      <div class="sticker-heart" aria-hidden="true">♡</div>
+      <h2>{t("Ahoj, napiš mi", "Hi, text me")} <span aria-hidden="true">💌</span></h2>
+      <p>{t("Klára ✨ · Moje odkazy najdeš tady.", "Klára ✨ · Find my links here.")}</p>
+      <img
+        src={`/qr/${kitCodes.bio.id}.svg`}
+        width="225"
+        height="225"
+        alt={t("QR kód na cvičný profil Kláry", "QR code to Klára’s training profile")}
+      >
+      <p class="kit-caption">
+        {t(
+          "Co má Safe QR najít? Smyšlený profil s odkazy na placený obsah pro dospělé a kontakt na Telegramu. Pouze pro školení; samolepku nikam nevylepujte.",
+          "What should Safe QR find? A fictional profile linking to paid adult content and a Telegram contact. For training only; do not place this sticker on real property.",
+        )}
+      </p>
+      <code>{kitCodes.bio.payload}</code>
     </article>
   </div>
   <script>

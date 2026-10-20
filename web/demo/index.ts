@@ -1,4 +1,5 @@
 import { secure } from "../worker/security.ts";
+import { bioPage, bioStyle } from "./bio.ts";
 
 const style = `:root{color-scheme:light dark;font:18px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f6f8;color:#182525}*{box-sizing:border-box}body{margin:0}.notice{position:sticky;top:0;z-index:1;background:#f7e6ab;color:#493400;padding:16px;text-align:center;font-weight:650}main{max-width:580px;margin:56px auto;padding:28px}h1{font-size:40px;line-height:1.1;letter-spacing:-1.5px}label{display:block;margin:20px 0 5px}input{font:inherit;width:100%;padding:14px;border:1px solid #6b7777;border-radius:8px;background:transparent;color:inherit}button,a{font:inherit}button{width:100%;margin-top:24px;padding:15px;background:#175b48;color:white;border:0;border-radius:10px;cursor:pointer}a{color:inherit}small{display:block}output{display:block;margin-top:20px;font-weight:650}input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #a26a00;outline-offset:4px}@media(prefers-color-scheme:dark){:root{background:#152321;color:#edf5f2}}`;
 const script = `const form=document.querySelector('form');form?.addEventListener('submit',event=>event.preventDefault());document.querySelector('button')?.addEventListener('click',()=>{form?.reset();document.querySelector('output').textContent='Training complete. Nothing was sent or paid. / Hotovo. Nic se neodeslalo ani nezaplatilo.';});`;
@@ -21,6 +22,14 @@ export default {
     let type = "text/html; charset=utf-8";
     const headers = new Headers({ "Cache-Control": "no-store" });
     switch (url.pathname) {
+      case "/bio":
+      case "/bio/":
+        body = bioPage;
+        break;
+      case "/bio.css":
+        type = "text/css; charset=utf-8";
+        body = bioStyle;
+        break;
       case "/":
       case "/start":
         status = 302;

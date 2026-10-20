@@ -1,4 +1,4 @@
-import { EXAMPLE_IBAN } from "./gallery.ts";
+import { DEMO_ORIGIN, EXAMPLE_IBAN } from "./gallery.ts";
 
 export const kitCodes = {
   payment: {
@@ -8,5 +8,9 @@ export const kitCodes = {
   sms: {
     id: "kit-premium-sms",
     payload: "SMSTO:9030099:START",
+  },
+  bio: {
+    id: "kit-bio",
+    payload: `${DEMO_ORIGIN}/bio`,
   },
 } as const;
