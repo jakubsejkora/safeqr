@@ -12,7 +12,12 @@ struct SettingsView: View {
                     Toggle(L10n.text("Check the surroundings photo"), isOn: $preferences.sceneChecksEnabled)
                         .disabled(!preferences.deepChecksEnabled)
                 } header: { Text(L10n.text("Deep checks")) } footer: {
-                    Text(L10n.text("Links are checked on Safe QR servers in the EU. Photo checks also send the code’s contents, including payment details. Photos are never stored. Wi-Fi passwords, login codes and personal records stay on this iPhone."))
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(L10n.text("Deep checks send the code, including any payment details. Photo checks also send its surroundings. Recognized private codes stay on this iPhone."))
+                        Text(L10n.text("Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU."))
+                        Text(L10n.text("Photos are kept briefly in private encrypted storage. We delete them after the check. A one-day cleanup rule is the backup if deletion fails. Actual deletion can take longer."))
+                        Text(L10n.text("Check results become unavailable after 24 hours. Deleting stored data can take longer."))
+                    }
                 }
                 Section {
                     Toggle(L10n.text("Save scan history"), isOn: $preferences.historyEnabled)

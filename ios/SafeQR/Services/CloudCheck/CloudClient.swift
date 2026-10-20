@@ -1,7 +1,9 @@
 import Foundation
 
+typealias CheckRequestProvider = @MainActor @Sendable () async -> CheckRequest?
+
 protocol CloudChecking: Sendable {
-    func check(_ request: CheckRequest,
+    func check(_ makeRequest: @escaping CheckRequestProvider,
                onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict
 }
 
@@ -34,16 +36,17 @@ struct CloudClient: CloudChecking {
         self.session = session ?? URLSession(configuration: configuration, delegate: APIRedirectPolicy(), delegateQueue: nil)
     }
 
-    func check(_ request: CheckRequest,
+    func check(_ makeRequest: @escaping CheckRequestProvider,
                onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
         guard let baseURL, baseURL.scheme == "https", baseURL.host()?.isEmpty == false,
-              baseURL.user == nil, baseURL.password == nil, baseURL.query == nil, baseURL.fragment == nil,
-              !request.payload.isEmpty, request.payload.utf16.count <= 4096,
-              (request.scene?.image.count ?? 0) <= 2_000_000 else { throw CloudError.invalidResponse }
+              baseURL.user == nil, baseURL.password == nil, baseURL.query == nil, baseURL.fragment == nil else {
+            throw CloudError.invalidResponse
+        }
         return try await withThrowingTaskGroup(of: CloudVerdict.self) { group in
             group.addTask {
                 try await starts.acquire()
-                return try await poll(request, baseURL: baseURL, onProgress: onProgress)
+                let accepted = try await submit(makeRequest, baseURL: baseURL)
+                return try await poll(accepted, baseURL: baseURL, onProgress: onProgress)
             }
             group.addTask {
                 try await Task.sleep(for: .seconds(45))
@@ -55,8 +58,14 @@ struct CloudClient: CloudChecking {
         }
     }
 
-    private func poll(_ body: CheckRequest, baseURL: URL,
-                      onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
+    private func submit(_ makeRequest: CheckRequestProvider, baseURL: URL) async throws -> CheckAccepted {
+        guard let body = await makeRequest() else {
+            try Task.checkCancellation()
+            throw CloudError.unavailable
+        }
+        try Task.checkCancellation()
+        guard !body.payload.isEmpty, body.payload.utf16.count <= 4096,
+              (body.scene?.image.count ?? 0) <= 2_000_000 else { throw CloudError.invalidResponse }
         var request = URLRequest(url: baseURL.appending(path: "v1/checks"))
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -66,6 +75,11 @@ struct CloudClient: CloudChecking {
               accepted.id.range(of: "^chk_[A-Za-z0-9]{20,}$", options: .regularExpression) != nil else {
             throw CloudError.invalidResponse
         }
+        return accepted
+    }
+
+    private func poll(_ accepted: CheckAccepted, baseURL: URL,
+                      onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
         var delay = accepted.pollAfterMs
         while !Task.isCancelled {
             try await Task.sleep(for: .milliseconds(max(100, delay)))

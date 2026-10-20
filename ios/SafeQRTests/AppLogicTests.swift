@@ -175,14 +175,14 @@ struct AppLogicTests {
 }
 
 private struct FailingCloud: CloudChecking {
-    func check(_ request: CheckRequest, onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
+    func check(_ makeRequest: @escaping CheckRequestProvider, onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
         throw CloudError.unavailable
     }
 }
 
 private struct CompletedCloud: CloudChecking {
     let verdict: CloudVerdict
-    func check(_ request: CheckRequest, onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
+    func check(_ makeRequest: @escaping CheckRequestProvider, onProgress: @escaping @MainActor @Sendable ([CheckStep]) -> Void) async throws -> CloudVerdict {
         verdict
     }
 }

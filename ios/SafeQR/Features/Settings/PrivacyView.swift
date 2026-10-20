@@ -4,17 +4,21 @@ struct PrivacyView: View {
     var body: some View {
         List {
             Section(L10n.text("On your iPhone")) {
-                Text(L10n.text("Every code is read and checked on your iPhone first. Camera images are held in memory and are not saved to your photo library."))
+                Text(L10n.text("Every code is checked on your iPhone first. Camera photos are kept in memory on this iPhone, not saved to your photo library."))
                 Text(L10n.text("History is off by default. If enabled, only the code type, time and score are saved locally. History is excluded from backups. Delete individual entries or clear them all in Settings."))
             }
             Section(L10n.text("What a deep check sends")) {
-                Text(L10n.text("With your permission, Safe QR sends the decoded link, language, device score and warning identifiers. If photo checks are on, it also sends a photo and the code’s position in it. For a payment code, this can include the recipient and amount."))
-                Text(L10n.text("Wi-Fi passwords, login and eSIM codes, contacts, events, phone numbers, messages and email details stay on this iPhone. The app sends no location from GPS."))
+                Text(L10n.text("With your permission, Safe QR sends the code contents, type, language, device score and warning identifiers. Photo checks also send a photo and the code’s position in it. Payment codes may include the recipient and amount."))
+                Text(L10n.text("Recognized Wi-Fi, login, eSIM, contact, calendar and communication codes stay on this iPhone. A photo is not sent if we find a private code or cannot check it reliably. The app sends no GPS location."))
                 Text(L10n.text("The photo may include people or private details nearby. Turn off photo checks if you do not want to send it."))
             }
             Section(L10n.text("Where it goes and for how long")) {
-                Text(L10n.text("Deep checks run on Safe QR servers in AWS Frankfurt, in the EU. Photos are analysed in memory and never stored. Check records expire after 24 hours."))
-                Text(L10n.text("The isolated browser visits the website on the server. It does not sign in, pay or use your iPhone’s cookies. Safe QR does not log raw codes or photos in the app."))
+                Text(L10n.text("Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU."))
+                Text(L10n.text("Photos are kept briefly in private encrypted storage. We delete them after the check. A one-day cleanup rule is the backup if deletion fails. Actual deletion can take longer."))
+                Text(L10n.text("Check results become unavailable after 24 hours. Deleting stored data can take longer."))
+                Text(L10n.text("The original code contents are removed from the record when the check finishes or is marked as failed."))
+                Text(L10n.text("Website screenshots are private and encrypted. Their links last 15 minutes. A one-day cleanup rule applies; actual deletion can take longer. Keep result and screenshot links private."))
+                Text(L10n.text("The isolated browser visits the website from the server. The website can see this visit and details in the link. Your iPhone’s cookies and signed-in accounts are not shared. Safe QR does not log raw codes or photos in the app."))
             }
             Section(L10n.text("AI and the limits of a check")) {
                 Text(L10n.text("AI combines website, surroundings and known-scam evidence. It can miss a scam or wrongly flag an honest code. The result explains its reasons and what could not be checked."))

@@ -59,7 +59,8 @@ final class ResultModel: Identifiable {
 
     func start(using client: any CloudChecking, consent: CheckConsent) {
         guard checkTask == nil, !attemptedCloud else { return }
-        guard let request = consent.request(for: analysis, scene: scene) else {
+        guard consent.allowsCheck(for: analysis, hasScene: scene != nil) else {
+            scene = nil
             cloudLimitation = consent.links
                 ? L10n.text("This code was checked only on this iPhone. No code or photo was sent.")
                 : L10n.text("Deep checks are off. Websites and surroundings were not checked online.")
@@ -71,20 +72,37 @@ final class ResultModel: Identifiable {
         attemptedCloud = true
         checking = true
         // The check belongs to the scan session, so opening or dismissing a sheet cannot restart it.
-        checkTask = Task { await execute(request, using: client) }
+        checkTask = Task { await execute(using: client, consent: consent) }
     }
 
-    func cancel() { checkTask?.cancel() }
+    func cancel() {
+        scene = nil
+        checkTask?.cancel()
+    }
 
-    private func execute(_ request: CheckRequest, using client: any CloudChecking) async {
+    private func makeRequest(consent: CheckConsent) async -> CheckRequest? {
+        var photo = consent.surroundings ? scene : nil
+        scene = nil
+        if let candidate = photo, !(await ScenePrivacy.allowsUpload(candidate.jpeg, selectedPayload: analysis.raw)) {
+            photo = nil
+            extraLimitations.append(L10n.text("The surroundings photo was not sent because it could not be safely checked for private codes."))
+        }
+        guard !Task.isCancelled else { return nil }
+        return consent.request(for: analysis, scene: photo)
+    }
+
+    private func execute(using client: any CloudChecking, consent: CheckConsent) async {
         let startedAt = ContinuousClock.now
         defer {
             elapsedSeconds = Int(startedAt.duration(to: .now).components.seconds)
             checking = false
             finished = true
+            scene = nil
         }
         do {
-            let result = try await client.check(request) { [weak self] steps in self?.steps = steps }
+            let result = try await client.check({ [weak self] in await self?.makeRequest(consent: consent) }) {
+                [weak self] steps in self?.steps = steps
+            }
             try Task.checkCancellation()
             verdict = result
             assessment = analysis.assessment.merged(with: result.assessment)

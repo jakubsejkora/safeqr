@@ -100,7 +100,7 @@ extension RiskAssessment {
             floor: floor,
             findings: (findings + remote.findings).uniqued(by: \.id).sorted { $0.severity > $1.severity },
             consequences: remote.consequences.isEmpty ? consequences : remote.consequences,
-            limitations: remote.limitations
+            limitations: (limitations + remote.limitations).uniqued(by: { $0 })
         )
     }
 }

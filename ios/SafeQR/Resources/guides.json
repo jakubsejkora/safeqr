@@ -24,8 +24,8 @@
       },
       {
         "text": {
-          "en": "Optional deep checks inspect the website and surroundings on servers in the EU. AI can make mistakes. A low score does not guarantee safety.",
-          "cs": "Volitelná podrobná kontrola prověří web a okolí kódu na serverech v EU. Umělá inteligence se může mýlit. Nízké skóre není zárukou bezpečí."
+          "en": "Optional deep checks inspect the website and surroundings. AI can make mistakes. A low score does not guarantee safety.",
+          "cs": "Volitelná podrobná kontrola prověří web a okolí kódu. Umělá inteligence se může mýlit. Nízké skóre není zárukou bezpečí."
         },
         "numbered": true
       },
@@ -35,6 +35,27 @@
           "cs": "O dalším kroku rozhodujete vy. Otevření odkazu, volání, odeslání nebo přidání údajů vyžaduje vaše potvrzení."
         },
         "numbered": true
+      },
+      {
+        "text": {
+          "en": "Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU.",
+          "cs": "Servery a úložiště jsou v AWS ve Frankfurtu (eu-central-1). Umělá inteligence Amazon Bedrock může požadavky zpracovat i v dalších oblastech AWS v EU."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "Photos are kept briefly in private encrypted storage. We delete them after the check. A one-day cleanup rule is the backup if deletion fails. Actual deletion can take longer.",
+          "cs": "Fotky se dočasně ukládají do soukromého šifrovaného úložiště. Po kontrole je mažeme. Pokud mazání selže, slouží jako záloha automatický úklid po jednom dni. Skutečné smazání může trvat déle."
+        },
+        "numbered": false
+      },
+      {
+        "text": {
+          "en": "Check results become unavailable after 24 hours. Deleting stored data can take longer.",
+          "cs": "Výsledky kontrol přestanou být dostupné po 24 hodinách. Smazání uložených dat může trvat déle."
+        },
+        "numbered": false
       }
     ],
     "sources": []

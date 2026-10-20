@@ -27,6 +27,9 @@ struct OnboardingView: View {
                         .accessibilityAddTraits(.isHeader)
                     Text(description).font(.title3).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                     if page == 1 {
+                        Text(L10n.text("Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU.")).font(.footnote).foregroundStyle(.secondary)
+                        Text(L10n.text("Photos are kept briefly in private encrypted storage. We delete them after the check. A one-day cleanup rule is the backup if deletion fails. Actual deletion can take longer.")).font(.footnote).foregroundStyle(.secondary)
+                        Text(L10n.text("Check results become unavailable after 24 hours. Deleting stored data can take longer.")).font(.footnote).foregroundStyle(.secondary)
                         Label(L10n.text("Optional. You can change this in Settings."), systemImage: "slider.horizontal.3")
                             .font(.callout).foregroundStyle(.secondary)
                     }
@@ -71,7 +74,7 @@ struct OnboardingView: View {
     private var description: String {
         switch page {
         case 0: L10n.text("See what a code contains, what looks risky and what will happen next. Nothing opens or sends without your decision.")
-        case 1: L10n.text("Deep checks send the link and a photo of its surroundings to Safe QR servers in the EU. A photo check may also send payment details from the code. Photos are never stored. Results use AI and can be wrong.")
+        case 1: L10n.text("Deep checks send the code and a surroundings photo. This may include payment details. AI can make mistakes.")
         default: L10n.text("Allow the camera to read codes. Safe QR can use a wider view to spot a sticker or something out of place. You can also choose a photo.")
         }
     }

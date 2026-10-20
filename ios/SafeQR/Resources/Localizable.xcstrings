@@ -18,6 +18,22 @@
         }
       }
     },
+    "0.5× · Surroundings": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0.5× · Surroundings"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0,5× · Okolí"
+          }
+        }
+      }
+    },
     "A closer look": {
       "extractionState": "manual",
       "localizations": {
@@ -188,6 +204,23 @@
         }
       }
     },
+    "AI-assisted check: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI-assisted check: %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S kontrolou pomohla umělá inteligence: %@"
+          }
+        }
+      }
+    },
     "About Safe QR": {
       "extractionState": "manual",
       "localizations": {
@@ -205,6 +238,22 @@
         }
       }
     },
+    "Account access": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account access"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přístup k účtům"
+          }
+        }
+      }
+    },
     "Allow camera": {
       "extractionState": "manual",
       "localizations": {
@@ -218,6 +267,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Povolit fotoaparát"
+          }
+        }
+      }
+    },
+    "Allow camera access or import a picture to check a code.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow camera access or import a picture to check a code."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Povolte přístup k fotoaparátu nebo vyberte fotku s kódem."
           }
         }
       }
@@ -256,6 +322,38 @@
         }
       }
     },
+    "Another page": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another page"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Další stránka"
+          }
+        }
+      }
+    },
+    "App Store": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        }
+      }
+    },
     "App language": {
       "extractionState": "manual",
       "localizations": {
@@ -269,6 +367,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Jazyk aplikace"
+          }
+        }
+      }
+    },
+    "Apps and settings": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apps and settings"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikace a nastavení"
           }
         }
       }
@@ -290,6 +404,198 @@
         }
       }
     },
+    "Asks for a one-time code": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for a one-time code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce jednorázový kód"
+          }
+        }
+      }
+    },
+    "Asks for a password": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for a password"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce heslo"
+          }
+        }
+      }
+    },
+    "Asks for a payment": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for a payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce platbu"
+          }
+        }
+      }
+    },
+    "Asks for a phone number": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for a phone number"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce telefonní číslo"
+          }
+        }
+      }
+    },
+    "Asks for bank login": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for bank login"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce přihlášení do banky"
+          }
+        }
+      }
+    },
+    "Asks for card details": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for card details"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce údaje z karty"
+          }
+        }
+      }
+    },
+    "Asks for more information": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for more information"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce další údaje"
+          }
+        }
+      }
+    },
+    "Asks for permission": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for permission"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žádá o oprávnění"
+          }
+        }
+      }
+    },
+    "Asks for personal details": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks for personal details"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce osobní údaje"
+          }
+        }
+      }
+    },
+    "Asks to install an app": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks to install an app"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chce nainstalovat aplikaci"
+          }
+        }
+      }
+    },
+    "Authenticator export": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Authenticator export"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export ověřovacích klíčů"
+          }
+        }
+      }
+    },
+    "Authenticator setup": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Authenticator setup"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nastavení ověřovací aplikace"
+          }
+        }
+      }
+    },
     "Back": {
       "extractionState": "manual",
       "localizations": {
@@ -303,6 +609,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zpět"
+          }
+        }
+      }
+    },
+    "Back to scanning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back to scanning"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpět ke skenování"
           }
         }
       }
@@ -324,6 +646,22 @@
         }
       }
     },
+    "Block a card": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Block a card"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zablokovat kartu"
+          }
+        }
+      }
+    },
     "Built at The FinTechers Hackathon 2026 in Prague.": {
       "extractionState": "manual",
       "localizations": {
@@ -337,6 +675,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vytvořeno na The FinTechers Hackathon 2026 v Praze."
+          }
+        }
+      }
+    },
+    "Calendar event": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendar event"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Událost v kalendáři"
           }
         }
       }
@@ -375,6 +729,23 @@
         }
       }
     },
+    "Call %@ · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call %@ · %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volat: %@ · %@"
+          }
+        }
+      }
+    },
     "Call %@?": {
       "extractionState": "manual",
       "localizations": {
@@ -388,6 +759,90 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zavolat: %@?"
+          }
+        }
+      }
+    },
+    "Call Czech Police · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call Czech Police · %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volat Policii ČR · %@"
+          }
+        }
+      }
+    },
+    "Call Czech Police?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call Czech Police?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat Policii ČR?"
+          }
+        }
+      }
+    },
+    "Call emergency services · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call emergency services · %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volat tísňovou linku · %@"
+          }
+        }
+      }
+    },
+    "Call emergency services?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call emergency services?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavolat tísňovou linku?"
+          }
+        }
+      }
+    },
+    "Call forwarding": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Call forwarding"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přesměrování hovorů"
           }
         }
       }
@@ -409,6 +864,23 @@
         }
       }
     },
+    "Camera access is off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera access is off"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přístup k fotoaparátu je vypnutý"
+          }
+        }
+      }
+    },
     "Camera access is off. Allow it in Settings, or choose a picture to check.": {
       "extractionState": "manual",
       "localizations": {
@@ -422,6 +894,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Přístup k fotoaparátu je vypnutý. Povolte ho v Nastavení nebo vyberte fotku ke kontrole."
+          }
+        }
+      }
+    },
+    "Camera unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera unavailable"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoaparát není k dispozici"
           }
         }
       }
@@ -443,6 +932,38 @@
         }
       }
     },
+    "Card payment · EMV": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Card payment · EMV"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba kartou · EMV"
+          }
+        }
+      }
+    },
+    "Caution": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caution"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozor"
+          }
+        }
+      }
+    },
     "Check only on this iPhone": {
       "extractionState": "manual",
       "localizations": {
@@ -456,6 +977,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kontrolovat jen v tomto iPhonu"
+          }
+        }
+      }
+    },
+    "Check results become unavailable after 24 hours. Deleting stored data can take longer.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check results become unavailable after 24 hours. Deleting stored data can take longer."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Výsledky kontrol přestanou být dostupné po 24 hodinách. Smazání uložených dat může trvat déle."
           }
         }
       }
@@ -511,6 +1049,23 @@
         }
       }
     },
+    "Checking the link…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking the link…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ověřujeme odkaz…"
+          }
+        }
+      }
+    },
     "Checking the surroundings": {
       "extractionState": "manual",
       "localizations": {
@@ -541,6 +1096,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kontrolujeme web"
+          }
+        }
+      }
+    },
+    "Checking…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ověřuji…"
           }
         }
       }
@@ -579,6 +1151,22 @@
         }
       }
     },
+    "Comparing with reported scams": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparing with reported scams"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Porovnáváme s nahlášenými podvody"
+          }
+        }
+      }
+    },
     "Connected for this session. You can leave the network in Settings.": {
       "extractionState": "manual",
       "localizations": {
@@ -596,6 +1184,54 @@
         }
       }
     },
+    "Contact": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontakt"
+          }
+        }
+      }
+    },
+    "Contact claiming to be a bank": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact claiming to be a bank"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontakt vydávající se za banku"
+          }
+        }
+      }
+    },
+    "Contents hidden · stays on this iPhone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contents hidden · stays on this iPhone"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obsah je skrytý · zůstává v tomto iPhonu"
+          }
+        }
+      }
+    },
     "Continue": {
       "extractionState": "manual",
       "localizations": {
@@ -609,6 +1245,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pokračovat"
+          }
+        }
+      }
+    },
+    "Continue anyway": {
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přesto pokračovat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue anyway"
+          }
+        }
+      }
+    },
+    "Continue anyway…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue anyway…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přesto pokračovat…"
           }
         }
       }
@@ -647,6 +1315,22 @@
         }
       }
     },
+    "Copy or share": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy or share"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopírovat nebo sdílet"
+          }
+        }
+      }
+    },
     "Couldn't read this picture": {
       "extractionState": "manual",
       "localizations": {
@@ -664,6 +1348,22 @@
         }
       }
     },
+    "Cryptocurrency": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cryptocurrency"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kryptoměna"
+          }
+        }
+      }
+    },
     "Czech Police": {
       "extractionState": "manual",
       "localizations": {
@@ -677,6 +1377,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Policie ČR"
+          }
+        }
+      }
+    },
+    "Danger": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Danger"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nebezpečné"
           }
         }
       }
@@ -715,6 +1431,57 @@
         }
       }
     },
+    "Deep check unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep check unavailable"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola není dostupná"
+          }
+        }
+      }
+    },
+    "Deep check · %lld s": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep check · %lld s"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola · %lld s"
+          }
+        }
+      }
+    },
+    "Deep checks": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deep checks"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobná kontrola"
+          }
+        }
+      }
+    },
     "Deep checks are off. Websites and surroundings were not checked online.": {
       "extractionState": "manual",
       "localizations": {
@@ -749,36 +1516,36 @@
         }
       }
     },
-    "Deep checks run on Safe QR servers in AWS Frankfurt, in the EU. Photos are analysed in memory and never stored. Check records expire after 24 hours.": {
+    "Deep checks send the code and a surroundings photo. This may include payment details. AI can make mistakes.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deep checks run on Safe QR servers in AWS Frankfurt, in the EU. Photos are analysed in memory and never stored. Check records expire after 24 hours."
+            "value": "Deep checks send the code and a surroundings photo. This may include payment details. AI can make mistakes."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Podrobné kontroly probíhají na serverech Safe QR v AWS ve Frankfurtu, v EU. Fotky se zpracují v paměti a nikdy se neukládají. Záznamy kontrol vyprší po 24 hodinách."
+            "value": "Podrobná kontrola odešle obsah kódu a fotku jeho okolí. Mohou obsahovat i platební údaje. Umělá inteligence se může mýlit."
           }
         }
       }
     },
-    "Deep checks send the link and a photo of its surroundings to Safe QR servers in the EU. A photo check may also send payment details from the code. Photos are never stored. Results use AI and can be wrong.": {
+    "Deep checks send the code, including any payment details. Photo checks also send its surroundings. Recognized private codes stay on this iPhone.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deep checks send the link and a photo of its surroundings to Safe QR servers in the EU. A photo check may also send payment details from the code. Photos are never stored. Results use AI and can be wrong."
+            "value": "Deep checks send the code, including any payment details. Photo checks also send its surroundings. Recognized private codes stay on this iPhone."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Podrobná kontrola odešle odkaz a fotku okolí na servery Safe QR v EU. Při kontrole fotky může odeslat i platební údaje z kódu. Fotky se nikdy neukládají. Výsledky využívají umělou inteligenci a mohou být chybné."
+            "value": "Podrobná kontrola odešle obsah kódu včetně případných platebních údajů. Kontrola fotky odešle i okolí kódu. Rozpoznané soukromé kódy zůstávají v iPhonu."
           }
         }
       }
@@ -902,6 +1669,84 @@
         }
       }
     },
+    "Device settings profile": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device settings profile"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil nastavení telefonu"
+          }
+        }
+      }
+    },
+    "Domain highlighting uses the Public Suffix List, distributed under the Mozilla Public License 2.0.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Domain highlighting uses the Public Suffix List, distributed under the Mozilla Public License 2.0."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zvýraznění domény používá Public Suffix List, který je dostupný pod licencí Mozilla Public License 2.0."
+          }
+        }
+      }
+    },
+    "Domain registered %lld days ago": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Domain registered %lld day ago"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Domain registered %lld days ago"
+                }
+              }
+            }
+          }
+        },
+        "cs": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Doména byla zaregistrována před %lld dnem"
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Doména byla zaregistrována před %lld dny"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Doména byla zaregistrována před %lld dny"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "Done": {
       "extractionState": "manual",
       "localizations": {
@@ -919,19 +1764,131 @@
         }
       }
     },
-    "Every code is read and checked on your iPhone first. Camera images are held in memory and are not saved to your photo library.": {
-      "extractionState": "manual",
+    "Email": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Every code is read and checked on your iPhone first. Camera images are held in memory and are not saved to your photo library."
+            "value": "Email"
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Každý kód se nejprve přečte a zkontroluje v iPhonu. Snímky z fotoaparátu zůstávají v paměti a neukládají se do fotek."
+            "value": "E-mail"
+          }
+        }
+      }
+    },
+    "Email with a hidden recipient": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email with a hidden recipient"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-mail se skrytým příjemcem"
+          }
+        }
+      }
+    },
+    "Emergency services": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emergency services"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tísňová linka"
+          }
+        }
+      }
+    },
+    "Enlarge the isolated browser preview": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enlarge the isolated browser preview"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zvětšit náhled z izolovaného prohlížeče"
+          }
+        }
+      }
+    },
+    "Enterprise app installation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enterprise app installation"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instalace podnikové aplikace"
+          }
+        }
+      }
+    },
+    "Event with a hidden subscription": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event with a hidden subscription"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Událost se skrytým předplatným"
+          }
+        }
+      }
+    },
+    "Every code is checked on your iPhone first. Camera photos are kept in memory on this iPhone, not saved to your photo library.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every code is checked on your iPhone first. Camera photos are kept in memory on this iPhone, not saved to your photo library."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Každý kód se nejprve zkontroluje v iPhonu. Fotky z fotoaparátu se v iPhonu uchovávají v paměti, neukládají se do knihovny fotek."
+          }
+        }
+      }
+    },
+    "Everyday uses": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everyday uses"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Každodenní použití"
           }
         }
       }
@@ -986,6 +1943,22 @@
         }
       }
     },
+    "Full address": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Celá adresa"
+          }
+        }
+      }
+    },
     "Get started": {
       "extractionState": "manual",
       "localizations": {
@@ -1032,6 +2005,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pomoc"
+          }
+        }
+      }
+    },
+    "Hidden redirect": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden redirect"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skryté přesměrování"
+          }
+        }
+      }
+    },
+    "Hide password": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide password"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skrýt heslo"
           }
         }
       }
@@ -1104,6 +2109,39 @@
         }
       }
     },
+    "Hold for one and a half seconds. Release to cancel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold for one and a half seconds. Release to cancel."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podržte jednu a půl sekundy. Puštěním pokračování zrušíte."
+          }
+        }
+      }
+    },
+    "Hold to continue anyway": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold to continue anyway"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podržením přesto pokračovat"
+          }
+        }
+      }
+    },
     "If money is at risk, call now. Card blocking may not block access to your account. Choose the line for what happened.": {
       "extractionState": "manual",
       "localizations": {
@@ -1138,6 +2176,22 @@
         }
       }
     },
+    "Import a picture to check a code in the Simulator.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import a picture to check a code in the Simulator."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V simulátoru můžete zkontrolovat kód z obrázku."
+          }
+        }
+      }
+    },
     "Import photo": {
       "extractionState": "manual",
       "localizations": {
@@ -1168,6 +2222,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Probíhá"
+          }
+        }
+      }
+    },
+    "Indian payment · UPI": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indian payment · UPI"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indická platba · UPI"
+          }
+        }
+      }
+    },
+    "Invoice": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invoice"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faktura"
+          }
+        }
+      }
+    },
+    "JavaScript redirect": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "JavaScript redirect"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přesměrování pomocí JavaScriptu"
+          }
+        }
+      }
+    },
+    "Keep this code to yourself. It can give someone access to your account or SIM.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep this code to yourself. It can give someone access to your account or SIM."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tento kód nikomu neukazujte. Kdo ho získá, může se dostat k vašemu účtu nebo SIM."
           }
         }
       }
@@ -1239,19 +2357,34 @@
         }
       }
     },
-    "Links are checked on Safe QR servers in the EU. Photo checks also send the code’s contents, including payment details. Photos are never stored. Wi-Fi passwords, login codes and personal records stay on this iPhone.": {
-      "extractionState": "manual",
+    "Links": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Links are checked on Safe QR servers in the EU. Photo checks also send the code’s contents, including payment details. Photos are never stored. Wi-Fi passwords, login codes and personal records stay on this iPhone."
+            "value": "Links"
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Odkazy se kontrolují na serverech Safe QR v EU. Kontrola fotky odesílá i obsah kódu včetně platebních údajů. Fotky se nikdy neukládají. Hesla k Wi-Fi, přihlašovací kódy a osobní záznamy zůstávají v iPhonu."
+            "value": "Odkazy"
+          }
+        }
+      }
+    },
+    "Live view of the surroundings": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live view of the surroundings"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Živý náhled okolí kódu"
           }
         }
       }
@@ -1273,6 +2406,38 @@
         }
       }
     },
+    "Lookalike address": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lookalike address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Napodobená adresa"
+          }
+        }
+      }
+    },
+    "Looking around the code": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking around the code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prohlížíme okolí kódu"
+          }
+        }
+      }
+    },
     "Looks safe": {
       "extractionState": "manual",
       "localizations": {
@@ -1286,6 +2451,55 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vypadá bezpečně"
+          }
+        }
+      }
+    },
+    "Main camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hlavní fotoaparát"
+          }
+        }
+      }
+    },
+    "Map location": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Map location"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Místo na mapě"
+          }
+        }
+      }
+    },
+    "More reasons (%lld)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More reasons (%lld)"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Další důvody (%lld)"
           }
         }
       }
@@ -1371,6 +2585,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "V samotném kódu se nenašly varovné signály. To ale ještě nedokazuje, že je bezpečný."
+          }
+        }
+      }
+    },
+    "Not checked": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not checked"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neověřeno"
           }
         }
       }
@@ -1528,6 +2759,22 @@
         }
       }
     },
+    "Open Wi-Fi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Wi-Fi"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřená Wi-Fi"
+          }
+        }
+      }
+    },
     "Open this source?": {
       "extractionState": "manual",
       "localizations": {
@@ -1579,6 +2826,38 @@
         }
       }
     },
+    "Opened in an isolated browser in AWS Frankfurt — away from your iPhone.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opened in an isolated browser in AWS Frankfurt — away from your iPhone."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřeno v izolovaném prohlížeči v AWS ve Frankfurtu — ne ve vašem telefonu."
+          }
+        }
+      }
+    },
+    "Opening the page in an isolated browser": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening the page in an isolated browser"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevíráme stránku v izolovaném prohlížeči"
+          }
+        }
+      }
+    },
     "Operator protection": {
       "extractionState": "manual",
       "localizations": {
@@ -1613,6 +2892,38 @@
         }
       }
     },
+    "Ordinary SMS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordinary SMS"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Běžná SMS"
+          }
+        }
+      }
+    },
+    "Ordinary link": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordinary link"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Běžný odkaz"
+          }
+        }
+      }
+    },
     "Page %lld of 3": {
       "extractionState": "manual",
       "localizations": {
@@ -1626,6 +2937,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Stránka %lld ze 3"
+          }
+        }
+      }
+    },
+    "Page refresh": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Page refresh"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obnovení stránky"
+          }
+        }
+      }
+    },
+    "Parking scam (training)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parking scam (training)"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parkovací podvod (cvičný)"
+          }
+        }
+      }
+    },
+    "Password": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heslo"
+          }
+        }
+      }
+    },
+    "Password hidden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password hidden"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heslo je skryté"
           }
         }
       }
@@ -1646,6 +3021,71 @@
         }
       }
     },
+    "Payment with a hidden link": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment with a hidden link"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba se skrytým odkazem"
+          }
+        }
+      }
+    },
+    "Payments": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payments"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platby"
+          }
+        }
+      }
+    },
+    "Phone call": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phone call"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonní hovor"
+          }
+        }
+      }
+    },
+    "Photos are kept briefly in private encrypted storage. We delete them after the check. A one-day cleanup rule is the backup if deletion fails. Actual deletion can take longer.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos are kept briefly in private encrypted storage. We delete them after the check. A one-day cleanup rule is the backup if deletion fails. Actual deletion can take longer."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotky se dočasně ukládají do soukromého šifrovaného úložiště. Po kontrole je mažeme. Pokud mazání selže, slouží jako záloha automatický úklid po jednom dni. Skutečné smazání může trvat déle."
+          }
+        }
+      }
+    },
     "Place the code inside the frame": {
       "extractionState": "manual",
       "localizations": {
@@ -1659,6 +3099,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Umístěte kód do rámečku"
+          }
+        }
+      }
+    },
+    "Plain text": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plain text"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obyčejný text"
+          }
+        }
+      }
+    },
+    "Point at a QR code": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point at a QR code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namiřte na QR kód"
           }
         }
       }
@@ -1693,6 +3165,55 @@
           "stringUnit": {
             "state": "translated",
             "value": "Namířit. Zkontrolovat. Rozhodnout."
+          }
+        }
+      }
+    },
+    "Premium SMS": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Premium SMS"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Premium SMS"
+          }
+        }
+      }
+    },
+    "Premium SMS subscription": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Premium SMS subscription"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Předplatné přes prémiovou SMS"
+          }
+        }
+      }
+    },
+    "Premium-rate call": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Premium-rate call"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drahý placený hovor"
           }
         }
       }
@@ -1748,6 +3269,86 @@
         }
       }
     },
+    "Private code": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Private code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soukromý kód"
+          }
+        }
+      }
+    },
+    "Protected Wi-Fi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protected Wi-Fi"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zabezpečená Wi-Fi"
+          }
+        }
+      }
+    },
+    "Putting the verdict together": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Putting the verdict together"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skládáme verdikt"
+          }
+        }
+      }
+    },
+    "QR code": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR kód"
+          }
+        }
+      }
+    },
+    "QR payment": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR platba"
+          }
+        }
+      }
+    },
     "Read the source": {
       "extractionState": "manual",
       "localizations": {
@@ -1782,6 +3383,55 @@
         }
       }
     },
+    "Really continue?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Really continue?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opravdu pokračovat?"
+          }
+        }
+      }
+    },
+    "Recognized Wi-Fi, login, eSIM, contact, calendar and communication codes stay on this iPhone. A photo is not sent if we find a private code or cannot check it reliably. The app sends no GPS location.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recognized Wi-Fi, login, eSIM, contact, calendar and communication codes stay on this iPhone. A photo is not sent if we find a private code or cannot check it reliably. The app sends no GPS location."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozpoznané kódy pro Wi-Fi, přihlášení, eSIM, kontakty, kalendář a komunikaci zůstávají v iPhonu. Fotku neodešleme, pokud najdeme soukromý kód nebo ji nemůžeme spolehlivě prověřit. Aplikace neodesílá polohu z GPS."
+          }
+        }
+      }
+    },
+    "Redirect": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Redirect"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přesměrování"
+          }
+        }
+      }
+    },
     "Reviewed on 19 October 2026": {
       "extractionState": "manual",
       "localizations": {
@@ -1812,6 +3462,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Skóre rizika: %lld ze 100"
+          }
+        }
+      }
+    },
+    "SEPA · foreign account": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SEPA · foreign account"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SEPA · zahraniční účet"
+          }
+        }
+      }
+    },
+    "SMS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SMS"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SMS"
+          }
+        }
+      }
+    },
+    "SMS and calls": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SMS and calls"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SMS a volání"
+          }
+        }
+      }
+    },
+    "Safe": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bezpečné"
           }
         }
       }
@@ -1986,6 +3700,23 @@
         }
       }
     },
+    "Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Servery a úložiště jsou v AWS ve Frankfurtu (eu-central-1). Umělá inteligence Amazon Bedrock může požadavky zpracovat i v dalších oblastech AWS v EU."
+          }
+        }
+      }
+    },
     "Settings": {
       "extractionState": "manual",
       "localizations": {
@@ -2003,6 +3734,22 @@
         }
       }
     },
+    "Show password": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show password"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobrazit heslo"
+          }
+        }
+      }
+    },
     "Show the main camera": {
       "extractionState": "manual",
       "localizations": {
@@ -2016,6 +3763,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zobrazit hlavní fotoaparát"
+          }
+        }
+      }
+    },
+    "Show the result": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show the result"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobrazit výsledek"
           }
         }
       }
@@ -2084,6 +3847,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vynecháno"
+          }
+        }
+      }
+    },
+    "Slovak payment · PAY by square": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slovak payment · PAY by square"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slovenská platba · PAY by square"
+          }
+        }
+      }
+    },
+    "Some deep-check results could not be read. Only the checks on this iPhone are shown.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some deep-check results could not be read. Only the checks on this iPhone are shown."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Část výsledků podrobné kontroly se nepodařilo přečíst. Zobrazujeme jen kontrolu v tomto iPhonu."
           }
         }
       }
@@ -2207,6 +4002,39 @@
         }
       }
     },
+    "Surroundings camera": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surroundings camera"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoaparát pro okolí"
+          }
+        }
+      }
+    },
+    "Swiss payment": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swiss payment"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Švýcarská platba"
+          }
+        }
+      }
+    },
     "Taking a closer look": {
       "extractionState": "manual",
       "localizations": {
@@ -2220,6 +4048,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "Probíhá podrobná kontrola"
+          }
+        }
+      }
+    },
+    "Tap to check": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to check"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klepněte pro kontrolu"
+          }
+        }
+      }
+    },
+    "Text with a hidden paid SMS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text with a hidden paid SMS"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text se skrytou placenou SMS"
           }
         }
       }
@@ -2292,6 +4153,23 @@
         }
       }
     },
+    "The destination could not be checked. Be careful if you continue.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The destination could not be checked. Be careful if you continue."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cíl odkazu se nepodařilo ověřit. Pokud budete pokračovat, buďte opatrní."
+          }
+        }
+      }
+    },
     "The guides could not be loaded. If money is at risk, call your bank using the number on your card.": {
       "extractionState": "manual",
       "localizations": {
@@ -2326,19 +4204,36 @@
         }
       }
     },
-    "The isolated browser visits the website on the server. It does not sign in, pay or use your iPhone’s cookies. Safe QR does not log raw codes or photos in the app.": {
+    "The isolated browser visits the website from the server. The website can see this visit and details in the link. Your iPhone’s cookies and signed-in accounts are not shared. Safe QR does not log raw codes or photos in the app.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The isolated browser visits the website on the server. It does not sign in, pay or use your iPhone’s cookies. Safe QR does not log raw codes or photos in the app."
+            "value": "The isolated browser visits the website from the server. The website can see this visit and details in the link. Your iPhone’s cookies and signed-in accounts are not shared. Safe QR does not log raw codes or photos in the app."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oddělený prohlížeč otevře web na serveru. Nepřihlašuje se, neplatí a nepoužívá cookies z vašeho iPhonu. Safe QR nezapisuje obsah kódů ani fotky do provozních záznamů aplikace."
+            "value": "Izolovaný prohlížeč navštíví web ze serveru. Web uvidí tuto návštěvu a údaje v odkazu. Cookies ani přihlášení z iPhonu se nepředávají. Safe QR nezapisuje obsah kódů ani fotky do provozních záznamů aplikace."
+          }
+        }
+      }
+    },
+    "The original code contents are removed from the record when the check finishes or is marked as failed.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The original code contents are removed from the record when the check finishes or is marked as failed."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Původní obsah kódu odstraníme ze záznamu po dokončení kontroly nebo zaznamenání jejího selhání."
           }
         }
       }
@@ -2356,6 +4251,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "Na fotce mohou být lidé nebo soukromé údaje v okolí. Pokud ji nechcete odesílat, vypněte kontrolu fotek."
+          }
+        }
+      }
+    },
+    "The surroundings photo stayed on this iPhone because it contains a private code.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The surroundings photo stayed on this iPhone because it contains a private code."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotka okolí zůstala v tomto iPhonu, protože obsahuje soukromý kód."
+          }
+        }
+      }
+    },
+    "The surroundings photo was not sent because it could not be safely checked for private codes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The surroundings photo was not sent because it could not be safely checked for private codes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotka okolí nebyla odeslána, protože ji nešlo bezpečně prověřit kvůli soukromým kódům."
           }
         }
       }
@@ -2514,6 +4442,39 @@
         }
       }
     },
+    "To: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To: %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Komu: %@"
+          }
+        }
+      }
+    },
+    "Too many deep checks are running. The destination could not be checked.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many deep checks are running. The destination could not be checked."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Právě probíhá příliš mnoho kontrol. Cíl odkazu se nepodařilo ověřit."
+          }
+        }
+      }
+    },
     "Try a sample code": {
       "extractionState": "manual",
       "localizations": {
@@ -2633,6 +4594,54 @@
         }
       }
     },
+    "Unencrypted connection": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unencrypted connection"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nešifrované spojení"
+          }
+        }
+      }
+    },
+    "Unencrypted link": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unencrypted link"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nezabezpečený odkaz"
+          }
+        }
+      }
+    },
+    "Unknown status": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown status"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neznámý stav"
+          }
+        }
+      }
+    },
     "Use photos for now": {
       "extractionState": "manual",
       "localizations": {
@@ -2718,6 +4727,55 @@
         }
       }
     },
+    "Website address": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website address"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adresa stránky"
+          }
+        }
+      }
+    },
+    "Website preview": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website preview"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Náhled stránky"
+          }
+        }
+      }
+    },
+    "Website screenshots are private and encrypted. Their links last 15 minutes. A one-day cleanup rule applies; actual deletion can take longer. Keep result and screenshot links private.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website screenshots are private and encrypted. Their links last 15 minutes. A one-day cleanup rule applies; actual deletion can take longer. Keep result and screenshot links private."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snímky webů se ukládají soukromě a zašifrované. Odkazy na ně platí 15 minut. Platí pro ně automatický úklid po jednom dni; skutečné smazání může trvat déle. Odkazy na výsledky a snímky nesdílejte."
+          }
+        }
+      }
+    },
     "What a deep check sends": {
       "extractionState": "manual",
       "localizations": {
@@ -2765,6 +4823,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Co kód obsahuje"
+          }
+        }
+      }
+    },
+    "WhatsApp Web login": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatsApp Web login"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přihlášení do WhatsApp Web"
+          }
+        }
+      }
+    },
+    "WhatsApp message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatsApp message"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpráva přes WhatsApp"
           }
         }
       }
@@ -2836,23 +4926,6 @@
         }
       }
     },
-    "Wi-Fi passwords, login and eSIM codes, contacts, events, phone numbers, messages and email details stay on this iPhone. The app sends no location from GPS.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wi-Fi passwords, login and eSIM codes, contacts, events, phone numbers, messages and email details stay on this iPhone. The app sends no location from GPS."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesla k Wi-Fi, přihlašovací a eSIM kódy, kontakty, události, telefonní čísla, zprávy a e-mailové údaje zůstávají v iPhonu. Aplikace neodesílá polohu z GPS."
-          }
-        }
-      }
-    },
     "Wide view · scanning with the main camera": {
       "extractionState": "manual",
       "localizations": {
@@ -2870,19 +4943,19 @@
         }
       }
     },
-    "With your permission, Safe QR sends the decoded link, language, device score and warning identifiers. If photo checks are on, it also sends a photo and the code’s position in it. For a payment code, this can include the recipient and amount.": {
+    "With your permission, Safe QR sends the code contents, type, language, device score and warning identifiers. Photo checks also send a photo and the code’s position in it. Payment codes may include the recipient and amount.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "With your permission, Safe QR sends the decoded link, language, device score and warning identifiers. If photo checks are on, it also sends a photo and the code’s position in it. For a payment code, this can include the recipient and amount."
+            "value": "With your permission, Safe QR sends the code contents, type, language, device score and warning identifiers. Photo checks also send a photo and the code’s position in it. Payment codes may include the recipient and amount."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "S vaším souhlasem Safe QR odešle přečtený odkaz, jazyk, skóre z iPhonu a označení varování. Při zapnuté kontrole fotek odešle i fotku a polohu kódu v ní. U platebního kódu může jít i o příjemce a částku."
+            "value": "S vaším souhlasem Safe QR odešle obsah a typ kódu, jazyk, skóre z telefonu a označení varování. Kontrola fotky odešle i fotku a polohu kódu v ní. Platební kódy mohou obsahovat příjemce a částku."
           }
         }
       }
@@ -2972,6 +5045,22 @@
         }
       }
     },
+    "Your iPhone will call %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your iPhone will call %@."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone zavolá na %@."
+          }
+        }
+      }
+    },
     "Your iPhone will call %@. Your operator’s usual call charges may apply.": {
       "extractionState": "manual",
       "localizations": {
@@ -3023,1500 +5112,6 @@
         }
       }
     },
-    "Premium SMS": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Premium SMS"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Premium SMS"
-          }
-        }
-      }
-    },
-    "Continue anyway": {
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přesto pokračovat"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continue anyway"
-          }
-        }
-      }
-    },
-    "Unknown status": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unknown status"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neznámý stav"
-          }
-        }
-      }
-    },
-    "Some deep-check results could not be read. Only the checks on this iPhone are shown.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Some deep-check results could not be read. Only the checks on this iPhone are shown."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Část výsledků podrobné kontroly se nepodařilo přečíst. Zobrazujeme jen kontrolu v tomto iPhonu."
-          }
-        }
-      }
-    },
-    "Camera access is off": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Camera access is off"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přístup k fotoaparátu je vypnutý"
-          }
-        }
-      }
-    },
-    "Camera unavailable": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Camera unavailable"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoaparát není k dispozici"
-          }
-        }
-      }
-    },
-    "Import a picture to check a code in the Simulator.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import a picture to check a code in the Simulator."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "V simulátoru můžete zkontrolovat kód z obrázku."
-          }
-        }
-      }
-    },
-    "Allow camera access or import a picture to check a code.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Allow camera access or import a picture to check a code."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Povolte přístup k fotoaparátu nebo vyberte fotku s kódem."
-          }
-        }
-      }
-    },
-    "Point at a QR code": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Point at a QR code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Namiřte na QR kód"
-          }
-        }
-      }
-    },
-    "0.5× · Surroundings": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0.5× · Surroundings"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0,5× · Okolí"
-          }
-        }
-      }
-    },
-    "Live view of the surroundings": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Live view of the surroundings"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Živý náhled okolí kódu"
-          }
-        }
-      }
-    },
-    "Show the result": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show the result"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zobrazit výsledek"
-          }
-        }
-      }
-    },
-    "Safe": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Safe"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bezpečné"
-          }
-        }
-      }
-    },
-    "Caution": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Caution"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pozor"
-          }
-        }
-      }
-    },
-    "Danger": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Danger"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nebezpečné"
-          }
-        }
-      }
-    },
-    "Unencrypted connection": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unencrypted connection"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nešifrované spojení"
-          }
-        }
-      }
-    },
-    "Website address": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Website address"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Adresa stránky"
-          }
-        }
-      }
-    },
-    "To: %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "To: %@"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Komu: %@"
-          }
-        }
-      }
-    },
-    "AI-assisted check: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "AI-assisted check: %@"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "S kontrolou pomohla umělá inteligence: %@"
-          }
-        }
-      }
-    },
-    "More reasons (%lld)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "More reasons (%lld)"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Další důvody (%lld)"
-          }
-        }
-      }
-    },
-    "Back to scanning": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back to scanning"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zpět ke skenování"
-          }
-        }
-      }
-    },
-    "Continue anyway…": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continue anyway…"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přesto pokračovat…"
-          }
-        }
-      }
-    },
-    "The surroundings captured with this code": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The surroundings captured with this code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Okolí vyfocené při načtení kódu"
-          }
-        }
-      }
-    },
-    "QR code": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QR code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QR kód"
-          }
-        }
-      }
-    },
-    "Redirect": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Redirect"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přesměrování"
-          }
-        }
-      }
-    },
-    "Page refresh": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Page refresh"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obnovení stránky"
-          }
-        }
-      }
-    },
-    "JavaScript redirect": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "JavaScript redirect"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přesměrování pomocí JavaScriptu"
-          }
-        }
-      }
-    },
-    "Another page": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Another page"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Další stránka"
-          }
-        }
-      }
-    },
-    "Domain registered %lld days ago": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Domain registered %lld day ago"
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Domain registered %lld days ago"
-                }
-              }
-            }
-          }
-        },
-        "cs": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Doména byla zaregistrována před %lld dnem"
-                }
-              },
-              "few": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Doména byla zaregistrována před %lld dny"
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Doména byla zaregistrována před %lld dny"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "Opened in an isolated browser in AWS Frankfurt — away from your iPhone.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opened in an isolated browser in AWS Frankfurt — away from your iPhone."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otevřeno v izolovaném prohlížeči v AWS ve Frankfurtu — ne ve vašem telefonu."
-          }
-        }
-      }
-    },
-    "Asks for a password": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for a password"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce heslo"
-          }
-        }
-      }
-    },
-    "Asks for card details": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for card details"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce údaje z karty"
-          }
-        }
-      }
-    },
-    "Asks for bank login": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for bank login"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce přihlášení do banky"
-          }
-        }
-      }
-    },
-    "Asks for a phone number": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for a phone number"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce telefonní číslo"
-          }
-        }
-      }
-    },
-    "Asks for a one-time code": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for a one-time code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce jednorázový kód"
-          }
-        }
-      }
-    },
-    "Asks for personal details": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for personal details"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce osobní údaje"
-          }
-        }
-      }
-    },
-    "Asks for a payment": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for a payment"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce platbu"
-          }
-        }
-      }
-    },
-    "Asks to install an app": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks to install an app"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce nainstalovat aplikaci"
-          }
-        }
-      }
-    },
-    "Asks for permission": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for permission"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Žádá o oprávnění"
-          }
-        }
-      }
-    },
-    "Asks for more information": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Asks for more information"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chce další údaje"
-          }
-        }
-      }
-    },
-    "Deep check · %lld s": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deep check · %lld s"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Podrobná kontrola · %lld s"
-          }
-        }
-      }
-    },
-    "Deep check unavailable": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deep check unavailable"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Podrobná kontrola není dostupná"
-          }
-        }
-      }
-    },
-    "Opening the page in an isolated browser": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opening the page in an isolated browser"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otevíráme stránku v izolovaném prohlížeči"
-          }
-        }
-      }
-    },
-    "Comparing with reported scams": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comparing with reported scams"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Porovnáváme s nahlášenými podvody"
-          }
-        }
-      }
-    },
-    "Looking around the code": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Looking around the code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prohlížíme okolí kódu"
-          }
-        }
-      }
-    },
-    "Putting the verdict together": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Putting the verdict together"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skládáme verdikt"
-          }
-        }
-      }
-    },
-    "Enlarge the isolated browser preview": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enlarge the isolated browser preview"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zvětšit náhled z izolovaného prohlížeče"
-          }
-        }
-      }
-    },
-    "Website preview": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Website preview"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Náhled stránky"
-          }
-        }
-      }
-    },
-    "Really continue?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Really continue?"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opravdu pokračovat?"
-          }
-        }
-      }
-    },
-    "Hold to continue anyway": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hold to continue anyway"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Podržením přesto pokračovat"
-          }
-        }
-      }
-    },
-    "Hold for one and a half seconds. Release to cancel.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hold for one and a half seconds. Release to cancel."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Podržte jednu a půl sekundy. Puštěním pokračování zrušíte."
-          }
-        }
-      }
-    },
-    "Password": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Heslo"
-          }
-        }
-      }
-    },
-    "Password hidden": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Password hidden"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Heslo je skryté"
-          }
-        }
-      }
-    },
-    "Show password": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show password"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zobrazit heslo"
-          }
-        }
-      }
-    },
-    "Hide password": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hide password"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skrýt heslo"
-          }
-        }
-      }
-    },
-    "Contact": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contact"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kontakt"
-          }
-        }
-      }
-    },
-    "Full address": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Full address"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Celá adresa"
-          }
-        }
-      }
-    },
-    "Private code": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Private code"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soukromý kód"
-          }
-        }
-      }
-    },
-    "Keep this code to yourself. It can give someone access to your account or SIM.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep this code to yourself. It can give someone access to your account or SIM."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tento kód nikomu neukazujte. Kdo ho získá, může se dostat k vašemu účtu nebo SIM."
-          }
-        }
-      }
-    },
-    "Contents hidden · stays on this iPhone": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contents hidden · stays on this iPhone"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obsah je skrytý · zůstává v tomto iPhonu"
-          }
-        }
-      }
-    },
-    "Parking scam (training)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Parking scam (training)"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Parkovací podvod (cvičný)"
-          }
-        }
-      }
-    },
-    "Ordinary link": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ordinary link"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Běžný odkaz"
-          }
-        }
-      }
-    },
-    "Unencrypted link": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unencrypted link"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nezabezpečený odkaz"
-          }
-        }
-      }
-    },
-    "Lookalike address": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lookalike address"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Napodobená adresa"
-          }
-        }
-      }
-    },
-    "Hidden redirect": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hidden redirect"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skryté přesměrování"
-          }
-        }
-      }
-    },
-    "QR payment": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QR payment"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "QR platba"
-          }
-        }
-      }
-    },
-    "Payment with a hidden link": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Payment with a hidden link"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Platba se skrytým odkazem"
-          }
-        }
-      }
-    },
-    "SEPA · foreign account": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SEPA · foreign account"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SEPA · zahraniční účet"
-          }
-        }
-      }
-    },
-    "Invoice": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invoice"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Faktura"
-          }
-        }
-      }
-    },
-    "Swiss payment": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Swiss payment"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Švýcarská platba"
-          }
-        }
-      }
-    },
-    "Card payment · EMV": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Card payment · EMV"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Platba kartou · EMV"
-          }
-        }
-      }
-    },
-    "Indian payment · UPI": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Indian payment · UPI"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Indická platba · UPI"
-          }
-        }
-      }
-    },
-    "Slovak payment · PAY by square": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Slovak payment · PAY by square"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Slovenská platba · PAY by square"
-          }
-        }
-      }
-    },
-    "Cryptocurrency": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cryptocurrency"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kryptoměna"
-          }
-        }
-      }
-    },
-    "Ordinary SMS": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ordinary SMS"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Běžná SMS"
-          }
-        }
-      }
-    },
-    "Premium SMS subscription": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Premium SMS subscription"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Předplatné přes prémiovou SMS"
-          }
-        }
-      }
-    },
-    "Phone call": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Phone call"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Telefonní hovor"
-          }
-        }
-      }
-    },
-    "Premium-rate call": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Premium-rate call"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drahý placený hovor"
-          }
-        }
-      }
-    },
-    "Call forwarding": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Call forwarding"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přesměrování hovorů"
-          }
-        }
-      }
-    },
-    "Email": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Email"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "E-mail"
-          }
-        }
-      }
-    },
-    "Email with a hidden recipient": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Email with a hidden recipient"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "E-mail se skrytým příjemcem"
-          }
-        }
-      }
-    },
-    "Open Wi-Fi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Wi-Fi"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otevřená Wi-Fi"
-          }
-        }
-      }
-    },
-    "Protected Wi-Fi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Protected Wi-Fi"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zabezpečená Wi-Fi"
-          }
-        }
-      }
-    },
-    "Contact claiming to be a bank": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contact claiming to be a bank"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kontakt vydávající se za banku"
-          }
-        }
-      }
-    },
-    "Calendar event": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calendar event"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Událost v kalendáři"
-          }
-        }
-      }
-    },
-    "Event with a hidden subscription": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Event with a hidden subscription"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Událost se skrytým předplatným"
-          }
-        }
-      }
-    },
-    "Map location": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Map location"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Místo na mapě"
-          }
-        }
-      }
-    },
-    "WhatsApp message": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "WhatsApp message"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zpráva přes WhatsApp"
-          }
-        }
-      }
-    },
-    "WhatsApp Web login": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "WhatsApp Web login"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přihlášení do WhatsApp Web"
-          }
-        }
-      }
-    },
-    "Authenticator setup": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Authenticator setup"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nastavení ověřovací aplikace"
-          }
-        }
-      }
-    },
-    "Authenticator export": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Authenticator export"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Export ověřovacích klíčů"
-          }
-        }
-      }
-    },
     "eSIM activation": {
       "localizations": {
         "en": {
@@ -4529,532 +5124,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aktivace eSIM"
-          }
-        }
-      }
-    },
-    "App Store": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store"
-          }
-        }
-      }
-    },
-    "Enterprise app installation": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enterprise app installation"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instalace podnikové aplikace"
-          }
-        }
-      }
-    },
-    "Device settings profile": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Device settings profile"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profil nastavení telefonu"
-          }
-        }
-      }
-    },
-    "Plain text": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plain text"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obyčejný text"
-          }
-        }
-      }
-    },
-    "Text with a hidden paid SMS": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text with a hidden paid SMS"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text se skrytou placenou SMS"
-          }
-        }
-      }
-    },
-    "Links": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Links"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odkazy"
-          }
-        }
-      }
-    },
-    "Payments": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Payments"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Platby"
-          }
-        }
-      }
-    },
-    "SMS and calls": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SMS and calls"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SMS a volání"
-          }
-        }
-      }
-    },
-    "Everyday uses": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Everyday uses"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Každodenní použití"
-          }
-        }
-      }
-    },
-    "Account access": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account access"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Přístup k účtům"
-          }
-        }
-      }
-    },
-    "Apps and settings": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apps and settings"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aplikace a nastavení"
-          }
-        }
-      }
-    },
-    "Block a card": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Block a card"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zablokovat kartu"
-          }
-        }
-      }
-    },
-    "Emergency services": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Emergency services"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tísňová linka"
-          }
-        }
-      }
-    },
-    "Deep checks": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deep checks"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Podrobná kontrola"
-          }
-        }
-      }
-    },
-    "Domain highlighting uses the Public Suffix List, distributed under the Mozilla Public License 2.0.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Domain highlighting uses the Public Suffix List, distributed under the Mozilla Public License 2.0."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zvýraznění domény používá Public Suffix List, který je dostupný pod licencí Mozilla Public License 2.0."
-          }
-        }
-      }
-    },
-    "SMS": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SMS"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SMS"
-          }
-        }
-      }
-    },
-    "Call %@ · %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Call %@ · %@"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volat: %@ · %@"
-          }
-        }
-      }
-    },
-    "Copy or share": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copy or share"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kopírovat nebo sdílet"
-          }
-        }
-      }
-    },
-    "The surroundings photo stayed on this iPhone because it contains a private code.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The surroundings photo stayed on this iPhone because it contains a private code."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotka okolí zůstala v tomto iPhonu, protože obsahuje soukromý kód."
-          }
-        }
-      }
-    },
-    "Your iPhone will call %@.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your iPhone will call %@."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iPhone zavolá na %@."
-          }
-        }
-      }
-    },
-    "Checking the link…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Checking the link…"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ověřujeme odkaz…"
-          }
-        }
-      }
-    },
-    "Checking…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Checking…"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ověřuji…"
-          }
-        }
-      }
-    },
-    "Tap to check": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap to check"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Klepněte pro kontrolu"
-          }
-        }
-      }
-    },
-    "Not checked": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Not checked"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neověřeno"
-          }
-        }
-      }
-    },
-    "Main camera": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Main camera"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hlavní fotoaparát"
-          }
-        }
-      }
-    },
-    "Surroundings camera": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Surroundings camera"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoaparát pro okolí"
-          }
-        }
-      }
-    },
-    "The destination could not be checked. Be careful if you continue.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The destination could not be checked. Be careful if you continue."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cíl odkazu se nepodařilo ověřit. Pokud budete pokračovat, buďte opatrní."
-          }
-        }
-      }
-    },
-    "Too many deep checks are running. The destination could not be checked.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Too many deep checks are running. The destination could not be checked."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Právě probíhá příliš mnoho kontrol. Cíl odkazu se nepodařilo ověřit."
-          }
-        }
-      }
-    },
-    "Call emergency services · %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Call emergency services · %@"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volat tísňovou linku · %@"
-          }
-        }
-      }
-    },
-    "Call emergency services?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Call emergency services?"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zavolat tísňovou linku?"
-          }
-        }
-      }
-    },
-    "Call Czech Police · %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Call Czech Police · %@"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volat Policii ČR · %@"
-          }
-        }
-      }
-    },
-    "Call Czech Police?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Call Czech Police?"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zavolat Policii ČR?"
           }
         }
       }

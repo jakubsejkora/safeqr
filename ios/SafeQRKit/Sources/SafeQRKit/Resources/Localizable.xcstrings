@@ -4750,13 +4750,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This is an offline check, not a guarantee of safety."
+            "value": "The check on this iPhone works offline. It cannot guarantee safety."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti."
+            "value": "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost."
           }
         }
       }
@@ -4988,13 +4988,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Without a cloud check we only see the address, not the page or its redirects."
+            "value": "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+            "value": "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
           }
         }
       }

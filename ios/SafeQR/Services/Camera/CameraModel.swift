@@ -15,6 +15,7 @@ final class CameraModel {
     private(set) var sceneContainsPrivateCodes = false
     private(set) var thumbnail: UIImage?
     private var lastSeen: [UUID: Date] = [:]
+    private var acceptsFrames = false
     private(set) var capture: CameraCapture?
 
     func start(requestPermission: Bool = false) async {
@@ -39,6 +40,7 @@ final class CameraModel {
                     hasTorch = torch
                     state = .ready
                 case .frame(let observations, let jpeg):
+                    guard acceptsFrames else { return }
                     update(observations)
                     if let jpeg { thumbnail = UIImage(data: jpeg) }
                 case .unavailable:
@@ -48,6 +50,7 @@ final class CameraModel {
                 }
             }
         }
+        acceptsFrames = true
         capture?.start()
         #endif
     }
@@ -85,6 +88,11 @@ final class CameraModel {
     }
 
     func stop() {
+        acceptsFrames = false
+        codes = []
+        thumbnail = nil
+        lastSeen.removeAll()
+        sceneContainsPrivateCodes = false
         capture?.setTorch(false)
         torchEnabled = false
         capture?.stop()

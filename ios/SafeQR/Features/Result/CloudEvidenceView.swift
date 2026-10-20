@@ -2,16 +2,10 @@ import SwiftUI
 
 struct CloudEvidenceView: View {
     let verdict: CloudVerdict
-    let photo: ScenePhoto?
 
     var body: some View {
         if let scene = verdict.scene {
             DetailSection(title: L10n.text("Around the code")) {
-                if let photo, let image = UIImage(data: photo.jpeg) {
-                    Image(uiImage: image).resizable().scaledToFit().frame(maxHeight: 220)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .accessibilityLabel(L10n.text("The surroundings captured with this code"))
-                }
                 Text(scene.summary)
                 ForEach(Array((scene.tamperingSigns ?? []).enumerated()), id: \.offset) { _, sign in
                     Label(sign, systemImage: "exclamationmark.triangle").foregroundStyle(.secondary)

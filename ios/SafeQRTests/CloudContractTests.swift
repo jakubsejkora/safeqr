@@ -8,7 +8,7 @@ struct CloudContractTests {
         let request = CheckRequest(analysis: CodeInspector().inspect("https://example.com"), scene: nil)
         for endpoint in [nil, URL(string: "http://example.com"), URL(string: "https://user:secret@example.com"), URL(string: "https://example.com?redirect=other")] {
             await #expect(throws: CloudError.invalidResponse) {
-                try await CloudClient(baseURL: endpoint).check(request) { _ in }
+                try await CloudClient(baseURL: endpoint).check({ request }) { _ in }
             }
         }
     }

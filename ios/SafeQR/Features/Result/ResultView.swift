@@ -37,7 +37,7 @@ struct ResultView: View {
                                 Text(item).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                             }
                         }
-                        if let verdict = model.verdict { CloudEvidenceView(verdict: verdict, photo: model.scene) }
+                        if let verdict = model.verdict { CloudEvidenceView(verdict: verdict) }
                         DetailSection(title: L10n.text("What we couldn't check")) {
                             ForEach(Array(model.limitations.enumerated()), id: \.offset) { _, item in
                                 Text(item).font(.footnote).foregroundStyle(.secondary)
