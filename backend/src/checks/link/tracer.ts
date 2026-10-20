@@ -28,7 +28,8 @@ export async function traceLink(
       if (visited.has(url))
         return { report: { finalUrl: url, hops }, limitation: "hopLimit" };
       visited.add(url);
-      const response = await fetchPage(url, { signal });
+      // Redirect hints and the title sit at the top; large pages such as video sites are read only that far.
+      const response = await fetchPage(url, { signal, truncate: true });
       hops.push({ url, via, status: response.status });
       if (
         [301, 302, 303, 307, 308].includes(response.status) &&

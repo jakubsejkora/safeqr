@@ -117,7 +117,7 @@ export interface WebResponse {
 }
 export type WebFetch = (
   url: string,
-  options?: { signal?: AbortSignal; maxBytes?: number },
+  options?: { signal?: AbortSignal; maxBytes?: number; truncate?: boolean },
 ) => Promise<WebResponse>;
 
 /** Fetches one hop using a validated, pinned IP; never forwards caller credentials. */
@@ -150,17 +150,9 @@ export const safeFetch: WebFetch = async (input, options = {}) => {
       requestOptions,
       (response) => {
         const chunks: Buffer[] = [];
+        const limit = options.maxBytes ?? LIMITS.linkBytes;
         let size = 0;
-        response.on("data", (chunk: Buffer) => {
-          size += chunk.length;
-          if (size > (options.maxBytes ?? LIMITS.linkBytes)) {
-            request.destroy(new Error("Response too large"));
-            return;
-          }
-          chunks.push(chunk);
-        });
-        response.on("error", () => reject(new Error("Response unavailable")));
-        response.on("end", () => {
+        const finish = () => {
           const headers: Record<string, string> = {};
           for (const name of [
             "content-type",
@@ -177,7 +169,24 @@ export const safeFetch: WebFetch = async (input, options = {}) => {
             headers,
             body: Buffer.concat(chunks),
           });
+        };
+        response.on("data", (chunk: Buffer) => {
+          if (size + chunk.length <= limit) {
+            size += chunk.length;
+            chunks.push(chunk);
+            return;
+          }
+          if (!options.truncate) {
+            request.destroy(new Error("Response too large"));
+            return;
+          }
+          chunks.push(chunk.subarray(0, limit - size));
+          size = limit;
+          finish();
+          request.destroy();
         });
+        response.on("error", () => reject(new Error("Response unavailable")));
+        response.on("end", finish);
       },
     );
     request.on("error", () => reject(new Error("Destination unavailable")));

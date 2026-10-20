@@ -145,6 +145,22 @@ describe("redirect and domain evidence", () => {
     );
     expect(fetch).toHaveBeenCalledTimes(10);
   });
+  it("reads only the start of large pages while tracing", async () => {
+    const fetch = vi
+      .fn<WebFetch>()
+      .mockResolvedValueOnce(
+        page(303, { location: "https://www.example.com/watch" }),
+      )
+      .mockResolvedValueOnce(
+        page(200, { "content-type": "text/html" }, "<title>Video</title>"),
+      );
+    const trace = await traceLink("https://example.com/v", fetch);
+    expect(trace.report?.finalUrl).toBe("https://www.example.com/watch");
+    expect(trace.report?.pageTitle).toBe("Video");
+    expect(fetch.mock.calls.every(([, options]) => options?.truncate)).toBe(
+      true,
+    );
+  });
   it("degrades on timeouts and oversized bodies", async () => {
     expect(
       await traceLink("https://example.com", async () => {
