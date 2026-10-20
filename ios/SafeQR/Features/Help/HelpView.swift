@@ -70,6 +70,8 @@ struct GuideListView: View {
 }
 
 struct GuideDetailView: View {
+    @Environment(\.appTheme) private var theme
+
     let guide: SafetyGuide
 
     var body: some View {
@@ -91,12 +93,12 @@ struct GuideDetailView: View {
                 if guide.id.hasPrefix("recovery-") {
                     NavigationLink { BankHotlinesView() } label: { Label(L10n.text("Find your bank’s number"), systemImage: "phone") }
                         .buttonStyle(.glassProminent)
-                        .foregroundStyle(AppStyle.onAccent).controlSize(.large)
+                        .foregroundStyle(theme.onAccent).controlSize(.large)
                 }
                 if guide.id == "report" {
                     ConfirmedActionButton(action: phoneAction(name: L10n.text("Czech Police"), number: "158"), symbol: "phone")
                         .buttonStyle(.glassProminent)
-                        .foregroundStyle(AppStyle.onAccent).controlSize(.large)
+                        .foregroundStyle(theme.onAccent).controlSize(.large)
                 }
                 if !guide.sources.isEmpty {
                     DetailSection(title: L10n.text("Official sources")) {

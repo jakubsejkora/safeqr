@@ -5,7 +5,7 @@ import SafeQRKit
 
 enum CaptureEvent: Sendable {
     case ready(hasUltraWide: Bool, hasTorch: Bool)
-    case frame([CameraObservation], thumbnail: Data?)
+    case frame([CameraObservation])
     case torchChanged(Bool)
     case unavailable
 }
@@ -165,7 +165,7 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
                                      frameSize: CGSize(width: CVPixelBufferGetWidth(buffer), height: CVPixelBufferGetHeight(buffer)),
                                      ultraBounds: ultraBounds, ultraSize: sceneImage.extent.size)
         }
-        emit(.frame(codes, thumbnail: useUltra ? encode(sceneImage, longestSide: 320) : nil))
+        emit(.frame(codes))
     }
 
     private func encode(_ image: CIImage, longestSide: CGFloat) -> Data? {

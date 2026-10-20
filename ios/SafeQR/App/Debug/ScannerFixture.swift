@@ -20,7 +20,7 @@ final class ScannerFixture: CameraSource {
     var showsUltraWide = false
     private(set) var torchEnabled = false
     let codes: [TrackedCode]
-    let thumbnail = ScannerFixture.image
+    let frame = ScannerFixture.image
 
     init(mode: Mode) {
         self.mode = mode
@@ -29,8 +29,8 @@ final class ScannerFixture: CameraSource {
 
     var preview: AnyView {
         AnyView(GeometryReader { geometry in
-            if let thumbnail = self.thumbnail {
-                Image(uiImage: thumbnail).resizable().scaledToFill()
+            if let frame = self.frame {
+                Image(uiImage: frame).resizable().scaledToFill()
                     .frame(width: geometry.size.width, height: geometry.size.height).clipped()
             }
         })

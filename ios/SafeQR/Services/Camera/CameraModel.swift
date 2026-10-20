@@ -12,7 +12,6 @@ final class CameraModel: CameraSource {
     private(set) var torchEnabled = false
     private(set) var codes: [TrackedCode] = []
     private(set) var sceneContainsPrivateCodes = false
-    private(set) var thumbnail: UIImage?
     private var lastSeen: [UUID: Date] = [:]
     private var acceptsFrames = false
     private(set) var capture: CameraCapture?
@@ -55,10 +54,9 @@ final class CameraModel: CameraSource {
                     hasUltraWide = ultra
                     hasTorch = torch
                     state = .ready
-                case .frame(let observations, let jpeg):
+                case .frame(let observations):
                     guard acceptsFrames else { return }
                     update(observations)
-                    if let jpeg { thumbnail = UIImage(data: jpeg) }
                 case .unavailable:
                     state = .unavailable
                 case .torchChanged(let enabled):
@@ -106,7 +104,6 @@ final class CameraModel: CameraSource {
     func stop() {
         acceptsFrames = false
         codes = []
-        thumbnail = nil
         lastSeen.removeAll()
         sceneContainsPrivateCodes = false
         capture?.setTorch(false)

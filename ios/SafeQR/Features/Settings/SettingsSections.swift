@@ -6,6 +6,7 @@ struct SettingsSections: View {
     var body: some View {
         @Bindable var preferences = services.preferences
         Group {
+            AppearanceSection()
             Section {
                 Toggle(L10n.text("Deep checks for links"), isOn: $preferences.deepChecksEnabled)
                 Toggle(L10n.text("Check the surroundings photo"), isOn: $preferences.sceneChecksEnabled)

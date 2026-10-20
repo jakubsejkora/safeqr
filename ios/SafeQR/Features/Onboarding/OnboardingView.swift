@@ -2,6 +2,8 @@ import SwiftUI
 import AVFoundation
 
 struct OnboardingView: View {
+    @Environment(\.appTheme) private var theme
+
     @Environment(AppServices.self) private var services
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var page = 0
@@ -12,7 +14,7 @@ struct OnboardingView: View {
                 VStack(alignment: .leading, spacing: 28) {
                     HStack(spacing: 8) {
                         ForEach(0..<3) { index in
-                            Capsule().fill(index == page ? AppStyle.accent : AppStyle.accent.opacity(0.15))
+                            Capsule().fill(index == page ? theme.accent : theme.accent.opacity(0.15))
                                 .frame(width: index == page ? 36 : 12, height: 6)
                         }
                         Spacer()
@@ -58,7 +60,7 @@ struct OnboardingView: View {
         if page == 0 { ShieldMark(size: 140) }
         else {
             Image(systemName: page == 1 ? "sparkle.magnifyingglass" : "camera.viewfinder")
-                .font(.system(size: 86, weight: .light)).foregroundStyle(AppStyle.accent)
+                .font(.system(size: 86, weight: .light)).foregroundStyle(theme.accent)
                 .frame(height: 148).accessibilityHidden(true)
         }
     }
@@ -98,7 +100,7 @@ struct OnboardingView: View {
                     .font(.headline).frame(maxWidth: .infinity, minHeight: 38)
             }
             .buttonStyle(.glassProminent)
-            .foregroundStyle(AppStyle.onAccent)
+            .foregroundStyle(theme.onAccent)
             if page > 0 {
                 Button {
                     if page == 1 {

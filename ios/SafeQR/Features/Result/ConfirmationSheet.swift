@@ -2,6 +2,8 @@ import SwiftUI
 import SafeQRKit
 
 struct ConfirmationSheet: View {
+    @Environment(\.appTheme) private var theme
+
     @Environment(\.dismiss) private var dismiss
     @Environment(\.dynamicTypeSize) private var typeSize
     let action: CodeAction
@@ -54,7 +56,7 @@ struct ConfirmationSheet: View {
         } else {
             Button { dismiss(); onConfirm() } label: {
                 Text(action.requiredConfirmation.confirmTitle).frame(maxWidth: .infinity, minHeight: 36)
-            }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+            }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
                 .accessibilityIdentifier("confirm-action")
             Button(L10n.text("Go back"), role: .cancel) { dismiss() }.frame(maxWidth: .infinity, minHeight: 44)
         }
@@ -63,7 +65,7 @@ struct ConfirmationSheet: View {
     private var backButton: some View {
         Button(role: .cancel) { dismiss() } label: {
             Text(L10n.text("Go back")).fontWeight(.semibold).frame(maxWidth: .infinity, minHeight: 36)
-        }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+        }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
             .accessibilityIdentifier("confirm-go-back")
     }
 

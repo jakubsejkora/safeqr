@@ -14,8 +14,6 @@ enum L10n {
 }
 
 enum AppStyle {
-    static let accent = Color("AccentColor")
-    static let onAccent = Color(uiColor: .systemBackground)
     static let canvas = Color(uiColor: .systemGroupedBackground)
 }
 
@@ -74,18 +72,20 @@ extension CodeKind {
 }
 
 struct ShieldMark: View {
+    @Environment(\.appTheme) private var theme
+
     var size: CGFloat = 104
 
     var body: some View {
         Image(systemName: "qrcode.viewfinder")
             .font(.system(size: size * 0.58, weight: .medium))
-            .foregroundStyle(AppStyle.accent)
+            .foregroundStyle(theme.accent)
             .frame(width: size, height: size)
-            .background(AppStyle.accent.opacity(0.10), in: RoundedRectangle(cornerRadius: size * 0.28))
+            .background(theme.accent.opacity(0.10), in: RoundedRectangle(cornerRadius: size * 0.28))
             .overlay(alignment: .bottomTrailing) {
                 Image(systemName: "checkmark.shield.fill")
                     .font(.system(size: size * 0.31, weight: .semibold))
-                    .foregroundStyle(AppStyle.accent)
+                    .foregroundStyle(theme.accent)
                     .padding(4)
                     .background(.background, in: Circle())
                     .offset(x: 7, y: 7)

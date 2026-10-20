@@ -12,7 +12,6 @@ protocol CameraSource: AnyObject {
     var torchEnabled: Bool { get }
     var codes: [TrackedCode] { get }
     var sceneContainsPrivateCodes: Bool { get }
-    var thumbnail: UIImage? { get }
     var unavailableMessage: String { get }
 
     func start(requestPermission: Bool) async

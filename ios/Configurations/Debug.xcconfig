@@ -1,1 +1,3 @@
 #include "API.xcconfig"
+
+ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = AppIconBlue AppIconIndigo AppIconPlum AppIconCocoa AppIconForest

@@ -2,6 +2,7 @@ import SwiftUI
 import SafeQRKit
 
 struct MessagePayloadView: View {
+    @Environment(\.appTheme) private var theme
     let recipient: String?
     let message: String?
     let facts: [Fact]
@@ -16,7 +17,7 @@ struct MessagePayloadView: View {
                 HStack {
                     Spacer(minLength: 28)
                     Text(message).font(compact ? .callout : .body).textSelection(.enabled).padding(compact ? 10 : 16)
-                        .foregroundStyle(.white).background(Color(red: 0.12, green: 0.48, blue: 0.22), in: RoundedRectangle(cornerRadius: 22))
+                        .foregroundStyle(theme.onAccent).background(theme.accent, in: RoundedRectangle(cornerRadius: 22))
                 }
             }
             ForEach(facts.filter { !["recipient", "message"].contains($0.id) }) { fact in

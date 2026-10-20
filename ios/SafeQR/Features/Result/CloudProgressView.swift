@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct CloudProgressView: View {
+    @Environment(\.appTheme) private var theme
+
     let steps: [CheckStep]
     let checking: Bool
     let elapsedSeconds: Int
@@ -31,7 +33,7 @@ struct CloudProgressView: View {
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Image(systemName: symbol(step.status))
                     .symbolEffect(.variableColor.iterative, isActive: step.status.value == .running && !reduceMotion)
-                    .frame(width: 20).foregroundStyle(step.status.value == .running ? AppStyle.accent : .secondary)
+                    .frame(width: 20).foregroundStyle(step.status.value == .running ? theme.accent : .secondary)
                 Text(label(step)).foregroundStyle(step.status.value == .pending ? .secondary : .primary)
                 Spacer(minLength: 0)
                 if step.status.value == .skipped || step.status.value == .failed || step.status.value == nil {

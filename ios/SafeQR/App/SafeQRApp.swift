@@ -26,7 +26,10 @@ struct SafeQRApp: App {
                 RootView { ScanView(isSelected: $0) } settings: { SettingsSections() }
                 #endif
             }
-            .environment(services).tint(AppStyle.accent)
+            .environment(services)
+            .environment(\.appTheme, services.preferences.theme)
+            .tint(services.preferences.theme.accent)
+            .background(WindowAppearance(appearance: services.preferences.appearance, theme: services.preferences.theme))
         }
     }
 }

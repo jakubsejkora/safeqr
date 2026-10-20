@@ -20,6 +20,8 @@ final class DebugLaunchConfiguration {
         let services = AppServices(defaults: defaults,
                                    cloud: DebugCloudClient(configuration: self, live: AppServices.cloudClient()),
                                    camera: scannerMode.map { ScannerFixture(mode: $0) }, inMemoryHistory: inMemoryHistory)
+        if let theme = options.theme { services.preferences.theme = theme }
+        if let appearance = options.appearance { services.preferences.appearance = appearance }
         if let screen = options.screen {
             services.preferences.finishedOnboarding = screen != "onboarding"
             services.preferences.deepChecksEnabled = ["training", "scannerChecking", "scannerDanger"].contains(screen) && options.liveCheck

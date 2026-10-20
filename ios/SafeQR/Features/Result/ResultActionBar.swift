@@ -2,6 +2,8 @@ import SwiftUI
 import SafeQRKit
 
 struct ResultActionBar: View {
+    @Environment(\.appTheme) private var theme
+
     let actions: [CodeAction]
     let level: RiskLevel
     var compact = false
@@ -17,18 +19,18 @@ struct ResultActionBar: View {
             if risky || pending {
                 Button(action: goBack) {
                     Text(L10n.text("Back to scanning")).fontWeight(.semibold).frame(maxWidth: .infinity, minHeight: 36)
-                }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+                }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
                 if let primary {
                     Button { perform(primary) } label: {
                         Text(pending ? primary.title : primary.isHandoff ? L10n.text("Continue anyway…") : primary.title)
                             .frame(minHeight: 38)
-                    }.tint(primary.isHandoff ? level.color : AppStyle.accent)
+                    }.tint(primary.isHandoff ? level.color : theme.accent)
                     .disabled(pending && primary.isHandoff)
                 }
             } else if let primary {
                 Button { perform(primary) } label: {
                     Text(primary.title).fontWeight(.semibold).frame(maxWidth: .infinity, minHeight: 36)
-                }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+                }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
             }
             if actions.count > 1 && !compact {
                 HStack(spacing: 24) {

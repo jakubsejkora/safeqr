@@ -2,6 +2,8 @@ import SwiftUI
 import SafeQRKit
 
 struct CodePickerView: View {
+    @Environment(\.appTheme) private var theme
+
     @Environment(\.dismiss) private var dismiss
     let scan: ImportedScan
     let onSelect: (ScannedCode) -> Void
@@ -19,11 +21,11 @@ struct CodePickerView: View {
                                     ForEach(Array(scan.codes.enumerated()), id: \.element.id) { index, code in
                                         let bounds = code.bounds
                                         RoundedRectangle(cornerRadius: 4)
-                                            .strokeBorder(AppStyle.accent, lineWidth: 2)
+                                            .strokeBorder(theme.accent, lineWidth: 2)
                                             .overlay(alignment: .topLeading) {
                                                 Text("\(index + 1)").font(.caption.bold())
                                                     .padding(5).background(.background, in: Circle())
-                                                    .foregroundStyle(AppStyle.accent)
+                                                    .foregroundStyle(theme.accent)
                                             }
                                             .frame(width: bounds.width * geometry.size.width,
                                                    height: bounds.height * geometry.size.height)
@@ -46,7 +48,7 @@ struct CodePickerView: View {
                             onSelect(code)
                         } label: {
                             HStack(alignment: .top, spacing: 16) {
-                                Text("\(index + 1)").font(.title3.bold()).foregroundStyle(AppStyle.accent)
+                                Text("\(index + 1)").font(.title3.bold()).foregroundStyle(theme.accent)
                                 VStack(alignment: .leading, spacing: 6) {
                                     Label(content.title, systemImage: content.kind.symbol).font(.headline)
                                     if content.facts.isEmpty {

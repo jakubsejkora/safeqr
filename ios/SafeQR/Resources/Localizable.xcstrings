@@ -18,22 +18,6 @@
         }
       }
     },
-    "0.5× · Surroundings": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0.5× · Surroundings"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0,5× · Okolí"
-          }
-        }
-      }
-    },
     "A closer look": {
       "extractionState": "manual",
       "localizations": {
@@ -2373,22 +2357,6 @@
         }
       }
     },
-    "Live view of the surroundings": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Live view of the surroundings"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Živý náhled okolí kódu"
-          }
-        }
-      }
-    },
     "Loading website preview…": {
       "extractionState": "manual",
       "localizations": {
@@ -3783,23 +3751,6 @@
         }
       }
     },
-    "Show the surroundings camera": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show the surroundings camera"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zobrazit fotoaparát pro okolí"
-          }
-        }
-      }
-    },
     "Similar reported scams": {
       "extractionState": "manual",
       "localizations": {
@@ -3998,23 +3949,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Krok za krokem"
-          }
-        }
-      }
-    },
-    "Surroundings camera": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Surroundings camera"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoaparát pro okolí"
           }
         }
       }
@@ -5124,6 +5058,244 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aktivace eSIM"
+          }
+        }
+      }
+    },
+    "Graphite": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Graphite"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grafit"
+          }
+        }
+      }
+    },
+    "Blue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blue"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modrá"
+          }
+        }
+      }
+    },
+    "Indigo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indigo"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indigo"
+          }
+        }
+      }
+    },
+    "Plum": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plum"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Švestka"
+          }
+        }
+      }
+    },
+    "Cocoa": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cocoa"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kakao"
+          }
+        }
+      }
+    },
+    "Forest": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forest"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les"
+          }
+        }
+      }
+    },
+    "Appearance": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vzhled"
+          }
+        }
+      }
+    },
+    "Automatic": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automaticky"
+          }
+        }
+      }
+    },
+    "Light": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Světlý"
+          }
+        }
+      }
+    },
+    "Dark": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tmavý"
+          }
+        }
+      }
+    },
+    "Ultra wide": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultra wide"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultraširokoúhlý fotoaparát"
+          }
+        }
+      }
+    },
+    "0.5×": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0.5×"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0,5×"
+          }
+        }
+      }
+    },
+    ".5": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ".5"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ",5"
+          }
+        }
+      }
+    },
+    "The theme changed. The app icon couldn't be changed this time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The theme changed. The app icon couldn't be changed this time."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Motiv se změnil. Ikonu aplikace se tentokrát nepodařilo změnit."
           }
         }
       }

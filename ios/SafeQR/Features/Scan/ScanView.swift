@@ -3,6 +3,8 @@ import PhotosUI
 import SafeQRKit
 
 struct ScanView<ResultContent: View>: View {
+    @Environment(\.appTheme) private var theme
+
     var isSelected: Bool
     @ViewBuilder var resultContent: (ResultPresentation, Bool) -> ResultContent
     @Environment(AppServices.self) private var services
@@ -37,6 +39,25 @@ struct ScanView<ResultContent: View>: View {
         .background(AppStyle.canvas)
         .toolbarBackground(.hidden, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if observingCamera {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    PhotosPicker(selection: $selectedPhoto, matching: .images) {
+                        Label(L10n.text("Import photo"), systemImage: "photo").foregroundStyle(.white)
+                    }
+                    .disabled(importing)
+                    if services.camera.hasTorch {
+                        Button { services.camera.toggleTorch() } label: {
+                            Label(services.camera.torchEnabled ? L10n.text("Turn light off") : L10n.text("Turn light on"),
+                                  systemImage: services.camera.torchEnabled ? "bolt.fill" : "bolt.slash")
+                                .foregroundStyle(services.camera.torchEnabled ? .yellow : .white)
+                                .symbolEffect(.bounce, value: services.camera.torchEnabled)
+                                .symbolEffectsRemoved(reduceMotion)
+                        }
+                    }
+                }
+            }
+        }
         .environment(\.colorScheme, cameraVisible ? .dark : systemAppearance)
         .toolbarColorScheme(cameraVisible ? .dark : nil, for: .navigationBar, .tabBar)
         .sheet(item: $navigation.result, onDismiss: { Task { await services.camera.start() } }) { result in
@@ -103,10 +124,10 @@ struct ScanView<ResultContent: View>: View {
             Text(services.camera.unavailableMessage)
         } actions: {
             if services.camera.state == .denied {
-                Button(L10n.text("Open Settings")) { openSettings() }.buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+                Button(L10n.text("Open Settings")) { openSettings() }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
             } else if services.camera.state == .idle {
                 Button(L10n.text("Allow camera")) { Task { await services.camera.start(requestPermission: true) } }
-                    .buttonStyle(.glassProminent).foregroundStyle(AppStyle.onAccent)
+                    .buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
             }
             PhotosPicker(selection: $selectedPhoto, matching: .images) {
                 Label(L10n.text("Import photo"), systemImage: "photo")
@@ -116,43 +137,22 @@ struct ScanView<ResultContent: View>: View {
     }
 
     private var cameraControls: some View {
-        VStack {
-            HStack(alignment: .top, spacing: 12) {
-                if services.camera.codes.isEmpty {
-                    Text(L10n.text("Point at a QR code"))
-                        .font(.subheadline.weight(.medium)).padding(.horizontal, 16).padding(.vertical, 12)
-                        .glassEffect(in: RoundedRectangle(cornerRadius: typeSize.isAccessibilitySize ? 24 : 30))
-                }
-                Spacer(minLength: 0)
-                if !typeSize.isAccessibilitySize, let thumbnail = services.camera.thumbnail {
-                    SurroundingsThumbnail(image: thumbnail, captureCount: services.camera.codes.count)
-                }
-            }
+        VStack(spacing: 14) {
             Spacer()
-            GlassEffectContainer(spacing: 16) {
-                HStack(spacing: 20) {
-                    PhotosPicker(selection: $selectedPhoto, matching: .images) {
-                        Label(L10n.text("Import photo"), systemImage: "photo")
-                            .labelStyle(.iconOnly).frame(width: 56, height: 56)
-                    }.buttonStyle(.glass).disabled(importing)
-                    if services.camera.hasUltraWide {
-                        CameraZoomControl(ultraWide: Binding(get: { services.camera.showsUltraWide },
-                                                            set: { services.camera.showsUltraWide = $0 }))
-                    }
-                    if services.camera.hasTorch {
-                        Button { services.camera.toggleTorch() } label: {
-                            Label(services.camera.torchEnabled ? L10n.text("Turn light off") : L10n.text("Turn light on"),
-                                  systemImage: services.camera.torchEnabled ? "flashlight.on.fill" : "flashlight.off.fill")
-                                .labelStyle(.iconOnly).frame(width: 56, height: 56)
-                                .symbolEffect(.bounce, value: services.camera.torchEnabled)
-                        }.buttonStyle(.glass)
-                    }
-                }
+            if services.camera.codes.isEmpty {
+                Text(L10n.text("Point at a QR code"))
+                    .font(.subheadline.weight(.medium))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 16).padding(.vertical, 10)
+                    .glassEffect(in: Capsule())
             }
-            .padding(.bottom, 20)
+            if services.camera.hasUltraWide {
+                CameraZoomControl(ultraWide: Binding(get: { services.camera.showsUltraWide },
+                                                    set: { services.camera.showsUltraWide = $0 }))
+            }
         }
-        .padding(.horizontal, 20).padding(.top, 8)
-        .tint(.white)
+        .padding(.horizontal, 20).padding(.bottom, 16)
+        .foregroundStyle(.white)
         .symbolEffectsRemoved(reduceMotion)
     }
 

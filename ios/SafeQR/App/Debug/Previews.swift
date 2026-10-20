@@ -10,15 +10,15 @@ import SafeQRKit
 }
 
 #Preview("Scan") {
-    NavigationStack { ScanView() }.environment(previewServices()).tint(AppStyle.accent)
+    NavigationStack { ScanView() }.environment(previewServices()).tint(AppTheme.graphite.accent)
 }
 
 #Preview("Onboarding") {
-    OnboardingView().environment(previewServices()).tint(AppStyle.accent)
+    OnboardingView().environment(previewServices()).tint(AppTheme.graphite.accent)
 }
 
 #Preview("Help") {
-    HelpView().environment(previewServices()).tint(AppStyle.accent)
+    HelpView().environment(previewServices()).tint(AppTheme.graphite.accent)
 }
 #Preview("Payloads") {
     ScrollView {

@@ -2,6 +2,8 @@ import SwiftUI
 import SafeQRKit
 
 struct HistoryView: View {
+    @Environment(\.appTheme) private var theme
+
     @Environment(AppServices.self) private var services
     @State private var clearing = false
 
@@ -16,7 +18,7 @@ struct HistoryView: View {
                     ForEach(history.records) { record in
                         HStack(alignment: .top, spacing: 16) {
                             Image(systemName: CodeKind(rawValue: record.kind)?.symbol ?? "qrcode")
-                                .font(.title2).foregroundStyle(AppStyle.accent).accessibilityHidden(true)
+                                .font(.title2).foregroundStyle(theme.accent).accessibilityHidden(true)
                             VStack(alignment: .leading, spacing: 6) {
                                 Text(record.title).font(.headline)
                                 Label(RiskLevel(score: record.score).title, systemImage: RiskLevel(score: record.score).symbol)

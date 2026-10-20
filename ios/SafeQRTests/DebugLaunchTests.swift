@@ -39,7 +39,7 @@ struct DebugLaunchTests {
         let camera = try #require(services.camera as? ScannerFixture)
         #expect(camera.mode == mode)
         #expect(camera.state == .ready)
-        #expect(camera.thumbnail != nil)
+        #expect(camera.frame != nil)
         #expect(camera.codes.count == (mode == .idle ? 0 : 1))
         #expect(camera.codes.first?.analysis.raw == (mode == .idle ? nil : DebugSample.training.raw))
         #expect(services.navigation.result == nil)

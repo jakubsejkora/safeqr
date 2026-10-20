@@ -2,6 +2,8 @@ import SwiftUI
 import SafeQRKit
 
 struct EventPayloadView: View {
+    @Environment(\.appTheme) private var theme
+
     let facts: [Fact]
 
     var body: some View {
@@ -10,6 +12,6 @@ struct EventPayloadView: View {
             ForEach(facts.filter { $0.id != "name" }) { FactRow(fact: $0) }
         }
         .padding(.leading, 18)
-        .overlay(alignment: .leading) { RoundedRectangle(cornerRadius: 2).fill(AppStyle.accent).frame(width: 4) }
+        .overlay(alignment: .leading) { RoundedRectangle(cornerRadius: 2).fill(theme.accent).frame(width: 4) }
     }
 }
