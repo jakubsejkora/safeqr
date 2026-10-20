@@ -5316,6 +5316,23 @@
           }
         }
       }
+    },
+    "Safe QR opens the secure version: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR opens the secure version: %@"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřeme zabezpečenou verzi: %@"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -24,7 +24,7 @@ final class DebugLaunchConfiguration {
         if let appearance = options.appearance { services.preferences.appearance = appearance }
         if let screen = options.screen {
             services.preferences.finishedOnboarding = screen != "onboarding"
-            services.preferences.deepChecksEnabled = ["training", "scannerChecking", "scannerDanger"].contains(screen) && options.liveCheck
+            services.preferences.deepChecksEnabled = ["training", "http", "scannerChecking", "scannerDanger"].contains(screen) && options.liveCheck
             services.preferences.sceneChecksEnabled = services.preferences.deepChecksEnabled && options.liveScene
             if screen == "help" || screen == "guide" { services.navigation.tab = .help }
             if screen == "settings" { services.navigation.tab = .settings }
@@ -50,7 +50,7 @@ final class DebugLaunchConfiguration {
         do { try await Task.sleep(for: .milliseconds(500)) }
         catch { return }
         guard services.navigation.result === result, result.model.allowsHandoff else { return }
-        result.selectedAction = result.model.analysis.actions.first(where: \.isHandoff)
+        result.selectedAction = result.model.actions.first(where: \.isHandoff)
     }
 }
 #endif

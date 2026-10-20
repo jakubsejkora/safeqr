@@ -4,12 +4,18 @@ import SafeQRKit
 struct PayloadView: View {
     let content: CodeContent
     var compact = false
+    var secureURL: URL? = nil
 
     var body: some View {
         switch content.payload {
         case .link(let url), .appLink(let url):
             VStack(alignment: .leading, spacing: 12) {
                 AddressCapsule(url: url)
+                if let secureURL {
+                    Text(L10n.format("Safe QR opens the secure version: %@", secureURL.absoluteString))
+                        .font(.subheadline).fixedSize(horizontal: false, vertical: true)
+                        .textSelection(.enabled)
+                }
                 ForEach(content.facts.filter { !["domain", "address", "original"].contains($0.id) }) { FactRow(fact: $0) }
             }
         case .payment(let payment): PaymentPayloadView(payment: payment, content: content)

@@ -23,7 +23,7 @@ struct ResultView: View {
                         CloudProgressView(steps: model.steps, checking: model.checking, elapsedSeconds: model.elapsedSeconds,
                                           completed: model.verdict != nil)
                     }
-                    PayloadView(content: model.analysis.content, compact: compact)
+                    PayloadView(content: model.analysis.content, compact: compact, secureURL: model.secureURL)
                     if let link = model.verdict?.link {
                         LinkJourneyView(link: link, original: model.analysis.raw).id("journey")
                     }
@@ -54,7 +54,7 @@ struct ResultView: View {
             }
             .background(Color(uiColor: .systemBackground))
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                ResultActionBar(actions: model.analysis.actions, level: model.handoffLevel,
+                ResultActionBar(actions: model.actions, level: model.handoffLevel,
                                 compact: compact || typeSize.isAccessibilitySize, pending: model.linkPending, goBack: { dismiss() }, perform: perform)
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -62,7 +62,7 @@ struct ResultView: View {
                 if compact || typeSize.isAccessibilitySize {
                     ToolbarItem(placement: .topBarLeading) {
                         Menu {
-                            ForEach(model.analysis.actions.filter { !$0.isHandoff }) { action in
+                            ForEach(model.actions.filter { !$0.isHandoff }) { action in
                                 Button(action.title) { perform(action) }
                             }
                         } label: { Label(L10n.text("Copy or share"), systemImage: "ellipsis") }
@@ -83,7 +83,7 @@ struct ResultView: View {
             return model.assessment.level.feedback
         }
         .sheet(item: $presentation.selectedAction, onDismiss: finishConfirmation) { action in
-            ConfirmationSheet(action: action, level: model.handoffLevel, reason: model.destinationUnchecked ? L10n.text("The destination could not be checked. Be careful if you continue.") : model.assessment.findings.first?.title) {
+            ConfirmationSheet(action: action, level: model.handoffLevel, reason: model.confirmationReason) {
                 confirmedAction = action
             }
         }

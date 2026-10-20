@@ -25,6 +25,30 @@ final class ResultModel: Identifiable {
     }
     var allowsHandoff: Bool { !linkPending }
 
+    var secureURL: URL? {
+        guard finished, !checking, let verdict, verdict.isValid,
+              case .link(let original) = analysis.content.payload,
+              let hops = verdict.link?.hops else { return nil }
+        return SecureLinkUpgrade.destination(for: original, hops: hops)
+    }
+
+    var actions: [CodeAction] {
+        guard let secureURL, case .link(let original) = analysis.content.payload else { return analysis.actions }
+        return analysis.actions.map { action in
+            guard case .open(let url) = action.kind, url == original else { return action }
+            let confirmation = action.requiredConfirmation
+            return CodeAction(id: action.id, kind: .open(secureURL), title: action.title, isPrimary: action.isPrimary,
+                              confirmation: Confirmation(title: confirmation.title,
+                                  message: L10n.format("Your browser will open %@.", secureURL.absoluteString),
+                                  confirmTitle: confirmation.confirmTitle, isRisky: confirmation.isRisky))
+        }
+    }
+
+    var confirmationReason: String? {
+        if destinationUnchecked { return L10n.text("The destination could not be checked. Be careful if you continue.") }
+        return assessment.findings.first { secureURL == nil || $0.id != "link.http" }?.title
+    }
+
     init(analysis: CodeAnalysis, scene: ScenePhoto?, extraLimitations: [String] = []) {
         self.analysis = analysis
         self.scene = scene

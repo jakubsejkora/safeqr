@@ -50,14 +50,14 @@ struct DebugLaunchTests {
     }
 
     @Test func navigationAndConsentRemainExplicit() {
-        for screen in ["onboarding", "scan", "help", "guide", "settings", "training", "scannerIdle",
+        for screen in ["onboarding", "scan", "help", "guide", "settings", "training", "http", "scannerIdle",
                        "scannerLocked", "scannerChecking", "scannerDanger"] {
             let configuration = configuration(screen, flags: ["--live-check", "--live-scene"])
             let services = services(configuration)
             #expect(services.preferences.finishedOnboarding == (screen != "onboarding"))
             #expect(services.navigation.tab == (["help", "guide"].contains(screen) ? .help : screen == "settings" ? .settings : .scan))
             #expect(services.navigation.guides.first?.id == (screen == "guide" ? "recovery-1" : nil))
-            let live = ["training", "scannerChecking", "scannerDanger"].contains(screen)
+            let live = ["training", "http", "scannerChecking", "scannerDanger"].contains(screen)
             #expect(services.preferences.consent == CheckConsent(links: live, surroundings: live))
         }
         let medium = services(configuration("payment", flags: ["--medium"]))

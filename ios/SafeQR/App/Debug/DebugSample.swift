@@ -50,7 +50,7 @@ enum DebugSample: String, CaseIterable, Identifiable {
         switch self {
         case .training: Example(category: .links, title: "Parking scam (training)", payload: "https://safeqr-training.jakub-f9d.workers.dev/start")
         case .link: Example(category: .links, title: "Ordinary link", payload: "https://example.com/path")
-        case .http: Example(category: .links, title: "Unencrypted link", payload: "http://example.com")
+        case .http: Example(category: .links, title: "Unencrypted link", payload: "http://www.vodafone.cz")
         case .lookalike: Example(category: .links, title: "Lookalike address", payload: "https://xn--pple-43d.test")
         case .redirect: Example(category: .links, title: "Hidden redirect", payload: "https://example.com/?next=https%3A%2F%2Fexample.org")
         case .payment: Example(category: .payments, title: "QR payment", payload: "SPD*1.0*ACC:CZ6508000000192000145399*AM:250*CC:CZK*RN:Example")
