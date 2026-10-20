@@ -6,6 +6,7 @@ import type { Model } from "../../shared/model.js";
 import { safeFetch, type WebFetch, webUrl } from "../../shared/network.js";
 import { redact } from "../../shared/privacy.js";
 import type { LinkReport } from "../../shared/schemas.js";
+import { isInstagramUrl } from "../social/links.js";
 import { type BrowserSession, startBrowser } from "./agentcore.js";
 import { inspectControls, riskyDownload } from "./page-requests.js";
 import { BROWSER_PROMPT } from "./prompt.v2.js";
@@ -113,7 +114,9 @@ async function settledEvidence(page: Page): Promise<PageEvidence> {
   for (let attempt = 0; attempt < 5; attempt++) {
     const previous = page.url();
     try {
-      const evidence = await pageEvidence(page);
+      await page
+        .waitForLoadState("domcontentloaded", { timeout: 2000 })
+        .catch(() => undefined);
       const navigated = await page
         .waitForURL((url) => url.href !== previous, {
           timeout: 1100,
@@ -123,7 +126,10 @@ async function settledEvidence(page: Page): Promise<PageEvidence> {
           () => true,
           () => false,
         );
-      if (!navigated) return evidence;
+      if (!navigated) {
+        const evidence = await pageEvidence(page);
+        if (page.url() === previous) return evidence;
+      }
     } catch (error) {
       if (
         !(error instanceof Error) ||
@@ -186,6 +192,11 @@ export async function inspectLink(
           request.isNavigationRequest() && request.frame() === page.mainFrame();
         if (
           request.method() !== "GET" ||
+          (request.resourceType() === "image" &&
+            (isInstagramUrl(page.url()) ||
+              /(^|\.)(cdninstagram\.com|fbcdn\.net)$/.test(
+                new URL(request.url()).hostname,
+              ))) ||
           ["media", "font"].includes(request.resourceType()) ||
           ++requests > 64 ||
           inFlight >= 6 ||
@@ -355,12 +366,14 @@ export async function inspectLink(
     }
     const after = await settledEvidence(page);
     const finalUrl = webUrl(page.url()).href;
-    const screenshot = await page.screenshot({
-      type: "jpeg",
-      quality: 55,
-      fullPage: false,
-      timeout: 2000,
-    });
+    const screenshot = isInstagramUrl(finalUrl)
+      ? new Uint8Array()
+      : await page.screenshot({
+          type: "jpeg",
+          quality: 55,
+          fullPage: false,
+          timeout: 2000,
+        });
     return {
       report: {
         finalUrl,

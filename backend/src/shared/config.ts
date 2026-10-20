@@ -11,6 +11,8 @@ export const LIMITS = {
   checksPerDay: 500,
   modelCallsPerMinute: 60,
   checkModelCalls: 3,
+  profilesPerDay: 20,
+  profileChargeUsd: 0.01,
   linkBytes: 512_000,
   hops: 10,
   screenshotSeconds: 900,

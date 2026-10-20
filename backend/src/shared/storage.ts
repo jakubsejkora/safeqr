@@ -179,13 +179,14 @@ export async function takeQuota(
   scope: string,
   windowSeconds: number,
   limit: number,
+  bucket?: string,
 ): Promise<void> {
   const window = Math.floor(Date.now() / 1000 / windowSeconds);
   try {
     await documentClient.send(
       new UpdateCommand({
         TableName: table,
-        Key: { pk: `quota#${scope}#${window}` },
+        Key: { pk: `quota#${scope}#${bucket ?? window}` },
         UpdateExpression: "SET expiresAt = :expiry ADD used :one",
         ConditionExpression: "attribute_not_exists(used) OR used < :limit",
         ExpressionAttributeValues: {

@@ -11,8 +11,10 @@ import { domainAge } from "./link/domain.js";
 import { inspectLink, type SandboxResult } from "./link/sandbox.js";
 import { type TraceResult, traceLink } from "./link/tracer.js";
 import { inspectScene } from "./scene/agent.js";
+import { inspectSocial, type SocialResult } from "./social/agent.js";
+import { isInstagramUrl } from "./social/links.js";
 import { createVerdict, type Evidence } from "./verdict/agent.js";
-import { progress } from "./verdict/copy.js";
+import { progress, say } from "./verdict/copy.js";
 
 export interface WorkerDependencies {
   checks: CheckStore;
@@ -23,6 +25,7 @@ export interface WorkerDependencies {
   sandbox?: typeof inspectLink;
   scene?: typeof inspectScene;
   age?: typeof domainAge;
+  social?: typeof inspectSocial;
 }
 const stepIds: Step["id"][] = [
   "redirects",
@@ -45,11 +48,23 @@ export function createWorker(
     const evidence: Evidence = { intel: [], limitations: [] };
     let screenshotKey: string | undefined;
     let photoDeleted = !record.photoKey;
+    let socialApplied = false;
+    let socialResult: SocialResult | undefined;
     const step = (name: Step["id"], status: Step["status"]) =>
       deps.checks.step(
         id,
         stepIds.indexOf(name),
-        progress(request.locale, name, status),
+        name === "intel" && socialApplied
+          ? {
+              id: name,
+              status,
+              label: say(
+                request.locale,
+                "Prohlížíme profil a jeho odkazy (Apify)",
+                "Checking the profile and its links (Apify)",
+              ),
+            }
+          : progress(request.locale, name, status),
       );
     try {
       const traceTask = async (): Promise<TraceResult | undefined> => {
@@ -78,8 +93,10 @@ export function createWorker(
           if (result.navigationFailed) evidence.limitations.push("sandbox");
           if (result.modelFailed) evidence.limitations.push("browserModel");
           evidence.downloads = result.downloads;
-          screenshotKey = `screenshots/${id}.jpg`;
-          await deps.media.put(screenshotKey, result.screenshot);
+          if (!isInstagramUrl(result.report.finalUrl)) {
+            screenshotKey = `screenshots/${id}.jpg`;
+            await deps.media.put(screenshotKey, result.screenshot);
+          }
           await step("sandbox", result.navigationFailed ? "failed" : "done");
           return result;
         } catch {
@@ -89,6 +106,19 @@ export function createWorker(
         }
       };
       const tracing = traceTask();
+      const socialTask = async () => {
+        if (request.kind !== "link") return;
+        const trace = await tracing.catch(() => undefined);
+        socialResult = await (deps.social ?? inspectSocial)(
+          { url: trace?.report?.finalUrl ?? target, page: trace?.page },
+          {
+            progress: async () => {
+              socialApplied = true;
+              await step("intel", "running");
+            },
+          },
+        );
+      };
       const sceneTask = async () => {
         if (!record.photoKey) {
           await step("scene", "skipped");
@@ -140,6 +170,7 @@ export function createWorker(
         sandboxTask(),
         sceneTask(),
         initialIntel(),
+        socialTask(),
       ]);
       const trace =
         settled[0].status === "fulfilled" ? settled[0].value : undefined;
@@ -148,6 +179,26 @@ export function createWorker(
       if (settled.some((result) => result.status === "rejected"))
         evidence.limitations.push("model");
       evidence.link = sandbox?.report ?? trace?.report;
+      if (
+        request.kind === "link" &&
+        !socialResult?.report &&
+        sandbox?.report.finalUrl &&
+        sandbox.report.finalUrl !== trace?.report?.finalUrl
+      ) {
+        socialResult = await (deps.social ?? inspectSocial)(
+          { url: sandbox.report.finalUrl },
+          {
+            progress: async () => {
+              socialApplied = true;
+              await step("intel", "running");
+            },
+          },
+        );
+      }
+      if (socialResult?.report) {
+        evidence.social = socialResult.report;
+        evidence.limitations.push("socialScope", ...socialResult.limitations);
+      }
       if (request.kind === "link") {
         const tracedDestination = trace?.report?.hops.at(-1);
         const traceOpened =
@@ -157,6 +208,7 @@ export function createWorker(
           (!tracedDestination?.status || tracedDestination.status < 400);
         evidence.destinationUnavailable =
           !(sandbox && !sandbox.navigationFailed) && !traceOpened;
+        if (evidence.social?.profile) evidence.destinationUnavailable = false;
       }
       if (evidence.link) {
         const traced = trace?.report?.hops ?? [];

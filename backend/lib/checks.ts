@@ -3,6 +3,7 @@ import {
   aws_lambda_destinations as destinations,
   aws_iam as iam,
   aws_lambda as lambda,
+  aws_secretsmanager as secrets,
   aws_sqs as sqs,
 } from "aws-cdk-lib";
 import type { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
@@ -19,6 +20,11 @@ export class Checks extends Construct {
   readonly worker: NodejsFunction;
   constructor(scope: Construct, id: string, storage: Storage) {
     super(scope, id);
+    const apifySecret = secrets.Secret.fromSecretNameV2(
+      this,
+      "ApifyToken",
+      "safeqr/apify-token",
+    );
     this.worker = makeFunction(
       this,
       "Worker",
@@ -27,6 +33,7 @@ export class Checks extends Construct {
         CHECKS_TABLE: storage.checks.tableName,
         INTEL_TABLE: storage.intel.tableName,
         MEDIA_BUCKET: storage.media.bucketName,
+        APIFY_SECRET_ARN: apifySecret.secretArn,
       },
       70,
       { browser: true, memory: 1024 },
@@ -35,8 +42,9 @@ export class Checks extends Construct {
       this.worker,
       storage.checks.tableArn,
       ["GetItem", "UpdateItem"],
-      ["chk_*", "quota#models#*"],
+      ["chk_*", "quota#models#*", "quota#profiles#*"],
     );
+    apifySecret.grantRead(this.worker);
     grantTable(this.worker, storage.intel.tableArn, ["Query"]);
     storage.media.grantRead(this.worker, "scenes/*");
     storage.media.grantDelete(this.worker, "scenes/*");

@@ -13,13 +13,15 @@ import {
   verdictSchema,
 } from "../../shared/schemas.js";
 import type { StoredRequest } from "../../shared/storage.js";
+import type { SocialReport } from "../social/agent.js";
+import { socialFindings } from "../social/findings.js";
 import {
   concealedRedirects,
   effectiveDevice,
   establishedDestination,
 } from "./calibration.js";
 import { consequence, type Limitation, limitationText, say } from "./copy.js";
-import { VERDICT_PROMPT } from "./prompt.v2.js";
+import { VERDICT_PROMPT } from "./prompt.v3.js";
 
 export interface Evidence {
   link?: LinkReport;
@@ -28,6 +30,7 @@ export interface Evidence {
   limitations: Limitation[];
   downloads?: boolean;
   destinationUnavailable?: boolean;
+  social?: SocialReport;
 }
 const draftSchema = z.object({
   score: scoreSchema,
@@ -237,6 +240,11 @@ export function deterministicVerdict(
       "Nemohli jsme zjistit, co po vás cílová stránka žádá. Zkuste kontrolu později.",
       "We could not see what the destination asks for. Try the check again later.",
     );
+  if (evidence.social) {
+    const social = socialFindings(evidence.social, locale);
+    score = Math.max(score, social.score);
+    findings.push(...social.findings);
+  }
   return finalize(
     {
       score,
@@ -304,12 +312,19 @@ export async function createVerdict(
     const supported = new Set([
       "ai",
       "device",
-      ...(evidence.link ? ["sandbox"] : []),
+      ...(evidence.link || evidence.social ? ["sandbox"] : []),
       ...(evidence.scene ? ["scene"] : []),
       ...(evidence.intel.length ? ["intel"] : []),
     ]);
     const additions = draft.findings
       .filter((finding) => supported.has(finding.source))
+      // Login walls and ordinary profile redirects add no risk without independent evidence.
+      .filter(
+        (finding) =>
+          !evidence.social ||
+          baseline.score >= 30 ||
+          finding.severity === "info",
+      )
       .map((finding, index) => ({
         ...finding,
         id: `ai-${index}`,

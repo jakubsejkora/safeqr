@@ -4,9 +4,60 @@ import { inspectLink } from "../src/checks/link/sandbox.js";
 import { failing, returning } from "./helpers.js";
 
 describe("isolated browser lifecycle", () => {
-  it.each([true, false])(
-    "never hands HTTP redirects to Chromium (navigation: %s)",
-    async (navigation) => {
+  it("reads freshly rendered fields after the page settles, including after model work", async () => {
+    let rendered = false;
+    const page = {
+      on: vi.fn(),
+      goto: vi.fn(),
+      url: () => "https://example.com/pay",
+      title: async () => "Payment",
+      mainFrame: vi.fn(),
+      screenshot: async () => new Uint8Array(),
+      waitForLoadState: async () => undefined,
+      waitForURL: async () => {
+        rendered = true;
+        throw new Error("No further navigation");
+      },
+      evaluate: async () => ({
+        text: "",
+        controls: rendered
+          ? '<label for="card">Card number</label><input id="card">'
+          : "",
+        url: "https://example.com/pay",
+        candidates: [{ index: 0, text: "Continue", href: null }],
+      }),
+    };
+    const context = {
+      routeWebSocket: vi.fn(),
+      route: vi.fn(),
+      addInitScript: vi.fn(),
+      newPage: async () => page,
+    };
+    const result = await inspectLink(
+      "https://example.com/pay",
+      {
+        used: new Set(),
+        ask: async (request) => {
+          rendered = false;
+          return request.schema.parse({ candidateIndex: null });
+        },
+      },
+      {
+        start: async () => ({
+          browser: { newContext: async () => context } as unknown as Browser,
+          stop: vi.fn(),
+        }),
+      },
+    );
+    expect(result.report.asksFor).toContain("card");
+  });
+  it.each([
+    [true, "document", "https://example.com/"],
+    [false, "script", "https://example.com/"],
+    [false, "image", "https://www.instagram.com/example/"],
+  ] as const)(
+    "routes redirects and blocks Instagram photos (navigation: %s, resource: %s)",
+    async (navigation, resourceType, pageUrl) => {
       const fulfill = vi.fn();
       const abort = vi.fn().mockResolvedValue(undefined);
       let routeRequest: ((route: Route) => Promise<void>) | undefined;
@@ -17,7 +68,7 @@ describe("isolated browser lifecycle", () => {
           await routeRequest?.({
             request: () => ({
               method: () => "GET",
-              resourceType: () => (navigation ? "document" : "script"),
+              resourceType: () => resourceType,
               isNavigationRequest: () => navigation,
               frame: () => frame,
               url: () => "https://example.com/",
@@ -32,11 +83,12 @@ describe("isolated browser lifecycle", () => {
           controls: "",
           url: "https://example.com/",
         }),
-        url: () => "https://example.com/",
+        url: () => pageUrl,
         screenshot: vi.fn().mockResolvedValue(new Uint8Array()),
         title: async () => "Page",
         mainFrame: () => frame,
         waitForURL: vi.fn().mockRejectedValue(new Error("No navigation")),
+        waitForLoadState: vi.fn().mockResolvedValue(undefined),
       };
       const context = {
         routeWebSocket: vi.fn(),
@@ -50,14 +102,19 @@ describe("isolated browser lifecycle", () => {
         },
       };
       const browser = { newContext: async () => context } as unknown as Browser;
+      const fetchPage = vi.fn(async () => ({
+        status: 302,
+        headers: { location: "https://example.com/next" },
+        body: Buffer.alloc(0),
+      }));
       await inspectLink("https://example.com/", failing(), {
         start: async () => ({ browser, stop: vi.fn() }),
-        fetch: async () => ({
-          status: 302,
-          headers: { location: "https://example.com/next" },
-          body: Buffer.alloc(0),
-        }),
+        fetch: fetchPage,
       });
+      if (resourceType === "image") {
+        expect(fetchPage).not.toHaveBeenCalled();
+        expect(page.screenshot).not.toHaveBeenCalled();
+      }
       if (navigation) {
         expect(fulfill).toHaveBeenCalledWith({
           status: 200,
@@ -230,6 +287,7 @@ describe("isolated browser lifecycle", () => {
       locator: () => ({ click }),
       mainFrame: vi.fn(),
       waitForURL: vi.fn().mockRejectedValue(new Error("No navigation")),
+      waitForLoadState: vi.fn().mockResolvedValue(undefined),
     };
     const context = {
       routeWebSocket: vi.fn(),

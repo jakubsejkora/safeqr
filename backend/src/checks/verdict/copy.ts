@@ -1,6 +1,22 @@
 import type { CodeKind, Locale, Step } from "../../shared/schemas.js";
 
 export const limitations = {
+  profile: [
+    "Veřejný profil se přes Apify nepodařilo načíst. Odkazy v jeho popisu zůstaly neověřené.",
+    "Apify could not retrieve the public profile. Its bio links remain unchecked.",
+  ],
+  privateProfile: [
+    "Profil je soukromý. Kontrola vychází jen z veřejně dostupných údajů.",
+    "The profile is private. This check uses only publicly available details.",
+  ],
+  socialLinks: [
+    "Některé odkazy z profilu se nepodařilo rozbalit. Jejich další cíl neznáme.",
+    "Some profile links could not be expanded. Their next destination is unknown.",
+  ],
+  socialScope: [
+    "Zkontrolovali jsme nejvýše 20 odkazů a dvě rozcestníkové stránky. Cílové služby jsme neotevírali.",
+    "We checked up to 20 links and two link pages. We did not open the destination services.",
+  ],
   redirects: [
     "Odkaz se nepodařilo sledovat až do konce.",
     "We could not follow the link all the way.",

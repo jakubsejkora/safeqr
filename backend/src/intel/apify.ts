@@ -11,6 +11,11 @@ const runSchema = z.object({
   usageTotalUsd: z.number().optional(),
 });
 type Run = z.infer<typeof runSchema>;
+interface RunOptions {
+  seconds?: number;
+  fields?: string[];
+  limit?: number;
+}
 const finished = (run: Run) =>
   ["SUCCEEDED", "FAILED", "TIMED-OUT", "ABORTED"].includes(run.status);
 
@@ -24,7 +29,12 @@ export class Apify {
     private readonly budgetUsd = 0.76,
   ) {}
 
-  async run(job: ActorJob): Promise<unknown[]> {
+  async run(job: ActorJob, options: RunOptions = {}): Promise<unknown[]> {
+    const started = Date.now();
+    const seconds = options.seconds ?? 135;
+    const deadline = started + seconds * 1000;
+    const remaining = () => Math.max(1, deadline - Date.now());
+    const limit = options.limit ?? 40;
     if (job.capUsd <= 0 || this.reserved + job.capUsd > this.budgetUsd)
       throw new Error("Daily collector budget exhausted");
     if (!this.budgetChecked) {
@@ -34,7 +44,7 @@ export class Apify {
     this.reserved += job.capUsd;
     const query = new URLSearchParams({
       build: job.build,
-      timeout: "120",
+      timeout: String(Math.min(120, seconds)),
       memory: String(job.memory),
       maxTotalChargeUsd: String(job.capUsd),
       restartOnError: "false",
@@ -47,15 +57,20 @@ export class Apify {
           `actors/${job.actor.replace("/", "~")}/runs?${query}`,
           "POST",
           job.input,
+          remaining(),
         )) as { data: unknown }
       ).data,
     );
     try {
-      const deadline = Date.now() + 135_000;
       while (!finished(run) && Date.now() < deadline) {
         run = runSchema.parse(
           (
-            (await this.api(`actor-runs/${run.id}?waitForFinish=10`)) as {
+            (await this.api(
+              `actor-runs/${run.id}?waitForFinish=${Math.min(5, Math.ceil(remaining() / 1000))}`,
+              "GET",
+              undefined,
+              remaining(),
+            )) as {
               data: unknown;
             }
           ).data,
@@ -66,25 +81,37 @@ export class Apify {
         actor: job.actor,
         status: run.status,
         costUsd: run.usageTotalUsd,
+        durationMs: Date.now() - started,
       });
       if (run.status !== "SUCCEEDED" || !run.defaultDatasetId)
         throw new Error("Actor did not complete successfully");
+      const fields =
+        options.fields?.join(",") ??
+        "sourceUrl,isSeed,hasQrMention,organicResults,url,text,time,timestamp,postId,pageName";
       const items = await this.api(
-        `datasets/${run.defaultDatasetId}/items?clean=true&limit=40&format=json&fields=sourceUrl,isSeed,hasQrMention,organicResults,url,text,time,timestamp,postId,pageName`,
+        `datasets/${run.defaultDatasetId}/items?clean=true&limit=${limit}&format=json&fields=${fields}`,
+        "GET",
+        undefined,
+        remaining(),
       );
-      return z.array(z.unknown()).max(40).parse(items);
+      return z.array(z.unknown()).max(limit).parse(items);
     } finally {
-      if (!finished(run)) {
-        run = runSchema.parse(
-          (
-            (await this.api(
-              `actor-runs/${run.id}/abort?waitForFinish=10`,
-              "POST",
-            )) as { data: unknown }
-          ).data,
-        );
+      try {
+        if (!finished(run)) {
+          run = runSchema.parse(
+            (
+              (await this.api(
+                `actor-runs/${run.id}/abort?waitForFinish=2`,
+                "POST",
+                undefined,
+                3000,
+              )) as { data: unknown }
+            ).data,
+          );
+        }
+      } finally {
+        await this.purge(run);
       }
-      await this.purge(run);
     }
   }
 
@@ -125,7 +152,7 @@ export class Apify {
       `actor-runs/${run.id}`,
     ];
     const deleted = await Promise.allSettled(
-      resources.map((path) => this.api(path, "DELETE")),
+      resources.map((path) => this.api(path, "DELETE", undefined, 3000)),
     );
     if (deleted.some((result) => result.status === "rejected"))
       throw new Error("Temporary source cleanup failed");
@@ -135,6 +162,7 @@ export class Apify {
     path: string,
     method = "GET",
     body?: unknown,
+    timeoutMs = 20_000,
   ): Promise<unknown> {
     const response = await this.request(`https://api.apify.com/v2/${path}`, {
       method,
@@ -143,10 +171,14 @@ export class Apify {
         "Content-Type": "application/json",
       },
       body: body === undefined ? undefined : JSON.stringify(body),
-      signal: AbortSignal.timeout(20_000),
+      signal: AbortSignal.timeout(Math.min(20_000, timeoutMs)),
       redirect: "error",
     });
-    if (response.status === 204) return undefined;
+    if (
+      response.status === 204 ||
+      (method === "DELETE" && response.status === 404)
+    )
+      return undefined;
     if (!response.body) throw new Error("Empty source response");
     const reader = response.body.getReader();
     const chunks: Uint8Array[] = [];

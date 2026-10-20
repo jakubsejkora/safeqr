@@ -1,9 +1,6 @@
-import {
-  GetSecretValueCommand,
-  SecretsManagerClient,
-} from "@aws-sdk/client-secrets-manager";
 import { z } from "zod";
-import { env, REGION } from "../shared/config.js";
+import { apifyToken } from "../shared/apify-secret.js";
+import { env } from "../shared/config.js";
 import { BedrockModel, type Model } from "../shared/model.js";
 import { count, logger, measured } from "../shared/observability.js";
 import { claimOnce, QuotaExceeded } from "../shared/storage.js";
@@ -229,15 +226,7 @@ export const handler = (event: unknown = {}) =>
   measured("collector", async () => {
     const { actor } = invocationSchema.parse(event);
     const jobs = actorJobs().filter((job) => !actor || job.actor === actor);
-    const secrets = new SecretsManagerClient({
-      region: REGION,
-      maxAttempts: 1,
-    });
-    const secret = await secrets.send(
-      new GetSecretValueCommand({ SecretId: env("APIFY_SECRET_ARN") }),
-    );
-    const token = secret.SecretString;
-    if (!token) throw new Error("Collector credentials unavailable");
+    const token = await apifyToken();
     const result = await collect({
       apify: new Apify(
         token,

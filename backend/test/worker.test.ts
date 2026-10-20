@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createWorker } from "../src/checks/worker.js";
+import { createWorker, type WorkerDependencies } from "../src/checks/worker.js";
 import {
   draft,
   failing,
@@ -12,6 +12,63 @@ import {
 } from "./helpers.js";
 
 describe("worker orchestration", () => {
+  it("runs the profile check alongside the sandbox and labels only applicable public-information progress", async () => {
+    const checks = new MemoryChecks();
+    const files = media();
+    await checks.create(record());
+    let release: (() => void) | undefined;
+    const profileStarted = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    const finalUrl = "https://instagram.com/example_profile/";
+    const social = vi.fn<NonNullable<WorkerDependencies["social"]>>(
+      async (_input, dependencies) => {
+        await dependencies?.progress?.();
+        release?.();
+        return {
+          report: {
+            links: [
+              {
+                url: "https://onlyfans.com/example",
+                domain: "onlyfans.com",
+                category: "adult" as const,
+              },
+            ],
+            unresolvedForwarders: [],
+          },
+          limitations: [],
+        };
+      },
+    );
+    await createWorker({
+      checks,
+      media: files,
+      intel: intel(),
+      model: () => returning(draft),
+      trace: async () => ({ report: { finalUrl, hops: [] } }),
+      sandbox: async () => {
+        await profileStarted;
+        return {
+          report: { finalUrl, hops: [] },
+          screenshot: new Uint8Array(),
+          downloads: false,
+          restricted: false,
+          navigationFailed: false,
+          modelFailed: false,
+        };
+      },
+      age: async () => 5000,
+      social,
+    })({ id });
+    const result = await checks.get(id);
+    expect(social).toHaveBeenCalledOnce();
+    expect(result?.steps.find((step) => step.id === "intel")?.label).toContain(
+      "(Apify)",
+    );
+    expect(result?.result?.score).toBe(40);
+    expect(result?.result).not.toHaveProperty("social");
+    expect(files.put).not.toHaveBeenCalled();
+  });
   it("keeps a failed destination at caution with an explicit explanation", async () => {
     const checks = new MemoryChecks();
     await checks.create(record());

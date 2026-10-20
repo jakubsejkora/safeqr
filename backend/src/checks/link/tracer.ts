@@ -10,6 +10,7 @@ import type { LinkReport } from "../../shared/schemas.js";
 
 export interface TraceResult {
   report?: LinkReport;
+  page?: { url: string; html: string };
   limitation?: "blocked" | "unavailable" | "hopLimit";
 }
 
@@ -64,6 +65,12 @@ export async function traceLink(
         continue;
       }
       return {
+        page: {
+          url,
+          html: response.headers["content-type"]?.includes("html")
+            ? response.body.toString("utf8")
+            : "",
+        },
         report: {
           finalUrl: url,
           hops,
