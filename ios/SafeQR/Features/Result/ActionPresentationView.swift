@@ -1,6 +1,7 @@
 import SwiftUI
 import ContactsUI
 import EventKitUI
+import LinkPresentation
 
 struct ActionPresentationView: View {
     let presentation: ActionHandler.Presentation
@@ -8,9 +9,39 @@ struct ActionPresentationView: View {
     var body: some View {
         switch presentation {
         case .share(let text): ShareSheet(text: text)
+        case .paymentImage(let image): PaymentImageShareSheet(image: image)
         case .contact(let contact): ContactEditor(contact: contact)
         case .event(let event, let store): EventEditor(event: event, store: store)
         }
+    }
+}
+
+private struct PaymentImageShareSheet: UIViewControllerRepresentable {
+    let image: UIImage
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: [PaymentImageItem(image: image)], applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ controller: UIActivityViewController, context: Context) { }
+}
+
+private final class PaymentImageItem: NSObject, UIActivityItemSource {
+    let image: UIImage
+
+    init(image: UIImage) { self.image = image }
+
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any { image }
+
+    func activityViewController(_ activityViewController: UIActivityViewController,
+                                itemForActivityType activityType: UIActivity.ActivityType?) -> Any? { image }
+
+    func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
+        let metadata = LPLinkMetadata()
+        metadata.title = L10n.text("Payment")
+        metadata.imageProvider = NSItemProvider(object: image)
+        metadata.iconProvider = NSItemProvider(object: image)
+        return metadata
     }
 }
 

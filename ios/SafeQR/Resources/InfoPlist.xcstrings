@@ -68,6 +68,23 @@
           }
         }
       }
+    },
+    "NSPhotoLibraryAddUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR saves a payment QR image to Photos only when you choose Save Image, so you can load it in your banking app."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR uloží platební QR obrázek do Fotek, jen když zvolíte Uložit obrázek. Poté ho můžete načíst v bankovní aplikaci."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

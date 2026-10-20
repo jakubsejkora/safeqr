@@ -9,7 +9,9 @@ struct ActionBuilder {
            !assessment.findings.contains(where: { ["payment.checksum", "payment.invalidIBAN", "crypto.checksum", "phone.forwarding", "phone.serviceCode", "link.unsafeScheme"].contains($0.id) }) {
             let title = localizer.text("action.\(handoff.id)")
             let warnings = assessment.findings.filter { $0.severity >= .warning }.prefix(2).map(\.detail)
-            let message = (assessment.consequences + warnings).uniqued(by: { $0 }).joined(separator: " ")
+            let consequences = handoff.id == "bankPayment"
+                ? [localizer.text("confirmation.bankPayment.message")] : assessment.consequences
+            let message = (consequences + warnings).uniqued(by: { $0 }).joined(separator: " ")
             actions.append(CodeAction(id: handoff.id, kind: handoff.kind, title: title, isPrimary: true,
                                       confirmation: Confirmation(title: localizer.text("confirmation.\(handoff.id)"),
                                                                  message: message,
@@ -23,6 +25,9 @@ struct ActionBuilder {
     private func handoff(_ payload: Payload, raw: String) -> (id: String, kind: CodeAction.Kind)? {
         switch payload {
         case .link(let url), .appLink(let url): return ("open", .open(url))
+        case .payment(let payment) where payment.format == .czechSPD:
+            guard (try? SPDEncoder.encode(payment)) != nil else { return nil }
+            return ("bankPayment", .sharePayment(payment))
         case .payment(let payment) where payment.format == .upi:
             return URL(string: ParseSupport.trimmed(raw)).map { ("payment", .open($0)) }
         case .crypto:

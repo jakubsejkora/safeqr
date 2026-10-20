@@ -13,6 +13,10 @@ struct ResultActionBar: View {
     private var handoffs: [CodeAction] { actions.filter(\.isHandoff) }
     private var primary: CodeAction? { handoffs.first(where: \.isPrimary) ?? handoffs.first }
     private var risky: Bool { level != .safe || primary?.isRisky == true }
+    private var bankPayment: Bool {
+        if let primary, case .sharePayment = primary.kind { return true }
+        return false
+    }
 
     var body: some View {
         VStack(spacing: 6) {
@@ -22,7 +26,7 @@ struct ResultActionBar: View {
                 }.buttonStyle(.glassProminent).foregroundStyle(theme.onAccent)
                 if let primary {
                     Button { perform(primary) } label: {
-                        Text(pending ? primary.title : primary.isHandoff ? L10n.text("Continue anyway…") : primary.title)
+                        Text(pending || bankPayment ? primary.title : primary.isHandoff ? L10n.text("Continue anyway…") : primary.title)
                             .frame(minHeight: 38)
                     }.tint(primary.isHandoff ? level.color : theme.accent)
                     .disabled(pending && primary.isHandoff)
@@ -39,6 +43,12 @@ struct ResultActionBar: View {
                             .disabled(pending && action.isHandoff)
                     }
                 }
+            }
+            if bankPayment {
+                Text(L10n.text("Choose your bank. Not listed? Save the image, then in your bank choose Payment → QR code → From photos."))
+                    .font(.footnote).foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding(.horizontal, 24).padding(.top, 12).padding(.bottom, 8)

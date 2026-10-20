@@ -76,6 +76,11 @@ struct ConfirmationSheet: View {
                 .padding(14).frame(maxWidth: .infinity, alignment: .leading).background(.quaternary, in: Capsule())
         case .composeEmail(let recipient, _, _): Text(recipient).fontWeight(.semibold)
         case .joinWiFi(let ssid, _, _): Label(ssid, systemImage: "wifi").font(.headline)
+        case .sharePayment(let payment):
+            if let iban = payment.iban {
+                Text(PaymentPayloadView.grouped(iban))
+                    .font(.system(.body, design: .monospaced)).textSelection(.enabled)
+            }
         default: EmptyView()
         }
     }

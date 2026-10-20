@@ -56,7 +56,8 @@ struct OutcomeBuilder {
         switch parsed.payload {
         case .link: keys.append("limitation.page")
         case .payment(let payment):
-            keys += ["limitation.account", "limitation.bankHandoff"]
+            keys.append("limitation.account")
+            if payment.format != .czechSPD { keys.append("limitation.bankHandoff") }
             if payment.checksum == .valid { keys.append("limitation.checksum") }
             if payment.format == .payBySquare { keys.append("limitation.payBySquare") }
             if payment.format == .czechInvoice { keys.append("limitation.invoice") }

@@ -6680,6 +6680,57 @@
           }
         }
       }
+    },
+    "action.bankPayment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pay in your banking app"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zaplatit v bankovní aplikaci"
+          }
+        }
+      }
+    },
+    "confirmation.bankPayment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepare this payment?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravit tuto platbu?"
+          }
+        }
+      }
+    },
+    "confirmation.bankPayment.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR will share a new QR image with only the transfer details shown here. Other fields are left out. Choose your bank or save the image. Review and approve the payment in your bank."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe QR nabídne ke sdílení nový QR obrázek jen s údaji z platebního přehledu. Ostatní pole vynechá. Vyberte banku nebo obrázek uložte. Platbu zkontrolujete a potvrdíte až v bance."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

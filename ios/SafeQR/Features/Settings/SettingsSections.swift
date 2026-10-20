@@ -14,6 +14,7 @@ struct SettingsSections: View {
             } header: { Text(L10n.text("Deep checks")) } footer: {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(L10n.text("Deep checks send the code, including any payment details. Photo checks also send its surroundings. Recognized private codes stay on this iPhone."))
+                    Text(L10n.text("To check an Instagram profile, we send Apify only its public username; processing may occur outside the EU."))
                     Text(L10n.text("Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU."))
                     Text(L10n.text("Photos are kept briefly in private encrypted storage. We delete them after the check. A one-day cleanup rule is the backup if deletion fails. Actual deletion can take longer."))
                     Text(L10n.text("Check results become unavailable after 24 hours. Deleting stored data can take longer."))

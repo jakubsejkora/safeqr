@@ -4,8 +4,30 @@ import SafeQRKit
 struct PaymentPayloadView: View {
     let payment: PaymentRequest
     let content: CodeContent
+    private let transferFields: Set<String> = [
+        "amount", "account", "bank", "recipient", "bic", "variableSymbol", "specificSymbol", "constantSymbol", "message", "dueDate"
+    ]
+    private var slipFacts: [Fact] {
+        payment.format == .czechSPD ? content.facts.filter { transferFields.contains($0.id) } : content.facts
+    }
 
     var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            transferSlip
+            if payment.format == .czechSPD {
+                let extra = content.facts.filter { !transferFields.contains($0.id) && $0.id != "format" }
+                if !extra.isEmpty {
+                    DetailSection(title: L10n.text("Other fields in the original code")) {
+                        Text(L10n.text("These fields are not included in the payment image."))
+                            .font(.footnote).foregroundStyle(.secondary)
+                        ForEach(extra) { FactRow(fact: $0) }
+                    }
+                }
+            }
+        }
+    }
+
+    private var transferSlip: some View {
         VStack(alignment: .leading, spacing: 16) {
             if let amount = content.facts.first(where: { $0.id == "amount" }) {
                 Text(amount.value).font(.system(.largeTitle, design: .rounded, weight: .semibold)).monospacedDigit()
@@ -18,7 +40,10 @@ struct PaymentPayloadView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 if let bank = content.facts.first(where: { $0.id == "bank" })?.value { Text(bank).font(.subheadline).foregroundStyle(.secondary) }
             }
-            ForEach(content.facts.filter { !["amount", "recipient", "bank"].contains($0.id) && !(payment.iban != nil && $0.id == "account") }) { fact in
+            if payment.format == .czechSPD, payment.amount == nil, let currency = payment.currency {
+                LabeledContent(L10n.text("Currency"), value: currency)
+            }
+            ForEach(slipFacts.filter { !["amount", "recipient", "bank"].contains($0.id) && !(payment.iban != nil && $0.id == "account") }) { fact in
                 FactRow(fact: fact)
             }
         }

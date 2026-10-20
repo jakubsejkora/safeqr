@@ -7,10 +7,11 @@ import SafeQRKit
 @MainActor @Observable
 final class ActionHandler {
     enum Presentation: Identifiable {
-        case share(String), contact(CNContact), event(EKEvent, EKEventStore)
+        case share(String), paymentImage(UIImage), contact(CNContact), event(EKEvent, EKEventStore)
         var id: String {
             switch self {
             case .share: "share"
+            case .paymentImage: "paymentImage"
             case .contact: "contact"
             case .event: "event"
             }
@@ -29,6 +30,8 @@ final class ActionHandler {
                 message = L10n.text("Copied. The copy expires in two minutes.")
             case .share(let text):
                 presentation = .share(text)
+            case .sharePayment(let payment):
+                presentation = .paymentImage(try PaymentQRImage.make(payment))
             case .joinWiFi(let ssid, let password, let security):
                 guard !ssid.isEmpty, ssid.utf8.count <= 32 else { throw HandoffError.invalid }
                 let configuration: NEHotspotConfiguration

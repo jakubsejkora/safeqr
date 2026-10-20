@@ -5436,6 +5436,91 @@
           }
         }
       }
+    },
+    "Choose your bank. Not listed? Save the image, then in your bank choose Payment → QR code → From photos.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose your bank. Not listed? Save the image, then in your bank choose Payment → QR code → From photos."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyberte svou banku. Nevidíte ji? Uložte obrázek a v bance zvolte Platba → QR kód → Z galerie."
+          }
+        }
+      }
+    },
+    "To check an Instagram profile, we send Apify only its public username; processing may occur outside the EU.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To check an Instagram profile, we send Apify only its public username; processing may occur outside the EU."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro kontrolu instagramového profilu posíláme službě Apify pouze jeho veřejné uživatelské jméno; údaje může zpracovávat i mimo EU."
+          }
+        }
+      }
+    },
+    "Other fields in the original code": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other fields in the original code"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Další pole původního kódu"
+          }
+        }
+      }
+    },
+    "These fields are not included in the payment image.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These fields are not included in the payment image."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tato pole se do platebního obrázku nepřenášejí."
+          }
+        }
+      }
+    },
+    "Currency": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Měna"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

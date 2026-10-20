@@ -13,6 +13,7 @@
 <key>LSRequiresIPhoneOS</key><true/>
 <key>NSCameraUsageDescription</key><string>Safe QR uses your camera to read codes and, with your permission, check their surroundings.</string>
 <key>NSContactsUsageDescription</key><string>Safe QR opens a contact for you to review and save only after you confirm.</string>
+<key>NSPhotoLibraryAddUsageDescription</key><string>Safe QR saves a payment QR image to Photos only when you choose Save Image, so you can load it in your banking app.</string>
 <key>NSCalendarsWriteOnlyAccessUsageDescription</key><string>Safe QR adds an event only after you review and save it.</string>
 <key>SafeQRAPIBaseURL</key><string>$(SAFEQR_API_BASE_URL)</string>
 <key>UIApplicationSceneManifest</key><dict><key>UIApplicationSupportsMultipleScenes</key><false/></dict>

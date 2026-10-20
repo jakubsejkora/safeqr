@@ -10,6 +10,8 @@ public struct CodeAction: Sendable, Hashable, Identifiable {
         case joinWiFi(ssid: String, password: String?, security: WiFiSecurity)
         case addContact(vCard: String)
         case addEvent(iCalendar: String)
+        /// Shares a newly encoded QR Platba image after confirmation.
+        case sharePayment(PaymentRequest)
         case copy(String)
         case share(String)
     }

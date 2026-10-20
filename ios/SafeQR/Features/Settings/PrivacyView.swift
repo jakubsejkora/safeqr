@@ -11,6 +11,7 @@ struct PrivacyView: View {
                 Text(L10n.text("With your permission, Safe QR sends the code contents, type, language, device score and warning identifiers. Photo checks also send a photo and the code’s position in it. Payment codes may include the recipient and amount."))
                 Text(L10n.text("Recognized Wi-Fi, login, eSIM, contact, calendar and communication codes stay on this iPhone. A photo is not sent if we find a private code or cannot check it reliably. The app sends no GPS location."))
                 Text(L10n.text("The photo may include people or private details nearby. Turn off photo checks if you do not want to send it."))
+                Text(L10n.text("To check an Instagram profile, we send Apify only its public username; processing may occur outside the EU."))
             }
             Section(L10n.text("Where it goes and for how long")) {
                 Text(L10n.text("Servers and storage are in AWS Frankfurt (eu-central-1). Amazon Bedrock AI may also process requests in other AWS regions within the EU."))
