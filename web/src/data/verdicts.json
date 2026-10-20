@@ -16,8 +16,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -37,8 +37,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to example.com.",
@@ -72,8 +72,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
@@ -103,8 +103,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to safeqr-training.jakub-f9d.workers.dev.",
@@ -143,8 +143,8 @@
         "kind": "link",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 75,
         "summary": "Tento kód vede na xn--pple-43d.test.",
@@ -179,8 +179,8 @@
         "kind": "link",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 75,
         "summary": "This code leads to xn--pple-43d.test.",
@@ -213,8 +213,8 @@
         "kind": "link",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 70,
         "summary": "Tento kód vede na example.com.",
@@ -241,8 +241,8 @@
         "kind": "link",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 70,
         "summary": "This code leads to example.com.",
@@ -275,8 +275,8 @@
         "kind": "link",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 30,
         "summary": "Tento kód vede na example.com.",
@@ -303,8 +303,8 @@
         "kind": "link",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 30,
         "summary": "This code leads to example.com.",
@@ -334,7 +334,7 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme."
         ],
         "score": 95,
@@ -361,7 +361,7 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify the app's behavior, permissions or who will handle this link."
         ],
         "score": 95,
@@ -398,7 +398,7 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme."
         ],
         "score": 95,
@@ -431,7 +431,7 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify the app's behavior, permissions or who will handle this link."
         ],
         "score": 95,
@@ -469,7 +469,7 @@
         "kind": "payment",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
           "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
         ],
@@ -504,7 +504,7 @@
         "kind": "payment",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot tell who owns this account or whether you owe this payment.",
           "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
         ],
@@ -556,10 +556,10 @@
         "kind": "payment",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
           "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 60,
         "summary": "Tento kód obsahuje údaje k platbě.",
@@ -605,10 +605,10 @@
         "kind": "payment",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot tell who owns this account or whether you owe this payment.",
           "Most banking apps need you to scan or import the original code; there is no single link that opens every bank.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 60,
         "summary": "This code contains details for a payment.",
@@ -639,7 +639,7 @@
         "kind": "payment",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
           "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
         ],
@@ -668,7 +668,7 @@
         "kind": "payment",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot tell who owns this account or whether you owe this payment.",
           "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
         ],
@@ -701,7 +701,7 @@
         "kind": "payment",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
           "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
         ],
@@ -730,7 +730,7 @@
         "kind": "payment",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot tell who owns this account or whether you owe this payment.",
           "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
         ],
@@ -768,7 +768,7 @@
         "kind": "payment",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
           "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje."
         ],
@@ -806,7 +806,7 @@
         "kind": "payment",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot tell who owns this account or whether you owe this payment.",
           "Most banking apps need you to scan or import the original code; there is no single link that opens every bank."
         ],
@@ -844,7 +844,7 @@
         "kind": "payment",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
           "Neumíme zjistit, komu účet patří ani zda máte tuto platbu opravdu zaplatit.",
           "Většina bankovních aplikací potřebuje načíst nebo importovat původní kód; jeden společný odkaz pro všechny banky neexistuje.",
@@ -878,7 +878,7 @@
         "kind": "payment",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "Some details could not be read reliably; compare them with the original before continuing.",
           "We cannot tell who owns this account or whether you owe this payment.",
           "Most banking apps need you to scan or import the original code; there is no single link that opens every bank.",
@@ -923,7 +923,7 @@
         "kind": "crypto",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme zjistit, kdo tuto peněženku ovládá.",
           "Správná síť, dostupný zůstatek ani konečné poplatky nebyly ověřeny."
         ],
@@ -966,7 +966,7 @@
         "kind": "crypto",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot tell who controls this wallet.",
           "The correct network, available balance and final fees have not been checked."
         ],
@@ -1007,7 +1007,7 @@
         "kind": "sms",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
           "Neumíme zjistit, kdo toto telefonní číslo používá.",
           "Skutečná cena u vašeho operátora ani případné běžící předplatné nebyly ověřeny."
@@ -1045,7 +1045,7 @@
         "kind": "sms",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "Some details could not be read reliably; compare them with the original before continuing.",
           "We cannot tell who uses this phone number.",
           "Your operator's actual price and any existing subscription have not been checked."
@@ -1084,7 +1084,7 @@
         "kind": "phone",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
           "Neumíme zjistit, kdo toto telefonní číslo používá.",
           "Skutečná cena u vašeho operátora ani případné běžící předplatné nebyly ověřeny."
@@ -1119,7 +1119,7 @@
         "kind": "phone",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "Some details could not be read reliably; compare them with the original before continuing.",
           "We cannot tell who uses this phone number.",
           "Your operator's actual price and any existing subscription have not been checked."
@@ -1152,7 +1152,7 @@
         "kind": "phone",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme zjistit, kdo toto telefonní číslo používá.",
           "Skutečná cena u vašeho operátora ani případné běžící předplatné nebyly ověřeny."
         ],
@@ -1180,7 +1180,7 @@
         "kind": "phone",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot tell who uses this phone number.",
           "Your operator's actual price and any existing subscription have not been checked."
         ],
@@ -1216,7 +1216,7 @@
         "kind": "wifi",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit, kdo síť provozuje ani jak zachází s vaším připojením."
         ],
         "score": 30,
@@ -1247,7 +1247,7 @@
         "kind": "wifi",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify who runs this network or how it handles your connection."
         ],
         "score": 30,
@@ -1283,7 +1283,7 @@
         "kind": "wifi",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit, kdo síť provozuje ani jak zachází s vaším připojením."
         ],
         "score": 40,
@@ -1319,7 +1319,7 @@
         "kind": "wifi",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify who runs this network or how it handles your connection."
         ],
         "score": 40,
@@ -1353,7 +1353,7 @@
         "kind": "contact",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Jména a kontaktní údaje v kódu mohou být smyšlené."
         ],
         "score": 55,
@@ -1383,7 +1383,7 @@
         "kind": "contact",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "Names and contact details in a code can be invented."
         ],
         "score": 55,
@@ -1417,7 +1417,7 @@
         "kind": "login",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit, které zařízení o přihlášení požádalo ani zda kód ještě platí."
         ],
         "score": 70,
@@ -1447,7 +1447,7 @@
         "kind": "login",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify which device requested this sign-in or whether the code is still valid."
         ],
         "score": 70,
@@ -1481,7 +1481,7 @@
         "kind": "login",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit, které zařízení o přihlášení požádalo ani zda kód ještě platí."
         ],
         "score": 70,
@@ -1511,7 +1511,7 @@
         "kind": "login",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify which device requested this sign-in or whether the code is still valid."
         ],
         "score": 70,
@@ -1552,7 +1552,7 @@
         "kind": "login",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Některé údaje se nepodařilo spolehlivě přečíst; před pokračováním je porovnejte s originálem.",
           "Neumíme ověřit, které zařízení o přihlášení požádalo ani zda kód ještě platí.",
           "Počet účtů platí jen pro tento kód; export může být rozdělen do několika kódů."
@@ -1591,7 +1591,7 @@
         "kind": "login",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "Some details could not be read reliably; compare them with the original before continuing.",
           "We cannot verify which device requested this sign-in or whether the code is still valid.",
           "The account count covers this code only; an export may be split across several codes."
@@ -1632,7 +1632,7 @@
         "kind": "eSIM",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit vlastníka tarifu, poplatky ani to, zda aktivační kód ještě platí."
         ],
         "score": 70,
@@ -1667,7 +1667,7 @@
         "kind": "eSIM",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify the plan owner, charges or whether the activation code is still valid."
         ],
         "score": 70,
@@ -1713,9 +1713,9 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 100,
         "summary": "Tento kód nabízí instalaci aplikace mimo App Store.",
@@ -1756,9 +1756,9 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify the app's behavior, permissions or who will handle this link.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 100,
         "summary": "This code offers to install an app outside the App Store.",
@@ -1795,7 +1795,7 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Neumíme ověřit chování aplikace, její oprávnění ani to, která aplikace odkaz převezme."
         ],
         "score": 85,
@@ -1829,7 +1829,7 @@
         "kind": "appLink",
         "level": "danger",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "We cannot verify the app's behavior, permissions or who will handle this link."
         ],
         "score": 85,
@@ -1856,8 +1856,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -1876,8 +1876,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -1896,8 +1896,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to example.com.",
@@ -1914,8 +1914,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to example.com.",
@@ -1940,8 +1940,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -1968,8 +1968,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
@@ -1988,8 +1988,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to example.com.",
@@ -2016,8 +2016,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to safeqr-training.jakub-f9d.workers.dev.",
@@ -2061,9 +2061,9 @@
         "kind": "text",
         "level": "caution",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
           "Text může obsahovat klamavé pokyny nebo formáty, které neznáme.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 60,
         "summary": "Tento kód obsahuje text.",
@@ -2104,9 +2104,9 @@
         "kind": "text",
         "level": "caution",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
+          "The check on this iPhone works offline. It cannot guarantee safety.",
           "Text can contain misleading instructions or formats we do not recognize.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 60,
         "summary": "This code contains text.",
@@ -2132,8 +2132,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na example.com.",
@@ -2160,8 +2160,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "Jde o kontrolu v telefonu, nikoli o záruku bezpečnosti.",
-          "Bez podrobné kontroly vidíme jen adresu, ne stránku ani její přesměrování."
+          "Kontrola v iPhonu funguje bez internetu. Nemůže zaručit bezpečnost.",
+          "Kontrola v iPhonu přečte adresu. Nemůže prověřit web ani jeho přesměrování."
         ],
         "score": 0,
         "summary": "Tento kód vede na safeqr-training.jakub-f9d.workers.dev.",
@@ -2180,8 +2180,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to example.com.",
@@ -2208,8 +2208,8 @@
         "kind": "link",
         "level": "safe",
         "limitations": [
-          "This is an offline check, not a guarantee of safety.",
-          "Without a cloud check we only see the address, not the page or its redirects."
+          "The check on this iPhone works offline. It cannot guarantee safety.",
+          "The check on this iPhone reads the address. It cannot inspect the website or its redirects."
         ],
         "score": 0,
         "summary": "This code leads to safeqr-training.jakub-f9d.workers.dev.",
