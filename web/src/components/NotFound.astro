@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { type Locale, routes, text } from "../lib/locale";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = (cs: string, en: string) => text(locale, cs, en);
+---
+
+<Layout locale={locale} page="notFound" title={t("Stránka nenalezena", "Page not found")}>
+  <div class="container demo-safe">
+    <span class="eyebrow">404</span>
+    <h1>{t("Tady žádná stránka není.", "There is no page here.")}</h1>
+    <p>
+      {t(
+        "Odkaz možná není úplný. Vraťte se na úvod nebo do galerie.",
+        "The link may be incomplete. Return to the homepage or the gallery.",
+      )}
+    </p>
+    <div class="hero-actions">
+      <a class="button" href={routes.home[locale]}>{t("Na úvod", "Go to homepage")}</a>
+      <a class="button secondary" href={routes.gallery[locale]}
+        >{t("Galerie kódů", "QR gallery")}</a
+      >
+    </div>
+  </div>
+</Layout>

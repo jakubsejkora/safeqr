@@ -6,6 +6,7 @@ export const routes = {
   guides: { cs: "/navody/", en: "/en/guides/" },
   privacy: { cs: "/soukromi/", en: "/en/privacy/" },
   kit: { cs: "/kit/", en: "/en/kit/" },
+  notFound: { cs: "/404", en: "/en/404/" },
 } as const;
 export type Page = keyof typeof routes;
 export const verdict = (score: number, locale: Locale) =>

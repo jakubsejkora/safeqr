@@ -31,13 +31,17 @@ const other = locale === "cs" ? "en" : "cs";
     <meta name="description" content={description}>
     <title>{title} · Safe QR</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="canonical" href={`https://safeqr.cz${routes[page][locale]}`}>
-    <link rel="alternate" hreflang="cs" href={`https://safeqr.cz${routes[page].cs}`}>
-    <link rel="alternate" hreflang="en" href={`https://safeqr.cz${routes[page].en}`}>
-    <link rel="alternate" hreflang="x-default" href={`https://safeqr.cz${routes[page].cs}`}>
+    <link rel="canonical" href={`https://bezpecneqr.cz${routes[page][locale]}`}>
+    <link rel="alternate" hreflang="cs" href={`https://bezpecneqr.cz${routes[page].cs}`}>
+    <link rel="alternate" hreflang="en" href={`https://bezpecneqr.cz${routes[page].en}`}>
+    <link rel="alternate" hreflang="x-default" href={`https://bezpecneqr.cz${routes[page].cs}`}>
+    {page === "notFound" && <meta name="robots" content="noindex">}
     <meta property="og:title" content={`${title} · Safe QR`}>
     <meta property="og:description" content={description}>
     <meta property="og:type" content="website">
+    <meta property="og:url" content={`https://bezpecneqr.cz${routes[page][locale]}`}>
+    <meta property="og:locale" content={locale === "cs" ? "cs_CZ" : "en_GB"}>
+    <meta property="og:locale:alternate" content={locale === "cs" ? "en_GB" : "cs_CZ"}>
   </head>
   <body>
     <a class="skip-link" href="#main">{text(locale, "Přejít na obsah", "Skip to content")}</a>

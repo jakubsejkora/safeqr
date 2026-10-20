@@ -2,9 +2,9 @@
 
 Know what a QR code does before you act on it.
 
-Safe QR is a native iOS app in Czech and English, plus safeqr.cz: scan a code, read its risk score and reasons, then decide what happens next.
+Safe QR is a native iOS app in Czech and English, plus bezpecneqr.cz: scan a code, read its risk score and reasons, then decide what happens next.
 
-[Website](https://safeqr-web.jakub-f9d.workers.dev) · [QR gallery](https://safeqr-web.jakub-f9d.workers.dev/galerie) · [Training scam flow](https://safeqr-training.jakub-f9d.workers.dev/start)
+[Website](https://bezpecneqr.cz) · [QR gallery](https://bezpecneqr.cz/galerie) · [Training scam flow](https://safeqr-training.jakub-f9d.workers.dev/start)
 
 <table>
   <tr>
@@ -15,7 +15,7 @@ Safe QR is a native iOS app in Czech and English, plus safeqr.cz: scan a code, r
   </tr>
 </table>
 
-Simulator screenshots; the camera view uses a synthetic photo of a parking machine. The website uses the Workers address until safeqr.cz is connected.
+Simulator screenshots; the camera view uses a synthetic photo of a parking machine. The website is hosted at bezpecneqr.cz; training pages stay on their separate Workers address.
 
 ## Why
 
@@ -53,7 +53,7 @@ flowchart LR
 | [ios/](ios/README.md) | SwiftUI iPhone app, Czech and English, iOS 26+ |
 | [ios/SafeQRKit/](ios/SafeQRKit/README.md) | Offline engine and `safeqr-inspect` CLI |
 | [backend/](backend/README.md) | AWS CDK infrastructure, API, agents and daily intelligence |
-| [web/](web/README.md) | safeqr.cz, QR gallery, recovery guides and training flow |
+| [web/](web/README.md) | bezpecneqr.cz, QR gallery, recovery guides and training flow |
 | [spec/](spec/) | [OpenAPI contract](spec/openapi.yaml) and [114 shared conformance fixtures](spec/fixtures/codes.json) |
 
 ## Run it

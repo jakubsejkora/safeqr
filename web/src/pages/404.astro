@@ -1,16 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import NotFound from "../components/NotFound.astro";
 ---
 
-<Layout locale="cs" title="Stránka nenalezena"
-  ><div class="container demo-safe">
-    <span class="eyebrow">404</span>
-    <h1>Tady žádná stránka není.</h1>
-    <p>Odkaz možná není úplný. Vraťte se na úvod nebo do galerie.</p>
-    <div class="hero-actions">
-      <a class="button" href="/">Na úvod</a
-      ><a class="button secondary" href="/galerie/">Galerie kódů</a>
-    </div>
-    <p lang="en">Page not found. <a href="/en/">Go to the English homepage.</a></p>
-  </div></Layout
->
+<NotFound locale="cs" />

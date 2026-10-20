@@ -67,7 +67,7 @@ const t = (cs: string, en: string) => text(locale, cs, en);
             </ol>
             {guide.sources.map((source) => (
               <a class="source" href={source.url}>
-                {source.label} ↗
+                {locale === "en" ? (source.enLabel ?? source.label) : source.label} ↗
               </a>
             ))}
           </article>
@@ -134,7 +134,7 @@ const t = (cs: string, en: string) => text(locale, cs, en);
           </ol>
           {guide.sources.map((source) => (
             <a class="source" href={source.url}>
-              {source.label} ↗
+              {locale === "en" ? (source.enLabel ?? source.label) : source.label} ↗
             </a>
           ))}
         </details>

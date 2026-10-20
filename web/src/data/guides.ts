@@ -2,7 +2,7 @@ import type { Locale } from "../lib/locale";
 export interface Guide {
   cs: { title: string; steps: string[] };
   en: { title: string; steps: string[] };
-  sources: { label: string; url: string }[];
+  sources: { label: string; enLabel?: string; url: string }[];
 }
 export const recovery: Guide[] = [
   {
@@ -207,9 +207,9 @@ export const operators: Guide[] = [
     en: {
       title: "O2",
       steps: [
-        "On the Moje O2 website, select your plan → Nastavení → Platba přes SMS → Nastavit → Konfigurovat službu → Zakázáno vše.",
-        "Also block Platba přes internet. This includes Apple, Google and Microsoft purchases.",
-        "For Platba voláním choose Aktivní + Zakázáno vše. Making the service inactive alone does not block premium calls.",
+        "On O2’s website, select your plan and open settings for SMS payments. Configure the service and block everything.",
+        "Also block internet payments. This includes Apple, Google and Microsoft purchases.",
+        "For payment by calling, keep the service active and select the option to block everything. Making the service inactive alone does not block premium calls.",
         "Cancel subscriptions with the provider. O2 commonly specifies STOP ALL to the first five digits of the service number. Help: 800 02 02 02.",
       ],
     },
@@ -219,8 +219,12 @@ export const operators: Guide[] = [
         label: "O2 · internet",
         url: "https://www.o2.cz/podpora/financni-sluzby/platba-pres-internet",
       },
-      { label: "O2 · audiotex", url: "https://www.o2.cz/podpora/financni-sluzby/platba-volanim" },
-      { label: "O2 · kontakt", url: "https://www.o2.cz/osobni/kontakty" },
+      {
+        label: "O2 · audiotex",
+        enLabel: "O2 · premium calls",
+        url: "https://www.o2.cz/podpora/financni-sluzby/platba-volanim",
+      },
+      { label: "O2 · kontakt", enLabel: "O2 · contact", url: "https://www.o2.cz/osobni/kontakty" },
     ],
   },
   {
@@ -236,16 +240,24 @@ export const operators: Guide[] = [
     en: {
       title: "T-Mobile",
       steps: [
-        "On the Můj T-Mobile website → Služby → Platební služby, block Premium SMS, m-platba and audiotex.",
-        "In the app, turn off m-platba through Nastavení → your number → Zpoplatněné služby nad rámec tarifu → Nastavení m-platby.",
-        "On the website, check Služby → Platební služby → Seznam aktivních předplatných.",
+        "On T-Mobile’s website, open services and then payment services. Block Premium SMS, mobile payments and premium-rate calls.",
+        "In the app, open settings, select your number and find paid services outside your plan. Turn off mobile payments in their settings.",
+        "On the website, open services, payment services and the list of active subscriptions.",
         "Cancel SMS subscriptions using the original message, or STOP to the original five-digit number. Do this before blocking SMS payments. Help: 800 73 73 73.",
       ],
     },
     sources: [
-      { label: "T-Mobile · m-platba", url: "https://www.t-mobile.cz/m-platba" },
+      {
+        label: "T-Mobile · m-platba",
+        enLabel: "T-Mobile · mobile payments",
+        url: "https://www.t-mobile.cz/m-platba",
+      },
       { label: "T-Mobile · SMS", url: "https://www.t-mobile.cz/platebni-a-premium-sms" },
-      { label: "T-Mobile · kontakt", url: "https://www.t-mobile.cz/kontakty-t-mobile" },
+      {
+        label: "T-Mobile · kontakt",
+        enLabel: "T-Mobile · contact",
+        url: "https://www.t-mobile.cz/kontakty-t-mobile",
+      },
     ],
   },
   {
@@ -261,15 +273,16 @@ export const operators: Guide[] = [
     en: {
       title: "Vodafone",
       steps: [
-        "On the Můj Vodafone website → Služby → Blokování, block Premium SMS, m-platby and Audiotex separately.",
-        "In Můj Vodafone+ → Služby → your number → Přehled → Více → Blokování. A Premium SMS block also affects SMS tickets and DMS donations.",
+        "On Vodafone’s website, open services and blocking options. Block Premium SMS, mobile payments and premium-rate calls separately.",
+        "In Vodafone’s app, open services, select your number, then overview, more and blocking options. A Premium SMS block also affects SMS tickets and DMS donations.",
         "Cancel using the message instructions, or STOP to the first five digits of the service number. Find the provider through Platmobilem.cz.",
-        "Check Platby třetím stranám on your bill. Help: *77 from Vodafone, otherwise 800 77 00 77.",
+        "Check third-party payments on your bill. Help: *77 from Vodafone, otherwise 800 77 00 77.",
       ],
     },
     sources: [
       {
         label: "Vodafone · blokování",
+        enLabel: "Vodafone · payment blocking",
         url: "https://www.vodafone.cz/pece/tarify-sluzby/sms-a-mms-zpravy/blokovani-plateb-tretich-stran/",
       },
       {
@@ -278,6 +291,7 @@ export const operators: Guide[] = [
       },
       {
         label: "Vodafone · kontakt",
+        enLabel: "Vodafone · contact",
         url: "https://www.vodafone.cz/pece/muj-vodafone/muj-vodafone-77/kontakt-operatora/",
       },
     ],

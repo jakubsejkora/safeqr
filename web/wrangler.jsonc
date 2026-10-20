@@ -4,6 +4,10 @@
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-19",
   "workers_dev": true,
+  "routes": [
+    { "pattern": "bezpecneqr.cz", "custom_domain": true },
+    { "pattern": "www.bezpecneqr.cz", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

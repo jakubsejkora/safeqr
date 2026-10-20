@@ -8,7 +8,7 @@ import { seedCases } from "../src/data/cases.ts";
 import { DEMO_ORIGIN } from "../src/data/gallery.ts";
 import { parseCases } from "../worker/cases.ts";
 
-const origin = process.env.SITE_URL ?? "https://safeqr-web.jakub-f9d.workers.dev";
+const origin = process.env.SITE_URL ?? "https://bezpecneqr.cz";
 const screenDir = process.env.SCREEN_DIR ?? join(tmpdir(), "safeqr-web-screens");
 await mkdir(screenDir, { recursive: true });
 const browser = await chromium.launch();

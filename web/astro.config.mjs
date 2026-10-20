@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 export default defineConfig({
-  site: "https://safeqr.cz",
+  site: "https://bezpecneqr.cz",
   output: "static",
   compressHTML: true,
   trailingSlash: "always",

@@ -7,11 +7,17 @@ interface Env {
 }
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const url = new URL(request.url);
+    if (url.hostname === "www.bezpecneqr.cz") {
+      url.protocol = "https:";
+      url.hostname = "bezpecneqr.cz";
+      url.port = "";
+      return secure(Response.redirect(url.toString(), 308));
+    }
     if (!["GET", "HEAD"].includes(request.method))
       return secure(
         new Response("Method not allowed", { status: 405, headers: { Allow: "GET, HEAD" } }),
       );
-    const url = new URL(request.url);
     if (url.pathname === "/api/cases") {
       const locale = url.searchParams.get("locale") ?? "cs";
       if (!["cs", "en"].includes(locale))
@@ -26,9 +32,22 @@ export default {
       return secure(request.method === "HEAD" ? new Response(null, response) : response);
     }
     try {
-      return secure(await env.ASSETS.fetch(request));
+      const response = await env.ASSETS.fetch(request);
+      if (response.status === 404 && url.pathname.startsWith("/en/")) {
+        const fallback = new URL("/en/404/", url);
+        const localized = await env.ASSETS.fetch(new Request(fallback, request));
+        return secure(new Response(localized.body, { status: 404, headers: localized.headers }));
+      }
+      if (url.pathname === "/404" || url.pathname === "/en/404/")
+        return secure(new Response(response.body, { status: 404, headers: response.headers }));
+      return secure(response);
     } catch {
-      return secure(new Response("Temporarily unavailable", { status: 503 }));
+      return secure(
+        new Response(
+          url.pathname.startsWith("/en/") ? "Temporarily unavailable" : "Dočasně nedostupné",
+          { status: 503 },
+        ),
+      );
     }
   },
 } satisfies ExportedHandler<Env>;
