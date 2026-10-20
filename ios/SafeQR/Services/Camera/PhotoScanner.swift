@@ -19,19 +19,32 @@ struct ImportedScan: Sendable {
 enum PhotoScanner {
     static func scan(_ data: Data) async throws -> ImportedScan {
         try await Task.detached(priority: .userInitiated) {
-            guard data.count <= 40_000_000,
-                  let image = thumbnail(data, maxPixels: 2400) else { throw ScanError.invalidImage }
+            guard data.count <= 40_000_000 else { throw ScanError.invalidImage }
+            var codes = try detectCodes(in: data, maxPixels: 2400)
+            if codes.isEmpty {
+                codes = try detectCodes(in: data, maxPixels: 4096)
+            }
+            guard !codes.isEmpty else { throw ScanError.noCodes }
+            let jpeg = try autoreleasepool {
+                guard let scene = thumbnail(data, maxPixels: 1600), let jpeg = jpeg(scene) else { throw ScanError.invalidImage }
+                return jpeg
+            }
+            return ImportedScan(codes: codes, jpeg: jpeg)
+        }.value
+    }
+
+    static func detectCodes(in data: Data, maxPixels: Int) throws -> [ScannedCode] {
+        // Release each decoded image and Vision's temporary buffers before the larger retry.
+        try autoreleasepool {
+            guard let image = thumbnail(data, maxPixels: maxPixels) else { throw ScanError.invalidImage }
             let request = BarcodeRequest.make()
             try VNImageRequestHandler(cgImage: image).perform([request])
-            let codes = (request.results ?? []).compactMap { observation -> ScannedCode? in
+            return (request.results ?? []).compactMap { observation in
                 guard let raw = observation.payloadStringValue, !raw.isEmpty else { return nil }
                 return ScannedCode(raw: raw, symbology: symbology(observation.symbology),
                                    bounds: bounds(observation.boundingBox))
             }
-            guard !codes.isEmpty else { throw ScanError.noCodes }
-            guard let scene = thumbnail(data, maxPixels: 1600), let jpeg = jpeg(scene) else { throw ScanError.invalidImage }
-            return ImportedScan(codes: codes, jpeg: jpeg)
-        }.value
+        }
     }
 
     static func symbology(_ value: VNBarcodeSymbology) -> Symbology {
@@ -59,7 +72,9 @@ enum PhotoScanner {
     }
 
     private static func thumbnail(_ data: Data, maxPixels: Int) -> CGImage? {
-        guard let source = CGImageSourceCreateWithData(data as CFData, nil) else { return nil }
+        guard let source = CGImageSourceCreateWithData(data as CFData, [
+            kCGImageSourceShouldCache: false
+        ] as CFDictionary) else { return nil }
         return CGImageSourceCreateThumbnailAtIndex(source, 0, [
             kCGImageSourceCreateThumbnailFromImageAlways: true,
             kCGImageSourceCreateThumbnailWithTransform: true,

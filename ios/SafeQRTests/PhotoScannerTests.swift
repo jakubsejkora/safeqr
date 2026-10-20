@@ -4,6 +4,41 @@ import Testing
 @testable import SafeQR
 
 struct PhotoScannerTests {
+    @Test func retriesSmallCodesInTwelveMegapixelPhotos() async throws {
+        let payload = "https://example.com/poster/" + String(repeating: "1234567890abcdef", count: 12)
+        let filter = try #require(CIFilter(name: "CIQRCodeGenerator"))
+        filter.setValue(Data(payload.utf8), forKey: "inputMessage")
+        filter.setValue("M", forKey: "inputCorrectionLevel")
+        let code = try #require(filter.outputImage)
+        let rendered = try #require(CIContext().createCGImage(code, from: code.extent))
+        let canvas = try #require(CGContext(data: nil, width: 4032, height: 3024, bitsPerComponent: 8, bytesPerRow: 0,
+                                           space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue))
+        canvas.setFillColor(CGColor(gray: 1, alpha: 1))
+        canvas.fill(CGRect(x: 0, y: 0, width: 4032, height: 3024))
+        canvas.interpolationQuality = .none
+        canvas.draw(rendered, in: CGRect(x: 1900, y: 1400, width: 140, height: 140))
+        let image = try #require(canvas.makeImage())
+        let photo = try #require(PhotoScanner.jpeg(image))
+
+        #expect(try PhotoScanner.detectCodes(in: photo, maxPixels: 2400).isEmpty)
+        let scan = try await PhotoScanner.scan(photo)
+        #expect(scan.codes.map(\.raw) == [payload])
+        #expect(scan.jpeg.count <= 1_500_000)
+        let scene = try #require(CIImage(data: scan.jpeg))
+        #expect(max(scene.extent.width, scene.extent.height) <= 1600)
+    }
+
+    @Test func blankPhotosStillReportNoCode() async throws {
+        let image = CIImage(color: .white).cropped(to: CGRect(x: 0, y: 0, width: 32, height: 32))
+        let rendered = try #require(CIContext().createCGImage(image, from: image.extent))
+        let photo = try #require(PhotoScanner.jpeg(rendered))
+        await #expect {
+            try await PhotoScanner.scan(photo)
+        } throws: { error in
+            if case ScanError.noCodes = error { true } else { false }
+        }
+    }
+
     @Test(arguments: ["WIFI:T:WPA;S:Home;P:private-password;;", "otpauth://totp/Test?secret=JBSWY3DPEHPK3PXP",
                       "LPA:1$rsp.example.com$private", "MECARD:N:Private;TEL:+420777123456;;"])
     func fullFrameScreeningDropsPrivateCodesOutsideTheScannerView(_ secret: String) async throws {

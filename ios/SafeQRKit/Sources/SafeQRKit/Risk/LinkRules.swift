@@ -8,7 +8,7 @@ enum LinkRules {
         let host = (components?.host ?? "").lowercased().trimmingCharacters(in: CharacterSet(charactersIn: "."))
         let asciiHost = (url.host(percentEncoded: false) ?? "").lowercased()
         if ["javascript", "data", "file"].contains(scheme) { signals.append(RiskSignal("link.unsafeScheme", 95, floor: 95)) }
-        if scheme == "http" { signals.append(RiskSignal("link.http", 30, floor: 30)) }
+        if scheme == "http" { signals.append(RiskSignal("link.http", 30)) }
         if components?.user != nil || components?.password != nil { signals.append(RiskSignal("link.userinfo", 70, floor: 70, arguments: [host])) }
         if isIPAddress(host) { signals.append(RiskSignal("link.ipHost", 35)) }
         if let port = components?.port, port != (scheme == "https" ? 443 : 80) { signals.append(RiskSignal("link.port", 15, arguments: [String(port)])) }
