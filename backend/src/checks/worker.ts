@@ -75,11 +75,12 @@ export function createWorker(
         try {
           const result = await (deps.sandbox ?? inspectLink)(target, model);
           if (result.restricted) evidence.limitations.push("restricted");
+          if (result.navigationFailed) evidence.limitations.push("sandbox");
           if (result.modelFailed) evidence.limitations.push("browserModel");
           evidence.downloads = result.downloads;
           screenshotKey = `screenshots/${id}.jpg`;
           await deps.media.put(screenshotKey, result.screenshot);
-          await step("sandbox", "done");
+          await step("sandbox", result.navigationFailed ? "failed" : "done");
           return result;
         } catch {
           evidence.limitations.push("sandbox");

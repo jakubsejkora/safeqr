@@ -29,6 +29,7 @@ export interface SandboxResult {
   screenshot: Uint8Array;
   downloads: boolean;
   restricted: boolean;
+  navigationFailed: boolean;
   modelFailed: boolean;
 }
 
@@ -175,15 +176,20 @@ export async function inspectLink(
       viewport: { width: 1280, height: 800 },
     });
     let restricted = false;
+    let navigationFailed = false;
     let downloads = false;
     let requests = 0;
     let inFlight = 0;
     let receivedBytes = 0;
+    const httpRedirects = new Set<string>();
     await context.routeWebSocket("**/*", (socket) => socket.close());
     await context.route("**/*", async (route) => {
       let active = false;
+      const request = route.request();
+      let mainNavigation = false;
       try {
-        const request = route.request();
+        mainNavigation =
+          request.isNavigationRequest() && request.frame() === page.mainFrame();
         if (
           request.method() !== "GET" ||
           ["media", "font"].includes(request.resourceType()) ||
@@ -192,6 +198,7 @@ export async function inspectLink(
           receivedBytes >= 8_000_000
         ) {
           restricted = true;
+          if (mainNavigation) navigationFailed = true;
           await route.abort();
           return;
         }
@@ -203,14 +210,39 @@ export async function inspectLink(
           { signal: AbortSignal.timeout(2500) },
         );
         receivedBytes += response.body.byteLength;
+        if (mainNavigation && response.status >= 400) navigationFailed = true;
         if (receivedBytes > 8_000_000) {
           restricted = true;
+          if (mainNavigation) navigationFailed = true;
           await route.abort();
           return;
         }
         if (/attachment/i.test(response.headers["content-disposition"] ?? "")) {
           downloads = true;
+          if (mainNavigation) navigationFailed = true;
           await route.abort();
+          return;
+        }
+        // Chromium follows fulfilled HTTP redirects without routing the next request.
+        if ([301, 302, 303, 307, 308].includes(response.status)) {
+          if (!request.isNavigationRequest() || !response.headers.location) {
+            restricted = true;
+            if (mainNavigation) navigationFailed = true;
+            await route.abort();
+            return;
+          }
+          const target = webUrl(
+            new URL(response.headers.location, request.url()).href,
+          ).href;
+          httpRedirects.add(target);
+          await route.fulfill({
+            status: 200,
+            headers: {
+              "content-type": "text/html; charset=utf-8",
+              "cache-control": "no-store",
+            },
+            body: `<script>location.replace(${JSON.stringify(target).replace(/</g, "\\u003c")})</script>`,
+          });
           return;
         }
         const headers = { ...response.headers };
@@ -222,6 +254,7 @@ export async function inspectLink(
         });
       } catch {
         restricted = true;
+        if (mainNavigation) navigationFailed = true;
         await route.abort().catch(() => undefined);
       } finally {
         if (active) inFlight--;
@@ -255,7 +288,10 @@ export async function inspectLink(
         /^https?:/.test(frame.url()) &&
         hops.length < 10
       )
-        hops.push({ url: frame.url(), via: "javascript" });
+        hops.push({
+          url: frame.url(),
+          via: httpRedirects.has(frame.url()) ? "http" : "javascript",
+        });
     });
     await page.goto(input, { waitUntil: "domcontentloaded", timeout: 6000 });
     const before = await settledEvidence(page);
@@ -341,6 +377,7 @@ export async function inspectLink(
       downloads:
         downloads || before.downloads || decision.downloads || after.downloads,
       restricted,
+      navigationFailed,
       modelFailed,
     };
   }

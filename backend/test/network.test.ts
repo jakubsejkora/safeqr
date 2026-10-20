@@ -88,6 +88,18 @@ describe("SSRF boundaries", () => {
 });
 
 describe("redirect and domain evidence", () => {
+  it.each([302, 403, 404, 429, 500, 503])(
+    "does not treat HTTP %i without a redirect target as a successful inspection",
+    async (status) => {
+      const fetch = vi.fn<WebFetch>().mockResolvedValue(page(status));
+      const result = await traceLink("https://example.com/", fetch);
+      expect(result.limitation).toBe("unavailable");
+      expect(result.report?.hops).toEqual([
+        { url: "https://example.com/", status, via: "http" },
+      ]);
+      expect(fetch).toHaveBeenCalledOnce();
+    },
+  );
   it("follows relative HTTP and quoted meta redirects", async () => {
     const fetch = vi
       .fn<WebFetch>()

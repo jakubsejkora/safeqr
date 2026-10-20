@@ -1,6 +1,8 @@
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { describe, expect, it, vi } from "vitest";
 import { createApi } from "../src/api/handler.js";
+import { deterministicVerdict } from "../src/checks/verdict/agent.js";
+import { progress } from "../src/checks/verdict/copy.js";
 import { QuotaExceeded } from "../src/shared/storage.js";
 import { id, intel, MemoryChecks, media, record, request } from "./helpers.js";
 
@@ -142,6 +144,7 @@ describe("HTTP contract and retention", () => {
       ...record(),
       createdAt: Math.floor(Date.now() / 1000) - 200,
       photoKey: `scenes/${id}.jpg`,
+      steps: [progress("en", "sandbox", "running")],
     });
     const api = createApi({
       checks,
@@ -156,6 +159,42 @@ describe("HTTP contract and retention", () => {
     });
     expect(JSON.parse(result.body ?? "").status).toBe("failed");
     expect(files.delete).toHaveBeenCalledWith(`scenes/${id}.jpg`);
+    const secondPoll = await api({
+      ...event("GET /v1/checks/{checkId}"),
+      pathParameters: { checkId: id },
+    });
+    expect(JSON.parse(secondPoll.body ?? "").steps[0].status).toBe("failed");
+  });
+  it("keeps a completed verdict when the worker wins a timeout race", async () => {
+    const checks = new MemoryChecks();
+    await checks.create({
+      ...record(),
+      createdAt: Math.floor(Date.now() / 1000) - 200,
+    });
+    const verdict = deterministicVerdict(request, {
+      intel: [],
+      limitations: [],
+    });
+    const fail = checks.fail.bind(checks);
+    vi.spyOn(checks, "fail").mockImplementation(async (key) => {
+      await checks.finish(key, verdict);
+      await fail(key);
+    });
+    const api = createApi({
+      checks,
+      media: media(),
+      intel: intel(),
+      invoke: vi.fn(),
+      admit: vi.fn(),
+    });
+    const response = await api({
+      ...event("GET /v1/checks/{checkId}"),
+      pathParameters: { checkId: id },
+    });
+    expect(JSON.parse(response.body ?? "")).toMatchObject({
+      status: "completed",
+      result: JSON.parse(JSON.stringify(verdict)),
+    });
   });
   it("defaults the case feed to English and validates its limit", async () => {
     const cases = intel();

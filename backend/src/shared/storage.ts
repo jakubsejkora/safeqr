@@ -130,19 +130,26 @@ export class DynamoCheckStore implements CheckStore {
   }
 
   async fail(id: string): Promise<void> {
-    await this.db.send(
-      new UpdateCommand({
-        TableName: this.table,
-        Key: { pk: id },
-        UpdateExpression: "SET #status = :failed REMOVE #request, photoKey",
-        ConditionExpression: "attribute_exists(pk)",
-        ExpressionAttributeNames: {
-          "#status": "status",
-          "#request": "request",
-        },
-        ExpressionAttributeValues: { ":failed": "failed" },
-      }),
-    );
+    try {
+      await this.db.send(
+        new UpdateCommand({
+          TableName: this.table,
+          Key: { pk: id },
+          UpdateExpression: "SET #status = :failed REMOVE #request, photoKey",
+          ConditionExpression: "#status = :running",
+          ExpressionAttributeNames: {
+            "#status": "status",
+            "#request": "request",
+          },
+          ExpressionAttributeValues: {
+            ":failed": "failed",
+            ":running": "running",
+          },
+        }),
+      );
+    } catch (error) {
+      if (!conditional(error)) throw error;
+    }
   }
 }
 

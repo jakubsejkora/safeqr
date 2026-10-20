@@ -63,10 +63,10 @@ export function deterministicVerdict(
       detail: say(locale, detailCs, detailEn),
     });
   };
-  if (request.device.floor >= 30 || request.device.findingIds.length)
+  if (score >= 30)
     add(
       "device-floor",
-      request.device.floor,
+      score,
       "device",
       "Telefon našel varovné znaky",
       "Your phone found warning signs",
@@ -177,8 +177,8 @@ export function deterministicVerdict(
       "sandbox",
       "Web nabízí stažení souboru",
       "The website offers a download",
-      "Soubor jsme nestáhli ani neotevřeli.",
-      "We did not download or open the file.",
+      "Soubor jsme neotevřeli ani nespustili.",
+      "We did not open or run the file.",
     );
   if (evidence.limitations.includes("blocked"))
     add(

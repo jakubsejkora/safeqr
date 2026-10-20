@@ -4,6 +4,73 @@ import { inspectLink } from "../src/checks/link/sandbox.js";
 import { failing, returning } from "./helpers.js";
 
 describe("isolated browser lifecycle", () => {
+  it.each([true, false])(
+    "never hands HTTP redirects to Chromium (navigation: %s)",
+    async (navigation) => {
+      const fulfill = vi.fn();
+      const abort = vi.fn().mockResolvedValue(undefined);
+      let routeRequest: ((route: Route) => Promise<void>) | undefined;
+      const frame = {};
+      const page = {
+        on: vi.fn(),
+        goto: async () => {
+          await routeRequest?.({
+            request: () => ({
+              method: () => "GET",
+              resourceType: () => (navigation ? "document" : "script"),
+              isNavigationRequest: () => navigation,
+              frame: () => frame,
+              url: () => "https://example.com/",
+            }),
+            fulfill,
+            abort,
+          } as unknown as Route);
+        },
+        evaluate: vi.fn().mockResolvedValue({
+          text: "Harmless page",
+          candidates: [],
+          asksFor: [],
+          downloads: false,
+        }),
+        url: () => "https://example.com/",
+        screenshot: vi.fn().mockResolvedValue(new Uint8Array()),
+        title: async () => "Page",
+        mainFrame: () => frame,
+        waitForURL: vi.fn().mockRejectedValue(new Error("No navigation")),
+      };
+      const context = {
+        routeWebSocket: vi.fn(),
+        addInitScript: vi.fn(),
+        newPage: async () => page,
+        route: async (
+          _pattern: string,
+          handler: (route: Route) => Promise<void>,
+        ) => {
+          routeRequest = handler;
+        },
+      };
+      const browser = { newContext: async () => context } as unknown as Browser;
+      await inspectLink("https://example.com/", failing(), {
+        start: async () => ({ browser, stop: vi.fn() }),
+        fetch: async () => ({
+          status: 302,
+          headers: { location: "https://example.com/next" },
+          body: Buffer.alloc(0),
+        }),
+      });
+      if (navigation) {
+        expect(fulfill).toHaveBeenCalledWith({
+          status: 200,
+          headers: expect.not.objectContaining({ location: expect.anything() }),
+          body: '<script>location.replace("https://example.com/next")</script>',
+        });
+        expect(abort).not.toHaveBeenCalled();
+      } else {
+        expect(abort).toHaveBeenCalledOnce();
+        expect(fulfill).not.toHaveBeenCalled();
+      }
+    },
+  );
   it("blocks page POSTs before network access and permits only one vetted click", async () => {
     const abort = vi.fn();
     const fetchPage = vi.fn();
@@ -41,6 +108,7 @@ describe("isolated browser lifecycle", () => {
           request: () => ({
             method: () => "POST",
             resourceType: () => "fetch",
+            isNavigationRequest: () => false,
           }),
           abort,
         } as unknown as Route),
@@ -56,6 +124,74 @@ describe("isolated browser lifecycle", () => {
     expect(click).toHaveBeenCalledOnce();
     expect(stop).toHaveBeenCalledOnce();
   });
+  it.each(["error page", "blocked destination"])(
+    "reports a failed main navigation after a click: %s",
+    async (failure) => {
+      let routeRequest: ((route: Route) => Promise<void>) | undefined;
+      const frame = {};
+      const evidence = {
+        text: "Continue",
+        candidates: [{ index: 0, text: "Continue", href: null }],
+        asksFor: [],
+        downloads: false,
+      };
+      const page = {
+        on: vi.fn(),
+        goto: vi.fn(),
+        evaluate: vi.fn().mockResolvedValue(evidence),
+        url: () => "https://example.com/",
+        screenshot: vi.fn().mockResolvedValue(new Uint8Array()),
+        title: async () => "Loading",
+        mainFrame: () => frame,
+        waitForURL: vi.fn().mockRejectedValue(new Error("No navigation")),
+        waitForLoadState: vi.fn().mockResolvedValue(undefined),
+        locator: () => ({
+          evaluate: vi.fn().mockResolvedValue(true),
+          click: async () => {
+            await routeRequest?.({
+              request: () => ({
+                method: () => "GET",
+                resourceType: () => "document",
+                isNavigationRequest: () => true,
+                frame: () => frame,
+                url: () => "https://example.com/next",
+              }),
+              fulfill: vi.fn(),
+              abort: vi.fn().mockResolvedValue(undefined),
+            } as unknown as Route);
+          },
+        }),
+      };
+      const context = {
+        routeWebSocket: vi.fn(),
+        addInitScript: vi.fn(),
+        newPage: async () => page,
+        route: async (
+          _pattern: string,
+          handler: (route: Route) => Promise<void>,
+        ) => {
+          routeRequest = handler;
+        },
+      };
+      const browser = { newContext: async () => context } as unknown as Browser;
+      const result = await inspectLink(
+        "https://example.com/",
+        returning({ candidateIndex: 0, asksFor: [], downloads: false }),
+        {
+          start: async () => ({ browser, stop: vi.fn() }),
+          fetch: async () => {
+            if (failure === "blocked destination") throw new Error("Blocked");
+            return {
+              status: 503,
+              headers: {},
+              body: Buffer.from("Unavailable"),
+            };
+          },
+        },
+      );
+      expect(result.navigationFailed).toBe(true);
+    },
+  );
   it("always stops the AgentCore session when setup fails", async () => {
     const stop = vi.fn().mockResolvedValue(undefined);
     const browser = {

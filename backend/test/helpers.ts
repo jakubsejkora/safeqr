@@ -66,7 +66,7 @@ export class MemoryChecks implements CheckStore {
   }
   async fail(key: string) {
     const record = this.records.get(key);
-    if (record) {
+    if (record?.status === "running") {
       record.status = "failed";
       delete record.request;
       delete record.photoKey;

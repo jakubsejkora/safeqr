@@ -15,6 +15,32 @@ const known: Case = {
 };
 
 describe("deterministic safety boundaries", () => {
+  it("does not call informational device findings warnings", () => {
+    const result = deterministicVerdict(
+      {
+        ...request,
+        device: { score: 10, floor: 0, findingIds: ["payment.instant"] },
+      },
+      { intel: [], limitations: [] },
+    );
+    expect(result.score).toBe(10);
+    expect(result.findings).toEqual([]);
+  });
+  it("keeps device warning severity even when its score is above the proven floor", () => {
+    const result = deterministicVerdict(
+      {
+        ...request,
+        device: { score: 70, floor: 0, findingIds: ["content.combination"] },
+      },
+      { intel: [], limitations: [] },
+    );
+    expect(result.findings).toContainEqual(
+      expect.objectContaining({
+        source: "device",
+        severity: "danger",
+      }),
+    );
+  });
   it("raises concealed card collection to danger while an ordinary card form remains caution", () => {
     const link = {
       finalUrl: "https://parking.example/pay",

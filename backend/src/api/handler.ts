@@ -68,7 +68,7 @@ export function createApi(deps: ApiDependencies) {
             "Check not found",
             "This check does not exist or has expired.",
           );
-        const record = await deps.checks.get(id.data);
+        let record = await deps.checks.get(id.data);
         if (!record)
           return problem(
             404,
@@ -85,13 +85,20 @@ export function createApi(deps: ApiDependencies) {
               .delete(record.photoKey)
               .catch(() => count("PhotoDeletionFailed"));
           await deps.checks.fail(record.id);
-          record.status = "failed";
+          record = await deps.checks.get(id.data);
+          if (!record)
+            return problem(
+              404,
+              "Check not found",
+              "This check does not exist or has expired.",
+            );
+        }
+        if (record.status === "failed")
           record.steps = record.steps.map((step) =>
             step.status === "running" || step.status === "pending"
               ? { ...step, status: "failed" }
               : step,
           );
-        }
         if (record.result?.link && record.screenshotKey)
           record.result.link.screenshotUrl = await deps.media.sign(
             record.screenshotKey,

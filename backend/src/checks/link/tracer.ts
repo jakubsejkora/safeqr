@@ -38,6 +38,8 @@ export async function traceLink(
         via = "http";
         continue;
       }
+      if (response.status < 200 || response.status >= 300)
+        return { report: { finalUrl: url, hops }, limitation: "unavailable" };
       const $ = load(
         response.headers["content-type"]?.includes("html")
           ? response.body.toString("utf8")

@@ -12,6 +12,34 @@ import {
 } from "./helpers.js";
 
 describe("worker orchestration", () => {
+  it("keeps a failed browser navigation at caution even when both models return a low score", async () => {
+    const checks = new MemoryChecks();
+    await checks.create(record());
+    await createWorker({
+      checks,
+      media: media(),
+      intel: intel(),
+      model: () => returning(draft),
+      trace: async () => ({
+        report: { finalUrl: "https://example.com/", hops: [] },
+      }),
+      sandbox: async () => ({
+        report: { finalUrl: "https://example.com/", hops: [] },
+        screenshot: new Uint8Array(),
+        downloads: false,
+        restricted: false,
+        navigationFailed: true,
+        modelFailed: false,
+      }),
+      age: async () => undefined,
+    })({ id });
+    const result = await checks.get(id);
+    expect(result?.status).toBe("completed");
+    expect(result?.result?.level).toBe("caution");
+    expect(result?.steps.find((step) => step.id === "sandbox")?.status).toBe(
+      "failed",
+    );
+  });
   it("runs independent checks concurrently, matches the final destination, and deletes photos on model failure", async () => {
     const checks = new MemoryChecks();
     const files = media();

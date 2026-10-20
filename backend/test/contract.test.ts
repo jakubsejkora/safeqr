@@ -4,6 +4,7 @@ import formats from "ajv-formats";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
 import { z } from "zod";
+import fixtures from "../../spec/fixtures/codes.json" with { type: "json" };
 import seeds from "../data/verified-cases.json" with { type: "json" };
 import { deterministicVerdict } from "../src/checks/verdict/agent.js";
 import { publicCase, validateCase } from "../src/intel/schema.js";
@@ -34,6 +35,29 @@ const validate = (name: string, value: unknown) =>
   })(value);
 
 describe("shared OpenAPI contract", () => {
+  it("accepts every shared code fixture and preserves each supplied device risk floor", () => {
+    for (const fixture of fixtures) {
+      const floor =
+        fixture.expected.level === "danger"
+          ? 70
+          : fixture.expected.level === "caution"
+            ? 30
+            : 0;
+      const input = requestSchema.parse({
+        payload: fixture.raw,
+        kind: fixture.expected.kind,
+        locale: fixture.locale.startsWith("cs") ? "cs" : "en",
+        device: { score: floor, floor, findingIds: fixture.expected.findings },
+      });
+      const verdict = deterministicVerdict(input, {
+        intel: [],
+        limitations: [],
+      });
+      expect(validate("CheckRequest", input), fixture.id).toBe(true);
+      expect(validate("Verdict", verdict), fixture.id).toBe(true);
+      expect(verdict.score, fixture.id).toBeGreaterThanOrEqual(floor);
+    }
+  });
   it("mirrors required fields, property names and enums without altering the shared spec", () => {
     const schemas = {
       CheckRequest: requestSchema,
