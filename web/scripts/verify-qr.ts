@@ -4,6 +4,7 @@ import { decode } from "bysquare/pay";
 import jsQR from "jsqr";
 import sharp from "sharp";
 import { EXAMPLE_IBAN, gallery } from "../src/data/gallery.ts";
+import { kitCodes } from "../src/data/kit.ts";
 import { qrImage } from "../src/lib/qr.ts";
 
 async function decoded(svg: Buffer, width = 1200) {
@@ -53,6 +54,13 @@ for (const item of gallery) {
   if (item.id === "pay-by-square")
     assert.equal(decode(item.payload).payments[0]?.bankAccounts[0]?.iban, EXAMPLE_IBAN);
 }
+for (const item of Object.values(kitCodes)) {
+  assert.equal(
+    await decoded(await readFile(`dist/qr/${item.id}.svg`)),
+    item.payload,
+    `Print kit QR mismatch: ${item.id}`,
+  );
+}
 console.log(
-  `Decoded all ${gallery.length} gallery SVGs, second codes, and both layers of the nested QR. PAY by square round-trip verified.`,
+  `Decoded all ${gallery.length} gallery SVGs, second codes, both layers of the nested QR, and ${Object.keys(kitCodes).length} print kit SVGs. PAY by square round-trip verified.`,
 );

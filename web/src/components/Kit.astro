@@ -1,5 +1,6 @@
 ---
 import { DEMO_ORIGIN } from "../data/gallery";
+import { kitCodes } from "../data/kit";
 import Layout from "../layouts/Layout.astro";
 import { type Locale, text } from "../lib/locale";
 
@@ -15,12 +16,12 @@ const t = (cs: string, en: string) => text(locale, cs, en);
     <div class="page-heading kit-heading">
       <span class="eyebrow">THE FINTECHERS HACKATHON 2026</span>
       <h1>
-        {t("Podvod na papíře. Bez skutečného rizika.", "A scam on paper. A safe way to learn.")}
+        {t("Podvod na papíře. Naučte se ho poznat.", "A scam on paper. Learn to spot it.")}
       </h1>
       <p>
         {t(
-          "Čtyři materiály pro živou ukázku. Tiskněte na A4, v měřítku 100 %. Každý materiál dostane vlastní stránku. Všechny jsou zřetelně označené jako cvičení.",
-          "Four materials for a live demonstration. Print on A4 at 100% scale. Each item gets its own page. Every item is clearly marked as training.",
+          "Čtyři cvičné materiály pro živou ukázku. Tiskněte na A4, v měřítku 100 %. Každý materiál dostane vlastní stránku. Skenujte je v Safe QR. Platby nepotvrzujte a SMS neodesílejte.",
+          "Four training materials for a live demonstration. Print on A4 at 100% scale. Each item gets its own page. Scan them in Safe QR. Do not confirm payments or send messages.",
         )}
       </p>
     </div>
@@ -31,8 +32,8 @@ const t = (cs: string, en: string) => text(locale, cs, en);
       </button>
       <p class="source">
         {t(
-          "Ve třech příkladech vede kód na stejnou cvičnou platbu za parkování. Reklamní a dopisní příběh s cílem záměrně nesouhlasí.",
-          "Three examples lead to the same parking-payment training page. The advertisement and letter deliberately do not match that destination.",
+          "Pořadí ukázky: parkovací samolepka s odkazem, novinový inzerát s QR platbou, karta s prémiovou SMS a běžný odkaz na example.com pro srovnání.",
+          "Demo order: a parking sticker with a link, a newspaper ad with a QR payment, a premium SMS card, and an ordinary example.com link for comparison.",
         )}
       </p>
     </div>
@@ -60,60 +61,58 @@ const t = (cs: string, en: string) => text(locale, cs, en);
     </article>
     <article class="print-sheet newspaper-kit">
       <span class="print-label"
-        >SAFE QR · {t("SMYŠLENÝ INZERÁT — CVIČENÍ", "FICTIONAL ADVERTISEMENT — TRAINING")}</span
+        >SAFE QR · {t("CVIČNÝ INZERÁT — NEPLATIT", "TRAINING AD — DO NOT PAY")}</span
       >
       <p class="source">{t("MALÝ INZERÁT · VELKÁ NABÍDKA", "SMALL AD · BIG OFFER")}</p>
-      <h2>{t("Výhodná nabídka jen pro vás.", "A special offer just for you.")}</h2>
+      <h2>{t("Katalog výletů zdarma.", "Your free travel catalogue.")}</h2>
       <p>
         {t(
-          "Načtěte QR kód a prohlédněte si nabídku. Stačí jeden krok.",
-          "Scan the code to see the offer. Just one step away.",
+          "Naskenujte kód a vyberte si výlet. Prohlédnutí je zdarma.",
+          "Scan the code and choose a trip. Browse the catalogue for free.",
         )}
       </p>
       <img
-        src="/qr/redirect-chain.svg"
+        src={`/qr/${kitCodes.payment.id}.svg`}
         width="225"
         height="225"
-        alt={t("QR kód z fiktivního inzerátu", "QR code from the fictional advertisement")}
+        alt={t(
+          "Cvičná QR platba z fiktivního inzerátu",
+          "Training QR payment from the fictional advertisement",
+        )}
       >
       <p class="kit-caption">
         {t(
-          "Co nesedí? Inzerát slibuje nabídku, ale kód vede na platbu za parkování. Jde o smyšlený příklad, nikoli doložený případ z novin.",
-          "What is wrong? The ad promises an offer but leads to a parking payment. This is a fictional scenario, not a documented newspaper case.",
+          "Co nesedí? Katalog má být zdarma, ale kód připraví platbu 499 Kč. Ve zprávě je navíc odkaz. Příjemce je smyšlený a účet je dokumentační příklad. Nic neplaťte.",
+          "What is wrong? The catalogue should be free, but the code prepares a CZK 499 payment. Its message also hides a link. The recipient is fictional and the account is a documentation example. Do not pay.",
         )}
       </p>
-      <code>{DEMO_ORIGIN}/start</code>
     </article>
     <article class="print-sheet">
       <span class="print-label"
-        >SAFE QR · {t("SMYŠLENÝ DOPIS — CVIČENÍ", "FICTIONAL LETTER — TRAINING")}</span
+        >SAFE QR · {t("CVIČNÁ SMS — NEODESÍLAT", "TRAINING SMS — DO NOT SEND")}</span
       >
-      <p class="source">{t("UKÁZKOVÉ ODDĚLENÍ PLATEB", "FICTIONAL PAYMENT OFFICE")}</p>
-      <h2>{t("Výzva k doplnění údajů", "Request to update your details")}</h2>
-      <p>{t("Vážená paní, vážený pane,", "Dear reader,")}</p>
+      <h2>{t("Nové tipy každý týden.", "Fresh tips every week.")}</h2>
       <p>
-        {t(
-          "k dokončení vašeho požadavku prosím načtěte přiložený QR kód a doplňte údaje. Vyřízení údajně zabere jen minutu.",
-          "To complete your request, please scan the enclosed QR code and update your details. The message claims it will take only a minute.",
-        )}
+        {t("Naskenujte kód a přihlaste se k odběru.", "Scan the code to subscribe.")}
       </p>
       <img
-        src="/qr/redirect-chain.svg"
+        src={`/qr/${kitCodes.sms.id}.svg`}
         width="225"
         height="225"
-        alt={t("QR kód ze smyšleného dopisu", "QR code from the fictional letter")}
+        alt={t("Cvičný QR kód s prémiovou SMS", "Training QR code with a premium SMS")}
       >
       <p class="kit-caption">
         {t(
-          "Co nesedí? Neurčitý odesílatel a platební stránka místo doplnění údajů. Nejde o dopis skutečného úřadu ani o doložený incident.",
-          "What is wrong? An unclear sender and a payment page instead of a details update. This is not a real authority’s letter or a documented incident.",
+          "Ukázkové číslo v českém prémiovém rozsahu. SMS s textem START může stát až 99 Kč a spustit předplatné. Zprávu neodesílejte. Cena služby ani provozovatel nejsou ověřeni.",
+          "An example number in a Czech premium range. Sending START may cost up to CZK 99 and start a subscription. Do not send it. The service price and operator have not been verified.",
         )}
       </p>
-      <code>{DEMO_ORIGIN}/start</code>
+      <code>{kitCodes.sms.payload}</code>
     </article>
     <article class="print-sheet">
       <span class="print-label"
-        >SAFE QR · {t("SROVNÁNÍ — BĚŽNÝ ODKAZ", "COMPARISON — AN ORDINARY LINK")}</span
+        >SAFE QR ·
+        {t("CVIČNÉ SROVNÁNÍ — BĚŽNÝ ODKAZ", "TRAINING COMPARISON — AN ORDINARY LINK")}</span
       >
       <h2>{t("Ne každý QR kód je past.", "Not every QR code is a trap.")}</h2>
       <p>
