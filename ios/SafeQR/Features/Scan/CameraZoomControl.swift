@@ -1,27 +1,26 @@
 import SwiftUI
 
 struct CameraZoomControl: View {
-    @Binding var ultraWide: Bool
+    @Binding var selection: CameraZoom
+    let levels: [CameraZoom]
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         HStack(spacing: 0) {
-            zoom(ultra: true)
-            zoom(ultra: false)
+            ForEach(levels) { zoom($0) }
         }
-        .padding(3)
-        .background(.black.opacity(0.55), in: Capsule())
-        .sensoryFeedback(.selection, trigger: ultraWide)
+        .glassEffect(in: Capsule())
+        .sensoryFeedback(.selection, trigger: selection)
     }
 
-    private func zoom(ultra: Bool) -> some View {
-        let selected = ultraWide == ultra
+    private func zoom(_ level: CameraZoom) -> some View {
+        let selected = selection == level
         return Button {
             withAnimation(reduceMotion ? nil : .spring(response: 0.3, dampingFraction: 0.7)) {
-                ultraWide = ultra
+                selection = level
             }
         } label: {
-            Text(ultra ? L10n.text(selected ? "0.5×" : ".5") : (selected ? "1×" : "1"))
+            Text(level.title(selected: selected))
                 .font(.system(size: selected ? 13 : 12, weight: .semibold, design: .rounded))
                 .monospacedDigit()
                 .foregroundStyle(selected ? .yellow : .white)
@@ -31,7 +30,7 @@ struct CameraZoomControl: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(L10n.text(ultra ? "Ultra wide" : "Main camera"))
+        .accessibilityLabel(level.accessibilityLabel)
         .accessibilityAddTraits(selected ? .isSelected : [])
     }
 }

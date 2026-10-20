@@ -16,6 +16,7 @@ struct ScanView<ResultContent: View>: View {
     @State private var pendingImport: (code: ScannedCode, scan: ImportedScan)?
     @State private var errorMessage: String?
     @State private var importing = false
+    @State private var hintVisible = false
 
     var body: some View {
         @Bindable var navigation = services.navigation
@@ -40,6 +41,10 @@ struct ScanView<ResultContent: View>: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if observingCamera {
+                ToolbarItem(placement: .topBarLeading) {
+                    CameraZoomControl(selection: Binding(get: { services.camera.zoom }, set: services.camera.selectZoom),
+                                      levels: services.camera.availableZooms)
+                }.sharedBackgroundVisibility(.hidden)
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     PhotosPicker(selection: $selectedPhoto, matching: .images) {
                         Label(L10n.text("Import photo"), systemImage: "photo").foregroundStyle(.white)
@@ -94,8 +99,11 @@ struct ScanView<ResultContent: View>: View {
             }
         }
         .task(id: observingCamera) {
+            hintVisible = false
             guard observingCamera else { return }
+            var hint = ScannerHintTiming()
             while !Task.isCancelled {
+                hintVisible = hint.update(hasCode: !services.camera.codes.isEmpty)
                 services.checks.observe(services.camera.codes, sceneContainsPrivateCodes: services.camera.sceneContainsPrivateCodes,
                                         using: services.checker, consent: services.preferences.consent)
                 do { try await Task.sleep(for: .milliseconds(200)) }
@@ -138,21 +146,20 @@ struct ScanView<ResultContent: View>: View {
     private var cameraControls: some View {
         VStack(spacing: 14) {
             Spacer()
-            if services.camera.codes.isEmpty {
+            if observingCamera && services.camera.codes.isEmpty && hintVisible {
                 Text(L10n.text("Point at a QR code"))
                     .font(.subheadline.weight(.medium))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16).padding(.vertical, 10)
                     .glassEffect(in: Capsule())
-            }
-            if services.camera.hasUltraWide {
-                CameraZoomControl(ultraWide: Binding(get: { services.camera.showsUltraWide },
-                                                    set: { services.camera.showsUltraWide = $0 }))
+                    .transition(.opacity)
             }
         }
         .padding(.horizontal, 20).padding(.bottom, 16)
         .foregroundStyle(.white)
         .symbolEffectsRemoved(reduceMotion)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.2),
+                   value: hintVisible && services.camera.codes.isEmpty && observingCamera)
     }
 
     private var cameraVisible: Bool { services.camera.state == .ready }

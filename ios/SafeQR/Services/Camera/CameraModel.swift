@@ -8,7 +8,9 @@ final class CameraModel: CameraSource {
     private(set) var state: CameraState = .idle
     private(set) var hasUltraWide = false
     private(set) var hasTorch = false
-    var showsUltraWide = false
+    private(set) var availableZooms: [CameraZoom] = [.main]
+    private(set) var zoom: CameraZoom = .main
+    private var zoomRevision = 0
     private(set) var torchEnabled = false
     private(set) var codes: [TrackedCode] = []
     private(set) var sceneContainsPrivateCodes = false
@@ -50,13 +52,17 @@ final class CameraModel: CameraSource {
             capture = CameraCapture { [weak self] event in
                 guard let self else { return }
                 switch event {
-                case .ready(let ultra, let torch):
+                case .ready(let ultra, let torch, let maximumZoom):
                     hasUltraWide = ultra
                     hasTorch = torch
+                    availableZooms = CameraZoom.available(ultraWide: ultra, maximumMainZoom: maximumZoom)
                     state = .ready
-                case .frame(let observations):
-                    guard acceptsFrames else { return }
+                case .frame(let observations, let revision):
+                    guard acceptsFrames, revision == zoomRevision else { return }
                     update(observations)
+                case .zoomChanged(let applied, let revision):
+                    guard revision == zoomRevision else { return }
+                    zoom = applied
                 case .unavailable:
                     state = .unavailable
                 case .torchChanged(let enabled):
@@ -114,6 +120,16 @@ final class CameraModel: CameraSource {
     func toggleTorch() {
         torchEnabled.toggle()
         capture?.setTorch(torchEnabled)
+    }
+
+    func selectZoom(_ next: CameraZoom) {
+        guard availableZooms.contains(next), next != zoom else { return }
+        zoom = next
+        zoomRevision += 1
+        codes = []
+        lastSeen.removeAll()
+        sceneContainsPrivateCodes = false
+        capture?.setZoom(next, revision: zoomRevision)
     }
 }
 

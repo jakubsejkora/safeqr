@@ -5266,23 +5266,6 @@
         }
       }
     },
-    ".5": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ".5"
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": ",5"
-          }
-        }
-      }
-    },
     "The theme changed. The app icon couldn't be changed this time.": {
       "extractionState": "manual",
       "localizations": {
@@ -5330,6 +5313,108 @@
           "stringUnit": {
             "state": "translated",
             "value": "Otevřeme zabezpečenou verzi: %@"
+          }
+        }
+      }
+    },
+    "0.5": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0.5"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0,5"
+          }
+        }
+      }
+    },
+    "1": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1"
+          }
+        }
+      }
+    },
+    "1×": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1×"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1×"
+          }
+        }
+      }
+    },
+    "2": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2"
+          }
+        }
+      }
+    },
+    "2×": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2×"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2×"
+          }
+        }
+      }
+    },
+    "2× zoom": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2× zoom"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dvojnásobné přiblížení"
           }
         }
       }

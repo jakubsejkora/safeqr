@@ -8,7 +8,8 @@ protocol CameraSource: AnyObject {
     var preview: AnyView { get }
     var hasUltraWide: Bool { get }
     var hasTorch: Bool { get }
-    var showsUltraWide: Bool { get set }
+    var availableZooms: [CameraZoom] { get }
+    var zoom: CameraZoom { get }
     var torchEnabled: Bool { get }
     var codes: [TrackedCode] { get }
     var sceneContainsPrivateCodes: Bool { get }
@@ -17,8 +18,10 @@ protocol CameraSource: AnyObject {
     func start(requestPermission: Bool) async
     func stop()
     func toggleTorch()
+    func selectZoom(_ zoom: CameraZoom)
 }
 
 extension CameraSource {
+    var showsUltraWide: Bool { zoom == .ultraWide }
     func start() async { await start(requestPermission: false) }
 }

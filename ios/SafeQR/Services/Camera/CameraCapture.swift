@@ -4,8 +4,9 @@ import Vision
 import SafeQRKit
 
 enum CaptureEvent: Sendable {
-    case ready(hasUltraWide: Bool, hasTorch: Bool)
-    case frame([CameraObservation])
+    case ready(hasUltraWide: Bool, hasTorch: Bool, maximumMainZoom: CGFloat)
+    case frame([CameraObservation], zoomRevision: Int)
+    case zoomChanged(CameraZoom, revision: Int)
     case torchChanged(Bool)
     case unavailable
 }
@@ -26,6 +27,9 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
     private var lastUltraTime: CMTime = .zero
     private var lastScanTime: CMTime = .zero
     private var configured = false
+    private var zoom: CameraZoom = .main
+    private var zoomRevision = 0
+    private var validFramesAfter: CMTime = .invalid
 
     init(onEvent: @escaping @MainActor @Sendable (CaptureEvent) -> Void) {
         self.onEvent = onEvent
@@ -73,6 +77,33 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
         }
     }
 
+    func setZoom(_ requested: CameraZoom, revision: Int) {
+        queue.async { [self] in
+            guard let device = wideDevice else { return }
+            zoomRevision = revision
+            do {
+                try device.lockForConfiguration()
+                defer { device.unlockForConfiguration() }
+                guard requested.mainFactor >= device.minAvailableVideoZoomFactor,
+                      requested.mainFactor <= device.maxAvailableVideoZoomFactor,
+                      requested != .ultraWide || ultraDevice != nil else {
+                    emit(.zoomChanged(zoom, revision: revision))
+                    return
+                }
+                device.videoZoomFactor = requested.mainFactor
+                zoom = requested
+                // Do not reuse detections from frames queued before the sensor crop changed.
+                if let clock = session.synchronizationClock {
+                    validFramesAfter = CMClockGetTime(clock) + CMTime(seconds: 0.15, preferredTimescale: 600)
+                }
+                lastScanTime = .zero
+                emit(.zoomChanged(zoom, revision: revision))
+            } catch {
+                emit(.zoomChanged(zoom, revision: revision))
+            }
+        }
+    }
+
     private func configure() throws {
         guard let wide = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             throw ScanError.unavailable
@@ -88,7 +119,8 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
             if ultraOutput != nil { ultraDevice = ultra }
         }
         configured = true
-        emit(.ready(hasUltraWide: ultraOutput != nil, hasTorch: wide.hasTorch))
+        emit(.ready(hasUltraWide: ultraOutput != nil, hasTorch: wide.hasTorch,
+                    maximumMainZoom: wide.maxAvailableVideoZoomFactor))
     }
 
     private func attach(_ device: AVCaptureDevice, preview: AVCaptureVideoPreviewLayer) throws -> AVCaptureVideoDataOutput {
@@ -126,11 +158,13 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
         }
         session.addConnection(connection)
         if connection.isVideoRotationAngleSupported(90) { connection.videoRotationAngle = 90 }
+        if connection.isVideoStabilizationSupported { connection.preferredVideoStabilizationMode = .off }
         preview.setSessionWithNoConnection(session)
         let previewConnection = AVCaptureConnection(inputPort: port, videoPreviewLayer: preview)
         if session.canAddConnection(previewConnection) {
             session.addConnection(previewConnection)
             if previewConnection.isVideoRotationAngleSupported(90) { previewConnection.videoRotationAngle = 90 }
+            if previewConnection.isVideoStabilizationSupported { previewConnection.preferredVideoStabilizationMode = .off }
         }
         return output
     }
@@ -144,6 +178,7 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
             lastUltraTime = time
             return
         }
+        if validFramesAfter.isValid, time < validFramesAfter { return }
         guard CMTimeGetSeconds(time - lastScanTime) >= 0.25 else { return }
         lastScanTime = time
         let request = BarcodeRequest.make()
@@ -158,14 +193,15 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
             guard let raw = observation.payloadStringValue else { return nil }
             let code = ScannedCode(raw: raw, symbology: PhotoScanner.symbology(observation.symbology),
                                    bounds: PhotoScanner.bounds(observation.boundingBox))
-            let ultraBounds = useUltra ? mappedBounds(code.bounds) : nil
+            let frameSize = CGSize(width: CVPixelBufferGetWidth(buffer), height: CVPixelBufferGetHeight(buffer))
+            let ultraBounds = useUltra ? mappedBounds(code.bounds, wideSize: frameSize, ultraSize: sceneImage.extent.size) : nil
             let scene = jpeg.map { ScenePhoto(jpeg: $0, source: useUltra ? .ultraWideCamera : .camera,
                                               bounds: useUltra ? ultraBounds : code.bounds) }
             return CameraObservation(code: code, scene: scene,
-                                     frameSize: CGSize(width: CVPixelBufferGetWidth(buffer), height: CVPixelBufferGetHeight(buffer)),
+                                     frameSize: frameSize,
                                      ultraBounds: ultraBounds, ultraSize: sceneImage.extent.size)
         }
-        emit(.frame(codes))
+        emit(.frame(codes, zoomRevision: zoomRevision))
     }
 
     private func encode(_ image: CIImage, longestSide: CGFloat) -> Data? {
@@ -174,16 +210,17 @@ final class CameraCapture: NSObject, @unchecked Sendable, AVCaptureVideoDataOutp
         return context.createCGImage(scaled, from: scaled.extent).flatMap(PhotoScanner.jpeg)
     }
 
-    private func mappedBounds(_ bounds: CodeBounds) -> CodeBounds? {
+    private func mappedBounds(_ bounds: CodeBounds, wideSize: CGSize, ultraSize: CGSize) -> CodeBounds? {
         guard let wideDevice, let ultraDevice else { return nil }
         // Field-of-view mapping is approximate: the two lenses have different optical centres and distortion.
-        let wideAngle = Double(wideDevice.activeFormat.videoFieldOfView) * .pi / 360
-        let ultraAngle = Double(ultraDevice.activeFormat.videoFieldOfView) * .pi / 360
-        let ratio = tan(wideAngle) / tan(ultraAngle)
-        guard ratio.isFinite, ratio > 0, ratio < 1 else { return nil }
-        return CodeBounds(rect: CGRect(x: 0.5 + (bounds.x - 0.5) * ratio,
-                                      y: 0.5 + (bounds.y - 0.5) * ratio,
-                                      width: bounds.width * ratio, height: bounds.height * ratio))
+        return PreviewGeometry.ultraWideBounds(bounds, wideSize: wideSize, ultraSize: ultraSize,
+            wideFieldOfView: fieldOfView(wideDevice), ultraFieldOfView: fieldOfView(ultraDevice),
+            mainZoom: Double(wideDevice.videoZoomFactor))
+    }
+
+    private func fieldOfView(_ device: AVCaptureDevice) -> Double {
+        Double(device.isGeometricDistortionCorrectionEnabled
+               ? device.activeFormat.geometricDistortionCorrectedVideoFieldOfView : device.activeFormat.videoFieldOfView)
     }
 
     private func emit(_ event: CaptureEvent) {

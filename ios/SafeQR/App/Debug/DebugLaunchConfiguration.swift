@@ -22,6 +22,7 @@ final class DebugLaunchConfiguration {
                                    camera: scannerMode.map { ScannerFixture(mode: $0) }, inMemoryHistory: inMemoryHistory)
         if let theme = options.theme { services.preferences.theme = theme }
         if let appearance = options.appearance { services.preferences.appearance = appearance }
+        if let zoom = options.zoom { services.camera.selectZoom(zoom) }
         if let screen = options.screen {
             services.preferences.finishedOnboarding = screen != "onboarding"
             services.preferences.deepChecksEnabled = ["training", "http", "scannerChecking", "scannerDanger"].contains(screen) && options.liveCheck

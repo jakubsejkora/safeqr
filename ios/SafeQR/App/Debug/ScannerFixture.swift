@@ -17,9 +17,10 @@ final class ScannerFixture: CameraSource {
     let hasTorch = true
     let sceneContainsPrivateCodes = false
     let unavailableMessage = ""
-    var showsUltraWide = false
+    let availableZooms = CameraZoom.allCases
+    private(set) var zoom: CameraZoom = .main
     private(set) var torchEnabled = false
-    let codes: [TrackedCode]
+    private(set) var codes: [TrackedCode]
     let frame = ScannerFixture.image
 
     init(mode: Mode) {
@@ -31,7 +32,8 @@ final class ScannerFixture: CameraSource {
         AnyView(GeometryReader { geometry in
             if let frame = self.frame {
                 Image(uiImage: frame).resizable().scaledToFill()
-                    .frame(width: geometry.size.width, height: geometry.size.height).clipped()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .scaleEffect(self.zoom.mainFactor).clipped()
             }
         })
     }
@@ -39,6 +41,23 @@ final class ScannerFixture: CameraSource {
     func start(requestPermission: Bool) async {}
     func stop() { torchEnabled = false }
     func toggleTorch() { torchEnabled.toggle() }
+
+    func selectZoom(_ zoom: CameraZoom) {
+        self.zoom = zoom
+        codes = mode == .idle ? [] : Self.lockedCodes.map { code in
+            var result = code
+            let factor = Double(zoom.mainFactor)
+            let original = code.bounds
+            let bounds = CodeBounds(rect: CGRect(x: 0.5 + (original.x - 0.5) * factor,
+                                                y: 0.5 + (original.y - 0.5) * factor,
+                                                width: original.width * factor, height: original.height * factor))
+            result.bounds = bounds
+            result.observation = CameraObservation(code: ScannedCode(raw: code.observation.code.raw,
+                symbology: code.observation.code.symbology, bounds: bounds), scene: code.observation.scene,
+                frameSize: code.observation.frameSize, ultraBounds: original, ultraSize: code.observation.ultraSize)
+            return result
+        }
+    }
 
     static var image: UIImage? {
         guard let url = Bundle.main.url(forResource: "parking-machine", withExtension: "jpg"),
