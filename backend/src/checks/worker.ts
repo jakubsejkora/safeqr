@@ -88,6 +88,7 @@ export function createWorker(
           return undefined;
         }
       };
+      const tracing = traceTask();
       const sceneTask = async () => {
         if (!record.photoKey) {
           await step("scene", "skipped");
@@ -97,10 +98,14 @@ export function createWorker(
         let bytes: Uint8Array | undefined;
         try {
           bytes = await deps.media.get(record.photoKey);
+          // The traced destination lets the scene judge codes that redirect through QR or shortener services.
+          const destination = (await tracing.catch(() => undefined))?.report
+            ?.finalUrl;
           evidence.scene = await (deps.scene ?? inspectScene)(
             request,
             bytes,
             model,
+            destination,
           );
           await step("scene", "done");
         } catch {
@@ -131,7 +136,7 @@ export function createWorker(
         }
       };
       const settled = await Promise.allSettled([
-        traceTask(),
+        tracing,
         sandboxTask(),
         sceneTask(),
         initialIntel(),

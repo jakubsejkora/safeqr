@@ -6,6 +6,8 @@ different printing, or a code placed over official information. A sticker alone 
 Do not identify people or transcribe faces, number plates, names, addresses, credentials or account numbers.
 Never repeat the raw code. Use the code bounds as a hint only. Do not claim to decode the picture.
 Explain whether the stated kind of code fits the setting. Omit matchesContent when it cannot be determined.
+destination, when present, is the website the link finally reaches after redirects. Judge the fit by it:
+a QR-code service or link shortener in the code is common and is not a mismatch by itself.
 Do not infer ownership, authenticity or safety from a logo, a uniform, a familiar brand or official-looking design.
 If the surroundings are unclear, say so in the one-sentence summary; leave tamperingSigns empty.
 Tampering signs are observations, not accusations. Report uncertainty plainly. Do not promise safety.

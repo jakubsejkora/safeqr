@@ -44,12 +44,13 @@ describe("worker orchestration", () => {
       "failed",
     );
   });
-  it("runs independent checks concurrently, matches the final destination, and deletes photos on model failure", async () => {
+  it("runs independent checks concurrently, gives the scene the traced destination, and deletes photos on model failure", async () => {
     const checks = new MemoryChecks();
     const files = media();
     const cases = intel();
     await checks.create({ ...record(), photoKey: `scenes/${id}.jpg` });
     const started: string[] = [];
+    let sceneDestination: string | undefined;
     let release: (() => void) | undefined;
     const barrier = new Promise<void>((resolve) => {
       release = resolve;
@@ -61,7 +62,6 @@ describe("worker orchestration", () => {
       model: () => failing(),
       trace: async () => {
         started.push("trace");
-        await barrier;
         return {
           report: { finalUrl: "https://destination.example/", hops: [] },
         };
@@ -71,8 +71,9 @@ describe("worker orchestration", () => {
         await barrier;
         throw new Error("AgentCore unavailable");
       },
-      scene: async () => {
+      scene: async (_request, _image, _model, destination) => {
         started.push("scene");
+        sceneDestination = destination;
         release?.();
         throw new Error("Vision unavailable");
       },
@@ -80,6 +81,7 @@ describe("worker orchestration", () => {
     });
     await worker({ id });
     expect(started.sort()).toEqual(["sandbox", "scene", "trace"]);
+    expect(sceneDestination).toBe("https://destination.example/");
     const result = await checks.get(id);
     expect(result?.status).toBe("completed");
     expect(result?.result?.link?.finalUrl).toBe("https://destination.example/");
