@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { type Locale, routes, text } from "../lib/locale";
+import AppScreenshot from "./AppScreenshot.astro";
 import CaseFeed from "./CaseFeed.astro";
 import Phone from "./Phone.astro";
 import Verdict from "./Verdict.astro";
@@ -11,39 +12,59 @@ interface Props {
 const { locale } = Astro.props;
 const t = (cs: string, en: string) => text(locale, cs, en);
 const steps = [
-  [
-    "01",
-    t("Namiřte. A načtěte.", "Point. And scan."),
-    t(
+  {
+    number: "01",
+    title: t("Namiřte. A načtěte.", "Point. And scan."),
+    description: t(
       "Kód na automatu, v dopise nebo na obrazovce. Safe QR nejdřív přečte, co je uvnitř.",
       "A code on a meter, a letter or a screen. Safe QR first reads what is inside.",
     ),
-  ],
-  [
-    "02",
-    t("První kontrola v telefonu", "An instant phone check"),
-    t(
+    screen: "scannerDanger",
+    alt: t(
+      "Fotoaparát Safe QR míří na samolepku na parkovacím automatu. Pod načteným kódem je varování Nebezpečné.",
+      "The Safe QR camera is locked on a parking sticker. A Dangerous warning appears below the scanned code.",
+    ),
+  },
+  {
+    number: "02",
+    title: t("První kontrola v telefonu", "An instant phone check"),
+    description: t(
       "Odkaz, platba, SMS nebo něco jiného? Telefon hned rozpozná známá rizika. I bez internetu.",
       "A link, a payment, an SMS or something else? Your phone spots known risks immediately. Even offline.",
     ),
-  ],
-  [
-    "03",
-    t("Podíváme se hlouběji", "A closer look"),
-    t(
+    screen: "premiumSMS",
+    alt: t(
+      "Kontrola SMS v telefonu: Nebezpečné, skóre 85 ze 100. Jedna přijatá zpráva může stát až 99 Kč a poplatky se mohou opakovat.",
+      "The phone’s SMS check: Dangerous, a risk score of 85 out of 100. One received message may cost up to CZK 99, and charges may repeat.",
+    ),
+  },
+  {
+    number: "03",
+    title: t("Podíváme se hlouběji", "A closer look"),
+    description: t(
       "Po vašem souhlasu cloud ověří cestu odkazu, okolí kódu a podobnost se známými podvody.",
       "With your consent, the cloud checks the link’s journey, the code’s surroundings and known scams.",
     ),
-  ],
-  [
-    "04",
-    t("Rozhodnete vy", "You decide"),
-    t(
+    screen: "cloud-finished",
+    alt: t(
+      "Dokončená hloubková kontrola: Nebezpečné. Web žádá citlivé údaje. Pod výsledkem je vidět cesta odkazu a přesměrování.",
+      "Completed deep check: Dangerous. The website asks for sensitive details. The link’s path and redirect appear below the result.",
+    ),
+  },
+  {
+    number: "04",
+    title: t("Rozhodnete vy", "You decide"),
+    description: t(
       "Uvidíte riziko, důvody i to, co nešlo ověřit. Nic se neotevře ani neodešle bez vašeho rozhodnutí.",
       "See the risk, the reasons and what could not be checked. Nothing opens or sends without your decision.",
     ),
-  ],
-];
+    screen: "danger-confirmation",
+    alt: t(
+      "Potvrzení rizikové SMS: výrazné tlačítko Zpět. Pokračování navzdory riziku vyžaduje podržení tlačítka.",
+      "Confirmation before a risky SMS: Go back is the prominent button. Continuing despite the risk requires pressing and holding.",
+    ),
+  },
+] as const;
 const faq = [
   [
     t("Je každý QR kód nebezpečný?", "Is every QR code dangerous?"),
@@ -147,14 +168,21 @@ const faq = [
     >
     <h2>{t("Chvilka navíc. Klid na duši.", "A moment to check. Peace of mind.")}</h2>
     <div class="steps">
-      {steps.map(([n, title, description]) => (
+      {steps.map(({ number, title, description, screen, alt }) => (
         <article>
-          <div class="step-number">{n}</div>
+          <div class="step-number">{number}</div>
           <h3>{title}</h3>
           <p>{description}</p>
+          <AppScreenshot screen={screen} locale={locale} alt={alt} />
         </article>
       ))}
     </div>
+    <p class="screenshots-note">
+      {t(
+        "Snímky obrazovek pocházejí z iOS Simulátoru. Záběr fotoaparátu používá uměle vytvořenou fotografii.",
+        "Screenshots are from the iOS Simulator. The camera view uses a synthetic photo.",
+      )}
+    </p>
     <div class="deep-details">
       <strong>{t("Co dělá hloubková kontrola?", "What happens in a deep check?")}</strong
       ><span
